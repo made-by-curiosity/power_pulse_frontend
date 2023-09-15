@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/power_pulse_frontend/static/css/main.b74ae432.css",
+    "main.js": "/power_pulse_frontend/static/js/main.a42baee1.js",
+    "static/js/123.22940a1c.chunk.js": "/power_pulse_frontend/static/js/123.22940a1c.chunk.js",
+    "static/js/75.bab12235.chunk.js": "/power_pulse_frontend/static/js/75.bab12235.chunk.js",
+    "static/js/622.fcc2029e.chunk.js": "/power_pulse_frontend/static/js/622.fcc2029e.chunk.js",
+    "static/js/246.9d4ddaeb.chunk.js": "/power_pulse_frontend/static/js/246.9d4ddaeb.chunk.js",
+    "static/js/482.71729a8d.chunk.js": "/power_pulse_frontend/static/js/482.71729a8d.chunk.js",
+    "static/js/247.20b9175d.chunk.js": "/power_pulse_frontend/static/js/247.20b9175d.chunk.js",
+    "static/js/607.2e638c97.chunk.js": "/power_pulse_frontend/static/js/607.2e638c97.chunk.js",
+    "static/js/451.e438a692.chunk.js": "/power_pulse_frontend/static/js/451.e438a692.chunk.js",
+    "static/js/794.2a20368b.chunk.js": "/power_pulse_frontend/static/js/794.2a20368b.chunk.js",
+    "index.html": "/power_pulse_frontend/index.html",
+    "main.b74ae432.css.map": "/power_pulse_frontend/static/css/main.b74ae432.css.map",
+    "main.a42baee1.js.map": "/power_pulse_frontend/static/js/main.a42baee1.js.map",
+    "123.22940a1c.chunk.js.map": "/power_pulse_frontend/static/js/123.22940a1c.chunk.js.map",
+    "75.bab12235.chunk.js.map": "/power_pulse_frontend/static/js/75.bab12235.chunk.js.map",
+    "622.fcc2029e.chunk.js.map": "/power_pulse_frontend/static/js/622.fcc2029e.chunk.js.map",
+    "246.9d4ddaeb.chunk.js.map": "/power_pulse_frontend/static/js/246.9d4ddaeb.chunk.js.map",
+    "482.71729a8d.chunk.js.map": "/power_pulse_frontend/static/js/482.71729a8d.chunk.js.map",
+    "247.20b9175d.chunk.js.map": "/power_pulse_frontend/static/js/247.20b9175d.chunk.js.map",
+    "607.2e638c97.chunk.js.map": "/power_pulse_frontend/static/js/607.2e638c97.chunk.js.map",
+    "451.e438a692.chunk.js.map": "/power_pulse_frontend/static/js/451.e438a692.chunk.js.map",
+    "794.2a20368b.chunk.js.map": "/power_pulse_frontend/static/js/794.2a20368b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b74ae432.css",
+    "static/js/main.a42baee1.js"
+  ]
+}

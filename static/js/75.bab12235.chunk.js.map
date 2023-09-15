@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/75.bab12235.chunk.js","mappings":"2JAMA,UAJmB,WACjB,OAAO,SAAC,IAAD,wBACR,C","sources":["pages/SignInPage/SignInPage.jsx"],"sourcesContent":["import { Container } from 'components/Container/Container';\n\nconst SignInPage = () => {\n  return <Container>SignInPage</Container>;\n};\n\nexport default SignInPage;\n"],"names":[],"sourceRoot":""}
