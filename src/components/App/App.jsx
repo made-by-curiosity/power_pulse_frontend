@@ -28,7 +28,7 @@ export const App = () => {
 
   return (
     <div>
-      <Example />
+      {/* <Example /> */}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={isLoggedIn ? <DiaryPage /> : <WelcomePage />} />
