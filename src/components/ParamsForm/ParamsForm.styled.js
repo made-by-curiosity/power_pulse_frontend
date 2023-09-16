@@ -29,11 +29,17 @@ export const ParamsFormSubTitle = styled.p`
   font-weight: 400;
   color: rgb(239, 237, 232, 0.3);
   margin-bottom: 32px;
+  line-height: 1.4;
 `
 
 
 export const RadioWrap = styled.div`
+margin-bottom: 28px;
 display: flex;
+`
+
+export const RadioGroupWrap = styled.div`
+margin-right: 64px;
 `
 
 export const InputWrap = styled.div`

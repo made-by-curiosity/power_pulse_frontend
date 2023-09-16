@@ -1,4 +1,4 @@
-import { FormData, Section, Step1, Step2, Step3, StepWrap, RadioWrap, InputWrap, ParamsFormTitle, ParamsFormSubTitle} from "components/ParamsForm/ParamsForm.styled"
+import { FormData, Section, Step1, Step2, Step3, StepWrap, RadioWrap, InputWrap, ParamsFormTitle, ParamsFormSubTitle, RadioGroupWrap} from "components/ParamsForm/ParamsForm.styled"
 import { useState } from "react";
 
 import TextField from '@mui/material/TextField';
@@ -165,9 +165,12 @@ export const ParamsForm = () => {
                
             </FormData>
             </>}
-            { step === 2 && 
+            { step === 2 &&
+            <>
+            <ParamsFormTitle>Get closer to your goals!</ParamsFormTitle> 
              <FormControl>
                 <RadioWrap>
+                    <RadioGroupWrap>
                     <FormLabel id="blood" sx={FormLabelStyling}>Blood</FormLabel>
                     <RadioGroup
                         aria-labelledby="blood"
@@ -175,7 +178,7 @@ export const ParamsForm = () => {
                         value={blood}
                         onChange={handleChangeBlood}
                     >
-                    <FormControlLabel value="1"  control={<Radio size="small" sx={{
+                    <FormControlLabel value="1" sx={{mb: -1}}  control={<Radio size="small" sx={{
                         color: 'rgb(239, 237, 232, 0.6)',
                         '&.Mui-checked': {
                           color: "#EF8964",
@@ -186,7 +189,7 @@ export const ParamsForm = () => {
                           1
                         </Typography>
                       }/>
-                    <FormControlLabel value="2" control={<Radio size="small" sx={{
+                    <FormControlLabel value="2" sx={{mb: -1}} control={<Radio size="small" sx={{
                         color: 'rgb(239, 237, 232, 0.6)',
                         '&.Mui-checked': {
                           color: "#EF8964",
@@ -196,7 +199,7 @@ export const ParamsForm = () => {
                           2
                         </Typography>
                       } />
-                    <FormControlLabel value="3" control={<Radio size="small" sx={{
+                    <FormControlLabel value="3" sx={{mb: -1}} control={<Radio size="small" sx={{
                         color: 'rgb(239, 237, 232, 0.6)',
                         '&.Mui-checked': {
                           color: "#EF8964",
@@ -206,7 +209,7 @@ export const ParamsForm = () => {
                           3
                         </Typography>
                       } />
-                    <FormControlLabel value="4" control={<Radio size="small" sx={{
+                    <FormControlLabel value="4"  sx={{mb: -1}} control={<Radio size="small" sx={{
                         color: 'rgb(239, 237, 232, 0.6)',
                         '&.Mui-checked': {
                           color: "#EF8964",
@@ -217,7 +220,9 @@ export const ParamsForm = () => {
                         </Typography>
                       } />
                     </RadioGroup>
-
+                    </RadioGroupWrap>
+                    
+                    <RadioGroupWrap>
                     <FormLabel id="sex" sx={FormLabelStyling}>Sex</FormLabel>
                     <RadioGroup
                         aria-labelledby="sex"
@@ -225,7 +230,7 @@ export const ParamsForm = () => {
                         value={sex}
                         onChange={handleChangeSex}
                     >
-                        <FormControlLabel value="male" control={<Radio size="small" sx={{
+                        <FormControlLabel value="male" sx={{mb: -1}} control={<Radio size="small" sx={{
                         color: 'rgb(239, 237, 232, 0.6)',
                         '&.Mui-checked': {
                           color: "#EF8964",
@@ -235,7 +240,7 @@ export const ParamsForm = () => {
                           Male
                         </Typography>
                       } />
-                        <FormControlLabel value="female" control={<Radio size="small" sx={{
+                        <FormControlLabel value="female" sx={{mb: -1}} control={<Radio size="small" sx={{
                         color: 'rgb(239, 237, 232, 0.6)',
                         '&.Mui-checked': {
                           color: "#EF8964",
@@ -247,6 +252,8 @@ export const ParamsForm = () => {
                       } />
 
                     </RadioGroup>
+                    </RadioGroupWrap>
+                    
                 </RadioWrap>
             
 
@@ -257,7 +264,7 @@ export const ParamsForm = () => {
                  value={level}
                  onChange={handleChangeLevel}
              >
-                 <FormControlLabel value="sedentary" sx={{mb:0.1}} control={<Radio size="small" sx={{
+                 <FormControlLabel value="sedentary" sx={{mb:0.2}} control={<Radio size="small" sx={{
                         color: 'rgb(239, 237, 232, 0.6)',
                         '&.Mui-checked': {
                           color: "#EF8964",
@@ -298,24 +305,25 @@ export const ParamsForm = () => {
                         </Typography>
                       } />
              </RadioGroup>
-            </FormControl>}
+            </FormControl>
+            </>}
 
             { step === 3 && 
             <>
-             <p>Dear User</p>
-             <p>Thank you for filling in all the required data. We greatly appreciate your cooperation and commitment to a healthy lifestyle. The collected information will allow us to provide you with a more individual and personalized approach.</p>
+             <ParamsFormTitle>Dear User</ParamsFormTitle>
+             <ParamsFormSubTitle>Thank you for filling in all the required data. We greatly appreciate your cooperation and commitment to a healthy lifestyle. The collected information will allow us to provide you with a more individual and personalized approach.</ParamsFormSubTitle>
             </>
             
             }
            
-           { step > 1 && <Button variant="contained" type="button" size="medium" margin="normal" onClick={handleClickBack}>
+           { step > 1 && <Button variant="text" type="button" size="medium" sx={{mt: 2}} margin="normal" onClick={handleClickBack}>
                     Back
             </Button>}
 
-            {step < 3 && <Button variant="contained" type="button" size="medium" margin="normal" onClick={handleClickNext}>
+            {step < 3 && <Button variant="text" type="button"   size="medium" sx={{mt: 2}} margin="normal" onClick={handleClickNext}>
                     Next
             </Button>}
-            {step === 3 && <Button variant="contained" type="submit" size="medium" margin="normal" onClick={handleClickGo}>
+            {step === 3 && <Button variant="text" type="submit" size="medium" sx={{mt: 2}} margin="normal" onClick={handleClickGo}>
                     Go
                 </Button>}
             <StepWrap>
