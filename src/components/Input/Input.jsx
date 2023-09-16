@@ -9,7 +9,7 @@ import {
   InputMessage,
 } from './Input.styled';
 
-const MyTextInput = ({ label, ...props }) => {
+export const MyTextInput = ({ label, ...props }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [field, meta] = useField(props);
   const showFeedback =
@@ -56,8 +56,6 @@ const MyTextInput = ({ label, ...props }) => {
     </Container>
   );
 };
-
-export default MyTextInput;
 
 MyTextInput.propTypes = {
   label: PropTypes.string,
