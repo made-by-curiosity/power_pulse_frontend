@@ -12,7 +12,7 @@ import { theme } from 'utils/theme';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
+    {/* <ThemeProvider theme={theme}> */}
       {/* <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}> */}
       <BrowserRouter basename="/power_pulse_frontend">
@@ -20,6 +20,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </BrowserRouter>
       {/* </PersistGate>
       </Provider> */}
-    </ThemeProvider>
+    {/* </ThemeProvider> */}
   </React.StrictMode>
 );
