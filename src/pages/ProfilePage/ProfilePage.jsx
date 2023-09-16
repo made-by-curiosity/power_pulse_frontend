@@ -1,12 +1,12 @@
 import { Container } from 'components/Container/Container';
 import { Title } from 'components/ForProfilePage/Title/Title';
-import { AvatarImg } from 'components/ForProfilePage/Avatar/Avatar.styled';
+import { Avatar } from 'components/ForProfilePage/Avatar/Avatar';
 
 const ProfilePage = () => {
   return (
     <Container>
       <Title></Title>
-      <AvatarImg></AvatarImg>
+      <Avatar></Avatar>
     </Container>
   );
 };
