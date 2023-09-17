@@ -6,7 +6,7 @@ import {
   InfoCardLabelWrapper,
 } from './InfoCard.styled';
 
-import iconsPath from '../../../assets/icons/svg-sprite.svg';
+import iconsPath from '../../assets/icons/svg-sprite.svg';
 
 export const InfoCard = ({ icon, label, number }) => {
   return (

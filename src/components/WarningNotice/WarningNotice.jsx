@@ -1,5 +1,5 @@
 import { WarningNoticeWrapper, WarningText } from './WarningNotice.styled';
-import icons from '../../../assets/icons/svg-sprite.svg';
+import icons from '../../assets/icons/svg-sprite.svg';
 
 const icon = (
   <svg width="24" height="24">
