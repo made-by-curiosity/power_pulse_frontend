@@ -1,4 +1,10 @@
-import { AvatarWrapper, UserName, UserTitle } from './Avatar.styled';
+import {
+  AvatarWrapper,
+  UserName,
+  UserTitle,
+  AddAvatarBtn,
+  AddAvatarIcon,
+} from './Avatar.styled';
 import icons from '../../../assets/icons/svg-sprite.svg';
 
 const iconUser = (
@@ -7,10 +13,19 @@ const iconUser = (
   </svg>
 );
 
+const iconAddAvatarBtn = (
+  <AddAvatarIcon>
+    <use href={icons + '#icon-addavatar'}></use>
+  </AddAvatarIcon>
+);
+
 export const Avatar = () => {
   return (
     <>
-      <AvatarWrapper>{iconUser}</AvatarWrapper>
+      <AvatarWrapper>
+        <AddAvatarBtn type="button">{iconAddAvatarBtn}</AddAvatarBtn>
+        {iconUser}
+      </AvatarWrapper>
       <UserName>Anna Rybachok</UserName>
       <UserTitle>User</UserTitle>
     </>
