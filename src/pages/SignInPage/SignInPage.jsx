@@ -1,6 +1,6 @@
 // import { Container } from 'components/Container/Container';
 import { Formik, Form, Field } from 'formik';
-import { Button } from './SingInPage.styled';
+import { Button, Container, H1, Text } from './SingInPage.styled';
 
 const SignInPage = () => {
   const initialValues = {
@@ -15,13 +15,13 @@ const SignInPage = () => {
     resetForm();
   }
 
-  return (<div>
-    <h1>
+  return (<Container>
+    <H1>
       Sign In
-    </h1>
-    <p>
-      
-    </p>
+    </H1>
+    <Text>
+      Welcome! Please enter your credentials to login to the platform:
+    </Text>
     <Formik initialValues={initialValues} validationSchema={schema} onSubmit={onSubmit}>
       <Form>
         <Field
@@ -43,7 +43,7 @@ const SignInPage = () => {
         <Button type="submit">Submit</Button>
       </Form>
     </Formik>
-    </div>
+    </Container>
   );
 };
 
