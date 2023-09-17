@@ -1,5 +1,6 @@
 import { Container } from 'components/Container/Container';
 import { UserCard } from 'components/UserCard/UserCard';
+import { UserForm } from 'components/UserForm/UserForm';
 
 const user = {
   name: 'Anna Rybachok',
@@ -20,6 +21,13 @@ const ProfilePage = () => {
   return (
     <Container>
       <UserCard user={user}></UserCard>
+      <div>---</div>
+      <div>---</div>
+      <div>---</div>
+      <UserForm></UserForm>
+      <div>---</div>
+      <div>---</div>
+      <div>---</div>
     </Container>
   );
 };
