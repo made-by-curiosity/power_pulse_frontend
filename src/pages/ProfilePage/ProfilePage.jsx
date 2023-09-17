@@ -4,16 +4,14 @@ import { Avatar } from 'components/ForProfilePage/Avatar/Avatar';
 import { InfoCard } from 'components/ForProfilePage/InfoCard/InfoCard';
 import { InfoCardsWrapper } from 'components/ForProfilePage/InfoCard/InfoCard.styled';
 
-import icons from '../../assets/icons/svg-sprite.svg';
-
 const calories = {
-  icon: `href=${icons + '#icon-addavatar'}`,
+  icon: '#icon-cutlery',
   label: 'Daily calorie intake',
   number: '2200',
 };
 
 const normOfSports = {
-  icon: '',
+  icon: '#icon-dumbbell',
   label: 'Daily norm of sports',
   number: '110 min',
 };
