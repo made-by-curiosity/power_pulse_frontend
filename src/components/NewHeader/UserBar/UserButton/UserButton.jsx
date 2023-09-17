@@ -1,5 +1,5 @@
 import { Avatar } from '@mui/material';
 
 export const UserButton = () => {
-  return;
+  return <Avatar sx={{ width: 37, height: 37 }} />;
 };

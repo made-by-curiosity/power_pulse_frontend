@@ -1,4 +1,4 @@
-import icons from '../../../assets/icons/svg-sprite.svg';
+import icons from '../../../../assets/icons/svg-sprite.svg';
 
 export const SettingButton = () => {
   return (
