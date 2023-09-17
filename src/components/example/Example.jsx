@@ -1,4 +1,4 @@
-import { ExampleText, ExampleWrapper, HeightInput } from './Example.styled';
+import { ExampleText, ExampleWrapper } from './Example.styled';
 import Button from '@mui/material/Button';
 import icons from '../../assets/icons/svg-sprite.svg';
 import { CustomInput } from 'components/CustomInput/CustomInput';
