@@ -1,4 +1,4 @@
-import { Container } from 'components/Container/Container';
+// import { Container } from 'components/Container/Container';
 import { Formik, Form, Field } from 'formik';
 import { Button } from './SingInPage.styled';
 
@@ -15,7 +15,13 @@ const SignInPage = () => {
     resetForm();
   }
 
-  return (
+  return (<div>
+    <h1>
+      Sign In
+    </h1>
+    <p>
+      
+    </p>
     <Formik initialValues={initialValues} validationSchema={schema} onSubmit={onSubmit}>
       <Form>
         <Field
@@ -24,17 +30,20 @@ const SignInPage = () => {
           placeholder="Email"
           label="Email"
           autoComplete="off"
-          component={CustomInput } />
+          // component={CustomInput}
+        />
         <Field type="password"
           name="password"
           placeholder="Password"
           label="Password"
           passwordBtn
           autoComplete="off"
-          component={CustomInput} />
+          // component={CustomInput}
+        />
         <Button type="submit">Submit</Button>
       </Form>
     </Formik>
+    </div>
   );
 };
 
