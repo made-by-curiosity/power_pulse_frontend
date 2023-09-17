@@ -4,6 +4,7 @@ import { Avatar } from 'components/ForProfilePage/Avatar/Avatar';
 import { InfoCard } from 'components/ForProfilePage/InfoCard/InfoCard';
 import { InfoCardsWrapper } from 'components/ForProfilePage/InfoCard/InfoCard.styled';
 import { WarningNotice } from 'components/ForProfilePage/WarningNotice/WarningNotice';
+import { LogoutBtn } from 'components/ForProfilePage/LogoutBtn/LogoutBtn';
 
 const calories = {
   icon: '#icon-cutlery',
@@ -35,6 +36,7 @@ const ProfilePage = () => {
         ></InfoCard>
       </InfoCardsWrapper>
       <WarningNotice></WarningNotice>
+      <LogoutBtn></LogoutBtn>
     </Container>
   );
 };

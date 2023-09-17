@@ -52,12 +52,6 @@ export const AddAvatarBtn = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-
-  ${
-    '' /* &:hover {
-    background-color: white;
-  } */
-  }
 `;
 
 export const AddAvatarIcon = styled.svg`
