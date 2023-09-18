@@ -18,7 +18,7 @@ export const Btn = styled.button`
   justify-content: center;
   align-items: center;
 
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.13;
