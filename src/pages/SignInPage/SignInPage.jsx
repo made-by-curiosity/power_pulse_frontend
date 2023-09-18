@@ -15,8 +15,8 @@ const SignInPage = () => {
   };
 
   const schema = object({
-    email: string().email().required(),
-    password: string().matches(/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,32}$/, "").required()
+    email: string().email().matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, "Error email").required(),
+    password: string().matches(/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,32}$/, "Error password").required()
   });
 
   const onSubmit = (values, {resetForm}) => {
@@ -24,8 +24,7 @@ const SignInPage = () => {
     resetForm();
   }
 
-  return (<>
-  <BackgroundImg/>
+  return (<BackgroundImg>
     <Container>
     <Title>
       Sign In
@@ -62,7 +61,7 @@ const SignInPage = () => {
         <LinkSingUp to={'/signup'}>Sign Up</LinkSingUp>
       </DivSingUp>
     </Container>
-    </>
+    </BackgroundImg>
   );
 };
 

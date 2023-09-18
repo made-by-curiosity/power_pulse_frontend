@@ -1,5 +1,5 @@
 import { Wrapper } from "./BackgroundImg.styled"
 
-export const BackgroundImg = () => {
-    return (<Wrapper></Wrapper>)
+export const BackgroundImg = ({children}) => {
+    return (<Wrapper>{ children}</Wrapper>)
 }
