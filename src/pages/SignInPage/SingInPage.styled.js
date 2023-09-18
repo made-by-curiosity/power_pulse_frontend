@@ -6,7 +6,7 @@ export const Container = styled.div`
   margin-right: 20px;
   flex-direction: column;
   width: 335px;
-  color: #EFEDE8
+
 
   @media (min-width: 768px) {
     margin-left: 32px;
@@ -46,13 +46,11 @@ export const Button = styled.button`
   padding-bottom: 12px;
   grid-gap: 10px;
   margin-top: 28px;
+  
+  
   background-color: #e6533c;
+  
 
-  font-family: Roboto;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.12;
 
   @media (min-width: 768px) {
   width: 182px;
@@ -60,7 +58,18 @@ export const Button = styled.button`
 
   }
 
-  @media (min-width: 1440px) {
-   width: 
-  }
 `;
+
+export const TextBtn = styled.span`
+
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.12;
+  color:#EFEDE8;
+
+  @media (min-width: 768px) {
+  font-size: 20px;
+  }
+`
