@@ -3,6 +3,7 @@ import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
 import { RegisterContainer, RegisterForm, Text } from './SignUpForm.styled';
+import { CustomInput } from 'components/CustomInput/CustomInput';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string().required('Required field'),
@@ -53,15 +54,31 @@ export const SignUpForm = () => {
         onSubmit={handleSubmit}
       >
         <RegisterForm>
-          <Field name="name" placeholder="Name" />
+          <Field
+            name="name"
+            label="Name"
+            type="text"
+            autoComplete="off"
+            component={CustomInput}
+          />
 
-          <Field name="email" validate={validateEmail} placeholder="Email" />
+          <Field
+            name="email"
+            validate={validateEmail}
+            label="Email"
+            type="email"
+            autoComplete="off"
+            component={CustomInput}
+          />
 
           <Field
             name="password"
             type="password"
             validate={validatePass}
-            placeholder="Password"
+            label="Password"
+            autoComplete="off"
+            component={CustomInput}
+            passwordBtn
           />
 
           <button type="submit">Sign Up</button>

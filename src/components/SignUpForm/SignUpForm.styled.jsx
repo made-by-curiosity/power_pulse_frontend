@@ -14,7 +14,7 @@ export const RegisterContainer = styled.div`
 export const RegisterForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 36px;
   max-width: 335px;
   @media screen and (min-width: 768px) {
     max-width: 364px;
@@ -23,9 +23,9 @@ export const RegisterForm = styled(Form)`
 
 export const Title = styled.h2``;
 export const Text = styled.p`
-  margin: 14px 0;
+  margin: 20px 0;
   @media screen and (min-width: 768px) {
-    margin: 16px 0;
+    margin: 24px 0;
     max-width: 496px;
   }
 `;
