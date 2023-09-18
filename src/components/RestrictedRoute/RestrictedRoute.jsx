@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Navigate } from 'react-router-dom';
 
 export const RestrictedRoute = ({ component, restrictedTo = '/' }) => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   return isLoggedIn ? <Navigate to={restrictedTo} /> : component;
 };

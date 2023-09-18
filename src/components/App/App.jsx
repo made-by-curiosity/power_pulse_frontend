@@ -1,7 +1,7 @@
 import { lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
-import { Example } from 'components/example/Example';
+// import { Example } from 'components/example/Example';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute/RestrictedRoute';
 import { Layout } from 'components/Layout/Layout';
@@ -28,10 +28,15 @@ export const App = () => {
 
   return (
     <div>
-      <Example />
+      {/* <Example /> */}
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={isLoggedIn ? <DiaryPage /> : <WelcomePage />} />
+          <Route
+            index
+            element={
+              isLoggedIn ? <Navigate to="/diary" /> : <Navigate to="/welcome" />
+            }
+          />
           <Route
             path="/welcome"
             element={
