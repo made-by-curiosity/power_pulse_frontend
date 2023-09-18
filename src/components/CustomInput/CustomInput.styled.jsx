@@ -17,7 +17,7 @@ export const Label = styled.label`
   top: ${props => (props.isFocused || props.hasValue ? '-16px' : '16px')};
   left: ${props => (props.isFocused || props.hasValue ? '0' : '14px')};
 
-  font-family: 'Roboto sans-serif';
+  font-family: 'Roboto', sans-serif;
   font-size: ${props => (props.isFocused || props.hasValue ? '10px' : '14px')};
   line-height: ${props => (props.isFocused || props.hasValue ? '1.5' : '1.29')};
   color: rgba(239, 237, 232, 0.6);
@@ -84,7 +84,7 @@ export const InputMessage = styled.div`
   align-items: center;
   gap: 3px;
 
-  font-family: 'Roboto sans-serif';
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 10px;
   line-height: 1.5;
