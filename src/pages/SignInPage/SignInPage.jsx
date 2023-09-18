@@ -1,6 +1,8 @@
 // import { Container } from 'components/Container/Container';
 import { Formik, Form, Field } from 'formik';
-import { Button, Container, H1, Text } from './SingInPage.styled';
+import { Button, Container,  Text, TextBtn } from './SingInPage.styled';
+import { CustomInput } from 'components/CustomInput/CustomInput';
+import { Title} from 'components/Title/Title';
 
 const SignInPage = () => {
   const initialValues = {
@@ -16,9 +18,9 @@ const SignInPage = () => {
   }
 
   return (<Container>
-    <H1>
+    <Title>
       Sign In
-    </H1>
+    </Title>
     <Text>
       Welcome! Please enter your credentials to login to the platform:
     </Text>
@@ -30,7 +32,7 @@ const SignInPage = () => {
           placeholder="Email"
           label="Email"
           autoComplete="off"
-          // component={CustomInput}
+          component={CustomInput}
         />
         <Field type="password"
           name="password"
@@ -38,11 +40,12 @@ const SignInPage = () => {
           label="Password"
           passwordBtn
           autoComplete="off"
-          // component={CustomInput}
+          component={CustomInput}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit"><TextBtn>Submit</TextBtn></Button>
       </Form>
     </Formik>
+    <img src="/src/assets/images/bg_img/bg_main.jpg" alt="" width={446} height={669} />
     </Container>
   );
 };

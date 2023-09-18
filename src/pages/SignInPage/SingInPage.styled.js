@@ -1,34 +1,44 @@
-import  styled  from '@emotion/styled';
+import styled from '@emotion/styled';
 
 export const Container = styled.div`
-display: flex;
-margin-left: 20px;
-margin-right: 20px;
-flex-direction: column;
-background-image: '/src/assets/images/bg_img/bg_main.jpg'
-`
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  flex-direction: column;
+  width: 335px;
+  color: #EFEDE8
 
-export const H1 = styled.h1`
-font-family: Roboto;
-font-size: 24px;
-font-style: normal;
-font-weight: 700;
-line-height: 1.16;
-margin-bottom: 14px;
-`
+  @media (min-width: 768px) {
+    margin-left: 32px;
+    width: 496px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-left: 96px;
+  }
+`;
 
 export const Text = styled.p`
-font-family: Roboto;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 1.28;
-color: #EFEDE84D;
-margin-bottom: 28px;
-`
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28;
+  color: #efede84d;
+  margin-bottom: 28px;
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+`;
 
 export const Button = styled.button`
   display: grid;
+  width: 130px;
   border-radius: 12px;
   padding-left: 40px;
   padding-right: 40px;
@@ -37,8 +47,20 @@ export const Button = styled.button`
   grid-gap: 10px;
   margin-top: 28px;
   background-color: #e6533c;
-  color: #EFEDE8;
-  line-height: 1.12 ;
-  size: 16px;
 
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.12;
+
+  @media (min-width: 768px) {
+  width: 182px;
+  font-size: 20px;
+
+  }
+
+  @media (min-width: 1440px) {
+   width: 
+  }
 `;
