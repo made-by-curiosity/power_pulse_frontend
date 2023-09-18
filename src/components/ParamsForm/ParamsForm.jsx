@@ -1,6 +1,8 @@
 import { FormData, Section, Step1, Step2, Step3, StepWrap, RadioWrap, InputWrap, ParamsFormTitle, ParamsFormSubTitle, RadioGroupWrap} from "components/ParamsForm/ParamsForm.styled"
 import { useState } from "react";
 
+import { StyledDatepicker } from "components/DatePicker/DatePicker";
+
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Typography } from "@mui/material";
@@ -162,8 +164,8 @@ export const ParamsForm = () => {
                     onChange={handleOnChange}
                 /> 
                 </InputWrap>
-               
             </FormData>
+            <StyledDatepicker />
             </>}
             { step === 2 &&
             <>
