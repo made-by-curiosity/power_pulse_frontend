@@ -1,8 +1,12 @@
 // import { Container } from 'components/Container/Container';
 import { Formik, Form, Field } from 'formik';
-import { Button, Container,  Text, TextBtn } from './SingInPage.styled';
+import { object, string} from 'yup';
+
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { Title} from 'components/Title/Title';
+import { BackgroundImg } from 'components/BackgroundImg/BackgroundImg';
+
+import { Button, Container,  Text, TextBtn, ContainerField, LinkSingUp, TextSingUp, DivSingUp } from './SingInPage.styled';
 
 const SignInPage = () => {
   const initialValues = {
@@ -10,14 +14,19 @@ const SignInPage = () => {
     password: '',
   };
 
-  const schema = "";
+  const schema = object({
+    email: string().email().required(),
+    password: string().matches(/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,32}$/, "").required()
+  });
 
   const onSubmit = (values, {resetForm}) => {
     console.log(values)
     resetForm();
   }
 
-  return (<Container>
+  return (<>
+  <BackgroundImg/>
+    <Container>
     <Title>
       Sign In
     </Title>
@@ -26,6 +35,7 @@ const SignInPage = () => {
     </Text>
     <Formik initialValues={initialValues} validationSchema={schema} onSubmit={onSubmit}>
       <Form>
+        <ContainerField>
         <Field
           type="email"
           name="email"
@@ -33,7 +43,8 @@ const SignInPage = () => {
           label="Email"
           autoComplete="off"
           component={CustomInput}
-        />
+          />
+          </ContainerField>
         <Field type="password"
           name="password"
           placeholder="Password"
@@ -41,12 +52,17 @@ const SignInPage = () => {
           passwordBtn
           autoComplete="off"
           component={CustomInput}
+          inputStyles={{gap: '20px'}}
         />
-        <Button type="submit"><TextBtn>Submit</TextBtn></Button>
+        <Button type="submit"><TextBtn>Sign In</TextBtn></Button>
       </Form>
-    </Formik>
-    <img src="/src/assets/images/bg_img/bg_main.jpg" alt="" width={446} height={669} />
+      </Formik>
+      <DivSingUp>
+        <TextSingUp>Don’t have an account? </TextSingUp>
+        <LinkSingUp to={'/signup'}>Sign Up</LinkSingUp>
+      </DivSingUp>
     </Container>
+    </>
   );
 };
 
