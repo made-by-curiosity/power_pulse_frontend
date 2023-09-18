@@ -3,7 +3,8 @@ import { createTheme } from '@mui/material/styles';
 export const theme = createTheme({
   colors: {
     primary: '#000080',
-    secondary: '#F0E68C',
+    // secondary: '#F0E68C',
+    secondary: 'black',
     textColor: '#9370DB',
     backgroundColor: 'gray',
   },
