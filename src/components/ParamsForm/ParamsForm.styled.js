@@ -82,3 +82,5 @@ export const Step3 = styled.div`
   background-color: ${ props => 
    { if (props.step === 3) {return  "#EF8964"} }};
 `; 
+
+

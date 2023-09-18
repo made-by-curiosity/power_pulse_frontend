@@ -13,11 +13,49 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
+import { Field, Form, Formik } from 'formik';
+import * as Yup from 'yup';
+import { CustomInput } from "components/CustomInput/CustomInput";
+
+
+const today = new Date();
+    const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+
+const validationSchema = Yup.object({
+  height: Yup.number('Number')
+    .typeError('Height must be a number')
+    .positive('Height must be a positive number.')
+    .min(150, 'Height must be at least 150 cm')
+    .required('Height is required'),
+  currentWeight: Yup.number()
+    .typeError('Height must be a number')
+    .min(35, 'Current weight must be at least 35 kg')
+    .positive('Current weight must be a positive number.')
+    .required('Current weight is required'),
+  desiredWeight: Yup.number()
+    .typeError('Height must be a number')
+    .min(35, 'Desired weight  must be at least 35 kg')
+    .positive('Weight must be a positive number.')
+    .required('Height is required'),
+  birthday: Yup.date()
+    .max(eighteenYearsAgo, 'You must be older than 18 years old')
+    .required('Height is required'),
+});
+
 export const ParamsForm = () => {
-    const [height, setHeight] = useState('');
-    const [currentWeight, setCurrentWeight] = useState('');
-    const [desiredWeight, setDesiredWeight] = useState('');
-    const [birthday, setBirthday] = useState('');
+  const initialValues = {
+    height: "",
+    currentWeight: "",
+    desiredWeight: "",
+    birthday: "",
+  };
+
+
+
+    // const [height, setHeight] = useState('');
+    // const [currentWeight, setCurrentWeight] = useState('');
+    // const [desiredWeight, setDesiredWeight] = useState('');
+    // const [birthday, setBirthday] = useState('');
 
 
     const [blood, setBlood] = useState("1");
@@ -26,27 +64,7 @@ export const ParamsForm = () => {
 
     const [step, setStep] = useState(1);
 
-
-    const handleOnChange = (e) => {
-        const {name, value} = e.currentTarget;
-        switch (name) {
-            case "height":
-                setHeight(value);
-                break;
-            case "currentWeight":
-                setCurrentWeight(value);
-                break;
-            case "desiredWeight":
-                setDesiredWeight(value);
-                break;
-            case "birthday":
-                setBirthday(value);
-                break;
-            default:
-                break;
-        }
-    }
-
+    
 
     const handleChangeBlood = (e) => {
         setBlood(e.target.value);
@@ -68,9 +86,6 @@ export const ParamsForm = () => {
         setStep(state => state - 1);
     }
 
-    const handleClickGo = () => {
-        alert(`{height: ${height}, currentWeight: ${currentWeight},desiredWeight: ${desiredWeight}, birthday: ${birthday}, bloodt: ${blood}, sex:  ${sex}, level:  ${level}}`);
-    }
 
 
     const FormLabelStyling = {
@@ -82,30 +97,12 @@ export const ParamsForm = () => {
     }
 
 
-    const TextFieldStyling = {
-      mb: 2, 
-      "& label": {
-          color: 'rgb(239, 237, 232, 0.6)',
-          fontSize: 14,
-        },
-        "& label.Mui-focused": {
-          color: 'rgb(239, 237, 232, 0.6)'
-        },
-        "& input": {
-          color: 'rgb(239, 237, 232, 0.6)'
-        },
-      '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: '#E0E3E7',
-      },
-      '&:hover fieldset': {
-        borderColor: '#b25613',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: '#b25613',
-      },
-    },
-    }
+ 
+
+    const onSubmit = (values, { resetForm }) => {
+      console.log(values);
+      resetForm();
+    };
 
     return (
         <Section>
@@ -113,59 +110,54 @@ export const ParamsForm = () => {
             <>
                 <ParamsFormTitle>Get closer to your goals!</ParamsFormTitle>
                 <ParamsFormSubTitle>To ensure a personalized user experience and the proper functioning of our platform, we ask you to provide the following information about your weight, height and other relevant data:</ParamsFormSubTitle>
-                <FormData autoComplete="off">
-                <InputWrap>
-                <TextField
-                    id="outlined-basic"
-                    type="text"
-                    label="Height"
-                    variant="outlined"
-                    name="height"
-                    value={height}
-                    size="small"
-                    sx={TextFieldStyling}
-
-                    onChange={handleOnChange}
-                />
-                <TextField
-                    id="outlined-basic"
-                    type="text"
-                    label="Current Weight"
-                    variant="outlined"
-                    name="currentWeight"
-                    value={currentWeight}
-                    size="small"
-                    sx={TextFieldStyling}
-                    onChange={handleOnChange}
-                /> 
-                </InputWrap>
-                
-                <InputWrap>
-                <TextField
-                    id="outlined-basic"
-                    type="text"
-                    label="Desired Weight"
-                    variant="outlined"
-                    name="desiredWeight"
-                    value={desiredWeight}
-                    size="small"
-                    sx={TextFieldStyling}
-                    onChange={handleOnChange}
-                /> 
-                <TextField
-                    id="outlined-basic"
-                    type="text"
-                    label="Birthday"
-                    variant="outlined"
-                    name="birthday"
-                    value={birthday}
-                    size="small"
-                    sx={TextFieldStyling}
-                    onChange={handleOnChange}
-                /> 
-                </InputWrap>
-            </FormData>
-            <StyledDatepicker />
+                <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={onSubmit}
+              >
+        <Form
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '35px',
+            width: '100%',
+          }}
+        >
+          <Field
+            label="Height"
+            name="height"
+            type="text"
+            autoComplete="off"
+            component={CustomInput}
+            inputStyles={{ width: '200px' }}
+          />
+          <Field
+            label="Current Weight"
+            name="currentWeight"
+            type="text"
+            autoComplete="off"
+            component={CustomInput}
+            inputStyles={{ width: '200px' }}
+          />
+          <Field
+            label="Desired Weight"
+            name="desiredWeight"
+            type="text"
+            autoComplete="off"
+            component={CustomInput}
+            inputStyles={{ width: '200px' }}
+          />
+          <Field
+            label="Birthday"
+            name="birthday"
+            type="text"
+            autoComplete="off"
+            component={CustomInput}
+            inputStyles={{ width: '200px' }}
+          />
+        </Form>
+      </Formik>
+            {/* <StyledDatepicker /> */}
             </>}
             { step === 2 &&
             <>
@@ -325,7 +317,7 @@ export const ParamsForm = () => {
             {step < 3 && <Button variant="text" type="button"   size="medium" sx={{mt: 2}} margin="normal" onClick={handleClickNext}>
                     Next
             </Button>}
-            {step === 3 && <Button variant="text" type="submit" size="medium" sx={{mt: 2}} margin="normal" onClick={handleClickGo}>
+            {step === 3 && <Button variant="text" type="submit" size="medium" sx={{mt: 2}} margin="normal">
                     Go
                 </Button>}
             <StepWrap>
@@ -341,3 +333,32 @@ export const ParamsForm = () => {
     )
 }
 
+
+
+
+
+
+   // const TextFieldStyling = {
+    //   mb: 2, 
+    //   "& label": {
+    //       color: 'rgb(239, 237, 232, 0.6)',
+    //       fontSize: 14,
+    //     },
+    //     "& label.Mui-focused": {
+    //       color: 'rgb(239, 237, 232, 0.6)'
+    //     },
+    //     "& input": {
+    //       color: 'rgb(239, 237, 232, 0.6)'
+    //     },
+    //   '& .MuiOutlinedInput-root': {
+    //   '& fieldset': {
+    //     borderColor: '#E0E3E7',
+    //   },
+    //   '&:hover fieldset': {
+    //     borderColor: '#b25613',
+    //   },
+    //   '&.Mui-focused fieldset': {
+    //     borderColor: '#b25613',
+    //   },
+    // },
+    // }
