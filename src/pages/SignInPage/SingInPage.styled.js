@@ -32,6 +32,7 @@ export const Text = styled.p`
   line-height: 1.28;
   color: #efede84d;
   margin-bottom: 28px;
+  margin-top: 14px;
 
   @media (min-width: 768px) {
     width: 496px;
