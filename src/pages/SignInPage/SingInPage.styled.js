@@ -4,16 +4,14 @@ import { Link } from 'react-router-dom';
 
 
 export const ContainerSingIn = styled.div`
-  display: flex;
-  margin-left: 20px;
-  margin-right: 20px;
-  flex-direction: column;
+  
   width: 335px;
 
 
   @media (min-width: 768px) {
+    width:364px;
     margin-left: 32px;
-    width: 496px;
+    
   }
 
   @media (min-width: 1440px) {
@@ -36,6 +34,7 @@ export const Text = styled.p`
   margin-bottom: 28px;
 
   @media (min-width: 768px) {
+    width: 496px;
   }
 
   @media (min-width: 1440px) {

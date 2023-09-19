@@ -26,8 +26,9 @@ const SignInPage = () => {
   }
 
   return (
+     <BackgroundImg>
     <Container>
-      <BackgroundImg>
+     
       <ContainerSingIn>
     <Title>
       Sign In
@@ -64,8 +65,9 @@ const SignInPage = () => {
         <LinkSingUp to={'/signup'}>Sign Up</LinkSingUp>
         </DivSingUp>
         </ContainerSingIn>
-        </BackgroundImg>
-    </Container>
+       
+      </Container>
+       </BackgroundImg>
     
   );
 };
