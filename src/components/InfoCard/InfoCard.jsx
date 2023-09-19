@@ -1,6 +1,5 @@
 import {
   InfoCardBox,
-  InfoCardsWrapper,
   InfoCardLabel,
   InfoCardNumber,
   InfoCardLabelWrapper,
@@ -12,7 +11,7 @@ export const InfoCard = ({ icon, label, number }) => {
   return (
     <InfoCardBox>
       <InfoCardLabelWrapper>
-        <svg width="20" height="20">
+        <svg width="20" height="20" style={{ fill: '#EF8964' }}>
           <use href={iconsPath + icon}></use>
         </svg>
         <InfoCardLabel>{label}</InfoCardLabel>

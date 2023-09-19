@@ -2,7 +2,11 @@ import { WarningNoticeWrapper, WarningText } from './WarningNotice.styled';
 import icons from '../../assets/icons/svg-sprite.svg';
 
 const icon = (
-  <svg width="24" height="24">
+  <svg
+    width="24"
+    height="24"
+    style={{ fill: '#EFA082', stroke: '#EFEDE8', strokeWidth: '0' }}
+  >
     <use href={icons + '#icon-warning'}></use>
   </svg>
 );

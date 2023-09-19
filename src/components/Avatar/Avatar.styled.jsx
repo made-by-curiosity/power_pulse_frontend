@@ -55,6 +55,10 @@ export const AddAvatarBtn = styled.button`
 `;
 
 export const AddAvatarIcon = styled.svg`
+  fill: #e6533c;
+  stroke: #efede8;
+  stroke-width: 0;
+
   width: 24px;
   height: 24px;
   transition-property: transform;
