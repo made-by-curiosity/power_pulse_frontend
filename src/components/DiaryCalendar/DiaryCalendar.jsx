@@ -4,12 +4,12 @@ import {
   TitleWrapper,
   CalendarIMG,
   DateSwitcherCont,
-  DateSwitcherBtn,
+  // DateSwitcherBtn,
   DateSwitcherBtnCont,
 } from './DiaryCalendar.styled';
 import { format } from 'date-fns';
-import { Datepicker } from '../Datepicker/Datepicker';
 import { DateSwitchButton } from 'components/DateSwitchButton/DateSwitchButton';
+import { Calendar } from 'components/Calendar/Calendar';
 
 export const DiaryCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(Date.now());
@@ -53,7 +53,7 @@ export const DiaryCalendar = () => {
   });
 
   return (
-    <Datepicker
+    <Calendar
       input={<CustomInput />}
       selectedDate={selectedDate}
       setSelectedDate={setSelectedDate}
