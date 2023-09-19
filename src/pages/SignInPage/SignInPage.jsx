@@ -6,7 +6,8 @@ import { CustomInput } from 'components/CustomInput/CustomInput';
 import { Title} from 'components/Title/Title';
 import { BackgroundImg } from 'components/BackgroundImg/BackgroundImg';
 
-import { Button, Container,  Text, TextBtn, ContainerField, LinkSingUp, TextSingUp, DivSingUp } from './SingInPage.styled';
+import { Button,  Text, TextBtn, ContainerField, LinkSingUp, TextSingUp, DivSingUp, ContainerSingIn } from './SingInPage.styled';
+import { Container } from 'components/Container/Container';
 
 const SignInPage = () => {
   const initialValues = {
@@ -24,8 +25,10 @@ const SignInPage = () => {
     resetForm();
   }
 
-  return (<BackgroundImg>
+  return (
     <Container>
+      <BackgroundImg>
+      <ContainerSingIn>
     <Title>
       Sign In
     </Title>
@@ -59,9 +62,11 @@ const SignInPage = () => {
       <DivSingUp>
         <TextSingUp>Don’t have an account? </TextSingUp>
         <LinkSingUp to={'/signup'}>Sign Up</LinkSingUp>
-      </DivSingUp>
+        </DivSingUp>
+        </ContainerSingIn>
+        </BackgroundImg>
     </Container>
-    </BackgroundImg>
+    
   );
 };
 
