@@ -47,6 +47,7 @@ export const ParamsForm = () => {
     birthday: "",
   };
 
+  
 
     // const [height, setHeight] = useState('');
     // const [currentWeight, setCurrentWeight] = useState('');
@@ -59,31 +60,44 @@ export const ParamsForm = () => {
 
     const handleClickNext = () => {
         setStep(state => state + 1);
+        
     }
 
     const handleClickBack = () => {
         setStep(state => state - 1);
     }
 
+    const handleThirdStepSubmit = (values, { setSubmitting }) => {
+    // Ваша логіка для обробки даних третього етапу, наприклад, відправлення їх на сервер
+      console.log("dispatchAllValues", values);
 
-    const onSubmit = (values, { resetForm }) => {
-      console.log(values);
-      resetForm();
+    // Прибираємо флаг "завантаження" після успішної відправки
+      setSubmitting(false);
+  };
+
+
+    const onSubmit = (values, {setSubmitting}) => {
+      if (step === 3) {
+        // Відправка даних на сервер лише на третьому етапі
+        handleThirdStepSubmit(values, { setSubmitting });
+      } else {
+        // Перехід на наступний етап (якщо необхідно)
+        setStep(step + 1);
+      }
     };
 
     return (
         <>
-            { step === 1 &&  
-            <>
-                <ParamsFormTitle>Get closer to your goals!</ParamsFormTitle>
-                <ParamsFormSubTitle>To ensure a personalized user experience and the proper functioning of our platform, we ask you to provide the following information about your weight, height and other relevant data:</ParamsFormSubTitle>
-                <Formik
+              <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={onSubmit}
               >
                 
                 <Form>
+                  {step === 1 && <>
+                  <ParamsFormTitle>Get closer to your goals!</ParamsFormTitle>
+                <ParamsFormSubTitle>To ensure a personalized user experience and the proper functioning of our platform, we ask you to provide the following information about your weight, height and other relevant data:</ParamsFormSubTitle>
                   <FormWrap>
                     <FieldWrap>
                     <Field
@@ -126,10 +140,25 @@ export const ParamsForm = () => {
                       inputStyles={{ width: '160px' }}
                     />
                     </FieldWrap>
+                    <NextBtn type="submit">
+                      Next <svg width="20" height="20"  stroke="#E6533C">
+                      <use href={icons + '#icon-nextarrow'} />
+                      </svg>
+                    </NextBtn>
                   </FormWrap>
+                  </>}
+                  {step === 3 && <MainBtnWrap>
+                    <MainButton 
+                      type='submit'
+                      text='Go'
+                      filled
+                      btnStyles={{display: "inline-flex"}}
+                    />
+                  </MainBtnWrap> 
+                  }
               </Form>
             </Formik>
-            </>}
+            
 
             { step === 2 &&
             <>
@@ -154,21 +183,14 @@ export const ParamsForm = () => {
             
             }
            <BtnWrap>
-           {step === 3 && <MainBtnWrap>
-            <MainButton 
-              type='submit'
-              text='Go'
-              filled
-              btnStyles={{display: "inline-flex"}}
-            />
-           </MainBtnWrap> }
+          
            { step > 1 && <BackBtn onClick={handleClickBack}>
                       <svg width="20" height="20"  stroke="#E6533C">
           <use href={icons + '#icon-back'} /> 
         </svg> Back
             </BackBtn>}
             
-            {step < 3 && <NextBtn onClick={handleClickNext}>
+            {step > 1 && step < 3 && <NextBtn onClick={handleClickNext}>
                     Next <svg width="20" height="20"  stroke="#E6533C">
           <use href={icons + '#icon-nextarrow'} />
         </svg>
