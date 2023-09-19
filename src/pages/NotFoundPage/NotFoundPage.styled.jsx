@@ -22,28 +22,28 @@ export const Pages = styled.div`
 export const Blok = styled.div`
     width: 240px;
     margin: 0;
-    padding: 24px 20px 250px 20px;
+    padding: 250px 20px 250px 20px;
     background: #E6533C;
     z-index: 1;
 
     @media screen and (min-width: 768px) {
         width: 420px;
-        padding: 24px 32px 309px 32px;
+        padding: 309px 32px 309px 32px;
     }
 
     @media screen and (min-width: 1440px) {
         width: 669px;
         margin-right: 101px;
-        padding: 32px 96px 221px 96px;
+        padding: 221px 96px 221px 96px;
     }
 `;
 
-export const Logo = styled.a`
-    text-decoration: none; 
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-`;
+// export const Logo = styled.a`
+//     text-decoration: none; 
+//     display: inline-flex;
+//     align-items: center;
+//     gap: 8px;
+// `;
 
 export const Title = styled.h2`
     margin-top: 213px;
@@ -59,6 +59,7 @@ export const Title = styled.h2`
     @media screen and (min-width: 768px) {
         margin-top: 260px;
         margin-bottom: 28px;
+        font-size: 160px;
         line-height: 0.93;
         letter-spacing: 1.6px;
     }
@@ -90,7 +91,7 @@ export const Text = styled.p`
 `;
 
 export const Button = styled.button`
-    width: 147px;
+    width: 150px;
     padding: 12px 40px;
     font-family: Roboto;
     font-size: 16px;
@@ -103,7 +104,7 @@ export const Button = styled.button`
     color: #EFEDE8;
 
     @media screen and (min-width: 768px) {
-        width: 204px;
+        width: 209px;
         padding: 16px 60px;
         font-size: 20px;
         line-height: 1.0;

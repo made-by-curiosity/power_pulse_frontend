@@ -1,6 +1,6 @@
 // import { Button } from '@mui/material';
 import { Container } from 'components/Container/Container';
-import { Blok, Pages, Logo, Title, Text, Foto, Img, Button } from './NotFoundPage.styled'
+import { Blok, Pages, Title, Text, Foto, Img, Button } from './NotFoundPage.styled'
 import mo_img from '../../assets/images/mo-img/mo_main.jpg'
 
 
@@ -8,14 +8,14 @@ const NotFoundPage = () => {
   return <Container>
     <Pages>
     <Blok>
-        <Logo>
+        {/* <Logo>
             <svg width="44" height="17" >
                 <use href="./images/symbol-defs.svg#icon-Vector"></use>
             </svg>
             <svg width="99" height="15" >
                 <use href="./images/symbol-defs.svg#icon-PowerPulse"></use>
             </svg>
-        </Logo>
+        </Logo> */}
         <Title>404</Title>
         <Text>
             Sorry, you have reached a page that we could not find.
