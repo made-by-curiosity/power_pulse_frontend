@@ -26,12 +26,12 @@ export const Blok = styled.div`
     background: #E6533C;
     z-index: 1;
 
-    @media screen and (min-width: 768) {
+    @media screen and (min-width: 768px) {
         width: 420px;
         padding: 24px 32px 309px 32px;
     }
 
-    @media screen and (min-width: 1440) {
+    @media screen and (min-width: 1440px) {
         width: 669px;
         margin-right: 101px;
         padding: 32px 96px 221px 96px;
@@ -56,13 +56,13 @@ export const Title = styled.h2`
     letter-spacing: 0.66px;
     color: #EFEDE8;
 
-    @media screen and (min-width: 768) {
+    @media screen and (min-width: 768px) {
         margin-top: 260px;
         margin-bottom: 28px;
         line-height: 0.93;
         letter-spacing: 1.6px;
     }
-    @media screen and (min-width: 768) {
+    @media screen and (min-width: 1440px) {
         margin-top: 172px;
     } 
 `;
@@ -78,13 +78,13 @@ export const Text = styled.p`
     font-weight: 400;
     line-height: 1.28;
 
-    @media screen and (min-width: 768) {
+    @media screen and (min-width: 768px) {
         width: 356px;
         font-size: 16px;
         line-height: 1.5;
     }
 
-    @media screen and (min-width: 1440) {
+    @media screen and (min-width: 1440px) {
         width: 477px;
     }
 `;
@@ -102,7 +102,7 @@ export const Button = styled.button`
     background-color: #E6533C;
     color: #EFEDE8;
 
-    @media screen and (min-width: 768) {
+    @media screen and (min-width: 768px) {
         width: 204px;
         padding: 16px 60px;
         font-size: 20px;
