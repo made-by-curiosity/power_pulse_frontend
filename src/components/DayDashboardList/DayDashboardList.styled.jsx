@@ -70,3 +70,7 @@ export const Value = styled.p`
     line-height: 32px;
   }
 `;
+
+export const Imagen = styled.svg`
+  fill: #ef8964;
+`;

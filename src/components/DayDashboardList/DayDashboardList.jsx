@@ -5,8 +5,9 @@ import {
   Title,
   CardNameCont,
   Value,
+  Imagen,
 } from './DayDashboardList.styled';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 export const DayDashboardList = ({ data }) => {
   return (
@@ -21,12 +22,15 @@ export const DayDashboardList = ({ data }) => {
         return (
           <Item key={index} order={order}>
             <CardNameCont>
-              <svg width="20" height="20">
+              <Imagen width="20" height="20">
                 <use href={sprite + icon}></use>
-              </svg>
+              </Imagen>
               <Title color={color}>{title}</Title>
             </CardNameCont>
-            <Value>{0}</Value>
+            <Value>
+              {0}
+              {index === 1 || index === 5 ? ' min' : ""}
+            </Value>
           </Item>
         );
       })}

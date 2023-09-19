@@ -3,6 +3,7 @@ import {
   WarningCont,
   WarningText,
   WarningIMG,
+  WarningIMGWrapper,
 } from './DayDashboard.styled';
 import { DayDashboardList } from 'components/DayDashboardList/DayDashboardList';
 import sprite from '../../assets/icons/svg-sprite.svg';
@@ -21,9 +22,11 @@ export const DayDashboard = () => {
     <DayDashboardCont>
       <DayDashboardList data={dashBoardData} />
       <WarningCont>
-        <WarningIMG  width="24" height="24">
-          <use href={sprite + '#icon-warning'}></use>
-        </WarningIMG >
+        <WarningIMGWrapper>
+          <WarningIMG width="24" height="24">
+            <use href={sprite + '#icon-warning'}></use>
+          </WarningIMG>
+        </WarningIMGWrapper>
         <WarningText img={sprite + '#icon-warning'}>
           Record all your meals in a calorie diary every day. This will help me
           be aware of my nutrition and make me responsible for my choices.
