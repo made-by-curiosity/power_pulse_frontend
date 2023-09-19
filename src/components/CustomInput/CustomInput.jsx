@@ -25,7 +25,7 @@ export const CustomInput = ({ field, form, ...props }) => {
   const errorMessage = form.errors[name];
   const touched = form.touched[name];
 
-  const hasValue = value.trim().length > 0;
+  const hasValue = value.toString().trim().length > 0;
 
   const showFeedback = (!!isFocused && hasValue) || touched;
 
