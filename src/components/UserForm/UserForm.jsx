@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { CustomGroupRadio } from 'components/CustomRadio/CustomGroupRadio';
-import { SaveBtn } from 'components/SaveBtn/SaveBtn';
+import { MainButton } from 'components/MainButton/MainButton';
 
 import {
   Title,
@@ -107,7 +107,7 @@ export const UserForm = ({ user }) => {
           />
 
           <br />
-          <SaveBtn
+          <MainButton
             type="submit"
             text="Save"
             filled
