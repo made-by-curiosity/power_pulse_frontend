@@ -9,6 +9,7 @@ import {
 } from './DiaryCalendar.styled';
 import { format } from 'date-fns';
 import { Datepicker } from '../Datepicker/Datepicker';
+import { DateSwitchButton } from 'components/DateSwitchButton/DateSwitchButton';
 
 export const DiaryCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(Date.now());
@@ -39,28 +40,13 @@ export const DiaryCalendar = () => {
           </CalendarIMG>
         </TitleWrapper>
         <DateSwitcherBtnCont>
-          <DateSwitcherBtn
-            type="button"
-            onClick={() => {
-              toPreviosDay();
-            }}
+          <DateSwitchButton
+            onClick={toPreviosDay}
             disabled={isDisabled}
             color={isDisabled ? '#EFEDE833' : '#efede8'}
-          >
-            <svg width="16" height="16">
-              <use href={sprite + '#icon-chevronup'}></use>
-            </svg>
-          </DateSwitcherBtn>
-          <DateSwitcherBtn
-            type="button"
-            onClick={() => {
-              toNextDay();
-            }}
-          >
-            <svg width="16" height="16">
-              <use href={sprite + '#icon-chevronup'}></use>
-            </svg>
-          </DateSwitcherBtn>
+            icon="#icon-chevronup"
+          />
+          <DateSwitchButton onClick={toNextDay} icon="#icon-chevronup" />
         </DateSwitcherBtnCont>
       </DateSwitcherCont>
     );
