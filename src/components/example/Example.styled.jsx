@@ -1,10 +1,14 @@
 import styled from '@emotion/styled';
+import { CustomInput } from 'components/CustomInput/CustomInput';
+import { Field } from 'formik';
 
 export const ExampleWrapper = styled.div`
+  padding: 30px;
   width: 100%;
-  height: 200px;
+  height: 500px;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -19,4 +23,8 @@ export const ExampleText = styled.p`
   &:hover {
     color: ${props => props.theme.colors.primary};
   }
+`;
+
+export const HeightInput = styled(CustomInput)`
+  width: 300px;
 `;
