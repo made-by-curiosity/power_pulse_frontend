@@ -1,5 +1,7 @@
-import { FormData, Section, Step1, Step2, Step3, StepWrap, RadioWrap, InputWrap, ParamsFormTitle, ParamsFormSubTitle, RadioGroupWrap} from "components/ParamsForm/ParamsForm.styled"
+import { FormData, Section, Step1, Step2, Step3, StepWrap, RadioWrap, InputWrap, FormWrap, ParamsFormTitle, ParamsFormSubTitle, RadioGroupWrap, FieldContainer, NextBtn, BtnWrap, MainBtnWrap, BackBtn, FieldWrap} from "components/ParamsForm/ParamsForm.styled"
 import { useState } from "react";
+
+import icons from '../../assets/icons/svg-sprite.svg';
 
 import { StyledDatepicker } from "components/DatePicker/DatePicker";
 
@@ -16,6 +18,8 @@ import FormLabel from '@mui/material/FormLabel';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { CustomInput } from "components/CustomInput/CustomInput";
+
+import { MainButton } from "components/MainButton/MainButton";
 
 
 const today = new Date();
@@ -105,7 +109,7 @@ export const ParamsForm = () => {
     };
 
     return (
-        <Section>
+        <>
             { step === 1 &&  
             <>
                 <ParamsFormTitle>Get closer to your goals!</ParamsFormTitle>
@@ -115,46 +119,59 @@ export const ParamsForm = () => {
                 validationSchema={validationSchema}
                 onSubmit={onSubmit}
               >
-        <Form
+                
+                <Form
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '35px',
-            width: '100%',
+            // display: 'flex',
+            // flexDirection: 'column',
+            // gap: '35px',
+            // width: '100%',
+           
           }}
         >
-          <Field
-            label="Height"
-            name="height"
-            type="text"
-            autoComplete="off"
-            component={CustomInput}
-            inputStyles={{ width: '200px' }}
-          />
-          <Field
-            label="Current Weight"
-            name="currentWeight"
-            type="text"
-            autoComplete="off"
-            component={CustomInput}
-            inputStyles={{ width: '200px' }}
-          />
-          <Field
-            label="Desired Weight"
-            name="desiredWeight"
-            type="text"
-            autoComplete="off"
-            component={CustomInput}
-            inputStyles={{ width: '200px' }}
-          />
-          <Field
-            label="Birthday"
-            name="birthday"
-            type="text"
-            autoComplete="off"
-            component={CustomInput}
-            inputStyles={{ width: '200px' }}
-          />
+          <FormWrap>
+            <FieldWrap>
+            <Field
+              label="Height"
+              name="height"
+              type="text"
+              autoComplete="off"
+              component={CustomInput}
+              inputStyles={{ width: '155px' }}
+            />
+            </FieldWrap>
+            <FieldWrap>
+            <Field
+              label="Current Weight"
+              name="currentWeight"
+              type="text"
+              autoComplete="off"
+              component={CustomInput}
+              inputStyles={{ width: '160px' }}
+            />
+            </FieldWrap>
+    
+            <FieldWrap>
+            <Field
+              label="Desired Weight"
+              name="desiredWeight"
+              type="text"
+              autoComplete="off"
+              component={CustomInput}
+              inputStyles={{ width: '155px' }}
+            />
+            </FieldWrap>
+            <FieldWrap>
+            <Field
+              label="Birthday"
+              name="birthday"
+              type="text"
+              autoComplete="off"
+              component={CustomInput}
+              inputStyles={{ width: '160px' }}
+            />
+            </FieldWrap>
+          </FormWrap>
         </Form>
       </Formik>
             {/* <StyledDatepicker /> */}
@@ -162,7 +179,7 @@ export const ParamsForm = () => {
             { step === 2 &&
             <>
             <ParamsFormTitle>Get closer to your goals!</ParamsFormTitle> 
-             <FormControl>
+             <FormControl sx={{mb: 4}}>
                 <RadioWrap>
                     <RadioGroupWrap>
                     <FormLabel id="blood" sx={FormLabelStyling}>Blood</FormLabel>
@@ -309,25 +326,37 @@ export const ParamsForm = () => {
             </>
             
             }
+           <BtnWrap>
+           {step === 3 && <MainBtnWrap>
+            <MainButton 
+              type='submit'
+              text='Go'
+              filled
+              btnStyles={{display: "inline-flex"}}
+            />
+           </MainBtnWrap> }
+           { step > 1 && <BackBtn onClick={handleClickBack}>
+                      <svg width="20" height="20"  stroke="#E6533C">
+          <use href={icons + '#icon-back'} /> 
+        </svg> Back
+            </BackBtn>}
+            
+            {step < 3 && <NextBtn onClick={handleClickNext}>
+                    Next <svg width="20" height="20"  stroke="#E6533C">
+          <use href={icons + '#icon-nextarrow'} />
+        </svg>
+            </NextBtn>}
+           </BtnWrap>
            
-           { step > 1 && <Button variant="text" type="button" size="medium" sx={{mt: 2}} margin="normal" onClick={handleClickBack}>
-                    Back
-            </Button>}
-
-            {step < 3 && <Button variant="text" type="button"   size="medium" sx={{mt: 2}} margin="normal" onClick={handleClickNext}>
-                    Next
-            </Button>}
-            {step === 3 && <Button variant="text" type="submit" size="medium" sx={{mt: 2}} margin="normal">
-                    Go
-                </Button>}
+            
             <StepWrap>
                 <Step1 step={step}></Step1>
                 <Step2 step={step}></Step2>
                 <Step3 step={step}></Step3>
             </StepWrap>
+
             
-            
-        </Section>
+        </>
         
        
     )
