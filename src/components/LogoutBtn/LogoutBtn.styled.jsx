@@ -1,13 +1,16 @@
 import styled from '@emotion/styled';
 
 export const LogoutButton = styled.button`
+  margin-left: auto;
+  margin-top: 41px;
+  padding: 6px;
+  margin-bottom: 12px;
+
   display: flex;
   justify-content: center;
   alight-items: center;
   gap: 8px;
-  margin-left: auto;
-  margin-top: 41px;
-  padding: 6px;
+
   background: none;
   border: none;
   cursor: pointer;
