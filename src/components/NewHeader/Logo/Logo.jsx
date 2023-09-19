@@ -1,9 +1,12 @@
 import icons from '../../../assets/icons/svg-sprite.svg';
+import { LogoWrapper, LogoSvg } from './Logo.styled';
 
 export const Logo = () => {
   return (
-    <svg width="126" height="13">
-      <use href={icons + '#logo'}></use>
-    </svg>
+    <LogoWrapper>
+      <LogoSvg>
+        <use href={icons + '#logo'}></use>
+      </LogoSvg>
+    </LogoWrapper>
   );
 };

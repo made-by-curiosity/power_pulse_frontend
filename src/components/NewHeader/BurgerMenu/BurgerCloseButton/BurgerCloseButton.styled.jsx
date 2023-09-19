@@ -16,3 +16,14 @@ export const BurgerCloseBtn = styled.button`
     right: 32px;
   }
 `;
+
+export const BurgerCloseBtnSvg = styled.svg`
+  width: 24px;
+  height: 24px;
+  stroke: #efede8;
+
+  @media screen and (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
+`;

@@ -11,13 +11,17 @@ export const UserNav = styled.nav`
   justify-content: center;
   gap: 16px;
   width: 200px;
-  height: 100vh;
+  height: 100%;
 
   background: #e6533c;
   font-size: 14px;
 
   @media screen and (min-width: 768px) {
     width: 350px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    display: none;
   }
 `;
 
@@ -28,13 +32,22 @@ export const BurgerLink = styled.div`
   align-items: center;
   gap: 10px;
 
+  font-size: 14px;
+  line-height: 18px;
+
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
+  transition: border linear 200ms;
 
   color: #efede8;
 
   &:hover,
   &:active {
     border: 1px solid #efede8;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 24px;
   }
 `;

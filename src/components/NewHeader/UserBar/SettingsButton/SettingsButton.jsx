@@ -1,15 +1,10 @@
 import icons from '../../../../assets/icons/svg-sprite.svg';
+import { SettingsBtnSvg } from './SettingsButton.styled';
 
 export const SettingButton = () => {
   return (
-    <svg
-      style={{
-        width: 24,
-        height: 24,
-        opacity: '30%',
-      }}
-    >
+    <SettingsBtnSvg>
       <use href={icons + '#icon-settings'}></use>
-    </svg>
+    </SettingsBtnSvg>
   );
 };

@@ -20,14 +20,18 @@ export const HeaderLink = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  font-size: 16px;
+  line-height: 22px;
 
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
 
   color: #efede8;
+  transition: background linear 200ms, border linear 200ms;
 
   &:hover,
   &:active {
-    border: 1px solid #efede8;
+    background: #e6533c;
+    border: 1px solid #e6533c;
   }
 `;

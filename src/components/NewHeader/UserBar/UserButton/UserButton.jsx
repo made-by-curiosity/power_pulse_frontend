@@ -1,5 +1,11 @@
-import { Avatar } from '@mui/material';
+import icons from '../../../../assets/icons/svg-sprite.svg';
+import { UserBtnSvg } from './UserButton.styled';
 
 export const UserButton = () => {
-  return <Avatar sx={{ width: 37, height: 37 }} />;
+  return (
+    <UserBtnSvg>
+      <use href={icons + '#user'}></use>
+      <use href={icons + '#circle'}></use>
+    </UserBtnSvg>
+  );
 };
