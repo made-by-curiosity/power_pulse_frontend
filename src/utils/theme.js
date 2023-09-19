@@ -6,6 +6,7 @@ export const theme = createTheme({
     // secondary: '#F0E68C',
     secondary: 'black',
     textColor: '#9370DB',
+    secondTextColor: '#efede84d',
     backgroundColor: 'gray',
   },
   // shadows: {

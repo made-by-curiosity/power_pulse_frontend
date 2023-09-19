@@ -2,8 +2,16 @@ import React from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
-import { RegisterContainer, RegisterForm, Text } from './SignUpForm.styled';
+import bg1x from '../../assets/images/bg_img/bg_main.jpg';
+import {
+  RegisterContainer,
+  RegisterForm,
+  Text,
+  SecondText,
+  BgImg,
+} from './SignUpForm.styled';
 import { CustomInput } from 'components/CustomInput/CustomInput';
+import { MainButton } from 'components/MainButton/MainButton';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string().required('Required field'),
@@ -25,7 +33,9 @@ function validatePass(value) {
   let error;
   if (!value) {
     error = 'Required';
-  } else if (!/^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/i.test(value)) {
+  } else if (
+    !/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,32}$/i.test(value)
+  ) {
     error = 'Invalid password';
   }
   return error;
@@ -81,12 +91,24 @@ export const SignUpForm = () => {
             passwordBtn
           />
 
-          <button type="submit">Sign Up</button>
+          <MainButton
+            type="submit"
+            text="Sign Up"
+            filled
+            btnStyles={{ width: 'max-content', marginBottom: '12px' }}
+          />
         </RegisterForm>
       </Formik>
-      <p>
-        Already have account? <NavLink to="/signin">Sign In</NavLink>
-      </p>
+      <SecondText>
+        Already have account?{' '}
+        <NavLink
+          style={{ color: '#EFEDE8', textDecorationLine: 'underline' }}
+          to="/signin"
+        >
+          Sign In
+        </NavLink>
+      </SecondText>
+      <BgImg src={bg1x} alt="sport" />
     </RegisterContainer>
   );
 };
