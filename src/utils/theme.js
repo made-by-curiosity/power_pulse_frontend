@@ -1,8 +1,13 @@
-export const theme = {
+import { createTheme } from '@mui/material/styles';
+
+export const theme = createTheme({
   colors: {
     primary: '#000080',
-    secondary: '#F0E68C',
+    // secondary: '#F0E68C',
+    secondary: 'black',
     textColor: '#9370DB',
+    secondTextColor: '#efede84d',
+    backgroundColor: 'gray',
   },
   // shadows: {
   //   boxShadowMain: '0px 1px 5px -2px rgba(0, 0, 0, 0.75)',
@@ -16,4 +21,4 @@ export const theme = {
   //   borderRadiusMain: '5px',
   //   borderRadiusAccent: '12px',
   // },
-};
+});
