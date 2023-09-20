@@ -1,7 +1,22 @@
-import { Container } from 'components/Container/Container';
+// import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
+// import { Container } from 'components/Container/Container';
+// import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
+// // import icons from '../../assets/icons/svg-sprite.svg';
 
-const WelcomePage = () => {
-  return <Container>WelcomePage</Container>;
-};
+// // import { TutorialBtn } from '../../components/TutorialBtn';
 
-export default WelcomePage;
+// // import { CaloriesBtn } from '../../components/CaloriesBtn';
+
+  
+// const WelcomePage = () => {
+//   return <Container>
+//     <CaloriesBtn/>
+
+//  <TutorialBtn/>
+
+//  </Container>;
+// };
+
+// export default WelcomePage;
+
+
