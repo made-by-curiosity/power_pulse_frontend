@@ -11,6 +11,7 @@ export const Title = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
+  margin-bottom: 4px;
 
   ${mq[1]} {
     font-size: 14px;
@@ -19,10 +20,27 @@ export const Title = styled.p`
   }
 `;
 
+export const UserFormWrapper = styled.div`
+  ${mq[0]} {
+    margin-bottom: 66px;
+  }
+
+  ${mq[1]} {
+    margin-bottom: 54px;
+  }
+
+  ${mq[2]} {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 0px;
+  }
+`;
+
 export const UserBasicInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
   margin-bottom: 36px;
 
   ${mq[1]} {
@@ -35,14 +53,37 @@ export const UserBasicInfoWrapper = styled.div`
 
 export const UserOtherInfoWrapper = styled.div`
   display: flex;
-  ${'' /* flex-direction: row; */}
-  flex-wrap: wrap;
-  flex-basis: auto;
-  gap: 14px;
-  margin-bottom: 14px;
+  flex-direction: column;
+  ${'' /* flex-wrap: wrap; */}
+  gap: 36px;
+  ${'' /* justify-content: space-between; */}
+
+  margin-bottom: 20px;
 
   ${mq[1]} {
-    gap: none;
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+  }
+
+  ${mq[2]} {
+    gap: 14px;
+  }
+`;
+
+export const InnerWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  ${'' /* flex-wrap: wrap; */}
+  gap: 14px;
+  justify-content: space-between;
+
+  ${'' /* margin-bottom: 14px; */}
+
+  ${mq[1]} {
+    gap: 20px;
     justify-content: space-between;
   }
 `;

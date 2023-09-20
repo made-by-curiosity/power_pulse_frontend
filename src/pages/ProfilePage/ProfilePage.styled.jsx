@@ -10,5 +10,8 @@ export const PageWrapper = styled.div`
     flex-direction: row-reverse;
     justify-content: space-between;
     aline-items: flex-end;
+
+    margin-top: 32px;
+    margin-bottom: 36px;
   }
 `;

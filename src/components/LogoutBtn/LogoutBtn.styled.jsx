@@ -8,7 +8,6 @@ export const LogoutButton = styled.button`
   margin-left: auto;
   margin-top: 41px;
   padding: 6px;
-  margin-bottom: 12px;
 
   display: flex;
   justify-content: center;
@@ -29,6 +28,11 @@ export const LogoutButton = styled.button`
   ${mq[1]} {
     margin-top: 32px;
     margin-bottom: 38px;
+  }
+
+  ${mq[2]} {
+    ${'' /* margin-top: 32px; */}
+    margin-bottom: 0px;
   }
 `;
 

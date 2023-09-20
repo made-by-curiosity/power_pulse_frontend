@@ -20,6 +20,11 @@ export const AvatarWrapper = styled.div`
   ${mq[1]} {
     width: 150px;
     height: 150px;
+    margin-top: 64px;
+  }
+
+  ${mq[2]} {
+    margin-top: 0px;
   }
 `;
 
@@ -34,7 +39,7 @@ export const IconUser = styled.svg`
 `;
 
 export const UserName = styled.h2`
-  margin-top: 31px;
+  margin-top: 32px;
   text-align: center;
 
   color: #efede8;
