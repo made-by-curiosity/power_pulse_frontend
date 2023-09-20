@@ -3,17 +3,15 @@ import { Link } from 'react-router-dom';
 
 
 
-export const Container = styled.div`
-  display: flex;
-  margin-left: 20px;
-  margin-right: 20px;
-  flex-direction: column;
+export const ContainerSingIn = styled.div`
+  
   width: 335px;
 
 
   @media (min-width: 768px) {
+    width:364px;
     margin-left: 32px;
-    width: 496px;
+    
   }
 
   @media (min-width: 1440px) {
@@ -34,8 +32,10 @@ export const Text = styled.p`
   line-height: 1.28;
   color: #efede84d;
   margin-bottom: 28px;
+  margin-top: 14px;
 
   @media (min-width: 768px) {
+    width: 496px;
   }
 
   @media (min-width: 1440px) {
