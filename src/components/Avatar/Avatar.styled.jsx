@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 
+const breakpoints = [320, 768, 1440];
+
+const mq = breakpoints.map(bp => `@media screen and (min-width: ${bp}px)`);
+
 export const AvatarWrapper = styled.div`
   width: 90px;
   height: 90px;
@@ -12,12 +16,21 @@ export const AvatarWrapper = styled.div`
 
   border: 1px solid #e6533c;
   border-radius: 50%;
+
+  ${mq[1]} {
+    width: 150px;
+    height: 150px;
+  }
 `;
 
-export const AvatarImg = styled.img`
-  width: auto;
+export const IconUser = styled.svg`
+  width: 62px;
   height: 62px;
-  border: 1px solid yellow;
+
+  ${mq[1]} {
+    width: 102px;
+    height: 102px;
+  }
 `;
 
 export const UserName = styled.h2`
@@ -30,6 +43,11 @@ export const UserName = styled.h2`
   font-style: normal;
   font-weight: 400;
   line-height: 1.11111;
+
+  ${mq[1]} {
+    font-size: 24px;
+    line-height: 1.16667;
+  }
 `;
 
 export const UserTitle = styled.h3`
@@ -42,6 +60,10 @@ export const UserTitle = styled.h3`
   font-style: normal;
   font-weight: 400;
   line-height: 1.28571;
+
+  ${mq[1]} {
+    margin-top: 8px;
+  }
 `;
 
 export const AddAvatarBtn = styled.button`
@@ -66,5 +88,10 @@ export const AddAvatarIcon = styled.svg`
   &:hover {
     transform: scale(1.2);
     transition-duration: 400ms;
+  }
+
+  ${mq[1]} {
+    width: 32px;
+    height: 32px;
   }
 `;

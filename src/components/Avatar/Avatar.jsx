@@ -1,5 +1,6 @@
 import {
   AvatarWrapper,
+  IconUser,
   UserName,
   UserTitle,
   AddAvatarBtn,
@@ -8,9 +9,9 @@ import {
 import icons from '../../assets/icons/svg-sprite.svg';
 
 const iconUser = (
-  <svg width="62" height="62">
+  <IconUser>
     <use href={icons + '#icon-user'}></use>
-  </svg>
+  </IconUser>
 );
 
 const iconAddAvatarBtn = (
@@ -23,8 +24,8 @@ export const Avatar = ({ name, email, avatar = iconUser }) => {
   return (
     <>
       <AvatarWrapper>
-        <AddAvatarBtn type="button">{iconAddAvatarBtn}</AddAvatarBtn>
         {avatar}
+        <AddAvatarBtn type="button">{iconAddAvatarBtn}</AddAvatarBtn>
       </AvatarWrapper>
       <UserName>{name}</UserName>
       <UserTitle>User</UserTitle>

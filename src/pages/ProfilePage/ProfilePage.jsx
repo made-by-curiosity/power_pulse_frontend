@@ -21,7 +21,6 @@ const ProfilePage = () => {
   return (
     <Container>
       <UserCard user={user}></UserCard>
-
       <UserForm user={user}></UserForm>
     </Container>
   );

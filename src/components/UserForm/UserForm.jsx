@@ -4,6 +4,8 @@ import { CustomInput } from 'components/CustomInput/CustomInput';
 import { CustomGroupRadio } from 'components/CustomRadio/CustomGroupRadio';
 import { MainButton } from 'components/MainButton/MainButton';
 
+import { css } from '@emotion/react';
+
 import {
   Title,
   UserBasicInfoWrapper,
@@ -44,7 +46,7 @@ export const UserForm = ({ user }) => {
               autoComplete="off"
               successFeedback={false}
               component={CustomInput}
-              // inputStyles={{ marginBottom: '10px' }}
+              inputStyles={{ width: '100%' }}
             />
             <Field
               name="email"
@@ -53,6 +55,7 @@ export const UserForm = ({ user }) => {
               successFeedback={false}
               disabled="true"
               component={CustomInput}
+              inputStyles={{ width: '100%' }}
             />
           </UserBasicInfoWrapper>
 
