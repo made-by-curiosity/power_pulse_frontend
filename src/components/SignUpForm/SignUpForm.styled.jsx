@@ -2,17 +2,13 @@ import styled from '@emotion/styled';
 import { Form } from 'formik';
 
 export const RegisterContainer = styled.div`
-  position: relative;
-  padding-top: 90px;
-
-  // background-image: url('../../assets/images/bg_img/training.jpg');
-  // background-image: url(https://planbphoto.com/wp-content/uploads/Serze.jpg);
+  margin-top: 90px;
 
   @media screen and (min-width: 768px) {
-    padding-top: 140px;
+    margin-top: 140px;
   }
   @media screen and (min-width: 1440px) {
-    padding-top: 151px;
+    margin-top: 151px;
   }
 `;
 
@@ -21,7 +17,6 @@ export const RegisterForm = styled(Form)`
   flex-direction: column;
   gap: 36px;
   max-width: 335px;
-  z-index: 999;
   @media screen and (min-width: 768px) {
     width: 364px;
   }
@@ -47,11 +42,11 @@ export const SecondText = styled.p`
   line-height: 1.5;
 `;
 
-export const BgImg = styled.img`
-  width: 446px;
-  height: 669px;
-  position: absolute;
-  bottom: -114%;
-  left: 0;
-  z-index: -1;
-`;
+// export const BgImg = styled.img`
+//   width: 446px;
+//   height: 669px;
+//   position: absolute;
+//   bottom: -114%;
+//   left: 0;
+//   z-index: -1;
+// `;

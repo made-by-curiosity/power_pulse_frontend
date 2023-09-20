@@ -2,16 +2,17 @@ import React from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
-import bg1x from '../../assets/images/bg_img/bg_main.jpg';
+import { Title } from 'components/Title/Title';
+
 import {
   RegisterContainer,
   RegisterForm,
   Text,
   SecondText,
-  BgImg,
 } from './SignUpForm.styled';
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { MainButton } from 'components/MainButton/MainButton';
+import { BckgSignUp } from 'components/BckgSignUp/BckgSignUp';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string().required('Required field'),
@@ -48,67 +49,69 @@ const handleSubmit = (values, { resetForm }) => {
 
 export const SignUpForm = () => {
   return (
-    <RegisterContainer>
-      <h2>Sign Up</h2>
-      <Text>
-        Thank you for your interest in our platform. To complete the
-        registration process, please provide us with the following information.
-      </Text>
-      <Formik
-        initialValues={{
-          name: '',
-          email: '',
-          password: '',
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={handleSubmit}
-      >
-        <RegisterForm>
-          <Field
-            name="name"
-            label="Name"
-            type="text"
-            autoComplete="off"
-            component={CustomInput}
-          />
-
-          <Field
-            name="email"
-            validate={validateEmail}
-            label="Email"
-            type="email"
-            autoComplete="off"
-            component={CustomInput}
-          />
-
-          <Field
-            name="password"
-            type="password"
-            validate={validatePass}
-            label="Password"
-            autoComplete="off"
-            component={CustomInput}
-            passwordBtn
-          />
-
-          <MainButton
-            type="submit"
-            text="Sign Up"
-            filled
-            btnStyles={{ width: 'max-content', marginBottom: '12px' }}
-          />
-        </RegisterForm>
-      </Formik>
-      <SecondText>
-        Already have account?{' '}
-        <NavLink
-          style={{ color: '#EFEDE8', textDecorationLine: 'underline' }}
-          to="/signin"
+    <BckgSignUp>
+      <RegisterContainer>
+        <Title>Sign Up</Title>
+        <Text>
+          Thank you for your interest in our platform. To complete the
+          registration process, please provide us with the following
+          information.
+        </Text>
+        <Formik
+          initialValues={{
+            name: '',
+            email: '',
+            password: '',
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={handleSubmit}
         >
-          Sign In
-        </NavLink>
-      </SecondText>
-      <BgImg src={bg1x} alt="sport" />
-    </RegisterContainer>
+          <RegisterForm>
+            <Field
+              name="name"
+              label="Name"
+              type="text"
+              autoComplete="off"
+              component={CustomInput}
+            />
+
+            <Field
+              name="email"
+              validate={validateEmail}
+              label="Email"
+              type="email"
+              autoComplete="off"
+              component={CustomInput}
+            />
+
+            <Field
+              name="password"
+              type="password"
+              validate={validatePass}
+              label="Password"
+              autoComplete="off"
+              component={CustomInput}
+              passwordBtn
+            />
+
+            <MainButton
+              type="submit"
+              text="Sign Up"
+              filled
+              btnStyles={{ width: 'max-content', marginBottom: '12px' }}
+            />
+          </RegisterForm>
+        </Formik>
+        <SecondText>
+          Already have account?{' '}
+          <NavLink
+            style={{ color: '#EFEDE8', textDecorationLine: 'underline' }}
+            to="/signin"
+          >
+            Sign In
+          </NavLink>
+        </SecondText>
+      </RegisterContainer>
+    </BckgSignUp>
   );
 };
