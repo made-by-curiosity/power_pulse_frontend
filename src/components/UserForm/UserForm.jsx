@@ -104,17 +104,7 @@ export const UserForm = ({ user }) => {
               </InnerWrapper>
             </UserOtherInfoWrapper>
 
-            <CustomGroupRadio
-              formControlStyling={{ mt: 0, mb: 5 }}
-              radioGroupDirection={true}
-              formLabelStyling={{
-                color: '#EFEDE880',
-                fontSize: 12,
-                '&.Mui-focused': {
-                  color: '#EFEDE880',
-                },
-              }}
-            />
+            {/* <CustomGroupRadio /> */}
 
             <br />
             <MainButton
