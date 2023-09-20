@@ -2,6 +2,9 @@ import { Container } from 'components/Container/Container';
 import { UserCard } from 'components/UserCard/UserCard';
 import { UserForm } from 'components/UserForm/UserForm';
 
+import { PageWrapper } from './ProfilePage.styled';
+import { ProfilePageTitle } from '../../components/ProfilePageTitle/ProfilePageTitle';
+
 const user = {
   name: 'Anna Rybachok',
   email: 'annarybachok@gmail.com',
@@ -20,8 +23,11 @@ const user = {
 const ProfilePage = () => {
   return (
     <Container>
-      <UserCard user={user}></UserCard>
-      <UserForm user={user}></UserForm>
+      <ProfilePageTitle />
+      <PageWrapper>
+        <UserCard user={user}></UserCard>
+        <UserForm user={user}></UserForm>
+      </PageWrapper>
     </Container>
   );
 };

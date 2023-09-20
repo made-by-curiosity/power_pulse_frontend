@@ -1,9 +1,10 @@
-import { UserCardTitle } from 'components/UserCardTitle/UserCardTitle';
 import { Avatar } from 'components/Avatar/Avatar';
 import { InfoCard } from 'components/InfoCard/InfoCard';
 import { InfoCardsWrapper } from 'components/InfoCard/InfoCard.styled';
 import { WarningNotice } from 'components/WarningNotice/WarningNotice';
 import { LogoutBtn } from 'components/LogoutBtn/LogoutBtn';
+
+import { UserCardWrapper } from './UserCard.styled';
 
 const calories = {
   icon: '#icon-cutlery',
@@ -21,8 +22,7 @@ export const UserCard = ({ user }) => {
   const { name, avatar, dailyCalorieIntake, dailyNormOfSports } = user;
 
   return (
-    <>
-      <UserCardTitle></UserCardTitle>
+    <UserCardWrapper>
       <Avatar name={name} avatar={avatar}></Avatar>
       <InfoCardsWrapper>
         <InfoCard
@@ -38,6 +38,6 @@ export const UserCard = ({ user }) => {
       </InfoCardsWrapper>
       <WarningNotice></WarningNotice>
       <LogoutBtn></LogoutBtn>
-    </>
+    </UserCardWrapper>
   );
 };

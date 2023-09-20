@@ -115,7 +115,7 @@ export const UserForm = ({ user }) => {
             text="Save"
             filled
             disabled={false}
-            btnStyles={{ marginBottom: '66px' }}
+            btnStyles={{ marginBottom: '44px' }}
             // modalButton="false"
             // onClick={handleSubmit}
           />
