@@ -4,7 +4,6 @@ import {
   TitleWrapper,
   CalendarIMG,
   DateSwitcherCont,
-  // DateSwitcherBtn,
   DateSwitcherBtnCont,
 } from './DiaryCalendar.styled';
 import { format } from 'date-fns';
@@ -12,7 +11,7 @@ import { DateSwitchButton } from 'components/DateSwitchButton/DateSwitchButton';
 import { Calendar } from 'components/Calendar/Calendar';
 
 export const DiaryCalendar = () => {
-  const [selectedDate, setSelectedDate] = useState(Date.now());
+  const [selectedDate, setSelectedDate] = useState(new Date());
   // eslint-disable-next-line
   const [isDisabled, setIsDisabled] = useState(false);
 
