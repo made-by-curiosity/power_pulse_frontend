@@ -1,22 +1,20 @@
-// import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
-// import { Container } from 'components/Container/Container';
-// import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
-// // import icons from '../../assets/icons/svg-sprite.svg';
+import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
+import { Container } from 'components/Container/Container';
+import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
+// import icons from '../../assets/icons/svg-sprite.svg';
 
-// // import { TutorialBtn } from '../../components/TutorialBtn';
+// import { TutorialBtn } from '../../components/TutorialBtn';
 
-// // import { CaloriesBtn } from '../../components/CaloriesBtn';
+// import { CaloriesBtn } from '../../components/CaloriesBtn';
 
-  
-// const WelcomePage = () => {
-//   return <Container>
-//     <CaloriesBtn/>
+const WelcomePage = () => {
+  return (
+    <Container>
+      <CaloriesBtn />
 
-//  <TutorialBtn/>
+      <TutorialBtn />
+    </Container>
+  );
+};
 
-//  </Container>;
-// };
-
-// export default WelcomePage;
-
-
+export default WelcomePage;
