@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkpower_pulse_frontend=self.webpackChunkpower_pulse_frontend||[]).push([[247],{247:function(e,n,r){r.r(n);var u=r(834),s=r(184);n.default=function(){return(0,s.jsx)(u.W,{children:"DiaryPage"})}}}]);
-//# sourceMappingURL=247.20b9175d.chunk.js.map

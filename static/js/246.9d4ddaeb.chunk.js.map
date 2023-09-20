@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/246.9d4ddaeb.chunk.js","mappings":"6JAMA,UAJmB,WACjB,OAAO,SAAC,IAAD,wBACR,C","sources":["pages/ParamsPage/ParamsPage.jsx"],"sourcesContent":["import { Container } from 'components/Container/Container';\n\nconst ParamsPage = () => {\n  return <Container>ParamsPage</Container>;\n};\n\nexport default ParamsPage;\n"],"names":[],"sourceRoot":""}

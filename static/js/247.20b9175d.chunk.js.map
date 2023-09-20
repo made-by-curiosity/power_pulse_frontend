@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/247.20b9175d.chunk.js","mappings":"6JAMA,UAJkB,WAChB,OAAO,SAAC,IAAD,uBACR,C","sources":["pages/DiaryPage/DiaryPage.jsx"],"sourcesContent":["import { Container } from 'components/Container/Container';\n\nconst DiaryPage = () => {\n  return <Container>DiaryPage</Container>;\n};\n\nexport default DiaryPage;\n"],"names":[],"sourceRoot":""}

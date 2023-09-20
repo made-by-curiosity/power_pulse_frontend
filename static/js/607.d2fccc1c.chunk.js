@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpower_pulse_frontend=self.webpackChunkpower_pulse_frontend||[]).push([[607],{8607:function(e,n,r){r.r(n);var s=r(5834),u=r(184);n.default=function(){return(0,u.jsx)(s.W,{children:"ExercisesPage"})}}}]);
+//# sourceMappingURL=607.d2fccc1c.chunk.js.map

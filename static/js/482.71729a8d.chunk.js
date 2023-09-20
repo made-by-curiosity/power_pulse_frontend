@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkpower_pulse_frontend=self.webpackChunkpower_pulse_frontend||[]).push([[482],{482:function(e,n,r){r.r(n);var u=r(834),f=r(184);n.default=function(){return(0,f.jsx)(u.W,{children:"ProfilePage"})}}}]);
-//# sourceMappingURL=482.71729a8d.chunk.js.map
