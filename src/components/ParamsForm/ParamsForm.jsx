@@ -242,7 +242,7 @@ export const ParamsForm = () => {
           <use href={icons + '#icon-nextarrow'} />
         </svg>
             </NextBtn>}
-           </BtnWrap>
+          </BtnWrap>
            
             
             <StepWrap>
