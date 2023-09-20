@@ -6,7 +6,7 @@ import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute/RestrictedRoute';
 import { Layout } from 'components/Layout/Layout';
 
-// const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage'));
+const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage'));
 const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage'));
 const SignUpPage = lazy(() => import('../../pages/SignUpPage/SignUpPage'));
 const ParamsPage = lazy(() => import('../../pages/ParamsPage/ParamsPage'));
@@ -37,7 +37,7 @@ export const App = () => {
               isLoggedIn ? <Navigate to="/diary" /> : <Navigate to="/welcome" />
             }
           />
-          {/* <Route
+          <Route
             path="/welcome"
             element={
               <RestrictedRoute
@@ -45,7 +45,7 @@ export const App = () => {
                 restrictedTo="/diary"
               />
             }
-          /> */}
+          />
           <Route
             path="/signin"
             element={

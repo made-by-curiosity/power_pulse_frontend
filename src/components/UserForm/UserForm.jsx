@@ -46,7 +46,7 @@ export const UserForm = ({ user }) => {
               autoComplete="off"
               successFeedback={false}
               component={CustomInput}
-              inputStyles={{ width: '100%' }}
+              // inputStyles={{ width: '100%' }}
             />
             <Field
               name="email"
@@ -55,7 +55,7 @@ export const UserForm = ({ user }) => {
               successFeedback={false}
               disabled="true"
               component={CustomInput}
-              inputStyles={{ width: '100%' }}
+              // inputStyles={{ width: '100%' }}
             />
           </UserBasicInfoWrapper>
 
