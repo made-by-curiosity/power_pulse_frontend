@@ -25,25 +25,17 @@ export const WarningCont = styled.div`
   }
 `;
 
-export const WarningIMGWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
+export const WarningIMG = styled.svg`
+  stroke: #efede8;
+  fill: #ef8964;
+  stroke-width: 0;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #ef8964;
-  border-radius: 50%;
 
   @media (min-width: 768px) {
     position: relative;
   }
-`;
-
-export const WarningIMG = styled.svg`
-  stroke: #efede8;
 `;
 
 export const WarningText = styled.p`

@@ -34,6 +34,7 @@ export const Item = styled.li`
 
   @media (min-width: 768px) {
     flex-basis: calc((100% - 32px) / 3);
+    min-height: 116px;
     order: ${({ order }) => (order ? order : 'unset')};
   }
 
