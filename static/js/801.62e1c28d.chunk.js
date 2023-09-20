@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkpower_pulse_frontend=self.webpackChunkpower_pulse_frontend||[]).push([[801],{4801:function(e,s,p){p(2791);s.Z=p.p+"static/media/svg-sprite.1b494dfddbcc6873b7afe81dbbe463ac.svg"}}]);
-//# sourceMappingURL=801.62e1c28d.chunk.js.map
