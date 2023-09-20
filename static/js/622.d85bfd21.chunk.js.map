@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/622.d85bfd21.chunk.js","mappings":"+JAMA,UAJmB,WACjB,OAAO,SAAC,IAAD,UAAW,cACnB,C","sources":["pages/SignUpPage/SignUpPage.jsx"],"sourcesContent":["import { Container } from 'components/Container/Container';\n\nconst SignUpPage = () => {\n  return <Container>SignUpPage</Container>;\n};\n\nexport default SignUpPage;\n"],"names":[],"sourceRoot":""}
