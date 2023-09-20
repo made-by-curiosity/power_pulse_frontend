@@ -6,6 +6,7 @@ const mq = breakpoints.map(bp => `@media screen and (min-width: ${bp}px)`);
 
 export const Container = styled.div`
   position: relative;
+  width: 100%;
 `;
 
 export const InputWrapper = styled.div`
