@@ -5,12 +5,7 @@ import img2 from '../../assets/images/bg_img/bg_main@2x.jpg';
 import img3 from '../../assets/images/bg_img/bg_main@3x.jpg';
 
 export const Wrapper = styled.div`
-  //   max-width: 446px;
-  //   height: 669px;
-
-  //   background-position-x: 77px;
-  //   background-size: contain;
-  //   background-position-y: 150%;
+  position: reletive;
   height: 812px;
   min-width: 375px;
   background-position-x: 77px;

@@ -3,6 +3,8 @@ import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
 import { Title } from 'components/Title/Title';
+import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
+import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
 
 import {
   RegisterContainer,
@@ -50,6 +52,8 @@ const handleSubmit = (values, { resetForm }) => {
 export const SignUpForm = () => {
   return (
     <BckgSignUp>
+      <CaloriesBtn></CaloriesBtn>
+      <TutorialBtn></TutorialBtn>
       <RegisterContainer>
         <Title>Sign Up</Title>
         <Text>

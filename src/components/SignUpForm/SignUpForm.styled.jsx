@@ -2,14 +2,14 @@ import styled from '@emotion/styled';
 import { Form } from 'formik';
 
 export const RegisterContainer = styled.div`
-  margin-top: 90px;
+  // margin-top: 90px;
 
-  @media screen and (min-width: 768px) {
-    margin-top: 140px;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-top: 151px;
-  }
+  // @media screen and (min-width: 768px) {
+  //   margin-top: 140px;
+  // }
+  // @media screen and (min-width: 1440px) {
+  //   margin-top: 151px;
+  // }
 `;
 
 export const RegisterForm = styled(Form)`
