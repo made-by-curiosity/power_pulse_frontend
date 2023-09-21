@@ -9,7 +9,7 @@ import { CaloriesBtn } from "components/CaloriesBtn/CaloriesBtn";
 import { TutorialBtn } from "components/TutorialBtn/TutorialBtn";
 
 
-
+import { BirthdayInput } from "components/BirthdayInput/BirthdayInput";
 
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -39,9 +39,9 @@ const validationSchema = Yup.object({
     .min(35, 'Desired weight  must be at least 35 kg')
     .positive('Weight must be a positive number.')
     .required('Height is required'),
-  birthday: Yup.date()
-    .max(eighteenYearsAgo, 'You must be older than 18 years old')
-    .required('Height is required'),
+  // birthday: Yup.date()
+  //   .max(eighteenYearsAgo, 'You must be older than 18 years old')
+  //   .required('Height is required'),
 });
 
 export const ParamsForm = () => {
@@ -136,12 +136,8 @@ export const ParamsForm = () => {
                     </FieldWrap>
                     <FieldWrap>
                     <Field
-                      label="Birthday"
                       name="birthday"
-                      type="text"
-                      autoComplete="off"
-                      component={CustomInput}
-                      inputStyles={{ width: '160px' }}
+                      component={BirthdayInput}
                     />
                     </FieldWrap>
                   </FormWrap>
