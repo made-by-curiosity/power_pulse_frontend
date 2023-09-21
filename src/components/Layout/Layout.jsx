@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header } from 'components/Header/Header';
+import { Header } from 'components/NewHeader/Header';
 
 import { Loading } from 'components/Loading/Loading';
 

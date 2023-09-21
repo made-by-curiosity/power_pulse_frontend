@@ -10,7 +10,15 @@ import {
 } from './CustomInput.styled';
 import icons from '../../assets/icons/svg-sprite.svg';
 
-export const CustomInput = ({ field, form, ...props }) => {
+export const CustomInput = ({
+  field,
+  form,
+  reference,
+  onClick,
+  valueDate,
+  readOnly,
+  ...props
+}) => {
   const {
     type,
     label = '',
@@ -25,7 +33,7 @@ export const CustomInput = ({ field, form, ...props }) => {
   const errorMessage = form.errors[name];
   const touched = form.touched[name];
 
-  const hasValue = value.trim().length > 0;
+  const hasValue = value.toString().trim().length > 0;
 
   const showFeedback = (!!isFocused && hasValue) || touched;
 
@@ -51,6 +59,7 @@ export const CustomInput = ({ field, form, ...props }) => {
         <StyledInput
           {...field}
           id={name}
+          ref={reference}
           type={isPasswordShown ? 'text' : type}
           autoComplete={autoComplete}
           className={`${
@@ -62,7 +71,9 @@ export const CustomInput = ({ field, form, ...props }) => {
           }`}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onClick={onClick}
           inputStyles={inputStyles}
+          readOnly={readOnly}
         />
         {passwordBtn && (
           <ShowPasswordBtn type="button" onClick={showPassword}>
