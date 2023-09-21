@@ -179,10 +179,10 @@ export const CaloriesBtnWrap = styled.div`
 
   @media screen and (min-width: 1440px) {
     top: -93px;
-    right: 38px;
+    right: 130px;
     top: ${ props => 
       { if (props.step === 2) {return  "-142px"} }};
-      top: ${ props => 
+    top: ${ props => 
         { if (props.step === 3) {return  "-101px"} }};
   }
 
