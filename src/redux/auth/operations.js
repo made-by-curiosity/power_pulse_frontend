@@ -5,19 +5,23 @@ import {
   signUpUser,
   logInUser,
   logOutUser,
+  getCurrentUser,
   getUserInfo,
   updateUserInfo,
   updateUserName,
   updateUserAvatar,
 } from '../../services/powerPulseApi';
 
+
+// AUTH
+
 export const signUp = createAsyncThunk(
   'auth/signUp',
   async (credentials, thunkAPI) => {
     try {
-      // const userData = await signUpUser(credentials);
-      // setAuthHeader(userData.token);
-      // return userData;
+      const data = await signUpUser(credentials);
+      setAuthHeader(data.token);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -28,9 +32,9 @@ export const logIn = createAsyncThunk(
   'auth/logIn',
   async (credentials, thunkAPI) => {
     try {
-      // const userData = await logInUser(credentials);
-      // setAuthHeader(userData.token);
-      // return userData;
+      const data = await logInUser(credentials);
+      setAuthHeader(data.token);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -39,8 +43,8 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
   try {
-    // await logOutUser();
-    // clearAuthHeader();
+    await logOutUser();
+    clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -58,9 +62,63 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const userData = await getUserInfo();
+      const data = await getCurrentUser();
 
-      return userData;
+      return data.user;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// PARAMS
+
+export const getUserParams = createAsyncThunk(
+  'auth/getInfo',
+  async (credentials, thunkAPI) => {
+    try {
+      const data = await getUserInfo(credentials);
+
+      return data.user;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUserParams = createAsyncThunk(
+  'auth/updateInfo',
+  async (credentials, thunkAPI) => {
+    try {
+      const data = await updateUserInfo(credentials);
+
+      return data.user.userParams;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateName = createAsyncThunk(
+  'auth/updateUsername',
+  async (credentials, thunkAPI) => {
+    try {
+      const data = await updateUserName(credentials);
+
+      return data.user.name;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk(
+  'auth/updateAvatar',
+  async (credentials, thunkAPI) => {
+    try {
+      const data = await updateUserAvatar(credentials);
+
+      return data.user.avatar;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
