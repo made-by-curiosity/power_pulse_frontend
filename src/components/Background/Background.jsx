@@ -1,5 +1,5 @@
 import { BgContainer } from './Background.styled';
 
-export const BgContainer = ({children}) => {
+export const BgContainerImg = ({children}) => {
   return <BgContainer>{children}</BgContainer>;
 };
