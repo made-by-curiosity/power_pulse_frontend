@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { CustomGroupRadio } from 'components/CustomRadio/CustomGroupRadio';
 import { MainButton } from 'components/MainButton/MainButton';
-
-import { css } from '@emotion/react';
 
 import {
   Title,
@@ -12,10 +12,26 @@ import {
   UserBasicInfoWrapper,
   UserOtherInfoWrapper,
   InnerWrapper,
+  GenderWrap,
+  BloodWrap,
+  LevelWrap,
+  RadioGroupWrap,
 } from './UserForm.styled';
 
 export const UserForm = ({ user }) => {
-  const { name, email, height, currentWeight, desiredWeight, birthday } = user;
+  const {
+    name,
+    email,
+    height,
+    currentWeight,
+    desiredWeight,
+    birthday,
+    blood,
+    sex,
+    lifeStyleType,
+  } = user;
+
+  const tablet = useMediaQuery('(min-width:768px)');
 
   const initialValues = {
     name: name,
@@ -24,10 +40,13 @@ export const UserForm = ({ user }) => {
     currentWeight: currentWeight,
     desiredWeight: desiredWeight,
     birthday: birthday,
+    blood: blood,
+    gender: sex,
+    level: lifeStyleType,
   };
 
   const handleSubmit = (values, actions) => {
-    // console.log(values);
+    console.log(values);
     // console.log(actions);
     // actions.resetForm();
   };
@@ -104,7 +123,84 @@ export const UserForm = ({ user }) => {
               </InnerWrapper>
             </UserOtherInfoWrapper>
 
-            {/* <CustomGroupRadio /> */}
+            <RadioGroupWrap>
+              <BloodWrap>
+                <CustomGroupRadio
+                  label="Blood"
+                  name="blood"
+                  radioGroupDirection={true}
+                  typographyStyling={
+                    tablet ? { fontSize: 16 } : { fontSize: 14 }
+                  }
+                  formLabelStyling={
+                    tablet ? { fontSize: 16 } : { fontSize: 14 }
+                  }
+                  options={[
+                    { value: '1', label: '1' },
+                    { value: '2', label: '2' },
+                    { value: '3', label: '3' },
+                    { value: '4', label: '4' },
+                  ]}
+                />
+              </BloodWrap>
+              <GenderWrap>
+                <CustomGroupRadio
+                  label="Gender"
+                  name="gender"
+                  radioGroupDirection={true}
+                  typographyStyling={
+                    tablet ? { fontSize: 16 } : { fontSize: 14 }
+                  }
+                  formLabelStyling={
+                    tablet ? { fontSize: 16 } : { fontSize: 14 }
+                  }
+                  options={[
+                    { value: 'female', label: 'Female' },
+                    { value: 'male', label: 'Male' },
+                    { value: 'other', label: 'Other' },
+                  ]}
+                />
+              </GenderWrap>
+            </RadioGroupWrap>
+            <LevelWrap>
+              <CustomGroupRadio
+                label="Level"
+                name="level"
+                radioGroupDirection={false}
+                typographyStyling={tablet ? { fontSize: 16 } : { fontSize: 14 }}
+                formControlLabelStyling={tablet ? { mb: -1 } : { mb: 0.5 }}
+                formLabelStyling={
+                  tablet ? { mb: 0.5, fontSize: 16 } : { mb: 0.5 }
+                }
+                options={[
+                  {
+                    value: 'sedentary',
+                    label:
+                      'Sedentary lifestyle (little or no physical activity)',
+                  },
+                  {
+                    value: 'light',
+                    label:
+                      'Light activity (light exercises/sports 1-3 days per week)',
+                  },
+                  {
+                    value: 'moderately',
+                    label:
+                      'Moderately active (moderate exercises/sports 3-5 days per week)',
+                  },
+                  {
+                    value: 'very',
+                    label:
+                      'Very active (intense exercises/sports 6-7 days per week)',
+                  },
+                  {
+                    value: 'extremely',
+                    label:
+                      'Extremely active (very strenuous exercises/sports and physical work)',
+                  },
+                ]}
+              />
+            </LevelWrap>
 
             <br />
             <MainButton

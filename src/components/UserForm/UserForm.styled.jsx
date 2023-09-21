@@ -87,3 +87,16 @@ export const InnerWrapper = styled.div`
     justify-content: space-between;
   }
 `;
+
+export const GenderWrap = styled.div``;
+
+export const LevelWrap = styled.div``;
+
+export const BloodWrap = styled.div`
+  margin-right: 64px;
+`;
+
+export const RadioGroupWrap = styled.div`
+  margin-bottom: 24px;
+  display: flex;
+`;
