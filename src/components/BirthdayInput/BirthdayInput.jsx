@@ -1,5 +1,4 @@
-import { forwardRef, useState } from 'react';
-
+import { forwardRef, useEffect, useState } from 'react';
 
 import { format } from 'date-fns';
 import { DateSwitchButton } from 'components/DateSwitchButton/DateSwitchButton';
@@ -8,14 +7,17 @@ import { Calendar } from 'components/Calendar/Calendar';
 import { CustomInput } from 'components/CustomInput/CustomInput';
 
 export const BirthdayInput = ({ field, form, ...props }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(() => new Date());
   // eslint-disable-next-line
-  
- 
+
+  useEffect(() => {
+    form.setFieldValue('birthday', selectedDate);
+  }, [selectedDate]);
 
   const CustomBirthdayInput = forwardRef(({ value, onClick }, ref) => {
     return (
-        <CustomInput reference={ref} 
+      <CustomInput
+        reference={ref}
         label="Birthday"
         field={field}
         form={form}
@@ -23,7 +25,8 @@ export const BirthdayInput = ({ field, form, ...props }) => {
         valueDate={value}
         onClick={onClick}
         autoComplete="off"
-        inputStyles={{ width: '160px' }}/>
+        inputStyles={{ width: '160px' }}
+      />
     );
   });
 
