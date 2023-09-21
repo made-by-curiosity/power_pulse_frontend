@@ -26,7 +26,7 @@ export const Tutorial = styled.button`
     padding-bottom: 20px;
   }
   @media screen and (min-width: 1440px) {
-    top: 384px;
+    top: 536px;
     right: 464px;
   }
 `;

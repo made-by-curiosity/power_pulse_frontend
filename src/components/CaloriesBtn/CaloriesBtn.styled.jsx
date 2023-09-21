@@ -10,15 +10,16 @@ export const Calories = styled.button`
   width: 119px;
   height: 76px;
   background: #ef8964;
+  
 
   @media screen and (min-width: 768px) {
-    top: 500px;
-    right: 67px;
+    top: 866px;
+    right: 32px;
     width: 180px;
     height: 110px;
   }
   @media screen and (min-width: 1440px) {
-    top: 514px;
+    top: 671px;
     right: 32px;
   }
 `;
