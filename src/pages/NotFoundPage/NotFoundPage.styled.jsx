@@ -13,7 +13,7 @@ import bg_img3 from '../../assets/images/bg_img/bg_main@3x.jpg';
 export const Pages = styled.div`
     position: relative;
     display: flex;
-    background-color: black;
+    background-color: #040404;
 
     
     @media screen and (min-width: 375px) {
