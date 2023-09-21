@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 height: 812px;
 
 background-size: 446px 669px;
-background-position: 68px 241px;
+background-position: bottom right;
 
 background-repeat: no-repeat;
 background-image: url(${img});
@@ -34,7 +34,6 @@ background-image: url(${img});
 @media(min-width: 768px) {
 
 background-size: 670px 768px;
-background-position: 331px 131px;
 
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
@@ -53,7 +52,7 @@ background-position: 331px 131px;
 
 @media(min-width: 1440px){
    background-size: 670px 800px;
-background-position: right;
+
 
    @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
