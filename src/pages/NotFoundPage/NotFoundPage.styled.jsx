@@ -8,6 +8,7 @@ import ta_img3 from '../../assets/images/ta_img/ta_main@3x.jpg';
 import bg_img from '../../assets/images/bg_img/bg_main.jpg';
 import bg_img2 from '../../assets/images/bg_img/bg_main@2x.jpg';
 import bg_img3 from '../../assets/images/bg_img/bg_main@3x.jpg';
+// import bg_img3 from '../../assets/images/bg_img/bg_main@3x.jpg';
 
 
 export const Pages = styled.div`
