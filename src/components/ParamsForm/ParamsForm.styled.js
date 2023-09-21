@@ -2,22 +2,7 @@
 
 import styled from 'styled-components';
 
-export const FormData = styled.form`
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin: 0 auto;
-  
-  
-`;
 
-// export const Section = styled.section`
-//   width: 382px;
-//   /* text-align: center; */
-//   margin: 0 auto;
-//   padding: 20px;
-// `;
 
 export const ParamsFormTitle = styled.h2`
   color: #EFEDE8;
@@ -40,7 +25,25 @@ export const ParamsFormSubTitle = styled.p`
     max-width: 496px;
   }
 `
+export const GenderWrap = styled.div`
+    
+`
 
+export const LevelWrap = styled.div`
+`
+
+export const BloodWrap = styled.div`
+    margin-right: 64px;
+`
+
+export const RadioGroupWrap = styled.div`
+margin-bottom: 24px;
+display: flex;
+`
+
+export const InputWrap = styled.div`
+display: flex;
+`
 
 export const FormWrap = styled.div`
     max-width: 335px;
