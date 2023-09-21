@@ -1,43 +1,56 @@
-// import styled from '@emotion/styled';
+import styled from '@emotion/styled';
 
-// export const ExampleWrapper = styled.div`
-//   padding: 30px;
-//   width: 100%;
-//   height: 500px;
+ export const WelcomeBtns = styled.div`
+    position: absolute;
+  top: 498px;
+  left: 96px;
+  display: flex;
+  margin-bottom: 246px;
+  @media screen and (min-width: 768px) {
+top: 498px;
+  left: 96px;
+ }
+ @media screen and (min-width: 1440px) {
+  top: 498px;
+  left: 96px;
+ }
+`;
 
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
+export const WelcomeTitle = styled.div`
+  position: relative;
+` ;
 
-//   background-color: ${props => props.theme.colors.secondary};
-// `;
+export const TitleText = styled.h2`
+  font-size: 38px;
+font-style: normal;
+font-weight: 500;
+line-height: 40px;
+letter-spacing: 0.38px;
+color: #efede8;
+margin-left: 20px;
+margin-bottom: 52px;
+/* 
+  padding-left: 20px;
+  padding-bottom: 366px; */
+background-image: url("../img/bg_img/line.png");
+  background-repeat: no-repeat;
+  background-position: left 11px bottom 607px;
 
-// export const ExampleText = styled.p`
-//   color: ${props => props.theme.colors.textColor};
-//   font-size: 18px;
-//   font-weight: 700;
+  @media screen and (min-width: 768px) {
+font-size: 70px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 78px;
+  letter-spacing: 0.7px;
+  margin-left: 32px;
+margin-bottom: 64px;
+ background-position: left 16px bottom 684px;
+  }
 
-//   &:hover {
-//     color: ${props => props.theme.colors.primary};
-//   }
-// `;
+ @media screen and (min-width: 1440px) {
+  background-position: left 80px bottom 449px;
 
-// export const HeightInput = styled(CustomInput)`
-//   width: 300px;
-// `;
-
-// export const MainContainer = styled.div`
-//   max-width: 375px;
-//   margin: 0 auto;
-//   padding: 0 20px;
-
-//   @media screen and (min-width: 768px) {
-//     max-width: 768px;
-//     padding: 0 32px;
-//   }
-//   @media screen and (min-width: 1440px) {
-//     max-width: 1440px;
-//     padding: 0 96px;
-//   }
-// `;
+  margin-left: 96px;
+margin-bottom: 366px;
+ } 
+`; 
