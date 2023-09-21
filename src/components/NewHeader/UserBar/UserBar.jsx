@@ -8,10 +8,10 @@ import { UserPart } from './UserBar.styled';
 export const UserBar = ({ onBurgerButton }) => {
   return (
     <UserPart>
-      <Link>
+      <Link to="/profile">
         <SettingButton />
       </Link>
-      <Link>
+      <Link to="/profile">
         <UserButton />
       </Link>
       <BurgerButton onClick={onBurgerButton} />
