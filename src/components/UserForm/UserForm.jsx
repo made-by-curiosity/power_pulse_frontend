@@ -133,7 +133,7 @@ export const UserForm = ({ user }) => {
                     tablet ? { fontSize: 16 } : { fontSize: 14 }
                   }
                   formLabelStyling={
-                    tablet ? { fontSize: 16 } : { fontSize: 14 }
+                    tablet ? { fontSize: 16 } : { fontSize: 12 }
                   }
                   options={[
                     { value: '1', label: '1' },
@@ -152,12 +152,11 @@ export const UserForm = ({ user }) => {
                     tablet ? { fontSize: 16 } : { fontSize: 14 }
                   }
                   formLabelStyling={
-                    tablet ? { fontSize: 16 } : { fontSize: 14 }
+                    tablet ? { fontSize: 16 } : { fontSize: 12 }
                   }
                   options={[
                     { value: 'female', label: 'Female' },
                     { value: 'male', label: 'Male' },
-                    { value: 'other', label: 'Other' },
                   ]}
                 />
               </GenderWrap>
@@ -170,7 +169,7 @@ export const UserForm = ({ user }) => {
                 typographyStyling={tablet ? { fontSize: 16 } : { fontSize: 14 }}
                 formControlLabelStyling={tablet ? { mb: -1 } : { mb: 0.5 }}
                 formLabelStyling={
-                  tablet ? { mb: 0.5, fontSize: 16 } : { mb: 0.5 }
+                  tablet ? { mb: 0.5, fontSize: 16 } : { mb: 0.5, fontSize: 12 }
                 }
                 options={[
                   {
