@@ -5,20 +5,20 @@ export const Calories = styled.button`
   border: none;
   padding: 0;
   position: absolute;
-  top: 696px;
+  bottom: 50px;
   right: 20px;
   width: 119px;
   height: 76px;
   background: #ef8964;
 
   @media screen and (min-width: 768px) {
-    top: 500px;
+    bottom: 50px;
     right: 67px;
     width: 180px;
     height: 110px;
   }
   @media screen and (min-width: 1440px) {
-    top: 514px;
+    bottom: 170px;
     right: 32px;
   }
 `;

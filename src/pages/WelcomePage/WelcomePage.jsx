@@ -5,6 +5,7 @@ import { BackgroundImg } from 'components/BackgroundImg/BackgroundImg';
 import { MainButton } from 'components/MainButton/MainButton';
 import { useNavigate } from 'react-router-dom';
 
+
 import { WelcomeBtns, TitleText, WelcomeTitle } from './WelcomePage.styled';
 
 // import icons from '../../assets/icons/svg-sprite.svg';
@@ -19,8 +20,8 @@ const WelcomePage = () => {
   return (
     <BackgroundImg>
       <Container>
-        <WelcomeTitle>
-          <TitleText>Transforming your body shape with Power Pulse</TitleText>
+ <WelcomeTitle>
+            <TitleText>Transforming your body shape with Power Pulse</TitleText>
         </WelcomeTitle>
         <WelcomeBtns>
           <MainButton
@@ -40,11 +41,15 @@ const WelcomePage = () => {
         </WelcomeBtns>
         <CaloriesBtn />
         <TutorialBtn />
+
+      
+       
       </Container>
     </BackgroundImg>
   );
 };
 
-
-
 export default WelcomePage;
+
+
+

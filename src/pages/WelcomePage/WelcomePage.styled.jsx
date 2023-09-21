@@ -1,24 +1,5 @@
 import styled from '@emotion/styled';
-
- export const WelcomeBtns = styled.div`
-    position: absolute;
-  top: 498px;
-  left: 96px;
-  display: flex;
-  margin-bottom: 246px;
-  @media screen and (min-width: 768px) {
-top: 498px;
-  left: 96px;
- }
- @media screen and (min-width: 1440px) {
-  top: 498px;
-  left: 96px;
- }
-`;
-
-export const WelcomeTitle = styled.div`
-  position: relative;
-` ;
+import bg_line from '../../assets/images/bg_img/bg_line.png';
 
 export const TitleText = styled.h2`
   font-size: 38px;
@@ -27,15 +8,13 @@ font-weight: 500;
 line-height: 40px;
 letter-spacing: 0.38px;
 color: #efede8;
-margin-left: 20px;
 margin-bottom: 52px;
-
 /* 
   padding-left: 20px;
   padding-bottom: 366px; */
-background-image: url("../img/bg_img/line.png");
-  background-repeat: no-repeat;
-  background-position: left 11px bottom 607px;
+background-image: url(${bg_line});
+background-repeat: no-repeat;
+background-position: left 0px bottom 607px;
 
   @media screen and (min-width: 768px) {
 font-size: 70px;
@@ -56,3 +35,54 @@ margin-bottom: 366px;
  } 
 
 `; 
+
+
+// export const WelcomeSection = styled.div`
+// width: 230px;
+// height: 800px; 
+
+//  @media screen and (min-width: 768px) {
+// width: 768px;
+// height: 230px; 
+//  }
+//  @media screen and (min-width: 1440px) {
+//   width:1440px;
+// height: 800px; 
+//  }
+
+// `
+
+ export const WelcomeBtns = styled.div`
+    position: absolute;
+     gap: 14px;
+  bottom: 483px;
+  left: 20px;
+  display: flex;
+  gap: 14px;
+
+  @media screen and (min-width: 768px) {
+bottom: 497px;
+  left: 32px;
+  gap: 20px;
+ }
+ @media screen and (min-width: 1440px) {
+  bottom: 246px;
+  left: 96px;
+  gap: 20px;
+ }
+`;
+
+export const WelcomeTitle = styled.div`
+  position: relative;
+` ;
+
+// export const MainButton = styled.button`
+//   margin-right: 14px;
+//   @media screen and (min-width: 768px) {
+// margin-bottom: 0px;
+// margin-right:20px;
+//  }
+//  @media screen and (min-width: 1440px) {
+  
+//  }
+// `
