@@ -21,6 +21,8 @@ import {
   ContainerSingIn,
 } from './SingInPage.styled';
 import { Container } from 'components/Container/Container';
+import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
+import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
 
 axios.defaults.baseURL = 'https://power-pulse.onrender.com';
 
@@ -53,14 +55,13 @@ const SignInPage = () => {
           password: values.password,
         })
         .then(response => {
-          if (response.code !== 200) {
-            throw new Error(response.message)
-          }
+          // if (response.code !== 200) {
+          //   throw new Error("Ups, email or password invalid. Please try again.");
+          // }
+          console.dir(response)
           return response.json();
         });
-      
-      
-      return response;
+      // return response;
     } catch (error) {
       toast.error('error',)
     }
@@ -115,6 +116,9 @@ const SignInPage = () => {
             <LinkSingUp to={'/signup'}>Sign Up</LinkSingUp>
           </DivSingUp>
         </ContainerSingIn>
+        <CaloriesBtn />
+
+      <TutorialBtn />
       </Container>
     </BackgroundImg>
   );
