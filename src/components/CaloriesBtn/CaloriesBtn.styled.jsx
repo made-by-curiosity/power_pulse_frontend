@@ -5,7 +5,7 @@ export const Calories = styled.button`
   border: none;
   padding: 0;
   position: absolute;
-  top: 560px;
+  top: 696px;
   right: 20px;
   width: 119px;
   height: 76px;
