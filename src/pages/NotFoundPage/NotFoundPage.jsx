@@ -5,8 +5,8 @@ import { Blok, Pages, Title, Text, Button } from './NotFoundPage.styled'
 
 
 const NotFoundPage = () => {
-  return <Pages>
-        <Container>
+    return <Container>
+        <Pages>
             <Blok>
                 <Title>404</Title>
                 <Text>
@@ -17,8 +17,8 @@ const NotFoundPage = () => {
                 </Text>
                 <Button type="button">Go Home</Button>
             </Blok>
-        </Container>
-    </Pages>
+        </Pages>
+    </Container>
 };
 
 export default NotFoundPage;

@@ -8,12 +8,9 @@ import ta_img3 from '../../assets/images/ta_img/ta_main@3x.jpg';
 import bg_img from '../../assets/images/bg_img/bg_main.jpg';
 import bg_img2 from '../../assets/images/bg_img/bg_main@2x.jpg';
 import bg_img3 from '../../assets/images/bg_img/bg_main@3x.jpg';
-// import bg_img3 from '../../assets/images/bg_img/bg_main@3x.jpg';
 
 
 export const Pages = styled.div`
-
-  position: relative;
   background-image: url(${mo_img });
   background-image: -webkit-image-set(
     url(${mo_img2}); 2x,
@@ -21,7 +18,7 @@ export const Pages = styled.div`
   );
   background-repeat: no-repeat;
   background-position: bottom 0 right 0;
-  margin: 0 auto;
+  margin: 0;
 
   @media screen and (min-width: 375px) {
     max-width: 375px;
@@ -29,8 +26,7 @@ export const Pages = styled.div`
 
   @media screen and (min-width: 768px) {
     max-width: none;
-    width: 768px;
-    background-color: rgba(0, 0, 0, 1);
+    width: 768px; 
 
     background-image: url(${ta_img});
     background-image: -webkit-image-set(
@@ -64,7 +60,6 @@ export const Blok = styled.div`
 
   @media screen and (min-width: 1440px) {
     width: 669px;
-    
     padding: 221px 96px 221px 96px;
   }
 `;
@@ -72,7 +67,6 @@ export const Blok = styled.div`
 
 
 export const Title = styled.h2`
-    margin-top: 213px;
     margin-bottom: 14px;
     font-family: Roboto;
     font-size: 66px;
@@ -83,14 +77,10 @@ export const Title = styled.h2`
     color: #EFEDE8;
 
     @media screen and (min-width: 768px) {
-        margin-top: 260px;
         margin-bottom: 28px;
         font-size: 160px;
         line-height: 0.93;
         letter-spacing: 1.6px;
-    }
-    @media screen and (min-width: 1440px) {
-        margin-top: 172px;
     } 
 `;
 
