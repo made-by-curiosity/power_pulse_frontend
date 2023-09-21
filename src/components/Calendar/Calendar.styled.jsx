@@ -10,7 +10,7 @@ export const DatePickerWrapper = styled.div`
     top: 50%;
     width: 215px;
     height: 236px;
-    transform: translate(-1%, 0%);
+    transform: translate(-15%, 0%);
     display: flex;
     flex-direction: column;
     align-items: center;

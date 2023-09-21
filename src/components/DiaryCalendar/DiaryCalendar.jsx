@@ -4,15 +4,14 @@ import {
   TitleWrapper,
   CalendarIMG,
   DateSwitcherCont,
-  DateSwitcherBtn,
   DateSwitcherBtnCont,
 } from './DiaryCalendar.styled';
 import { format } from 'date-fns';
-import { Datepicker } from '../Datepicker/Datepicker';
 import { DateSwitchButton } from 'components/DateSwitchButton/DateSwitchButton';
+import { Calendar } from 'components/Calendar/Calendar';
 
 export const DiaryCalendar = () => {
-  const [selectedDate, setSelectedDate] = useState(Date.now());
+  const [selectedDate, setSelectedDate] = useState(new Date());
   // eslint-disable-next-line
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -33,7 +32,7 @@ export const DiaryCalendar = () => {
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
       <DateSwitcherCont>
-        <TitleWrapper onClick={onClick} ref={ref}>
+        <TitleWrapper onClick={onClick} ref={ref} type='button'>
           {format(selectedDate, 'dd/MM/yyyy')}
           <CalendarIMG>
             <use href={sprite + '#icon-calendar'}></use>
@@ -53,7 +52,7 @@ export const DiaryCalendar = () => {
   });
 
   return (
-    <Datepicker
+    <Calendar
       input={<CustomInput />}
       selectedDate={selectedDate}
       setSelectedDate={setSelectedDate}

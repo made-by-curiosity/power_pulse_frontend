@@ -2,22 +2,7 @@
 
 import styled from 'styled-components';
 
-export const FormData = styled.form`
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin: 0 auto;
-  
-  
-`;
 
-// export const Section = styled.section`
-//   width: 382px;
-//   /* text-align: center; */
-//   margin: 0 auto;
-//   padding: 20px;
-// `;
 
 export const ParamsFormTitle = styled.h2`
   color: #EFEDE8;
@@ -40,7 +25,25 @@ export const ParamsFormSubTitle = styled.p`
     max-width: 496px;
   }
 `
+export const GenderWrap = styled.div`
+    
+`
 
+export const LevelWrap = styled.div`
+`
+
+export const BloodWrap = styled.div`
+    margin-right: 64px;
+`
+
+export const RadioGroupWrap = styled.div`
+margin-bottom: 24px;
+display: flex;
+`
+
+export const InputWrap = styled.div`
+display: flex;
+`
 
 export const FormWrap = styled.div`
     max-width: 335px;
@@ -64,10 +67,31 @@ export const StepWrap = styled.div`
   width: 178px;
   display: flex;
   justify-content: space-around;
-  margin-top: 10px;
+  margin-top: 343px;
+  padding-bottom: 20px;
 
-  
+  margin-top: ${ props => 
+    { if (props.step === 2) {return  "159px"} }};
+  margin-top: ${ props => 
+      { if (props.step === 3) {return  "459px"} }};
 
+  @media screen and (min-width: 768px) {
+    margin-top: 439px;
+
+    margin-top: ${ props => 
+          { if (props.step === 2) {return  "283px"} }};
+    margin-top: ${ props => 
+            { if (props.step === 3) {return  "523px"} }};
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 204px;
+
+    margin-top: ${ props => 
+          { if (props.step === 2) {return  "48px"} }};
+    margin-top: ${ props => 
+            { if (props.step === 3) {return  "288px"} }};
+  }
 `
 
 export const Step1 = styled.div`
@@ -132,3 +156,55 @@ export const BtnWrap = styled.div`
 
 export const MainBtnWrap = styled.div`
 margin-right: 16px;`
+
+
+
+export const CaloriesBtnWrap = styled.div`
+  position: absolute;
+  top: -19px;
+  right: -5px;
+
+  top: ${ props => 
+   { if (props.step === 2) {return  "-32px"} }};
+  right: ${ props => 
+   { if (props.step === 2) {return  "2px"} }};
+
+   @media screen and (min-width: 768px) {
+    top: 250px;
+    top: ${ props => 
+      { if (props.step === 2) {return  "205px"} }};
+      top: ${ props => 
+        { if (props.step === 3) {return  "235px"} }};
+  }
+
+  @media screen and (min-width: 1440px) {
+    top: -93px;
+    right: 130px;
+    top: ${ props => 
+      { if (props.step === 2) {return  "-142px"} }};
+    top: ${ props => 
+        { if (props.step === 3) {return  "-101px"} }};
+  }
+
+`
+
+
+export const TutorialBtnWrap = styled.div`
+position: absolute;
+top: -11px;
+right: -10px;
+
+top: ${ props => 
+   { if (props.step === 2) {return  '10px'} }};
+right: ${ props => 
+   { if (props.step === 2) {return  "-45px"} }};
+
+
+   @media screen and (min-width: 768px) {
+    top: -115px;
+    top: ${ props => 
+      { if (props.step === 2) {return  "-155px"} }};
+      top: ${ props => 
+        { if (props.step === 3) {return  "-140px"} }};
+  }
+`

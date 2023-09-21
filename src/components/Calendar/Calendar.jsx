@@ -1,12 +1,9 @@
 import DatePicker from 'react-datepicker';
-import {
-  DatePickerWrapper,
-} from './Datepicker.styled';
+import { DatePickerWrapper } from './Calendar.styled';
 import 'react-datepicker/dist/react-datepicker.css';
+import PropTypes from 'prop-types';
 
-export const Datepicker = ({ input, selectedDate ,setSelectedDate }) => {
-
-
+export const Calendar = ({ input, selectedDate, setSelectedDate }) => {
   return (
     <DatePickerWrapper>
       <DatePicker
@@ -19,4 +16,10 @@ export const Datepicker = ({ input, selectedDate ,setSelectedDate }) => {
       />
     </DatePickerWrapper>
   );
+};
+
+Calendar.propTypes = {
+  input: PropTypes.element.isRequired,
+  selectedDate: PropTypes.instanceOf(Date).isRequired,
+  setSelectedDate: PropTypes.func.isRequired,
 };
