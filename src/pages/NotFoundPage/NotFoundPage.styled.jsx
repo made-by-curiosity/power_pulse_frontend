@@ -129,64 +129,64 @@ export const Foto = styled.div`
 `
 export const Img = styled.img`
 
-  background-image: url(${mo_img});
+  // background-image: url(${mo_img});
   
 
-  @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    & {
-      background-image: url(${mo_img2});
-    }
-  }
-  @media (min-device-pixel-ratio: 3),
-    (-webkit-min-device-pixel-ratio: 3),
-    (min-resolution: 192dpi),
-    (min-resolution: 3dppx) {
-    & {
-      background-image: url(${mo_img3});
-    }
-  }
+  // @media (min-device-pixel-ratio: 2),
+  //   (-webkit-min-device-pixel-ratio: 2),
+  //   (min-resolution: 192dpi),
+  //   (min-resolution: 2dppx) {
+  //   & {
+  //     background-image: url(${mo_img2});
+  //   }
+  // }
+  // @media (min-device-pixel-ratio: 3),
+  //   (-webkit-min-device-pixel-ratio: 3),
+  //   (min-resolution: 192dpi),
+  //   (min-resolution: 3dppx) {
+  //   & {
+  //     background-image: url(${mo_img3});
+  //   }
+  // }
 
-  @media(min-width: 768px) {
-    background-image: url(${ta_img});
-    @media (min-device-pixel-ratio: 2),
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      & {
-        background-image: url(${ta_img2});
-      }
-    }
-    @media (min-device-pixel-ratio: 3),
-      (-webkit-min-device-pixel-ratio: 3),
-      (min-resolution: 192dpi),
-      (min-resolution: 3dppx) {
-      & {
-        background-image: url(${ta_img3});
-      }
-    }
-  }
-  @media(min-width: 1440px){
-   background-image: url(${bg_img});
-   @media (min-device-pixel-ratio: 2),
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      & {
-        background-image: url(${bg_img2});
-      }
-    }
-    @media (min-device-pixel-ratio: 3),
-      (-webkit-min-device-pixel-ratio: 3),
-      (min-resolution: 192dpi),
-      (min-resolution: 3dppx) {
-      & {
-        background-image: url(${bg_img3});
-      }
-    }
-  }
+  // @media(min-width: 768px) {
+  //   background-image: url(${ta_img});
+  //   @media (min-device-pixel-ratio: 2),
+  //     (-webkit-min-device-pixel-ratio: 2),
+  //     (min-resolution: 192dpi),
+  //     (min-resolution: 2dppx) {
+  //     & {
+  //       background-image: url(${ta_img2});
+  //     }
+  //   }
+  //   @media (min-device-pixel-ratio: 3),
+  //     (-webkit-min-device-pixel-ratio: 3),
+  //     (min-resolution: 192dpi),
+  //     (min-resolution: 3dppx) {
+  //     & {
+  //       background-image: url(${ta_img3});
+  //     }
+  //   }
+  // }
+  // @media(min-width: 1440px){
+  //  background-image: url(${bg_img});
+  //  @media (min-device-pixel-ratio: 2),
+  //     (-webkit-min-device-pixel-ratio: 2),
+  //     (min-resolution: 192dpi),
+  //     (min-resolution: 2dppx) {
+  //     & {
+  //       background-image: url(${bg_img2});
+  //     }
+  //   }
+  //   @media (min-device-pixel-ratio: 3),
+  //     (-webkit-min-device-pixel-ratio: 3),
+  //     (min-resolution: 192dpi),
+  //     (min-resolution: 3dppx) {
+  //     & {
+  //       background-image: url(${bg_img3});
+  //     }
+  //   }
+  // }
 }
 `
 

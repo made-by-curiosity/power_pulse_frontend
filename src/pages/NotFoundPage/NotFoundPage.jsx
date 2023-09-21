@@ -1,5 +1,6 @@
 // import { Button } from '@mui/material';
 import { Container } from 'components/Container/Container';
+import {BgContainer} from 'components/Background/Background'
 import { Blok, Pages, Title, Text, Foto, Img, Button } from './NotFoundPage.styled'
 // import mo_img from '../../assets/images/mo-img/mo_main.jpg'
 import mo_img2 from '../../assets/images/mo-img/mo_main@2x.jpg'
@@ -29,7 +30,7 @@ const NotFoundPage = () => {
     </Blok>
 
     <Foto>
-              <Img src={mo_img2 } />
+              <BgContainer />
     </Foto>
     </Pages>
   </Container>;
