@@ -7,10 +7,6 @@ const mq = breakpoints.map(bp => `@media screen and (min-width: ${bp}px)`);
 export const Btn = styled.button`
   cursor: pointer;
 
-  ${props => {
-    console.log(props);
-  }}
-
   padding: ${({ modalButton, filled }) =>
     modalButton ? (filled ? '12px 32px' : '12px 36px') : '12px 40px'};
 

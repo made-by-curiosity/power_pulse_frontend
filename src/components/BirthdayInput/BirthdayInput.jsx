@@ -6,12 +6,23 @@ import { Calendar } from 'components/Calendar/Calendar';
 
 import { CustomInput } from 'components/CustomInput/CustomInput';
 
+const today = new Date();
+const INITIAL_DATE = new Date(today.toDateString());
+
 export const BirthdayInput = ({ field, form, ...props }) => {
-  const [selectedDate, setSelectedDate] = useState(() => new Date());
+  const [selectedDate, setSelectedDate] = useState(() => INITIAL_DATE);
   // eslint-disable-next-line
 
   useEffect(() => {
-    form.setFieldValue('birthday', selectedDate);
+    if (selectedDate === INITIAL_DATE) {
+      form.setFieldValue('birthday', '');
+      return;
+    }
+
+    const formattedDate = format(selectedDate, 'dd.MM.yyy');
+
+    form.setFieldValue('birthday', formattedDate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDate]);
 
   const CustomBirthdayInput = forwardRef(({ value, onClick }, ref) => {
@@ -26,6 +37,7 @@ export const BirthdayInput = ({ field, form, ...props }) => {
         onClick={onClick}
         autoComplete="off"
         inputStyles={{ width: '160px' }}
+        readOnly
       />
     );
   });

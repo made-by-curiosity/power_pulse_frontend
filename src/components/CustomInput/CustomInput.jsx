@@ -16,6 +16,7 @@ export const CustomInput = ({
   reference,
   onClick,
   valueDate,
+  readOnly,
   ...props
 }) => {
   const {
@@ -72,6 +73,7 @@ export const CustomInput = ({
           onBlur={handleBlur}
           onClick={onClick}
           inputStyles={inputStyles}
+          readOnly={readOnly}
         />
         {passwordBtn && (
           <ShowPasswordBtn type="button" onClick={showPassword}>
