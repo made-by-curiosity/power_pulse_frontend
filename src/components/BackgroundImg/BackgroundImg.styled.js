@@ -52,8 +52,9 @@ background-position: calc(100% + 233px) calc(0% + 112px);
 }
 
 @media(min-width: 1440px){
+  height: 1005px;
    background-size: 670px 800px;
-    background-position: right;
+    background-position: right calc(0% + 53px);
 
 
    @media (min-device-pixel-ratio: 2),

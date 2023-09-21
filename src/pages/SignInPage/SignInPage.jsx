@@ -55,14 +55,13 @@ const SignInPage = () => {
           password: values.password,
         })
         .then(response => {
-          if (response.code !== 200) {
-            throw new Error(response.message)
-          }
+          // if (response.code !== 200) {
+          //   throw new Error("Ups, email or password invalid. Please try again.");
+          // }
+          console.dir(response)
           return response.json();
         });
-      
-      
-      return response;
+      // return response;
     } catch (error) {
       toast.error('error',)
     }
