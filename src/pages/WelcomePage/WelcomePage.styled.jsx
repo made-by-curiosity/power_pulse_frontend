@@ -29,6 +29,7 @@ letter-spacing: 0.38px;
 color: #efede8;
 margin-left: 20px;
 margin-bottom: 52px;
+
 /* 
   padding-left: 20px;
   padding-bottom: 366px; */
@@ -53,4 +54,5 @@ margin-bottom: 64px;
   margin-left: 96px;
 margin-bottom: 366px;
  } 
+
 `; 
