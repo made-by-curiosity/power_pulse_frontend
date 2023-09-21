@@ -1,12 +1,15 @@
-import {  Step1, Step2, Step3, StepWrap,  FormWrap, ParamsFormTitle, ParamsFormSubTitle,  NextBtn, BtnWrap, MainBtnWrap, BackBtn, FieldWrap, LevelWrap, GenderWrap, BloodWrap, RadioGroupWrap} from "components/ParamsForm/ParamsForm.styled"
+import {  Step1, Step2, Step3, StepWrap,  FormWrap, ParamsFormTitle, ParamsFormSubTitle,  NextBtn, BtnWrap, MainBtnWrap, BackBtn, FieldWrap, LevelWrap, GenderWrap, BloodWrap, RadioGroupWrap, CaloriesBtnWrap, TutorialBtnWrap} from "components/ParamsForm/ParamsForm.styled"
 import { useState } from "react";
 
 import icons from '../../assets/icons/svg-sprite.svg';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
 
+import { CaloriesBtn } from "components/CaloriesBtn/CaloriesBtn";
+import { TutorialBtn } from "components/TutorialBtn/TutorialBtn";
 
 
+import { BirthdayInput } from "components/BirthdayInput/BirthdayInput";
 
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -36,9 +39,9 @@ const validationSchema = Yup.object({
     .min(35, 'Desired weight  must be at least 35 kg')
     .positive('Weight must be a positive number.')
     .required('Height is required'),
-  birthday: Yup.date()
-    .max(eighteenYearsAgo, 'You must be older than 18 years old')
-    .required('Height is required'),
+  // birthday: Yup.date()
+  //   .max(eighteenYearsAgo, 'You must be older than 18 years old')
+  //   .required('Height is required'),
 });
 
 export const ParamsForm = () => {
@@ -133,12 +136,8 @@ export const ParamsForm = () => {
                     </FieldWrap>
                     <FieldWrap>
                     <Field
-                      label="Birthday"
                       name="birthday"
-                      type="text"
-                      autoComplete="off"
-                      component={CustomInput}
-                      inputStyles={{ width: '160px' }}
+                      component={BirthdayInput}
                     />
                     </FieldWrap>
                   </FormWrap>
@@ -230,7 +229,6 @@ export const ParamsForm = () => {
 
 
            <BtnWrap>
-          
            { step > 1  && step < 3 &&  <BackBtn onClick={handleClickBack}>
                       <svg width="20" height="20"  stroke="#E6533C">
           <use href={icons + '#icon-back'} /> 
@@ -243,9 +241,15 @@ export const ParamsForm = () => {
         </svg>
             </NextBtn>}
           </BtnWrap>
-           
-            
-            <StepWrap>
+          <CaloriesBtnWrap step={step}>
+            <CaloriesBtn/>
+          </CaloriesBtnWrap>
+          <TutorialBtnWrap step={step}>
+            <TutorialBtn/>
+          </TutorialBtnWrap>
+          
+
+            <StepWrap step={step}>
                 <Step1 step={step}></Step1>
                 <Step2 step={step}></Step2>
                 <Step3 step={step}></Step3>

@@ -32,7 +32,7 @@ export const DiaryCalendar = () => {
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
       <DateSwitcherCont>
-        <TitleWrapper onClick={onClick} ref={ref}>
+        <TitleWrapper onClick={onClick} ref={ref} type='button'>
           {format(selectedDate, 'dd/MM/yyyy')}
           <CalendarIMG>
             <use href={sprite + '#icon-calendar'}></use>
