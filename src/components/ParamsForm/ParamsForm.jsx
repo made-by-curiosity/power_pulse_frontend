@@ -1,9 +1,12 @@
-import {  Step1, Step2, Step3, StepWrap,  FormWrap, ParamsFormTitle, ParamsFormSubTitle,  NextBtn, BtnWrap, MainBtnWrap, BackBtn, FieldWrap, LevelWrap, GenderWrap, BloodWrap, RadioGroupWrap} from "components/ParamsForm/ParamsForm.styled"
+import {  Step1, Step2, Step3, StepWrap,  FormWrap, ParamsFormTitle, ParamsFormSubTitle,  NextBtn, BtnWrap, MainBtnWrap, BackBtn, FieldWrap, LevelWrap, GenderWrap, BloodWrap, RadioGroupWrap, CaloriesBtnWrap, TutorialBtnWrap} from "components/ParamsForm/ParamsForm.styled"
 import { useState } from "react";
 
 import icons from '../../assets/icons/svg-sprite.svg';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
+
+import { CaloriesBtn } from "components/CaloriesBtn/CaloriesBtn";
+import { TutorialBtn } from "components/TutorialBtn/TutorialBtn";
 
 
 
@@ -230,7 +233,6 @@ export const ParamsForm = () => {
 
 
            <BtnWrap>
-          
            { step > 1  && step < 3 &&  <BackBtn onClick={handleClickBack}>
                       <svg width="20" height="20"  stroke="#E6533C">
           <use href={icons + '#icon-back'} /> 
@@ -243,9 +245,15 @@ export const ParamsForm = () => {
         </svg>
             </NextBtn>}
           </BtnWrap>
-           
-            
-            <StepWrap>
+          <CaloriesBtnWrap step={step}>
+            <CaloriesBtn/>
+          </CaloriesBtnWrap>
+          <TutorialBtnWrap step={step}>
+            <TutorialBtn/>
+          </TutorialBtnWrap>
+          
+
+            <StepWrap step={step}>
                 <Step1 step={step}></Step1>
                 <Step2 step={step}></Step2>
                 <Step3 step={step}></Step3>
