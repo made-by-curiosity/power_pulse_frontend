@@ -10,13 +10,9 @@ export const ContainerSingIn = styled.div`
 
   @media (min-width: 768px) {
     width:364px;
-    margin-left: 32px;
     
   }
 
-  @media (min-width: 1440px) {
-    margin-left: 96px;
-  }
 `;
 
 
@@ -61,7 +57,9 @@ export const Button = styled.button`
 
   @media (min-width: 768px) {
   font-size: 20px;
+   margin-top: 64px;
   }
+
 
 `;
 

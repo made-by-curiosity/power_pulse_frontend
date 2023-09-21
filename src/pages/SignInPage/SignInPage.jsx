@@ -21,6 +21,8 @@ import {
   ContainerSingIn,
 } from './SingInPage.styled';
 import { Container } from 'components/Container/Container';
+import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
+import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
 
 axios.defaults.baseURL = 'https://power-pulse.onrender.com';
 
@@ -115,6 +117,9 @@ const SignInPage = () => {
             <LinkSingUp to={'/signup'}>Sign Up</LinkSingUp>
           </DivSingUp>
         </ContainerSingIn>
+        <CaloriesBtn />
+
+      <TutorialBtn />
       </Container>
     </BackgroundImg>
   );
