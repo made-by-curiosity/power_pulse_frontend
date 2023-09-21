@@ -6,16 +6,16 @@ import { Link } from 'react-router-dom';
 export const ContainerSingIn = styled.div`
   
   width: 335px;
-  margin-top: 127px;
+  margin-top: 90px;
 
 
   @media (min-width: 768px) {
     width:364px;
-    margin-top: 189px;
+   
   }
 
    @media (min-width: 1440px) {
-    margin-top: 200px;
+ 
     
   }
 

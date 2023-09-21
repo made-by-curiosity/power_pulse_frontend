@@ -2,8 +2,9 @@
 import { Formik, Form, Field } from 'formik';
 import { object, string } from 'yup';
 import axios from 'axios';
+import { Notify } from 'notiflix';
 
-import { toast } from 'react-toastify';
+
 
 
 import { CustomInput } from 'components/CustomInput/CustomInput';
@@ -48,22 +49,26 @@ const SignInPage = () => {
  
   const postData = async ( values ) => {
     try {
-      console.log(values);
       const response = await axios
         .post('/api/auth/login', {
           email: values.email,
           password: values.password,
-        })
-        .then(response => {
-          // if (response.code !== 200) {
-          //   throw new Error("Ups, email or password invalid. Please try again.");
-          // }
-          console.dir(response)
-          return response.json();
-        });
+        }) 
+        console.log(response)
+      if (response.code === 401) {
+          throw new Error(response.message)
+        }
+        return response.status
+        // .then(response => {
+        //   // if (response.code !== 200) {
+        //   //   throw new Error("Ups, email or password invalid. Please try again.");
+        //   // }
+        //   console.dir(response)
+        //   return response.json();
+        // });
       // return response;
     } catch (error) {
-      toast.error('error',)
+      return Notify.failure(error.data)
     }
   };
 
