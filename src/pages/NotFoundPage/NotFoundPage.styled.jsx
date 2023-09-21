@@ -19,11 +19,9 @@ export const Pages = styled.div`
     url(${mo_img2}); 2x,
     url(${mo_img3}); 3x
   );
-  color: #efede8;
   background-repeat: no-repeat;
   background-position: bottom 0 right 0;
   margin: 0 auto;
-  // height: 100vh;
 
   @media screen and (min-width: 375px) {
     max-width: 375px;
