@@ -32,6 +32,12 @@ export const logOutUser = async () => {
   return res.data;
 };
 
+export const getCurrentUser = async () => {
+  const res = await axios.get('auth/current');
+
+  return res.data;
+};
+
 // user params
 
 export const getUserInfo = async () => {

@@ -1,10 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, logOut, refreshUser, signUp } from './operations';
+import {
+  logIn,
+  logOut,
+  refreshUser,
+  signUp,
+  getUserParams,
+  updateUserParams,
+  updateName,
+  updateAvatar,
+} from './operations';
 
 const initialState = {
   user: { name: null, email: null, userParams: null, avatarUrl: null },
   token: null,
   isRefreshing: false,
+  isLoggedIn: false,
   error: null,
 };
 
@@ -12,7 +22,6 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder => {
-    builder.addCase(signUp.pending, (state, action) => {});
     builder.addCase(signUp.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
@@ -20,9 +29,6 @@ const authSlice = createSlice({
     });
     builder.addCase(signUp.rejected, (state, action) => {
       state.error = action.payload;
-    });
-    builder.addCase(logIn.pending, state => {
-      state.error = null;
     });
     builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
@@ -32,13 +38,13 @@ const authSlice = createSlice({
     builder.addCase(logIn.rejected, (state, action) => {
       state.error = action.payload;
     });
-    builder.addCase(logOut.pending, state => {
-      state.user = { name: null, email: null, userParams: null };
-      state.token = null;
-      state.isLoggedIn = false;
-    });
     builder.addCase(logOut.fulfilled, state => {
-      state.user = { name: null, email: null, userParams: null };
+      state.user = {
+        name: null,
+        email: null,
+        userParams: null,
+        avatarUrl: null,
+      };
       state.token = null;
       state.isLoggedIn = false;
     });
@@ -55,6 +61,30 @@ const authSlice = createSlice({
     });
     builder.addCase(refreshUser.rejected, state => {
       state.isRefreshing = false;
+    });
+    builder.addCase(getUserParams.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
+    builder.addCase(getUserParams.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+    builder.addCase(updateUserParams.fulfilled, (state, action) => {
+      state.user.userParams = action.payload;
+    });
+    builder.addCase(updateUserParams.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+    builder.addCase(updateName.fulfilled, (state, action) => {
+      state.user.name = action.payload;
+    });
+    builder.addCase(updateName.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+    builder.addCase(updateAvatar.fulfilled, (state, action) => {
+      state.user.avatarUrl = action.payload;
+    });
+    builder.addCase(updateAvatar.rejected, (state, action) => {
+      state.error = action.payload;
     });
   },
 });
