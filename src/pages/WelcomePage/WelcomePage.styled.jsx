@@ -1,43 +1,90 @@
-// import styled from '@emotion/styled';
+import styled from '@emotion/styled';
+import bg_line from '../../assets/images/bg_img/bg_line.png';
 
-// export const ExampleWrapper = styled.div`
-//   padding: 30px;
-//   width: 100%;
-//   height: 500px;
+export const TitleText = styled.h2`
+width: 598px;
+height: 234px;
+  font-size: 38px;
+font-style: normal;
+font-weight: 500;
+line-height: 40px;
+letter-spacing: 0.38px;
+color: #efede8;
+margin-bottom: 52px;
+/* 
+  padding-left: 20px;
+  padding-bottom: 366px; */
+background-image: url(${bg_line});
+background-repeat: no-repeat;
+background-position: left 0px bottom 607px;
 
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
+  @media screen and (min-width: 768px) {
+font-size: 70px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 78px;
+  letter-spacing: 0.7px;
+  margin-left: 32px;
+margin-bottom: 64px;
+ background-position: left 16px bottom 684px;
+  }
 
-//   background-color: ${props => props.theme.colors.secondary};
-// `;
+ @media screen and (min-width: 1440px) {
+  background-position: left 80px bottom 449px;
 
-// export const ExampleText = styled.p`
-//   color: ${props => props.theme.colors.textColor};
-//   font-size: 18px;
-//   font-weight: 700;
+  /* margin-left: 96px; */
+margin-bottom: 366px;
+ } 
 
-//   &:hover {
-//     color: ${props => props.theme.colors.primary};
-//   }
-// `;
+`; 
 
-// export const HeightInput = styled(CustomInput)`
-//   width: 300px;
-// `;
 
-// export const MainContainer = styled.div`
-//   max-width: 375px;
-//   margin: 0 auto;
-//   padding: 0 20px;
+// export const WelcomeSection = styled.div`
+// width: 230px;
+// height: 800px; 
 
+//  @media screen and (min-width: 768px) {
+// width: 768px;
+// height: 230px; 
+//  }
+//  @media screen and (min-width: 1440px) {
+//   width:1440px;
+// height: 800px; 
+//  }
+
+// `
+
+ export const WelcomeBtns = styled.div`
+    position: absolute;
+     gap: 14px;
+  bottom: 483px;
+  left: 20px;
+  display: flex;
+  gap: 14px;
+
+  @media screen and (min-width: 768px) {
+bottom: 497px;
+  left: 32px;
+  gap: 20px;
+ }
+ @media screen and (min-width: 1440px) {
+  bottom: 246px;
+  left: 96px;
+  gap: 20px;
+ }
+`;
+
+export const WelcomeTitle = styled.div`
+  position: relative;
+` ;
+
+// export const MainButton = styled.button`
+//   margin-right: 14px;
 //   @media screen and (min-width: 768px) {
-//     max-width: 768px;
-//     padding: 0 32px;
-//   }
-//   @media screen and (min-width: 1440px) {
-//     max-width: 1440px;
-//     padding: 0 96px;
-//   }
-// `;
+// margin-bottom: 0px;
+// margin-right:20px;
+//  }
+//  @media screen and (min-width: 1440px) {
+  
+//  }
+// `
