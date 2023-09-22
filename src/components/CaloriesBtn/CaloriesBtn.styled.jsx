@@ -12,11 +12,9 @@ export const Calories = styled.button`
   background: #ef8964;
 
   @media screen and (min-width: 768px) {
-<<<<<<< Updated upstream
     top: 866px;
-=======
     bottom: 50px;
->>>>>>> Stashed changes
+
     right: 32px;
     width: 180px;
     height: 110px;
