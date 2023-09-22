@@ -7,10 +7,10 @@ import img2 from '../../assets/images/bg_img/bg_main@2x.jpg'
 import img3 from '../../assets/images/bg_img/bg_main@3x.jpg'
 
 export const Wrapper = styled.div`
-height: 812px;
+height: 1005px;
 
 background-size: 446px 669px;
- background-position: calc(100% + 148px) calc(0% + 241px);
+ background-position: calc(100% + 148px) calc(0% + 365px);
 
 background-repeat: no-repeat;
 background-image: url(${img});
@@ -32,9 +32,9 @@ background-image: url(${img});
       }}
 
 @media(min-width: 768px) {
-
+height: 1005px;
 background-size: 670px 768px;
-background-position: calc(100% + 233px) calc(0% + 112px);
+background-position: calc(100% + 233px) calc(0% + 270px);
 
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
@@ -53,7 +53,7 @@ background-position: calc(100% + 233px) calc(0% + 112px);
 
 @media(min-width: 1440px){
   height: 1005px;
-   background-size: 670px 800px;
+   background-size: 670px 1005px;
     background-position: right calc(0% + 53px);
 
 

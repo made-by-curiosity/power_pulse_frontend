@@ -11,4 +11,8 @@ line-height: 1.16;
 font-size: 32px;
 line-height: 1.37; 
  }
+  @media (min-width: 1440px){
+ 
+
+ }
 `
