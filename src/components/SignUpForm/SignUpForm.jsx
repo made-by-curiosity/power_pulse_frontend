@@ -67,7 +67,6 @@ export const SignUpForm = () => {
 
           <Field
             name="email"
-            // validate={validateEmail}
             label="Email"
             type="email"
             autoComplete="off"
@@ -77,7 +76,6 @@ export const SignUpForm = () => {
           <Field
             name="password"
             type="password"
-            // validate={validatePass}
             label="Password"
             autoComplete="off"
             component={CustomInput}
