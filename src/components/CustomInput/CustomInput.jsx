@@ -10,6 +10,8 @@ import {
 } from './CustomInput.styled';
 import icons from '../../assets/icons/svg-sprite.svg';
 
+import { format } from 'date-fns';
+
 export const CustomInput = ({
   field,
   form,
@@ -50,6 +52,8 @@ export const CustomInput = ({
     setIsPasswordShown(isPasswordShown => !isPasswordShown);
   };
 
+  
+
   return (
     <Container>
       <InputWrapper>
@@ -70,6 +74,7 @@ export const CustomInput = ({
               : ''
           }`}
           onFocus={handleFocus}
+          value={valueDate}
           onBlur={handleBlur}
           onClick={onClick}
           inputStyles={inputStyles}
