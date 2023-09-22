@@ -10,7 +10,15 @@ import {
 } from './CustomInput.styled';
 import icons from '../../assets/icons/svg-sprite.svg';
 
-export const CustomInput = ({ field, form, reference, onClick, valueDate,  ...props }) => {
+export const CustomInput = ({
+  field,
+  form,
+  reference,
+  onClick,
+  valueDate,
+  readOnly,
+  ...props
+}) => {
   const {
     type,
     label = '',
@@ -65,7 +73,7 @@ export const CustomInput = ({ field, form, reference, onClick, valueDate,  ...pr
           onBlur={handleBlur}
           onClick={onClick}
           inputStyles={inputStyles}
-          value={valueDate}
+          readOnly={readOnly}
         />
         {passwordBtn && (
           <ShowPasswordBtn type="button" onClick={showPassword}>
