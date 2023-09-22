@@ -6,6 +6,9 @@ import img2 from '../../assets/images/bg_img/bg_main@2x.jpg'
 
 import img3 from '../../assets/images/bg_img/bg_main@3x.jpg'
 
+
+
+
 export const Wrapper = styled.div`
 height: 1005px;
 
@@ -72,3 +75,4 @@ background-position: calc(100% + 233px) calc(0% + 270px);
       }
 }
 `
+
