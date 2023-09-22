@@ -44,6 +44,7 @@ export const BirthdayInput = ({ field, form, ...props }) => {
         autoComplete="off"
         inputStyles={{ width: '160px' }}
         readOnly
+        calendar
       />
     );
   });
