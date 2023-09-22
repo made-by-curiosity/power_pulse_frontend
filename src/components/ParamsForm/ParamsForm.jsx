@@ -76,7 +76,7 @@ const validationSchema = Yup.object({
     .required('Height is required'),
   birthday: Yup.date()
     .transform(parseDateString)
-    .max(eighteenYearsAgo, 'You must be older than 18 years old')
+    .max(eighteenYearsAgo, 'Age must be 18+')
     .required('Age is required'),
   // birthday: Yup.date()
   //   .max(eighteenYearsAgo, 'You must be older than 18 years old')

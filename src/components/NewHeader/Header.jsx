@@ -14,6 +14,7 @@ import { UserBar } from './UserBar/UserBar';
 
 export const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [IsLogedIn, setIsLogedIn] = useState(true);
 
   const onBurgerButton = () => {

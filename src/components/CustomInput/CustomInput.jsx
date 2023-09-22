@@ -7,10 +7,12 @@ import {
   StyledInput,
   InputMessage,
   ShowPasswordBtn,
+  CalendarIcon,
 } from './CustomInput.styled';
 import icons from '../../assets/icons/svg-sprite.svg';
 
 export const CustomInput = ({
+  calendar,
   field,
   form,
   reference,
@@ -85,6 +87,11 @@ export const CustomInput = ({
               />
             </svg>
           </ShowPasswordBtn>
+        )}
+        {calendar && (
+          <CalendarIcon>
+            <use href={`${icons}#icon-calendar`} />
+          </CalendarIcon>
         )}
       </InputWrapper>
       {showFeedback && (
