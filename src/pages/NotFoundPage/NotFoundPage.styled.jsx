@@ -19,6 +19,9 @@ export const Pages = styled.div`
   background-repeat: no-repeat;
   background-position: bottom 0 right 0;
   margin: 0;
+  display: block;
+  width: 100%;
+  height: auto;
 
   @media screen and (min-width: 375px) {
     max-width: 375px;
@@ -37,6 +40,7 @@ export const Pages = styled.div`
 
   @media screen and (min-width: 1440px) {
     width: 1440px;
+
 
     background-image: url(${bg_img});
     background-image: -webkit-image-set(
@@ -118,6 +122,7 @@ export const Button = styled.button`
     border: 1px solid rgba(239, 237, 232, 0.30);
     background-color: #E6533C;
     color: #EFEDE8;
+    cursor: pointer;
 
     @media screen and (min-width: 768px) {
         width: 209px;
