@@ -23,6 +23,8 @@ import { MainButton } from "components/MainButton/MainButton";
 const today = new Date();
     const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
 
+    console.log(eighteenYearsAgo);
+
 const validationSchema = Yup.object({
   height: Yup.number('Number')
     .typeError('Height must be a number')
@@ -39,9 +41,9 @@ const validationSchema = Yup.object({
     .min(35, 'Desired weight  must be at least 35 kg')
     .positive('Weight must be a positive number.')
     .required('Height is required'),
-  // birthday: Yup.date()
-  //   .max(eighteenYearsAgo, 'You must be older than 18 years old')
-  //   .required('Height is required'),
+  birthday: Yup.date()
+    .max(eighteenYearsAgo, 'You must be older than 18 years old')
+    .required('Height is required'),
 });
 
 export const ParamsForm = () => {
@@ -54,6 +56,8 @@ export const ParamsForm = () => {
     gender: "male",
     level: "light"
   };
+
+  console.log(initialValues.birthday)
 
   const tablet = useMediaQuery('(min-width:768px)');
     
