@@ -56,8 +56,6 @@ function parseDateString(value, originalValue) {
   return parse(formattedDate, 'yyyy-MM-dd', new Date());
 }
 
-// console.log(eighteenYearsAgo);
-
 const validationSchema = Yup.object({
   height: Yup.number('Number')
     .typeError('Height must be a number')
@@ -78,9 +76,6 @@ const validationSchema = Yup.object({
     .transform(parseDateString)
     .max(eighteenYearsAgo, 'Age must be 18+')
     .required('Age is required'),
-  // birthday: Yup.date()
-  //   .max(eighteenYearsAgo, 'You must be older than 18 years old')
-  //   .required('Age is required'),
 });
 
 export const ParamsForm = () => {
@@ -88,18 +83,15 @@ export const ParamsForm = () => {
     height: '',
     currentWeight: '',
     desiredWeight: '',
-    birthday: new Date(),
+    birthday: '',
     blood: '1',
     gender: 'male',
     level: 'light',
   };
 
-  // console.log(initialValues.birthday)
-
   const tablet = useMediaQuery('(min-width:768px)');
 
   const [step, setStep] = useState(1);
-  // console.log(step);
 
   const handleClickNext = () => {
     setStep(state => state + 1);
