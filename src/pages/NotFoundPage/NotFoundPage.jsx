@@ -1,12 +1,17 @@
-
+import { useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
 import { Container } from 'components/Container/Container';
 import { Blok, Pages, Title, Text, Button } from './NotFoundPage.styled'
 
 
 
 const NotFoundPage = () => {
-  return <Pages>
-        <Container>
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/');
+    };
+    return <Container>
+        <Pages>
             <Blok>
                 <Title>404</Title>
                 <Text>
@@ -15,10 +20,10 @@ const NotFoundPage = () => {
                 Perhaps this page went on vacation or decided to disappear into another dimension.
                 We apologize for this inconvenience.
                 </Text>
-                <Button type="button">Go Home</Button>
+                <Button type="button" onClick={handleClick}>Go Home</Button>
             </Blok>
-        </Container>
-    </Pages>
+        </Pages>
+    </Container>
 };
 
 export default NotFoundPage;
