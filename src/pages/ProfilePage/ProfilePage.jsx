@@ -15,7 +15,7 @@ const user = {
   birthday: '24.09.1998',
   blood: '1',
   sex: 'female',
-  lifeStyleType: 'Sedentary lifestyle (little or no physical activity)',
+  lifeStyleType: 'light',
   dailyCalorieIntake: 2200,
   dailyNormOfSports: '110 min',
 };
