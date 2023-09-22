@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Title } from 'components/Title/Title';
 
 import {
@@ -13,6 +13,8 @@ import {
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { MainButton } from 'components/MainButton/MainButton';
 import { BckgSignUp } from 'components/BckgSignUp/BckgSignUp';
+import { useDispatch } from 'react-redux';
+import { signUp } from 'redux/auth/operations';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string().required('Required field'),
@@ -42,12 +44,17 @@ function validatePass(value) {
   return error;
 }
 
-const handleSubmit = (values, { resetForm }) => {
-  console.log(values);
-  resetForm();
-};
-
 export const SignUpForm = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values, { resetForm }) => {
+    console.log(values);
+
+    dispatch(signUp(values));
+
+    resetForm();
+  };
+
   return (
     <BckgSignUp>
       <RegisterContainer>
@@ -104,12 +111,12 @@ export const SignUpForm = () => {
         </Formik>
         <SecondText>
           Already have account?{' '}
-          <NavLink
+          <Link
             style={{ color: '#EFEDE8', textDecorationLine: 'underline' }}
             to="/signin"
           >
             Sign In
-          </NavLink>
+          </Link>
         </SecondText>
       </RegisterContainer>
     </BckgSignUp>
