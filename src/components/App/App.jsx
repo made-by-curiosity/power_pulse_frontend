@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { lazy, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
@@ -6,11 +7,7 @@ import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute/RestrictedRoute';
 import { Layout } from 'components/Layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectIsLoggedIn,
-  selectIsRefreshing,
-  selectUserParams,
-} from 'redux/auth/selectors';
+import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
 
 const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage'));
@@ -76,7 +73,11 @@ export const App = () => {
           <Route
             path="/params"
             element={
-              <PrivateRoute component={<ParamsPage />} restrictedTo="/signin" />
+              <PrivateRoute
+                component={<ParamsPage />}
+                restrictedTo="/signin"
+                samePage
+              />
             }
           />
           <Route
