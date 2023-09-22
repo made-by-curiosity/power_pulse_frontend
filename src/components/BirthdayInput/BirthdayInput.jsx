@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useState } from 'react';
 
 import { format } from 'date-fns';
-import { DateSwitchButton } from 'components/DateSwitchButton/DateSwitchButton';
+// import { DateSwitchButton } from 'components/DateSwitchButton/DateSwitchButton';
 import { Calendar } from 'components/Calendar/Calendar';
 
 import { CustomInput } from 'components/CustomInput/CustomInput';
@@ -19,19 +19,13 @@ export const BirthdayInput = ({ field, form, ...props }) => {
       return;
     }
 
-    const formattedDate = format(selectedDate, 'yyyy-MM-dd');
+    const formattedDate = format(selectedDate, 'dd.MM.yyy');
 
     form.setFieldValue('birthday', formattedDate);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDate]);
 
- 
-
   const CustomBirthdayInput = forwardRef(({ value, onClick }, ref) => {
-    const parts = value.split('/')
-    const [month, day, year] = parts;
-    const inputDate = `${day}.${month}.${year}`;
-
     return (
       <CustomInput
         reference={ref}
@@ -39,11 +33,11 @@ export const BirthdayInput = ({ field, form, ...props }) => {
         field={field}
         form={form}
         type="text"
-        valueDate={inputDate}
+        valueDate={value}
         onClick={onClick}
         autoComplete="off"
         inputStyles={{ width: '160px' }}
-        readOnly
+        // readOnly
         calendar
       />
     );

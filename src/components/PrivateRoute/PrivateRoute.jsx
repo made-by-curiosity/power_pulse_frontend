@@ -20,8 +20,6 @@ export const PrivateRoute = ({ component, restrictedTo = '/', samePage }) => {
     }
   }
 
-  console.log('isUserParamsEmpty ', isUserParamsEmpty);
-
   const shouldRedirect = !isRefreshing && !isLoggedIn;
 
   if (samePage) {
