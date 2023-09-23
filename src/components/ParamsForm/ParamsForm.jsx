@@ -39,7 +39,12 @@ import { isDate, parse } from 'date-fns';
 import { useDispatch } from 'react-redux';
 import { updateUserParams } from 'redux/auth/operations';
 
+// import { useState } from 'react';
+
 import { useLocalStorage } from 'hooks/useLocalStorage';
+import { useEffect } from 'react';
+
+// import { CustomModal } from 'components/CustomModal/CustomModal';
 
 const today = new Date();
 const eighteenYearsAgo = new Date(
@@ -84,20 +89,32 @@ const validationSchema = Yup.object({
 
 export const ParamsForm = () => {
   const initialValues = {
-    height: JSON.parse(localStorage.getItem('height')) || '',
-    currentWeight: JSON.parse(localStorage.getItem('currentWeight')) || '',
-    desiredWeight: JSON.parse(localStorage.getItem('desiredWeight')) || '',
-    birthday: JSON.parse(localStorage.getItem('birthday')) || '',
-    blood: JSON.parse(localStorage.getItem('blood')) || '1',
-    sex: JSON.parse(localStorage.getItem('sex')) || 'male',
-    levelActivity: JSON.parse(localStorage.getItem('levelActivity')) || '2',
+    height: '',
+    currentWeight: '',
+    desiredWeight: '',
+    birthday: '',
+    blood: '1',
+    sex: 'male',
+    levelActivity: '2',
   };
+
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const toogleModal = () => {
+  //   setIsModalOpen(prevState => !prevState);
+  // };
 
   const dispatch = useDispatch();
 
   const tablet = useMediaQuery('(min-width:768px)');
 
   const [step, setStep] = useLocalStorage('step', 1);
+
+  useEffect(() => {
+    setStep(1);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleClickNext = () => {
     setStep(state => state + 1);
@@ -117,16 +134,16 @@ export const ParamsForm = () => {
     // Ваша логіка для обробки даних третього етапу, наприклад, відправлення їх на сервер
     dispatch(updateUserParams(userInfo));
 
-    console.log('dispatchAllValues', userInfo);
-
     // Прибираємо флаг "завантаження" після успішної відправки
     setSubmitting(false);
   };
 
-  const onSubmit = (values, { setSubmitting }) => {
+  const onSubmit = (values, { setSubmitting, resetForm }) => {
     if (step === 3) {
       // Відправка даних на сервер лише на третьому етапі
       handleThirdStepSubmit(values, { setSubmitting });
+
+      resetForm();
     } else {
       // Перехід на наступний етап (якщо необхідно)
       setStep(state => state + 1);
@@ -230,7 +247,6 @@ export const ParamsForm = () => {
                     options={[
                       { value: 'female', label: 'Female' },
                       { value: 'male', label: 'Male' },
-                      { value: 'other', label: 'Other' },
                     ]}
                   />
                 </GenderWrap>

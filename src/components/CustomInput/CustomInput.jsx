@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import {
   Container,
@@ -35,15 +34,6 @@ export const CustomInput = ({
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const errorMessage = form.errors[name];
   const touched = form.touched[name];
-
-
-  useEffect(() => {
-    window.localStorage.setItem(name, JSON.stringify(value));
-  }, [name, value]);
-
-
-
- 
 
   const hasValue = value.toString().trim().length > 0;
 
