@@ -12,7 +12,6 @@ import {
   updateUserAvatar,
 } from '../../services/powerPulseApi';
 
-
 // AUTH
 
 export const signUp = createAsyncThunk(
@@ -65,6 +64,20 @@ export const refreshUser = createAsyncThunk(
       const data = await getCurrentUser();
 
       return data.user;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const signUpWithToken = createAsyncThunk(
+  'auth/signUpWithToken',
+  async (credentials, thunkAPI) => {
+    try {
+      setAuthHeader(credentials);
+      const data = await getCurrentUser();
+
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
