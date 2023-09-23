@@ -40,7 +40,6 @@ import { useDispatch } from 'react-redux';
 import { updateUserParams } from 'redux/auth/operations';
 
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import { useNavigate } from 'react-router';
 import { useEffect } from 'react';
 
 const today = new Date();
