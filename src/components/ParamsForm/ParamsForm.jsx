@@ -40,6 +40,7 @@ import { useDispatch } from 'react-redux';
 import { updateUserParams } from 'redux/auth/operations';
 
 import { useLocalStorage } from 'hooks/useLocalStorage';
+import { useNavigate } from 'react-router';
 
 const today = new Date();
 const eighteenYearsAgo = new Date(
@@ -84,16 +85,17 @@ const validationSchema = Yup.object({
 
 export const ParamsForm = () => {
   const initialValues = {
-    height: JSON.parse(localStorage.getItem('height')) || '',
-    currentWeight: JSON.parse(localStorage.getItem('currentWeight')) || '',
-    desiredWeight: JSON.parse(localStorage.getItem('desiredWeight')) || '',
-    birthday: JSON.parse(localStorage.getItem('birthday')) || '',
-    blood: JSON.parse(localStorage.getItem('blood')) || '1',
-    sex: JSON.parse(localStorage.getItem('sex')) || 'male',
-    levelActivity: JSON.parse(localStorage.getItem('levelActivity')) || '2',
+    height: '',
+    currentWeight: '',
+    desiredWeight: '',
+    birthday: '',
+    blood: '1',
+    sex: 'male',
+    levelActivity: '2',
   };
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const tablet = useMediaQuery('(min-width:768px)');
 
@@ -107,7 +109,10 @@ export const ParamsForm = () => {
     setStep(state => state - 1);
   };
 
-  const handleThirdStepSubmit = (values, { setSubmitting }) => {
+  const handleThirdStepSubmit = async (
+    values,
+    { setSubmitting, resetForm }
+  ) => {
     const [day, month, year] = values.birthday.split('.');
 
     const formattedDate = `${year}-${month}-${day}`;
@@ -115,9 +120,16 @@ export const ParamsForm = () => {
     const userInfo = { ...values, birthday: formattedDate };
 
     // Ваша логіка для обробки даних третього етапу, наприклад, відправлення їх на сервер
-    dispatch(updateUserParams(userInfo));
+    await dispatch(updateUserParams(userInfo));
 
     console.log('dispatchAllValues', userInfo);
+
+    setStep(1);
+    Object.keys(values).forEach(key => {
+      window.localStorage.setItem(key, JSON.stringify(''));
+    });
+    resetForm();
+    navigate('/diary');
 
     // Прибираємо флаг "завантаження" після успішної відправки
     setSubmitting(false);
@@ -230,7 +242,6 @@ export const ParamsForm = () => {
                     options={[
                       { value: 'female', label: 'Female' },
                       { value: 'male', label: 'Male' },
-                      { value: 'other', label: 'Other' },
                     ]}
                   />
                 </GenderWrap>

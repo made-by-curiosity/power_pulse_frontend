@@ -22,8 +22,18 @@ export const PrivateRoute = ({ component, restrictedTo = '/', samePage }) => {
 
   const shouldRedirect = !isRefreshing && !isLoggedIn;
 
+  // if (samePage) {
+  //   return shouldRedirect ? <Navigate to={restrictedTo} /> : component;
+  // }
+
   if (samePage) {
-    return shouldRedirect ? <Navigate to={restrictedTo} /> : component;
+    return shouldRedirect ? (
+      <Navigate to={restrictedTo} />
+    ) : isUserParamsEmpty ? (
+      component
+    ) : (
+      <Navigate to="/diary" />
+    );
   }
 
   return shouldRedirect ? (

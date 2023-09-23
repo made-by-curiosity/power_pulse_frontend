@@ -1,24 +1,32 @@
 import { forwardRef, useEffect, useState } from 'react';
 
 import { format } from 'date-fns';
-// import { DateSwitchButton } from 'components/DateSwitchButton/DateSwitchButton';
 import { Calendar } from 'components/Calendar/Calendar';
 
 import { CustomInput } from 'components/CustomInput/CustomInput';
 
-import { useLocalStorage } from 'hooks/useLocalStorage';
-
 const today = new Date();
 const INITIAL_DATE = new Date(today.toDateString());
 
+const getInitialBirthday = birthday => {
+  if (!birthday) {
+    return INITIAL_DATE;
+  }
 
+  const [day, month, year] = birthday.split('.');
+
+  const formattedDate = `${year}-${month}-${day}`;
+
+  return new Date(formattedDate);
+};
 
 export const BirthdayInput = ({ field, form, ...props }) => {
-  const [selectedDate, setSelectedDate] = useState(() => INITIAL_DATE);
+  const [selectedDate, setSelectedDate] = useState(() =>
+    getInitialBirthday(field.value)
+  );
   // eslint-disable-next-line
 
   useEffect(() => {
-   
     if (selectedDate === INITIAL_DATE) {
       form.setFieldValue('birthday', '');
       return;
@@ -28,13 +36,6 @@ export const BirthdayInput = ({ field, form, ...props }) => {
 
     form.setFieldValue('birthday', formattedDate);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-
-    // ! Тут мы записываем дату в локал
-    window.localStorage.setItem('birthday', JSON.stringify(formattedDate));
-
-    // ! Так мы можем взять дату с локала
-    // JSON.parse(localStorage.getItem('birthday'))
-
   }, [selectedDate]);
 
   const CustomBirthdayInput = forwardRef(({ value, onClick }, ref) => {
@@ -49,7 +50,7 @@ export const BirthdayInput = ({ field, form, ...props }) => {
         onClick={onClick}
         autoComplete="off"
         inputStyles={{ width: '160px' }}
-        // readOnly
+        readOnly
         calendar
       />
     );
