@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { updateName, updateUserParams } from 'redux/auth/operations';
+
 import { Formik, Field, Form } from 'formik';
+import * as Yup from 'yup';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { CustomInput } from 'components/CustomInput/CustomInput';
@@ -18,18 +23,39 @@ import {
   RadioGroupWrap,
 } from './UserForm.styled';
 
-export const UserForm = ({ user }) => {
+const validationSchema = Yup.object({
+  name: Yup.string().required('Name is required'),
+  height: Yup.number('Number')
+    .typeError('Height must be a number')
+    .positive('Height must be a positive number.')
+    .min(150, 'Height must be at least 150 cm')
+    .required('Height is required'),
+  currentWeight: Yup.number()
+    .typeError('Height must be a number')
+    .min(35, 'Current weight must be at least 35 kg')
+    .positive('Current weight must be a positive number.')
+    .required('Current weight is required'),
+  desiredWeight: Yup.number()
+    .typeError('Height must be a number')
+    .min(35, 'Desired weight  must be at least 35 kg')
+    .positive('Weight must be a positive number.')
+    .required('Height is required'),
+  // birthday: Yup.date().typeError('Must be a date (dd.mm.yyyy)'),
+  // .required('Bithday is required'),
+});
+
+export const UserForm = ({ userInfo }) => {
+  const { name, email, userParams } = userInfo;
+
   const {
-    name,
-    email,
     height,
     currentWeight,
     desiredWeight,
     birthday,
     blood,
     sex,
-    lifeStyleType,
-  } = user;
+    levelActivity,
+  } = userParams;
 
   const tablet = useMediaQuery('(min-width:768px)');
 
@@ -41,21 +67,26 @@ export const UserForm = ({ user }) => {
     desiredWeight: desiredWeight,
     birthday: birthday,
     blood: blood,
-    gender: sex,
-    level: lifeStyleType,
+    sex: sex,
+    levelActivity: levelActivity,
   };
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
     console.log(values);
-    // console.log(actions);
-    // actions.resetForm();
+
+    const { name, email, ...userParams } = values;
+
+    dispatch(updateName({ name: name }));
+    dispatch(updateUserParams(userParams));
   };
 
   return (
     <>
       <Formik
         initialValues={initialValues}
-        // validationSchema={1111}
+        validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         <UserFormWrapper>
@@ -68,7 +99,7 @@ export const UserForm = ({ user }) => {
                 autoComplete="off"
                 successFeedback={false}
                 component={CustomInput}
-                // inputStyles={{ width: '100%' }}
+                inputStyles={{}}
               />
               <Field
                 name="email"
@@ -77,7 +108,7 @@ export const UserForm = ({ user }) => {
                 successFeedback={false}
                 disabled="true"
                 component={CustomInput}
-                // inputStyles={{ width: '100%' }}
+                inputStyles={{ color: 'rgba(239, 237, 232, 0.6)' }}
               />
             </UserBasicInfoWrapper>
 
@@ -86,16 +117,16 @@ export const UserForm = ({ user }) => {
                 <Field
                   label="Height"
                   name="height"
-                  type="text"
+                  type="number"
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
-                  inputStyles={{ width: '165px' /*, marginBottom: '14px'*/ }}
+                  inputStyles={{ width: '165px' }}
                 />
                 <Field
                   label="Current Weight"
                   name="currentWeight"
-                  type="text"
+                  type="number"
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
@@ -106,7 +137,7 @@ export const UserForm = ({ user }) => {
                 <Field
                   label="Desired Weight"
                   name="desiredWeight"
-                  type="text"
+                  type="number"
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
@@ -114,7 +145,7 @@ export const UserForm = ({ user }) => {
                 />
                 <Field
                   name="birthday"
-                  type="date"
+                  type="text"
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
@@ -129,11 +160,15 @@ export const UserForm = ({ user }) => {
                   label="Blood"
                   name="blood"
                   radioGroupDirection={true}
+                  formControlStyling={{ mb: 0 }}
+                  formControlLabelStyling={{ mb: 0, mr: 1.1 }}
                   typographyStyling={
                     tablet ? { fontSize: 16 } : { fontSize: 14 }
                   }
                   formLabelStyling={
-                    tablet ? { fontSize: 16 } : { fontSize: 12 }
+                    tablet
+                      ? { fontSize: 14, color: 'rgba(239, 237, 232, 0.50)' }
+                      : { fontSize: 12, color: 'rgba(239, 237, 232, 0.50)' }
                   }
                   options={[
                     { value: '1', label: '1' },
@@ -145,55 +180,69 @@ export const UserForm = ({ user }) => {
               </BloodWrap>
               <GenderWrap>
                 <CustomGroupRadio
-                  label="Gender"
-                  name="gender"
+                  label="Sex"
+                  name="sex"
                   radioGroupDirection={true}
+                  formControlStyling={{ mb: 0 }}
+                  formControlLabelStyling={{ mb: 0, mr: 1.1 }}
                   typographyStyling={
                     tablet ? { fontSize: 16 } : { fontSize: 14 }
                   }
                   formLabelStyling={
-                    tablet ? { fontSize: 16 } : { fontSize: 12 }
+                    tablet
+                      ? { fontSize: 14, color: 'rgba(239, 237, 232, 0.50)' }
+                      : { fontSize: 12, color: 'rgba(239, 237, 232, 0.50)' }
                   }
                   options={[
-                    { value: 'female', label: 'Female' },
                     { value: 'male', label: 'Male' },
+                    { value: 'female', label: 'Female' },
                   ]}
                 />
               </GenderWrap>
             </RadioGroupWrap>
             <LevelWrap>
               <CustomGroupRadio
-                label="Level"
-                name="level"
+                label="Level activity"
+                name="levelActivity"
                 radioGroupDirection={false}
                 typographyStyling={tablet ? { fontSize: 16 } : { fontSize: 14 }}
                 formControlLabelStyling={tablet ? { mb: -1 } : { mb: 0.5 }}
                 formLabelStyling={
-                  tablet ? { mb: 0.5, fontSize: 16 } : { mb: 0.5, fontSize: 12 }
+                  tablet
+                    ? {
+                        mb: 0.5,
+                        fontSize: 14,
+                        color: 'rgba(239, 237, 232, 0.50)',
+                      }
+                    : {
+                        mb: 0.5,
+                        fontSize: 12,
+                        color: 'rgba(239, 237, 232, 0.50)',
+                      }
                 }
                 options={[
                   {
-                    value: 'sedentary',
+                    value: '1',
                     label:
                       'Sedentary lifestyle (little or no physical activity)',
                   },
                   {
-                    value: 'light',
+                    value: '2',
                     label:
                       'Light activity (light exercises/sports 1-3 days per week)',
                   },
                   {
-                    value: 'moderately',
+                    value: '3',
                     label:
                       'Moderately active (moderate exercises/sports 3-5 days per week)',
                   },
                   {
-                    value: 'very',
+                    value: '4',
                     label:
                       'Very active (intense exercises/sports 6-7 days per week)',
                   },
                   {
-                    value: 'extremely',
+                    value: '5',
                     label:
                       'Extremely active (very strenuous exercises/sports and physical work)',
                   },
@@ -201,16 +250,7 @@ export const UserForm = ({ user }) => {
               />
             </LevelWrap>
 
-            <br />
-            <MainButton
-              type="submit"
-              text="Save"
-              filled
-              disabled={false}
-              // btnStyles={{ marginBottom: '44px' }}
-              // modalButton="false"
-              // onClick={handleSubmit}
-            />
+            <MainButton type="submit" text="Save" filled disabled={false} />
           </Form>
         </UserFormWrapper>
       </Formik>

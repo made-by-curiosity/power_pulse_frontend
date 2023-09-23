@@ -18,12 +18,20 @@ const normOfSports = {
   number: '110 min',
 };
 
-export const UserCard = ({ user }) => {
-  const { name, avatar, dailyCalorieIntake, dailyNormOfSports } = user;
+export const UserCard = ({ userInfo }) => {
+  const {
+    name,
+    avatarUrl,
+    dailyCalorieIntake = 2200,
+    dailyNormOfSports = '110 min',
+  } = userInfo;
 
   return (
     <UserCardWrapper>
-      <Avatar name={name} avatar={avatar}></Avatar>
+      <Avatar
+        name={name}
+        avatar={avatarUrl === '' ? undefined : avatarUrl}
+      ></Avatar>
       <InfoCardsWrapper>
         <InfoCard
           icon={calories.icon}
