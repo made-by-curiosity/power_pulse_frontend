@@ -13,6 +13,8 @@ export const Calories = styled.button`
 
   @media screen and (min-width: 768px) {
     top: 866px;
+    bottom: 50px;
+
     right: 32px;
     width: 180px;
     height: 110px;

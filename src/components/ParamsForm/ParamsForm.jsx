@@ -60,7 +60,6 @@ function parseDateString(value, originalValue) {
   return parse(formattedDate, 'yyyy-MM-dd', new Date());
 }
 
-
 const validationSchema = Yup.object({
   height: Yup.number('Number')
     .typeError('Height must be a number')
@@ -81,32 +80,24 @@ const validationSchema = Yup.object({
     .transform(parseDateString)
     .max(eighteenYearsAgo, 'Age must be 18+')
     .required('Age is required'),
-  // birthday: Yup.date()
-  //   .max(eighteenYearsAgo, 'You must be older than 18 years old')
-  //   .required('Age is required'),
 });
-
-
 
 export const ParamsForm = () => {
   const initialValues = {
-    height: JSON.parse(localStorage.getItem("height")) || '',
-    currentWeight: JSON.parse(localStorage.getItem("currentWeight")) || '',
-    desiredWeight: JSON.parse(localStorage.getItem("desiredWeight")) || '',
-    birthday: JSON.parse(localStorage.getItem("birthday")) || '',
-    blood: JSON.parse(localStorage.getItem("blood")) || '1',
-    sex: JSON.parse(localStorage.getItem("sex")) || 'male',
-    levelActivity: JSON.parse(localStorage.getItem("levelActivity")) || '2',
+    height: JSON.parse(localStorage.getItem('height')) || '',
+    currentWeight: JSON.parse(localStorage.getItem('currentWeight')) || '',
+    desiredWeight: JSON.parse(localStorage.getItem('desiredWeight')) || '',
+    birthday: JSON.parse(localStorage.getItem('birthday')) || '',
+    blood: JSON.parse(localStorage.getItem('blood')) || '1',
+    sex: JSON.parse(localStorage.getItem('sex')) || 'male',
+    levelActivity: JSON.parse(localStorage.getItem('levelActivity')) || '2',
   };
 
-
   const dispatch = useDispatch();
-
 
   const tablet = useMediaQuery('(min-width:768px)');
 
   const [step, setStep] = useLocalStorage('step', 1);
-
 
   const handleClickNext = () => {
     setStep(state => state + 1);

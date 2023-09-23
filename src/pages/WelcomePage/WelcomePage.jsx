@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { WelcomeBtns, TitleText, WelcomeTitle } from './WelcomePage.styled';
 
-// import icons from '../../assets/icons/svg-sprite.svg';
 const WelcomePage = () => {
   const navigate = useNavigate();
   const goToSingUp = () => {
@@ -37,7 +36,7 @@ const WelcomePage = () => {
             onClick={goToSingIn}
             btnStyles={{ width: 'max-content' }}
           />
-        </WelcomeBtns>
+          </WelcomeBtns>
         <CaloriesBtn />
         <TutorialBtn />
       </Container>
