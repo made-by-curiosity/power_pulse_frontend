@@ -5,6 +5,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute/RestrictedRoute';
 import { Layout } from 'components/Layout/Layout';
+import ExerciseNavigation from 'components/Nav/ExerciseNavigation';
 
 const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage'));
 const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage'));
