@@ -7,7 +7,7 @@ import icons from '../../assets/icons/svg-sprite.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const CustomModal = ({ onClose, children }) => {
+export const CustomModal = ({ onClose, children, modalStyles, modalTabletStyles, modalDesktopStyles }) => {
    
 
     const handleBackdropClick = e => {
@@ -30,7 +30,7 @@ export const CustomModal = ({ onClose, children }) => {
 
   return createPortal(
     <BackDrop onClick={handleBackdropClick}>
-      <Modal>
+      <Modal modalStyles={modalStyles} modalTabletStyles={modalTabletStyles} modalDesktopStyles={modalDesktopStyles}>
         <CloseModalBtn type="button" onClick={onClose}>
             <svg width="20" height="20" stroke="white">
               <use href={icons + '#icon-closemodal'} />

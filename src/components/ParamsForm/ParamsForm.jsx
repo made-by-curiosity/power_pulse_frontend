@@ -207,19 +207,6 @@ export const ParamsForm = () => {
                 </svg>
               </NextBtn>
               
-              {/* Модалка */}
-              
-              <button type="button" onClick={toogleModal}>
-                Open Modal
-              </button>
-              {isModalOpen && (
-                <CustomModal onClose={toogleModal}
-                >
-                  <h1>Title as children modal</h1>
-                </CustomModal>
-              )}
-
-
             </>
           )}
           {step === 2 && (

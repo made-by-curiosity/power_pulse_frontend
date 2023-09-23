@@ -17,18 +17,24 @@ export const Modal = styled.div`
 
   transform: translate(-50%, -50%);
 
-  width: 400px;
-  height: 200px;
+  width: 600px;
+  height: 300px;
   padding: 40px;
 
   background-color: #10100F;
   border-radius: 12px;
   border: 1px solid #efede820;
-
-
-  
-
   text-align: center;
+
+  ${props => props.modalStyles}
+
+  @media screen and (min-width: 768px) {
+
+    ${props => props.modalTabletStyles}
+  }
+  @media screen and (min-width: 1440px) {
+    ${props => props.modalDesktopStyles}
+  }
 `;
 
 export const CloseModalBtn = styled.button`
