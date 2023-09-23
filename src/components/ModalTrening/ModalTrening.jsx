@@ -52,7 +52,7 @@ export const ModalTrening = () => {
       modalTabletStyles={{ width: '694px', height: '550px',display: 'flex',
     flexDirection: 'inherit',gap: '16px',
     margin: '0px',
-    alignItems: 'flex-start', }}
+    alignItems: 'flex-start', }} 
     >
           <>
               <DivColumn>
