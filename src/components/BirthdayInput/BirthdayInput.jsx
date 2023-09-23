@@ -6,14 +6,19 @@ import { Calendar } from 'components/Calendar/Calendar';
 
 import { CustomInput } from 'components/CustomInput/CustomInput';
 
+import { useLocalStorage } from 'hooks/useLocalStorage';
+
 const today = new Date();
 const INITIAL_DATE = new Date(today.toDateString());
+
+
 
 export const BirthdayInput = ({ field, form, ...props }) => {
   const [selectedDate, setSelectedDate] = useState(() => INITIAL_DATE);
   // eslint-disable-next-line
 
   useEffect(() => {
+   
     if (selectedDate === INITIAL_DATE) {
       form.setFieldValue('birthday', '');
       return;
@@ -23,6 +28,13 @@ export const BirthdayInput = ({ field, form, ...props }) => {
 
     form.setFieldValue('birthday', formattedDate);
     // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // ! Тут мы записываем дату в локал
+    window.localStorage.setItem('birthday', JSON.stringify(formattedDate));
+
+    // ! Так мы можем взять дату с локала
+    // JSON.parse(localStorage.getItem('birthday'))
+
   }, [selectedDate]);
 
   const CustomBirthdayInput = forwardRef(({ value, onClick }, ref) => {

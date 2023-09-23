@@ -18,7 +18,6 @@ import {
   CaloriesBtnWrap,
   TutorialBtnWrap,
 } from 'components/ParamsForm/ParamsForm.styled';
-import { useState } from 'react';
 
 import icons from '../../assets/icons/svg-sprite.svg';
 
@@ -36,6 +35,11 @@ import { CustomInput } from 'components/CustomInput/CustomInput';
 import { CustomGroupRadio } from 'components/CustomRadio/CustomGroupRadio';
 import { MainButton } from 'components/MainButton/MainButton';
 import { isDate, parse } from 'date-fns';
+
+import { useDispatch } from 'react-redux';
+import { updateUserParams } from 'redux/auth/operations';
+
+import { useLocalStorage } from 'hooks/useLocalStorage';
 
 const today = new Date();
 const eighteenYearsAgo = new Date(
@@ -56,7 +60,6 @@ function parseDateString(value, originalValue) {
   return parse(formattedDate, 'yyyy-MM-dd', new Date());
 }
 
-// console.log(eighteenYearsAgo);
 
 const validationSchema = Yup.object({
   height: Yup.number('Number')
@@ -83,23 +86,27 @@ const validationSchema = Yup.object({
   //   .required('Age is required'),
 });
 
+
+
 export const ParamsForm = () => {
   const initialValues = {
-    height: '',
-    currentWeight: '',
-    desiredWeight: '',
-    birthday: new Date(),
-    blood: '1',
-    gender: 'male',
-    level: 'light',
+    height: JSON.parse(localStorage.getItem("height")) || '',
+    currentWeight: JSON.parse(localStorage.getItem("currentWeight")) || '',
+    desiredWeight: JSON.parse(localStorage.getItem("desiredWeight")) || '',
+    birthday: JSON.parse(localStorage.getItem("birthday")) || '',
+    blood: JSON.parse(localStorage.getItem("blood")) || '1',
+    sex: JSON.parse(localStorage.getItem("sex")) || 'male',
+    levelActivity: JSON.parse(localStorage.getItem("levelActivity")) || '2',
   };
 
-  // console.log(initialValues.birthday)
+
+  const dispatch = useDispatch();
+
 
   const tablet = useMediaQuery('(min-width:768px)');
 
-  const [step, setStep] = useState(1);
-  // console.log(step);
+  const [step, setStep] = useLocalStorage('step', 1);
+
 
   const handleClickNext = () => {
     setStep(state => state + 1);
@@ -117,6 +124,8 @@ export const ParamsForm = () => {
     const userInfo = { ...values, birthday: formattedDate };
 
     // Ваша логіка для обробки даних третього етапу, наприклад, відправлення їх на сервер
+    dispatch(updateUserParams(userInfo));
+
     console.log('dispatchAllValues', userInfo);
 
     // Прибираємо флаг "завантаження" після успішної відправки
@@ -188,7 +197,7 @@ export const ParamsForm = () => {
               <NextBtn type="submit">
                 Next{' '}
                 <svg width="20" height="20" stroke="#E6533C">
-                  <use href={icons + '#icon-nextarrow'} />
+                  <use href={icons + '#icon-next'} />
                 </svg>
               </NextBtn>
             </>
@@ -219,7 +228,7 @@ export const ParamsForm = () => {
                 <GenderWrap>
                   <CustomGroupRadio
                     label="Gender"
-                    name="gender"
+                    name="sex"
                     radioGroupDirection={false}
                     typographyStyling={
                       tablet ? { fontSize: 16 } : { fontSize: 14 }
@@ -238,7 +247,7 @@ export const ParamsForm = () => {
               <LevelWrap>
                 <CustomGroupRadio
                   label="Level"
-                  name="level"
+                  name="levelActivity"
                   radioGroupDirection={false}
                   typographyStyling={
                     tablet ? { fontSize: 16 } : { fontSize: 14 }
@@ -249,27 +258,27 @@ export const ParamsForm = () => {
                   }
                   options={[
                     {
-                      value: 'sedentary',
+                      value: '1',
                       label:
                         'Sedentary lifestyle (little or no physical activity)',
                     },
                     {
-                      value: 'light',
+                      value: '2',
                       label:
                         'Light activity (light exercises/sports 1-3 days per week)',
                     },
                     {
-                      value: 'moderately',
+                      value: '3',
                       label:
                         'Moderately active (moderate exercises/sports 3-5 days per week)',
                     },
                     {
-                      value: 'very',
+                      value: '4',
                       label:
                         'Very active (intense exercises/sports 6-7 days per week)',
                     },
                     {
-                      value: 'extremely',
+                      value: '5',
                       label:
                         'Extremely active (very strenuous exercises/sports and physical work)',
                     },
@@ -322,7 +331,7 @@ export const ParamsForm = () => {
           <NextBtn onClick={handleClickNext}>
             Next{' '}
             <svg width="20" height="20" stroke="#E6533C">
-              <use href={icons + '#icon-nextarrow'} />
+              <use href={icons + '#icon-next'} />
             </svg>
           </NextBtn>
         )}
