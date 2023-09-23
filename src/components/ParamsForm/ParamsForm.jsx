@@ -39,8 +39,15 @@ import { isDate, parse } from 'date-fns';
 import { useDispatch } from 'react-redux';
 import { updateUserParams } from 'redux/auth/operations';
 
+import { useState } from 'react';
+
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import { useEffect } from 'react';
+
+
+import { CustomModal } from 'components/CustomModal/CustomModal';
+
+
 
 const today = new Date();
 const eighteenYearsAgo = new Date(
@@ -93,6 +100,14 @@ export const ParamsForm = () => {
     sex: 'male',
     levelActivity: '2',
   };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+ 
+  const toogleModal = () => {
+    setIsModalOpen(prevState => !prevState);
+  };
+
 
   const dispatch = useDispatch();
 
@@ -198,6 +213,7 @@ export const ParamsForm = () => {
                   <use href={icons + '#icon-next'} />
                 </svg>
               </NextBtn>
+              
             </>
           )}
           {step === 2 && (
