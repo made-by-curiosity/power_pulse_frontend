@@ -109,10 +109,7 @@ export const ParamsForm = () => {
     setStep(state => state - 1);
   };
 
-  const handleThirdStepSubmit = async (
-    values,
-    { setSubmitting, resetForm }
-  ) => {
+  const handleThirdStepSubmit = (values, { setSubmitting }) => {
     const [day, month, year] = values.birthday.split('.');
 
     const formattedDate = `${year}-${month}-${day}`;
@@ -120,25 +117,21 @@ export const ParamsForm = () => {
     const userInfo = { ...values, birthday: formattedDate };
 
     // Ваша логіка для обробки даних третього етапу, наприклад, відправлення їх на сервер
-    await dispatch(updateUserParams(userInfo));
+    dispatch(updateUserParams(userInfo));
 
     console.log('dispatchAllValues', userInfo);
-
-    setStep(1);
-    Object.keys(values).forEach(key => {
-      window.localStorage.setItem(key, JSON.stringify(''));
-    });
-    resetForm();
-    navigate('/diary');
-
     // Прибираємо флаг "завантаження" після успішної відправки
     setSubmitting(false);
   };
 
-  const onSubmit = (values, { setSubmitting }) => {
+  const onSubmit = (values, { setSubmitting, resetForm }) => {
     if (step === 3) {
+      setStep(1);
       // Відправка даних на сервер лише на третьому етапі
       handleThirdStepSubmit(values, { setSubmitting });
+
+      resetForm();
+      navigate('/diary');
     } else {
       // Перехід на наступний етап (якщо необхідно)
       setStep(state => state + 1);

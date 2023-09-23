@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useLocalStorage = (key, defaultValue) => {
   const [state, setState] = useState(
@@ -7,6 +7,7 @@ export const useLocalStorage = (key, defaultValue) => {
 
   useEffect(() => {
     window.localStorage.setItem(key, JSON.stringify(state));
+    console.log('добавлено ', state);
   }, [state, key]);
 
   return [state, setState];
