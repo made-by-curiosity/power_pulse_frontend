@@ -41,6 +41,7 @@ import { updateUserParams } from 'redux/auth/operations';
 
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
 
 const today = new Date();
 const eighteenYearsAgo = new Date(
@@ -95,11 +96,16 @@ export const ParamsForm = () => {
   };
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const tablet = useMediaQuery('(min-width:768px)');
 
   const [step, setStep] = useLocalStorage('step', 1);
+
+  useEffect(() => {
+    setStep(1);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleClickNext = () => {
     setStep(state => state + 1);
@@ -119,19 +125,16 @@ export const ParamsForm = () => {
     // Ваша логіка для обробки даних третього етапу, наприклад, відправлення їх на сервер
     dispatch(updateUserParams(userInfo));
 
-    console.log('dispatchAllValues', userInfo);
     // Прибираємо флаг "завантаження" після успішної відправки
     setSubmitting(false);
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
     if (step === 3) {
-      setStep(1);
       // Відправка даних на сервер лише на третьому етапі
       handleThirdStepSubmit(values, { setSubmitting });
 
       resetForm();
-      navigate('/diary');
     } else {
       // Перехід на наступний етап (якщо необхідно)
       setStep(state => state + 1);
