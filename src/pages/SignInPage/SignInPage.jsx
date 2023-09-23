@@ -1,16 +1,14 @@
-import { BackgroundImg } from "components/BackgroundImg/BackgroundImg";
-import { Container } from "components/Container/Container";
-import SignInForm from "components/SingInForm/SingInForm";
-
+import { BackgroundImg } from 'components/BackgroundImg/BackgroundImg';
+import { Container } from 'components/Container/Container';
+import SignInForm from 'components/SingInForm/SingInForm';
 
 const SignInPage = () => {
-  
   return (
     <BackgroundImg>
       <Container>
-        <SignInForm/>
+        <SignInForm />
       </Container>
-   </BackgroundImg>
+    </BackgroundImg>
   );
 };
 

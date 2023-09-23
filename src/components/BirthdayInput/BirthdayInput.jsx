@@ -1,7 +1,6 @@
 import { forwardRef, useEffect, useState } from 'react';
 
 import { format } from 'date-fns';
-// import { DateSwitchButton } from 'components/DateSwitchButton/DateSwitchButton';
 import { Calendar } from 'components/Calendar/Calendar';
 
 import { CustomInput } from 'components/CustomInput/CustomInput';
@@ -9,8 +8,22 @@ import { CustomInput } from 'components/CustomInput/CustomInput';
 const today = new Date();
 const INITIAL_DATE = new Date(today.toDateString());
 
+const getInitialBirthday = birthday => {
+  if (!birthday) {
+    return INITIAL_DATE;
+  }
+
+  const [day, month, year] = birthday.split('.');
+
+  const formattedDate = `${year}-${month}-${day}`;
+
+  return new Date(formattedDate);
+};
+
 export const BirthdayInput = ({ field, form, ...props }) => {
-  const [selectedDate, setSelectedDate] = useState(() => INITIAL_DATE);
+  const [selectedDate, setSelectedDate] = useState(() =>
+    getInitialBirthday(field.value)
+  );
   // eslint-disable-next-line
 
   useEffect(() => {
@@ -37,7 +50,7 @@ export const BirthdayInput = ({ field, form, ...props }) => {
         onClick={onClick}
         autoComplete="off"
         inputStyles={{ width: '160px' }}
-        // readOnly
+        readOnly
         calendar
       />
     );
