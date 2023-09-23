@@ -4,6 +4,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Typography } from "@mui/material";
+import { useEffect } from 'react';
 
 import { useField } from 'formik';
 
@@ -42,6 +43,11 @@ const typographyDefaultStyle = {
 export const CustomGroupRadio =  ({label, formControlStyling, formLabelStyling, radioStyling, typographyStyling, formControlLabelStyling, radioGroupDirection, ...props}) => {
     const [field] = useField(props);
     
+    useEffect(() => {
+      window.localStorage.setItem(field.name, JSON.stringify(field.value));
+    }, [field.name, field.value]);
+
+
     return (
       <>
       <FormControl sx={{...formControlDefaultStyle, ...formControlStyling}}>

@@ -46,6 +46,8 @@ export const getUserInfo = async () => {
   return res.data;
 };
 
+
+
 export const updateUserInfo = async userParams => {
   const res = await axios.put('/api/users/params', userParams);
 
