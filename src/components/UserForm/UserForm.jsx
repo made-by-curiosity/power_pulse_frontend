@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { updateName, updateUserParams } from 'redux/auth/operations';
+
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -40,18 +44,18 @@ const validationSchema = Yup.object({
   // .required('Bithday is required'),
 });
 
-export const UserForm = ({ user }) => {
+export const UserForm = ({ userInfo }) => {
+  const { name, email, userParams } = userInfo;
+
   const {
-    name,
-    email,
     height,
     currentWeight,
     desiredWeight,
     birthday,
     blood,
     sex,
-    lifeStyleType,
-  } = user;
+    levelActivity,
+  } = userParams;
 
   const tablet = useMediaQuery('(min-width:768px)');
 
@@ -63,14 +67,19 @@ export const UserForm = ({ user }) => {
     desiredWeight: desiredWeight,
     birthday: birthday,
     blood: blood,
-    gender: sex,
-    level: lifeStyleType,
+    sex: sex,
+    levelActivity: levelActivity,
   };
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
     console.log(values);
-    // console.log(actions);
-    // actions.resetForm();
+
+    const { name, email, ...userParams } = values;
+
+    dispatch(updateName({ name: name }));
+    dispatch(updateUserParams(userParams));
   };
 
   return (
@@ -172,7 +181,7 @@ export const UserForm = ({ user }) => {
               <GenderWrap>
                 <CustomGroupRadio
                   label="Sex"
-                  name="gender"
+                  name="sex"
                   radioGroupDirection={true}
                   formControlStyling={{ mb: 0 }}
                   formControlLabelStyling={{ mb: 0, mr: 1.1 }}
@@ -185,8 +194,8 @@ export const UserForm = ({ user }) => {
                       : { fontSize: 12, color: 'rgba(239, 237, 232, 0.50)' }
                   }
                   options={[
-                    { value: 'female', label: 'Female' },
                     { value: 'male', label: 'Male' },
+                    { value: 'female', label: 'Female' },
                   ]}
                 />
               </GenderWrap>
@@ -194,7 +203,7 @@ export const UserForm = ({ user }) => {
             <LevelWrap>
               <CustomGroupRadio
                 label="Level activity"
-                name="level"
+                name="levelActivity"
                 radioGroupDirection={false}
                 typographyStyling={tablet ? { fontSize: 16 } : { fontSize: 14 }}
                 formControlLabelStyling={tablet ? { mb: -1 } : { mb: 0.5 }}
@@ -213,27 +222,27 @@ export const UserForm = ({ user }) => {
                 }
                 options={[
                   {
-                    value: 'sedentary',
+                    value: '1',
                     label:
                       'Sedentary lifestyle (little or no physical activity)',
                   },
                   {
-                    value: 'light',
+                    value: '2',
                     label:
                       'Light activity (light exercises/sports 1-3 days per week)',
                   },
                   {
-                    value: 'moderately',
+                    value: '3',
                     label:
                       'Moderately active (moderate exercises/sports 3-5 days per week)',
                   },
                   {
-                    value: 'very',
+                    value: '4',
                     label:
                       'Very active (intense exercises/sports 6-7 days per week)',
                   },
                   {
-                    value: 'extremely',
+                    value: '5',
                     label:
                       'Extremely active (very strenuous exercises/sports and physical work)',
                   },

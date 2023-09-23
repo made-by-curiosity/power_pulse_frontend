@@ -1,32 +1,23 @@
+import { useSelector, useDispatch } from 'react-redux';
+
+import { selectUser } from 'redux/auth/selectors';
+
 import { Container } from 'components/Container/Container';
 import { UserCard } from 'components/UserCard/UserCard';
 import { UserForm } from 'components/UserForm/UserForm';
-
 import { PageWrapper } from './ProfilePage.styled';
 import { ProfilePageTitle } from '../../components/ProfilePageTitle/ProfilePageTitle';
 
-const user = {
-  name: 'Anna Rybachok',
-  email: 'annarybachok@gmail.com',
-  avatar: undefined,
-  height: '165',
-  currentWeight: '52',
-  desiredWeight: '47',
-  birthday: '24.09.1998',
-  blood: '1',
-  sex: 'female',
-  lifeStyleType: 'light',
-  dailyCalorieIntake: 2200,
-  dailyNormOfSports: '110 min',
-};
-
 const ProfilePage = () => {
+  const userInfo = useSelector(selectUser);
+  // console.log(userInfo);
+
   return (
     <Container>
       <ProfilePageTitle />
       <PageWrapper>
-        <UserCard user={user}></UserCard>
-        <UserForm user={user}></UserForm>
+        <UserCard userInfo={userInfo}></UserCard>
+        <UserForm userInfo={userInfo}></UserForm>
       </PageWrapper>
     </Container>
   );
