@@ -1,5 +1,5 @@
 import PortalReactDOM from 'react-dom';
-import { UserNav } from './BurgerMenu.styled';
+import { BurgerLayout, UserNav } from './BurgerMenu.styled';
 import { BurgerLink } from './BurgerMenu.styled';
 import { BurgerCloseButton } from './BurgerCloseButton/BurgerCloseButton';
 import { BurgerLogoutButton } from './BurgerLogutButton/BurgerLogoutButton';
@@ -17,13 +17,16 @@ export const BurgerMenu = ({ onBurgerButton }) => {
   }, [onBurgerButton]);
 
   return PortalReactDOM.createPortal(
-    <UserNav>
-      <BurgerCloseButton onClick={onBurgerButton} />
-      <BurgerLink to="/diary">Diary</BurgerLink>
-      <BurgerLink to="/products">Products</BurgerLink>
-      <BurgerLink to="/exercises">Exercises</BurgerLink>
-      <BurgerLogoutButton />
-    </UserNav>,
+    <>
+      <BurgerLayout onClick={onBurgerButton} />
+      <UserNav>
+        <BurgerCloseButton onClick={onBurgerButton} />
+        <BurgerLink to="/diary">Diary</BurgerLink>
+        <BurgerLink to="/products">Products</BurgerLink>
+        <BurgerLink to="/exercises">Exercises</BurgerLink>
+        <BurgerLogoutButton />
+      </UserNav>
+    </>,
     document.querySelector('#burger-menu-root')
   );
 };
