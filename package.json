@@ -17,6 +17,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.0",
     "formik": "^2.4.4",
+    "lodash.throttle": "^4.1.1",
     "modern-normalize": "^2.0.0",
     "notiflix": "^3.2.6",
     "react": "^18.1.0",

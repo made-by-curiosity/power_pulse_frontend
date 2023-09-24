@@ -9,42 +9,63 @@ import {
   updateName,
   updateAvatar,
   signUpWithToken,
-  getBodyParts,
-  getMuscles,
-  getEquipment
+  resetStore,
 } from './operations';
 
 const initialState = {
-  user: { name: null, email: null, userParams: null, avatarUrl: null, createdAt: null },
+  user: {
+    name: null,
+    email: null,
+    userParams: null,
+    avatarUrl: null,
+    bmr: null,
+  },
   token: null,
   isRefreshing: false,
-  isLoggedIn: false,
   error: null,
-  bodyparts: [],
-  muscles:[],
-  equipment: [],
-
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder => {
+    builder.addCase(resetStore.fulfilled, (state, action) => {
+      state.user = {
+        name: null,
+        email: null,
+        userParams: null,
+        avatarUrl: null,
+        bmr: null,
+      };
+      state.token = null;
+      state.isRefreshing = false;
+    });
+    builder.addCase(signUp.pending, (state, action) => {
+      state.isRefreshing = true;
+    });
     builder.addCase(signUp.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      state.isLoggedIn = true;
+      state.isRefreshing = false;
     });
     builder.addCase(signUp.rejected, (state, action) => {
       state.error = action.payload;
+      state.isRefreshing = false;
+    });
+    builder.addCase(logIn.pending, (state, action) => {
+      state.isRefreshing = true;
     });
     builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      state.isLoggedIn = true;
+      state.isRefreshing = false;
     });
     builder.addCase(logIn.rejected, (state, action) => {
       state.error = action.payload;
+      state.isRefreshing = false;
+    });
+    builder.addCase(logOut.pending, (state, action) => {
+      state.isRefreshing = true;
     });
     builder.addCase(logOut.fulfilled, state => {
       state.user = {
@@ -52,74 +73,82 @@ const authSlice = createSlice({
         email: null,
         userParams: null,
         avatarUrl: null,
+        bmr: null,
       };
       state.token = null;
-      state.isLoggedIn = false;
+      state.isRefreshing = false;
     });
     builder.addCase(logOut.rejected, (state, action) => {
       state.error = action.payload;
+      state.isRefreshing = false;
     });
     builder.addCase(refreshUser.pending, state => {
       state.isRefreshing = true;
     });
     builder.addCase(refreshUser.fulfilled, (state, action) => {
       state.user = action.payload;
-      state.isLoggedIn = true;
       state.isRefreshing = false;
     });
-    builder.addCase(refreshUser.rejected, (state,action) => {
+    builder.addCase(refreshUser.rejected, (state, action) => {
       state.error = action.payload;
       state.isRefreshing = false;
     });
-    builder.addCase(signUpWithToken.fulfilled,(state,action)=>{
+    builder.addCase(signUpWithToken.pending, (state, action) => {
+      state.isRefreshing = true;
+    });
+    builder.addCase(signUpWithToken.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      state.isLoggedIn = true;
+      state.isRefreshing = false;
     });
-    builder.addCase(signUpWithToken.rejected,(state,action)=>{
+    builder.addCase(signUpWithToken.rejected, (state, action) => {
       state.error = action.payload;
+      state.isRefreshing = false;
+    });
+    builder.addCase(getUserParams.pending, (state, action) => {
+      state.isRefreshing = true;
     });
     builder.addCase(getUserParams.fulfilled, (state, action) => {
       state.user = action.payload;
+      state.isRefreshing = false;
     });
     builder.addCase(getUserParams.rejected, (state, action) => {
       state.error = action.payload;
+      state.isRefreshing = false;
+    });
+    builder.addCase(updateUserParams.pending, (state, action) => {
+      state.isRefreshing = true;
     });
     builder.addCase(updateUserParams.fulfilled, (state, action) => {
-      state.user.userParams = action.payload;
+      state.user.userParams = action.payload.userParams;
+      state.user.bmr = action.payload.bmr;
+      state.isRefreshing = false;
     });
     builder.addCase(updateUserParams.rejected, (state, action) => {
       state.error = action.payload;
+      state.isRefreshing = false;
+    });
+    builder.addCase(updateName.pending, (state, action) => {
+      state.isRefreshing = true;
     });
     builder.addCase(updateName.fulfilled, (state, action) => {
       state.user.name = action.payload;
+      state.isRefreshing = false;
     });
     builder.addCase(updateName.rejected, (state, action) => {
       state.error = action.payload;
+      state.isRefreshing = false;
+    });
+    builder.addCase(updateAvatar.pending, (state, action) => {
+      state.isRefreshing = true;
     });
     builder.addCase(updateAvatar.fulfilled, (state, action) => {
       state.user.avatarUrl = action.payload;
+      state.isRefreshing = false;
     });
     builder.addCase(updateAvatar.rejected, (state, action) => {
       state.error = action.payload;
-    });
-    builder.addCase(getBodyParts.fulfilled, (state, action) => {
-      state.bodyparts = action.payload;
-    });
-    builder.addCase(getBodyParts.rejected, (state, action) => {
-      state.error = action.payload;
-    });
-    builder.addCase(getMuscles.fulfilled, (state, action) => {
-      state.muscles = action.payload;
-    });
-    builder.addCase(getMuscles.rejected, (state, action) => {
-      state.error = action.payload;
-    });
-    builder.addCase(getEquipment.fulfilled, (state, action) => {
-      state.equipment = action.payload;
-    });
-    builder.addCase(getEquipment.rejected, (state, action) => {
-      state.error = action.payload;
+      state.isRefreshing = false;
     });
   },
 });
