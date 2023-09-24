@@ -70,6 +70,15 @@ const authSlice = createSlice({
     builder.addCase(refreshUser.rejected, (state, action) => {
       state.error = action.payload;
       state.isRefreshing = false;
+      state.user = {
+        name: null,
+        email: null,
+        userParams: null,
+        avatarUrl: null,
+        bmr: null,
+      };
+      state.token = null;
+      state.isLoggedIn = false;
     });
     builder.addCase(signUpWithToken.fulfilled, (state, action) => {
       state.user = action.payload.user;
