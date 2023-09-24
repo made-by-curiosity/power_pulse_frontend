@@ -15,6 +15,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     dispatch(getUserParams());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const userInfo = useSelector(selectUser);

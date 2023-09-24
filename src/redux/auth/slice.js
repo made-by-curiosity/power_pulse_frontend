@@ -8,6 +8,7 @@ import {
   updateUserParams,
   updateName,
   updateAvatar,
+  signUpWithToken,
 } from './operations';
 
 const initialState = {
@@ -66,8 +67,17 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isRefreshing = false;
     });
-    builder.addCase(refreshUser.rejected, state => {
+    builder.addCase(refreshUser.rejected, (state, action) => {
+      state.error = action.payload;
       state.isRefreshing = false;
+    });
+    builder.addCase(signUpWithToken.fulfilled, (state, action) => {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    });
+    builder.addCase(signUpWithToken.rejected, (state, action) => {
+      state.error = action.payload;
     });
     builder.addCase(getUserParams.fulfilled, (state, action) => {
       state.user = action.payload;

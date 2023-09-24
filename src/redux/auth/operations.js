@@ -70,6 +70,20 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
+export const signUpWithToken = createAsyncThunk(
+  'auth/signUpWithToken',
+  async (credentials, thunkAPI) => {
+    try {
+      setAuthHeader(credentials);
+      const data = await getCurrentUser();
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 // PARAMS
 
 export const getUserParams = createAsyncThunk(
