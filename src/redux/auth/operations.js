@@ -75,7 +75,9 @@ export const signUpWithToken = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       setAuthHeader(credentials);
+      console.log(credentials);
       const data = await getCurrentUser();
+      console.log(data);
 
       return data;
     } catch (error) {
