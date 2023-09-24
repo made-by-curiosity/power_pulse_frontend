@@ -1,18 +1,11 @@
-import { NavLink } from 'react-router-dom';
 import { HeaderLink, NavigationBar } from './NavBar.styled';
 
 export const NavBar = () => {
   return (
     <NavigationBar>
-      <NavLink to="/diary">
-        <HeaderLink>Diary</HeaderLink>
-      </NavLink>
-      <NavLink to="/products">
-        <HeaderLink>Products</HeaderLink>
-      </NavLink>
-      <NavLink to="/exercises">
-        <HeaderLink>Exercises</HeaderLink>
-      </NavLink>
+      <HeaderLink to="/diary">Diary</HeaderLink>
+      <HeaderLink to="/products">Products</HeaderLink>
+      <HeaderLink to="/exercises">Exercises</HeaderLink>
     </NavigationBar>
   );
 };
