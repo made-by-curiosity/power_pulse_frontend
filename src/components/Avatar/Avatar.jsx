@@ -32,11 +32,10 @@ export const Avatar = ({ name, email, avatar = iconUser }) => {
   const handleAddAvatar = e => {
     // console.log(e.target.files[0]);
 
-    formData.append('avatar', e.target.files[0]);
+    formData.set('avatar', e.target.files[0]);
     dispatch(updateAvatar(formData));
 
     e.target.value = '';
-    formData.delete('avatar');
   };
 
   return (
