@@ -45,6 +45,9 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     await logOutUser();
     clearAuthHeader();
   } catch (error) {
+    if (error.response && error.response.status === 401) {
+      thunkAPI.dispatch(resetStore());
+    }
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -65,6 +68,9 @@ export const refreshUser = createAsyncThunk(
 
       return data.user;
     } catch (error) {
+      if (error.response && error.response.status === 401) {
+        thunkAPI.dispatch(resetStore());
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -75,9 +81,7 @@ export const signUpWithToken = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       setAuthHeader(credentials);
-      console.log(credentials);
       const data = await getCurrentUser();
-      console.log(data);
 
       return data;
     } catch (error) {
@@ -96,6 +100,9 @@ export const getUserParams = createAsyncThunk(
 
       return { ...user, bmr };
     } catch (error) {
+      if (error.response && error.response.status === 401) {
+        thunkAPI.dispatch(resetStore());
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -112,6 +119,9 @@ export const updateUserParams = createAsyncThunk(
         bmr: data.bmr,
       };
     } catch (error) {
+      if (error.response && error.response.status === 401) {
+        thunkAPI.dispatch(resetStore());
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -125,6 +135,9 @@ export const updateName = createAsyncThunk(
 
       return data.user.name;
     } catch (error) {
+      if (error.response && error.response.status === 401) {
+        thunkAPI.dispatch(resetStore());
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -137,6 +150,20 @@ export const updateAvatar = createAsyncThunk(
       const data = await updateUserAvatar(credentials);
 
       return data.user.avatar;
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        thunkAPI.dispatch(resetStore());
+      }
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resetStore = createAsyncThunk(
+  'auth/resetStore',
+  async (_, thunkAPI) => {
+    try {
+      clearAuthHeader();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
