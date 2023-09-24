@@ -1,4 +1,4 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import sprite from '../../assets/icons/svg-sprite.svg';
 import {
   TitleWrapper,
@@ -9,11 +9,27 @@ import {
 import { format } from 'date-fns';
 import { DateSwitchButton } from 'components/DateSwitchButton/DateSwitchButton';
 import { Calendar } from 'components/Calendar/Calendar';
+import PropTypes from 'prop-types';
 
-export const DiaryCalendar = () => {
+export const DiaryCalendar = ({ createdAt }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   // eslint-disable-next-line
   const [isDisabled, setIsDisabled] = useState(false);
+
+  const clearTime = date => {
+    date.setHours(0, 0, 0, 0);
+  };
+
+  useEffect(() => {
+    clearTime(createdAt);
+    clearTime(selectedDate);
+
+    if (selectedDate.getTime() === createdAt.getTime()) {
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    }
+  }, [selectedDate, createdAt]);
 
   const toPreviosDay = () => {
     const previosDate = new Date(selectedDate);
@@ -32,7 +48,7 @@ export const DiaryCalendar = () => {
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
       <DateSwitcherCont>
-        <TitleWrapper onClick={onClick} ref={ref} type='button'>
+        <TitleWrapper onClick={onClick} ref={ref} type="button">
           {format(selectedDate, 'dd/MM/yyyy')}
           <CalendarIMG>
             <use href={sprite + '#icon-calendar'}></use>
@@ -56,6 +72,11 @@ export const DiaryCalendar = () => {
       input={<CustomInput />}
       selectedDate={selectedDate}
       setSelectedDate={setSelectedDate}
+      createdAt={createdAt}
     />
   );
+};
+
+DiaryCalendar.propTypes = {
+  createdAt: PropTypes.instanceOf(Date).isRequired,
 };
