@@ -9,6 +9,9 @@ import {
   updateName,
   updateAvatar,
   signUpWithToken,
+  getBodyParts,
+  getMuscles,
+  getEquipment
 } from './operations';
 
 const initialState = {
@@ -17,6 +20,10 @@ const initialState = {
   isRefreshing: false,
   isLoggedIn: false,
   error: null,
+  bodyparts: [],
+  muscles:[],
+  equipment: [],
+
 };
 
 const authSlice = createSlice({
@@ -94,6 +101,24 @@ const authSlice = createSlice({
       state.user.avatarUrl = action.payload;
     });
     builder.addCase(updateAvatar.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+    builder.addCase(getBodyParts.fulfilled, (state, action) => {
+      state.bodyparts = action.payload;
+    });
+    builder.addCase(getBodyParts.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+    builder.addCase(getMuscles.fulfilled, (state, action) => {
+      state.muscles = action.payload;
+    });
+    builder.addCase(getMuscles.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+    builder.addCase(getEquipment.fulfilled, (state, action) => {
+      state.equipment = action.payload;
+    });
+    builder.addCase(getEquipment.rejected, (state, action) => {
       state.error = action.payload;
     });
   },

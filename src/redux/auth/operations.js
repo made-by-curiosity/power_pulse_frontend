@@ -10,6 +10,9 @@ import {
   updateUserInfo,
   updateUserName,
   updateUserAvatar,
+  getAllBodyParts,
+  getAllMuscles,
+  getAllEquipment
 } from '../../services/powerPulseApi';
 
 // AUTH
@@ -132,6 +135,47 @@ export const updateAvatar = createAsyncThunk(
       const data = await updateUserAvatar(credentials);
 
       return data.user.avatar;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// Exercises
+
+export const getBodyParts = createAsyncThunk(
+  'auth/bodyparts',
+  async (_, thunkAPI) => {
+    try {
+      const data = await getAllBodyParts();
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getMuscles = createAsyncThunk(
+  'auth/muscles',
+  async (_, thunkAPI) => {
+    try {
+      const data = await getAllMuscles();
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getEquipment = createAsyncThunk(
+  'auth/equipment',
+  async (_, thunkAPI) => {
+    try {
+      const data = await getAllEquipment();
+
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
