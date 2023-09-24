@@ -1,6 +1,15 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
+export const BurgerLayout = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  z-index: 0;
+`;
+
 export const UserNav = styled.nav`
   z-index: 200;
   position: fixed;
