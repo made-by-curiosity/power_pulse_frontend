@@ -16,11 +16,7 @@ export const Layout = () => {
   return (
     <>
       <Header setMenuIsOpen={setMenuIsOpen} />
-      {menuIsOpen && (
-        <div onClick={onBurgerButton}>
-          <BurgerMenu onBurgerButton={onBurgerButton} />
-        </div>
-      )}
+      {menuIsOpen && <BurgerMenu onBurgerButton={onBurgerButton} />}
       <Suspense fallback={<Loading text="Loading..." />}>
         <main>
           <Outlet />

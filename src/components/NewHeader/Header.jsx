@@ -7,7 +7,6 @@ import {
   HeaderContainer,
 } from './Header.styled';
 import { Logo } from './Logo/Logo';
-import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 import { useState } from 'react';
 import { NavBar } from './NavBar/NavBar';
 import { UserBar } from './UserBar/UserBar';

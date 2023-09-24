@@ -1,10 +1,22 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
+export const BurgerLayout = styled.div`
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  top: 0;
+  left: 0;
+
+  position: fixed;
+`;
+
 export const UserNav = styled.nav`
   position: fixed;
   right: 0;
   top: 0;
+  z-index: 1;
 
   display: flex;
   flex-direction: column;
