@@ -73,7 +73,7 @@ export const UserForm = ({ userInfo }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    // console.log(values);
 
     const { name, email, ...userParams } = values;
 

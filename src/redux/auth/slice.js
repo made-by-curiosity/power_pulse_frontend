@@ -11,7 +11,13 @@ import {
 } from './operations';
 
 const initialState = {
-  user: { name: null, email: null, userParams: null, avatarUrl: null },
+  user: {
+    name: null,
+    email: null,
+    userParams: null,
+    avatarUrl: null,
+    bmr: null,
+  },
   token: null,
   isRefreshing: false,
   isLoggedIn: false,
@@ -44,6 +50,7 @@ const authSlice = createSlice({
         email: null,
         userParams: null,
         avatarUrl: null,
+        bmr: null,
       };
       state.token = null;
       state.isLoggedIn = false;
@@ -69,7 +76,8 @@ const authSlice = createSlice({
       state.error = action.payload;
     });
     builder.addCase(updateUserParams.fulfilled, (state, action) => {
-      state.user.userParams = action.payload;
+      state.user.userParams = action.payload.userParams;
+      state.user.bmr = action.payload.bmr;
     });
     builder.addCase(updateUserParams.rejected, (state, action) => {
       state.error = action.payload;
