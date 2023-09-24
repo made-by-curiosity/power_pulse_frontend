@@ -91,13 +91,21 @@ export const InnerWrapper = styled.div`
 export const RadioGroupWrap = styled.div`
   margin-bottom: 24px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+
+  ${mq[1]} {
+    gap: 32px;
+    justify-content: flex-start;
+    margin-bottom: 16px;
+  }
 `;
 
 export const BloodWrap = styled.div`
-  margin-right: 0px;
+  ${'' /* margin-right: 0px; */}
 `;
 
 export const GenderWrap = styled.div``;
 
-export const LevelWrap = styled.div``;
+export const LevelWrap = styled.div`
+  margin-bottom: 24px;
+`;

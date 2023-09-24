@@ -54,18 +54,27 @@ export const StyledInput = styled.input`
   &:hover,
   &:focus {
     border-color: #e6533c;
+    & ~ svg {
+      stroke: #e6533c;
+    }
   }
 
   ${props =>
     props.className.includes('valid') &&
     `
-    border-color: #3CBF61; 
+    border-color: #3CBF61;
+		& ~ svg {
+      stroke: #3CBF61;
+    }
   `}
 
   ${props =>
     props.className.includes('invalid') &&
     `
-    border-color: #D80027; 
+    border-color: #D80027;
+		& ~ svg {
+      stroke: #D80027;
+    }
   `}
 
 	  ${mq[1]} {
@@ -122,4 +131,17 @@ export const ShowPasswordBtn = styled.button`
   & svg {
     stroke: #efede8;
   }
+`;
+
+export const CalendarIcon = styled.svg`
+  width: 18px;
+  height: 18px;
+
+  position: absolute;
+  right: 14px;
+  top: 17px;
+
+  stroke: #efede8;
+
+  z-index: -1;
 `;

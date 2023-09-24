@@ -1,10 +1,14 @@
-import { lazy } from 'react';
+/* eslint-disable no-unused-vars */
+import { lazy, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 // import { Example } from 'components/example/Example';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute/RestrictedRoute';
 import { Layout } from 'components/Layout/Layout';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
+import { refreshUser } from 'redux/auth/operations';
 
 const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage'));
 const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage'));
@@ -23,20 +27,21 @@ const NotFoundPage = lazy(() =>
 );
 
 export const App = () => {
-  // эта проверка касается только перехода на страницу "/", проверка защищенных путей находится в компонентах RestrictedRoute и PrivateRoute
-  const isLoggedIn = false;
+  const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <div>
       {/* <Example /> */}
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              isLoggedIn ? <Navigate to="/diary" /> : <Navigate to="/welcome" />
-            }
-          />
+          <Route index element={<Navigate to="/welcome" />} />
           <Route
             path="/welcome"
             element={
@@ -68,7 +73,11 @@ export const App = () => {
           <Route
             path="/params"
             element={
-              <PrivateRoute component={<ParamsPage />} restrictedTo="/signin" />
+              <PrivateRoute
+                component={<ParamsPage />}
+                restrictedTo="/signin"
+                samePage
+              />
             }
           />
           <Route

@@ -11,6 +11,9 @@
 <symbol id="icon-back" viewBox="0 0 32 32">
 <path  stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.4" d="M13.867 22.667l-6.667-6.667M7.2 16l6.667-6.667M7.2 16h16"></path>
 </symbol>
+<symbol id="icon-next" viewBox="0 0 32 32">
+<path fill="none" stroke="#e6533c" style="stroke: var(--color1, #e6533c)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.4" d="M18.133 22.667l6.667-6.667M24.8 16l-6.667-6.667M24.8 16h-16"></path>
+</symbol>
 <symbol id="icon-bubble" viewBox="0 0 32 32">
 <path  d="M20.793 16.346c3.778 0 6.84-3.062 6.84-6.84s-3.062-6.84-6.84-6.84c-3.778 0-6.84 3.062-6.84 6.84s3.062 6.84 6.84 6.84z"></path>
 <path  d="M8.476 25.919c2.268 0 4.107-1.839 4.107-4.107s-1.839-4.107-4.107-4.107c-2.268 0-4.107 1.839-4.107 4.107s1.839 4.107 4.107 4.107z"></path>

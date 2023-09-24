@@ -5,6 +5,7 @@ export const AppBar = styled.header`
   width: 100%;
   background-color: #040404;
   overflow: hidden;
+  z-index: 100;
 `;
 
 export const NavWrapper = styled.div`

@@ -13,6 +13,7 @@ export const BurgerLayout = styled.div`
 `;
 
 export const UserNav = styled.nav`
+  z-index: 200;
   position: fixed;
   right: 0;
   top: 0;

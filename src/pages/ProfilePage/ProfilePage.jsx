@@ -1,32 +1,33 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
+import { selectUser } from 'redux/auth/selectors';
+
 import { Container } from 'components/Container/Container';
 import { UserCard } from 'components/UserCard/UserCard';
 import { UserForm } from 'components/UserForm/UserForm';
-
 import { PageWrapper } from './ProfilePage.styled';
 import { ProfilePageTitle } from '../../components/ProfilePageTitle/ProfilePageTitle';
-
-const user = {
-  name: 'Anna Rybachok',
-  email: 'annarybachok@gmail.com',
-  avatar: undefined,
-  height: '165',
-  currentWeight: '52',
-  desiredWeight: '47',
-  birthday: '24.09.1998',
-  blood: '1',
-  sex: 'female',
-  lifeStyleType: 'Sedentary lifestyle (little or no physical activity)',
-  dailyCalorieIntake: 2200,
-  dailyNormOfSports: '110 min',
-};
+import { getUserParams } from 'redux/auth/operations';
 
 const ProfilePage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserParams());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const userInfo = useSelector(selectUser);
+
+  // console.log(userInfo);
+
   return (
     <Container>
       <ProfilePageTitle />
       <PageWrapper>
-        <UserCard user={user}></UserCard>
-        <UserForm user={user}></UserForm>
+        <UserCard userInfo={userInfo}></UserCard>
+        <UserForm userInfo={userInfo}></UserForm>
       </PageWrapper>
     </Container>
   );
