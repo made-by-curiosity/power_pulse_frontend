@@ -60,4 +60,12 @@ export const LinkToDiary = styled(NavLink)`
 export const SvgArrov = styled.svg`
     width: 16px;
     height: 16px;
+    fill: blue;
+    display: block;
+    margin: auto;
+`;
+
+export const Img = styled.img`
+    width: 123px;
+    height: 97px;
 `;
