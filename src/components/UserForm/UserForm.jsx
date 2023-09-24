@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { updateName, updateUserParams } from 'redux/auth/operations';
 
@@ -74,7 +73,7 @@ export const UserForm = ({ userInfo }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    // console.log(values);
 
     const { name, email, ...userParams } = values;
 

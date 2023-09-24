@@ -2,6 +2,9 @@ import axios from 'axios';
 
 const BASE_URL = 'https://power-pulse.onrender.com';
 
+// const BASE_URL = 'http://localhost:3030';
+
+
 axios.defaults.baseURL = BASE_URL;
 
 export const setAuthHeader = token => {
@@ -45,6 +48,8 @@ export const getUserInfo = async () => {
 
   return res.data;
 };
+
+
 
 export const updateUserInfo = async userParams => {
   const res = await axios.put('/api/users/params', userParams);
