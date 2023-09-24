@@ -12,7 +12,13 @@ import {
 } from './operations';
 
 const initialState = {
-  user: { name: null, email: null, userParams: null, avatarUrl: null, createdAt: null },
+  user: {
+    name: null,
+    email: null,
+    userParams: null,
+    avatarUrl: null,
+    bmr: null,
+  },
   token: null,
   isRefreshing: false,
   isLoggedIn: false,
@@ -45,6 +51,7 @@ const authSlice = createSlice({
         email: null,
         userParams: null,
         avatarUrl: null,
+        bmr: null,
       };
       state.token = null;
       state.isLoggedIn = false;
@@ -60,16 +67,16 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isRefreshing = false;
     });
-    builder.addCase(refreshUser.rejected, (state,action) => {
+    builder.addCase(refreshUser.rejected, (state, action) => {
       state.error = action.payload;
       state.isRefreshing = false;
     });
-    builder.addCase(signUpWithToken.fulfilled,(state,action)=>{
+    builder.addCase(signUpWithToken.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     });
-    builder.addCase(signUpWithToken.rejected,(state,action)=>{
+    builder.addCase(signUpWithToken.rejected, (state, action) => {
       state.error = action.payload;
     });
     builder.addCase(getUserParams.fulfilled, (state, action) => {
@@ -79,7 +86,8 @@ const authSlice = createSlice({
       state.error = action.payload;
     });
     builder.addCase(updateUserParams.fulfilled, (state, action) => {
-      state.user.userParams = action.payload;
+      state.user.userParams = action.payload.userParams;
+      state.user.bmr = action.payload.bmr;
     });
     builder.addCase(updateUserParams.rejected, (state, action) => {
       state.error = action.payload;
