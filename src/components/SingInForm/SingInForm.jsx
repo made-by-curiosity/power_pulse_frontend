@@ -1,6 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 import { object, string } from 'yup';
-// import { Notify } from 'notiflix';
+
 
 import {
   Button,
@@ -92,8 +92,6 @@ const SignInForm = () => {
       </ContainerSingIn>
       <CaloriesBtn />
       <TutorialBtn />
-
-      
     </>
   );
 };
