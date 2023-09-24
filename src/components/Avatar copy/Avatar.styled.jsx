@@ -71,15 +71,13 @@ export const UserTitle = styled.h3`
   }
 `;
 
-export const AddAvatarBtn = styled.input`
+export const AddAvatarBtn = styled.button`
   position: absolute;
   bottom: 0;
   translate: 0 +50%;
 
-  ${
-    '' /* border: none;
-  background: none; */
-  }
+  border: none;
+  background: none;
   cursor: pointer;
 `;
 

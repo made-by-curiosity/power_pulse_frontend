@@ -1,3 +1,7 @@
+import { useDispatch } from 'react-redux';
+
+import { updateAvatar } from 'redux/auth/operations';
+
 import {
   AvatarWrapper,
   IconUser,
@@ -20,12 +24,31 @@ const iconAddAvatarBtn = (
   </AddAvatarIcon>
 );
 
+let formData = new FormData();
+
 export const Avatar = ({ name, email, avatar = iconUser }) => {
+  const dispatch = useDispatch();
+
+  const handleAddAvatar = e => {
+    // console.log(e.target.files[0]);
+
+    formData.append('avatar', e.target.files[0]);
+    dispatch(updateAvatar(formData));
+
+    e.target.value = '';
+    formData.delete('avatar');
+  };
+
   return (
     <>
       <AvatarWrapper>
-        {avatar}
-        <AddAvatarBtn type="button">{iconAddAvatarBtn}</AddAvatarBtn>
+        <img src={avatar} alt="user avatar" style={{ marginBottom: 20 }}></img>
+
+        <AddAvatarBtn
+          type="file"
+          accept="image/*,.png,.jpg,.gif,.web"
+          onChange={handleAddAvatar}
+        ></AddAvatarBtn>
       </AvatarWrapper>
       <UserName>{name}</UserName>
       <UserTitle>User</UserTitle>
