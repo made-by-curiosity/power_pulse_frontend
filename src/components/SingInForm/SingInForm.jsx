@@ -1,7 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 import { object, string } from 'yup';
-import axios from 'axios';
-import { Notify } from 'notiflix';
+// import { Notify } from 'notiflix';
 
 import {
   Button,
@@ -16,70 +15,35 @@ import {
 
 import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
 import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
-import {Title} from 'components/Title/Title'
+import { Title } from 'components/Title/Title';
 import { CustomInput } from 'components/CustomInput/CustomInput';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/operations';
 
-axios.defaults.baseURL = 'https://power-pulse.onrender.com';
+const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+const passwordRegex =
+  /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,32}$/;
+
+const initialValues = {
+  email: '',
+  password: '',
+};
+
+const schema = object({
+  email: string()
+    .email()
+    .matches(emailRegex, 'Invalid email format')
+    .required(),
+  password: string()
+    .matches(passwordRegex, 'Must contain at least 1 capital and 1 digit')
+    .required(),
+});
 
 const SignInForm = () => {
-  const initialValues = {
-    email: '',
-    password: '',
-  };
-
-  const schema = object({
-    email: string()
-      .email()
-      .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Error email')
-      .required(),
-    password: string()
-      .matches(
-        /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,32}$/,
-        'Error password'
-      )
-      .required(),
-  });
-
-  const validateEmail = value => {
-    let errors;
-    if (!value) {
-      errors = 'Required';
-    } else if (!/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/i.test(value)) {
-      errors = 'Invalid email address';
-    }
-    return errors;
-  };
-
-  const validatePassword = value => {
-    let errors;
-    if (!value) {
-      errors = 'Required';
-    } else if (
-      !/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,32}$/i.test(value)
-    ) {
-      errors = 'Invalid password';
-    }
-    return errors;
-  };
-
-  const postData = async values => {
-    try {
-      const response = await axios.post('/api/auth/login', {
-        email: values.email,
-        password: values.password,
-      });
-      console.log(response);
-      if (response.code === 401) {
-        throw new Error(response.message);
-      }
-      return response.json();
-    } catch (error) {
-      return Notify.failure(error.data);
-    }
-  };
+  const dispatch = useDispatch();
 
   const onSubmit = (values, { resetForm }) => {
-    postData(values);
+    dispatch(logIn(values));
     resetForm();
   };
 
@@ -104,7 +68,6 @@ const SignInForm = () => {
                 label="Email"
                 autoComplete="off"
                 component={CustomInput}
-                validate={validateEmail}
               />
             </ContainerField>
             <Field
@@ -115,7 +78,6 @@ const SignInForm = () => {
               passwordBtn
               autoComplete="off"
               component={CustomInput}
-              validate={validatePassword}
               inputStyles={{ gap: '20px' }}
             />
             <Button type="submit">
@@ -129,8 +91,9 @@ const SignInForm = () => {
         </DivSingUp>
       </ContainerSingIn>
       <CaloriesBtn />
-
       <TutorialBtn />
+
+      
     </>
   );
 };

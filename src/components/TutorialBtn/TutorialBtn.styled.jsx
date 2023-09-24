@@ -19,7 +19,7 @@ export const Tutorial = styled.button`
   @media screen and (min-width: 768px) {
     width: 206px;
     height: 96px;
-    top: 500px;
+    top: 714px;
     right: 231px;
     padding-left: 23px;
     padding-top: 20px;

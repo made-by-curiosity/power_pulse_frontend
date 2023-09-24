@@ -1,27 +1,69 @@
-import {  Step1, Step2, Step3, StepWrap,  FormWrap, ParamsFormTitle, ParamsFormSubTitle,  NextBtn, BtnWrap, MainBtnWrap, BackBtn, FieldWrap, LevelWrap, GenderWrap, BloodWrap, RadioGroupWrap, CaloriesBtnWrap, TutorialBtnWrap} from "components/ParamsForm/ParamsForm.styled"
-import { useState } from "react";
+import {
+  Step1,
+  Step2,
+  Step3,
+  StepWrap,
+  FormWrap,
+  ParamsFormTitle,
+  ParamsFormSubTitle,
+  NextBtn,
+  BtnWrap,
+  MainBtnWrap,
+  BackBtn,
+  FieldWrap,
+  LevelWrap,
+  GenderWrap,
+  BloodWrap,
+  RadioGroupWrap,
+  CaloriesBtnWrap,
+  TutorialBtnWrap,
+} from 'components/ParamsForm/ParamsForm.styled';
 
 import icons from '../../assets/icons/svg-sprite.svg';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { CaloriesBtn } from "components/CaloriesBtn/CaloriesBtn";
-import { TutorialBtn } from "components/TutorialBtn/TutorialBtn";
+import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
+import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
 
-
-import { BirthdayInput } from "components/BirthdayInput/BirthdayInput";
+import { BirthdayInput } from 'components/BirthdayInput/BirthdayInput';
 
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
+import { CustomInput } from 'components/CustomInput/CustomInput';
+import { CustomGroupRadio } from 'components/CustomRadio/CustomGroupRadio';
+import { MainButton } from 'components/MainButton/MainButton';
+import { isDate, parse } from 'date-fns';
 
-import { CustomInput } from "components/CustomInput/CustomInput";
-import { CustomGroupRadio } from "components/CustomRadio/CustomGroupRadio";
-import { MainButton } from "components/MainButton/MainButton";
+import { useDispatch } from 'react-redux';
+import { updateUserParams } from 'redux/auth/operations';
 
+// import { useState } from 'react';
+
+import { useLocalStorage } from 'hooks/useLocalStorage';
+import { useEffect } from 'react';
+
+// import { CustomModal } from 'components/CustomModal/CustomModal';
 
 const today = new Date();
-    const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+const eighteenYearsAgo = new Date(
+  today.getFullYear() - 18,
+  today.getMonth(),
+  today.getDate()
+);
+
+function parseDateString(value, originalValue) {
+  if (isDate(originalValue)) {
+    return originalValue;
+  }
+
+  const [day, month, year] = originalValue.split('.');
+
+  const formattedDate = `${year}-${month}-${day}`;
+
+  return parse(formattedDate, 'yyyy-MM-dd', new Date());
+}
 
 const validationSchema = Yup.object({
   height: Yup.number('Number')
@@ -39,232 +81,280 @@ const validationSchema = Yup.object({
     .min(35, 'Desired weight  must be at least 35 kg')
     .positive('Weight must be a positive number.')
     .required('Height is required'),
-  // birthday: Yup.date()
-  //   .max(eighteenYearsAgo, 'You must be older than 18 years old')
-  //   .required('Height is required'),
+  birthday: Yup.date()
+    .transform(parseDateString)
+    .max(eighteenYearsAgo, 'Age must be 18+')
+    .required('Age is required'),
 });
 
 export const ParamsForm = () => {
   const initialValues = {
-    height: "",
-    currentWeight: "",
-    desiredWeight: "",
-    birthday: "",
-    blood: "1",
-    gender: "male",
-    level: "light"
+    height: '',
+    currentWeight: '',
+    desiredWeight: '',
+    birthday: '',
+    blood: '1',
+    sex: 'male',
+    levelActivity: '2',
   };
+
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const toogleModal = () => {
+  //   setIsModalOpen(prevState => !prevState);
+  // };
+
+  const dispatch = useDispatch();
 
   const tablet = useMediaQuery('(min-width:768px)');
-    
 
+  const [step, setStep] = useLocalStorage('step', 1);
 
-    const [step, setStep] = useState(1);
-    console.log(step);
+  useEffect(() => {
+    setStep(1);
 
-    const handleClickNext = () => {
-        setStep(state => state + 1);
-        
-    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    const handleClickBack = () => {
-        setStep(state => state - 1);
-    }
-
-    const handleThirdStepSubmit = (values, { setSubmitting }) => {
-    // Ваша логіка для обробки даних третього етапу, наприклад, відправлення їх на сервер
-      console.log("dispatchAllValues", values);
-      
-    // Прибираємо флаг "завантаження" після успішної відправки
-      setSubmitting(false);
+  const handleClickNext = () => {
+    setStep(state => state + 1);
   };
 
+  const handleClickBack = () => {
+    setStep(state => state - 1);
+  };
 
-    const onSubmit = (values, {setSubmitting}) => {
-      if (step === 3) {
-        // Відправка даних на сервер лише на третьому етапі
-        handleThirdStepSubmit(values, { setSubmitting });
-      } else {
-        // Перехід на наступний етап (якщо необхідно)
-        setStep(state => state + 1);
-      }
-    };
+  const handleThirdStepSubmit = (values, { setSubmitting }) => {
+    const [day, month, year] = values.birthday.split('.');
 
-    return (
-        <>
-              <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={onSubmit}
-              >
-                
-                <Form>
-                  {step === 1 && <>
-                  <ParamsFormTitle>Get closer to your goals!</ParamsFormTitle>
-                  <ParamsFormSubTitle>To ensure a personalized user experience and the proper functioning of our platform, we ask you to provide the following information about your weight, height and other relevant data:</ParamsFormSubTitle>
-                  <FormWrap>
-                    <FieldWrap>
-                    <Field
-                      label="Height"
-                      name="height"
-                      type="text"
-                      autoComplete="off"
-                      component={CustomInput}
-                      inputStyles={{ width: '155px' }}
-                    />
-                    </FieldWrap>
-                    <FieldWrap>
-                    <Field
-                      label="Current Weight"
-                      name="currentWeight"
-                      type="text"
-                      autoComplete="off"
-                      component={CustomInput}
-                      inputStyles={{ width: '160px' }}
-                    />
-                    </FieldWrap>
-            
-                    <FieldWrap>
-                    <Field
-                      label="Desired Weight"
-                      name="desiredWeight"
-                      type="text"
-                      autoComplete="off"
-                      component={CustomInput}
-                      inputStyles={{ width: '155px' }}
-                    />
-                    </FieldWrap>
-                    <FieldWrap>
-                    <Field
-                      name="birthday"
-                      component={BirthdayInput}
-                    />
-                    </FieldWrap>
-                  </FormWrap>
-                  <NextBtn type="submit">
-                      Next <svg width="20" height="20"  stroke="#E6533C">
-                      <use href={icons + '#icon-nextarrow'} />
-                      </svg>
-                    </NextBtn>
-                  </>}
-                  { step === 2 && 
-                      <>
-                      <ParamsFormTitle>Get closer to your goals!</ParamsFormTitle>
-                      <RadioGroupWrap>
-                      <BloodWrap>
-                      < CustomGroupRadio
-                        label="Blood"
-                        name="blood"
-                        radioGroupDirection={false}
-                        typographyStyling={tablet ? {fontSize:16} : {fontSize:14}}
-                        formLabelStyling={tablet ? {fontSize:16} : {fontSize:14} }
-                        options={[
-                          { value: '1', label: '1' },
-                          { value: '2', label: '2' },
-                          { value: '3', label: '3' },
-                          { value: '4', label: '4' },
-                        ]}
-                      />
-                      </BloodWrap>
-                       <GenderWrap>
-                      < CustomGroupRadio
-                        label="Gender"
-                        name="gender"
-                        radioGroupDirection={false}
-                        typographyStyling={tablet ? {fontSize:16} : {fontSize:14}}
-                        formLabelStyling={tablet ? {fontSize:16} : {fontSize:14} }
-                        options={[
-                          { value: 'female', label: 'Female' },
-                          { value: 'male', label: 'Male' },
-                          { value: 'other', label: 'Other' },
-                        ]}
-                      />
-                      </GenderWrap>
-                      </RadioGroupWrap>
-                      <LevelWrap>
-                      < CustomGroupRadio
-                        label="Level"
-                        name="level"
-                        radioGroupDirection={false}
-                        typographyStyling={tablet ? {fontSize:16} : {fontSize:14}}
-                        formControlLabelStyling={tablet ? {mb:-1} : {mb: 0.5}}
-                        formLabelStyling={tablet ? {mb:0.5, fontSize:16} : {mb:0.5}}
-                        options={[
-                          { value: 'sedentary', label: 'Sedentary lifestyle (little or no physical activity)' },
-                          { value: 'light', label: 'Light activity (light exercises/sports 1-3 days per week)' },
-                          { value: 'moderately', label: 'Moderately active (moderate exercises/sports 3-5 days per week)' },
-                          { value: 'very', label: 'Very active (intense exercises/sports 6-7 days per week)' },
-                          { value: 'extremely', label: 'Extremely active (very strenuous exercises/sports and physical work)' },
-                        ]}
-                      />
-                      </LevelWrap>
-                      
-                      </>
-                     
+    const formattedDate = `${year}-${month}-${day}`;
+
+    const userInfo = { ...values, birthday: formattedDate };
+
+    // Ваша логіка для обробки даних третього етапу, наприклад, відправлення їх на сервер
+    dispatch(updateUserParams(userInfo));
+
+    // Прибираємо флаг "завантаження" після успішної відправки
+    setSubmitting(false);
+  };
+
+  const onSubmit = (values, { setSubmitting, resetForm }) => {
+    if (step === 3) {
+      // Відправка даних на сервер лише на третьому етапі
+      handleThirdStepSubmit(values, { setSubmitting });
+
+      resetForm();
+    } else {
+      // Перехід на наступний етап (якщо необхідно)
+      setStep(state => state + 1);
+    }
+  };
+
+  return (
+    <>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        <Form>
+          {step === 1 && (
+            <>
+              <ParamsFormTitle>Get closer to your goals!</ParamsFormTitle>
+              <ParamsFormSubTitle>
+                To ensure a personalized user experience and the proper
+                functioning of our platform, we ask you to provide the following
+                information about your weight, height and other relevant data:
+              </ParamsFormSubTitle>
+              <FormWrap>
+                <FieldWrap>
+                  <Field
+                    label="Height"
+                    name="height"
+                    type="text"
+                    autoComplete="off"
+                    component={CustomInput}
+                    inputStyles={{ width: '155px' }}
+                  />
+                </FieldWrap>
+                <FieldWrap>
+                  <Field
+                    label="Current Weight"
+                    name="currentWeight"
+                    type="text"
+                    autoComplete="off"
+                    component={CustomInput}
+                    inputStyles={{ width: '160px' }}
+                  />
+                </FieldWrap>
+
+                <FieldWrap>
+                  <Field
+                    label="Desired Weight"
+                    name="desiredWeight"
+                    type="text"
+                    autoComplete="off"
+                    component={CustomInput}
+                    inputStyles={{ width: '155px' }}
+                  />
+                </FieldWrap>
+                <FieldWrap>
+                  <Field name="birthday" component={BirthdayInput} />
+                </FieldWrap>
+              </FormWrap>
+              <NextBtn type="submit">
+                Next{' '}
+                <svg width="20" height="20" stroke="#E6533C">
+                  <use href={icons + '#icon-next'} />
+                </svg>
+              </NextBtn>
+            </>
+          )}
+          {step === 2 && (
+            <>
+              <ParamsFormTitle>Get closer to your goals!</ParamsFormTitle>
+              <RadioGroupWrap>
+                <BloodWrap>
+                  <CustomGroupRadio
+                    label="Blood"
+                    name="blood"
+                    radioGroupDirection={false}
+                    typographyStyling={
+                      tablet ? { fontSize: 16 } : { fontSize: 14 }
                     }
-                  {step === 3 && 
-                  <>
-                  <ParamsFormTitle>Dear User</ParamsFormTitle>
-                  <ParamsFormSubTitle>Thank you for filling in all the required data. We greatly appreciate your cooperation and commitment to a healthy lifestyle. The collected information will allow us to provide you with a more individual and personalized approach.</ParamsFormSubTitle>
-                  <BtnWrap>
-                    <MainBtnWrap>
-                      <MainButton 
-                        type='submit'
-                        text='Go'
-                        filled
-                        btnStyles={{display: "inline-flex"}}
-                      />
-                    </MainBtnWrap>
-                    <BackBtn onClick={handleClickBack}>
-                        <svg width="20" height="20"  stroke="#E6533C">
-                        <use href={icons + '#icon-back'} /> 
-                        </svg> Back
-                    </BackBtn>
-                  </BtnWrap>
-                  </>
+                    formLabelStyling={
+                      tablet ? { fontSize: 16 } : { fontSize: 14 }
+                    }
+                    options={[
+                      { value: '1', label: '1' },
+                      { value: '2', label: '2' },
+                      { value: '3', label: '3' },
+                      { value: '4', label: '4' },
+                    ]}
+                  />
+                </BloodWrap>
+                <GenderWrap>
+                  <CustomGroupRadio
+                    label="Gender"
+                    name="sex"
+                    radioGroupDirection={false}
+                    typographyStyling={
+                      tablet ? { fontSize: 16 } : { fontSize: 14 }
+                    }
+                    formLabelStyling={
+                      tablet ? { fontSize: 16 } : { fontSize: 14 }
+                    }
+                    options={[
+                      { value: 'female', label: 'Female' },
+                      { value: 'male', label: 'Male' },
+                    ]}
+                  />
+                </GenderWrap>
+              </RadioGroupWrap>
+              <LevelWrap>
+                <CustomGroupRadio
+                  label="Level"
+                  name="levelActivity"
+                  radioGroupDirection={false}
+                  typographyStyling={
+                    tablet ? { fontSize: 16 } : { fontSize: 14 }
                   }
-              </Form>
-            </Formik>
-            
+                  formControlLabelStyling={tablet ? { mb: -1 } : { mb: 0.5 }}
+                  formLabelStyling={
+                    tablet ? { mb: 0.5, fontSize: 16 } : { mb: 0.5 }
+                  }
+                  options={[
+                    {
+                      value: '1',
+                      label:
+                        'Sedentary lifestyle (little or no physical activity)',
+                    },
+                    {
+                      value: '2',
+                      label:
+                        'Light activity (light exercises/sports 1-3 days per week)',
+                    },
+                    {
+                      value: '3',
+                      label:
+                        'Moderately active (moderate exercises/sports 3-5 days per week)',
+                    },
+                    {
+                      value: '4',
+                      label:
+                        'Very active (intense exercises/sports 6-7 days per week)',
+                    },
+                    {
+                      value: '5',
+                      label:
+                        'Extremely active (very strenuous exercises/sports and physical work)',
+                    },
+                  ]}
+                />
+              </LevelWrap>
+            </>
+          )}
+          {step === 3 && (
+            <>
+              <ParamsFormTitle>Dear User</ParamsFormTitle>
+              <ParamsFormSubTitle>
+                Thank you for filling in all the required data. We greatly
+                appreciate your cooperation and commitment to a healthy
+                lifestyle. The collected information will allow us to provide
+                you with a more individual and personalized approach.
+              </ParamsFormSubTitle>
+              <BtnWrap>
+                <MainBtnWrap>
+                  <MainButton
+                    type="submit"
+                    text="Go"
+                    filled
+                    btnStyles={{ display: 'inline-flex' }}
+                  />
+                </MainBtnWrap>
+                <BackBtn onClick={handleClickBack}>
+                  <svg width="20" height="20" stroke="#E6533C">
+                    <use href={icons + '#icon-back'} />
+                  </svg>{' '}
+                  Back
+                </BackBtn>
+              </BtnWrap>
+            </>
+          )}
+        </Form>
+      </Formik>
 
+      <BtnWrap>
+        {step > 1 && step < 3 && (
+          <BackBtn onClick={handleClickBack}>
+            <svg width="20" height="20" stroke="#E6533C">
+              <use href={icons + '#icon-back'} />
+            </svg>{' '}
+            Back
+          </BackBtn>
+        )}
 
-           <BtnWrap>
-           { step > 1  && step < 3 &&  <BackBtn onClick={handleClickBack}>
-                      <svg width="20" height="20"  stroke="#E6533C">
-          <use href={icons + '#icon-back'} /> 
-        </svg> Back
-            </BackBtn>}
-            
-            {step > 1 && step < 3 && <NextBtn onClick={handleClickNext}>
-                    Next <svg width="20" height="20"  stroke="#E6533C">
-          <use href={icons + '#icon-nextarrow'} />
-        </svg>
-            </NextBtn>}
-          </BtnWrap>
-          <CaloriesBtnWrap step={step}>
-            <CaloriesBtn/>
-          </CaloriesBtnWrap>
-          <TutorialBtnWrap step={step}>
-            <TutorialBtn/>
-          </TutorialBtnWrap>
-          
+        {step > 1 && step < 3 && (
+          <NextBtn onClick={handleClickNext}>
+            Next{' '}
+            <svg width="20" height="20" stroke="#E6533C">
+              <use href={icons + '#icon-next'} />
+            </svg>
+          </NextBtn>
+        )}
+      </BtnWrap>
+      <CaloriesBtnWrap step={step}>
+        <CaloriesBtn />
+      </CaloriesBtnWrap>
+      <TutorialBtnWrap step={step}>
+        <TutorialBtn />
+      </TutorialBtnWrap>
 
-            <StepWrap step={step}>
-                <Step1 step={step}></Step1>
-                <Step2 step={step}></Step2>
-                <Step3 step={step}></Step3>
-            </StepWrap>
-
-            
-        </>
-        
-       
-    )
-}
-
-
-
-
-
-
-  
+      <StepWrap step={step}>
+        <Step1 step={step}></Step1>
+        <Step2 step={step}></Step2>
+        <Step3 step={step}></Step3>
+      </StepWrap>
+    </>
+  );
+};
