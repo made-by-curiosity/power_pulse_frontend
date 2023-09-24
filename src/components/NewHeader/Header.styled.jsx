@@ -1,6 +1,11 @@
 import styled from '@emotion/styled';
 
-export const AppBar = styled.header``;
+export const AppBar = styled.header`
+  position: fixed;
+  width: 100%;
+  background-color: #040404;
+  overflow: hidden;
+`;
 
 export const NavWrapper = styled.div`
   display: flex;
@@ -18,9 +23,6 @@ export const FlexWrapper = styled.div`
 
 export const FixedHeader = styled.div`
   border-bottom: 1px solid rgba(239, 237, 232, 0.2);
-
-  position: fixed;
-  width: 100%;
 `;
 
 export const HeaderContainer = styled.div`

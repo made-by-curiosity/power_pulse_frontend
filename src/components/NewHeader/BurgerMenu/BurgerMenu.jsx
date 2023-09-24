@@ -1,23 +1,29 @@
-import { NavLink } from 'react-router-dom';
+import PortalReactDOM from 'react-dom';
 import { UserNav } from './BurgerMenu.styled';
 import { BurgerLink } from './BurgerMenu.styled';
 import { BurgerCloseButton } from './BurgerCloseButton/BurgerCloseButton';
 import { BurgerLogoutButton } from './BurgerLogutButton/BurgerLogoutButton';
+import { useEffect } from 'react';
 
 export const BurgerMenu = ({ onBurgerButton }) => {
-  return (
+  useEffect(() => {
+    const close = e => {
+      if (e.keyCode === 27) {
+        onBurgerButton();
+      }
+    };
+    window.addEventListener('keydown', close);
+    return () => window.removeEventListener('keydown', close);
+  }, [onBurgerButton]);
+
+  return PortalReactDOM.createPortal(
     <UserNav>
       <BurgerCloseButton onClick={onBurgerButton} />
-      <NavLink to="/diary">
-        <BurgerLink>Diary</BurgerLink>
-      </NavLink>
-      <NavLink to="/products">
-        <BurgerLink>Products</BurgerLink>
-      </NavLink>
-      <NavLink to="/exercises">
-        <BurgerLink>Exercises</BurgerLink>
-      </NavLink>
+      <BurgerLink to="/diary">Diary</BurgerLink>
+      <BurgerLink to="/products">Products</BurgerLink>
+      <BurgerLink to="/exercises">Exercises</BurgerLink>
       <BurgerLogoutButton />
-    </UserNav>
+    </UserNav>,
+    document.querySelector('#burger-menu-root')
   );
 };
