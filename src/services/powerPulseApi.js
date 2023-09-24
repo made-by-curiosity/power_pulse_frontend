@@ -136,19 +136,19 @@ export const getAllExercises = async () => {
 };
 
 export const getAllBodyParts = async () => {
-  const res = await axios.get();
+  const res = await axios.get('/api/exercises/body-parts');
 
   return res.data;
 };
 
 export const getAllMuscles = async () => {
-  const res = await axios.get();
+  const res = await axios.get('/api/exercises/muscles');
 
   return res.data;
 };
 
 export const getAllEquipment = async () => {
-  const res = await axios.get();
+  const res = await axios.get('/api/exercises/equipment');
 
   return res.data;
 };

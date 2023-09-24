@@ -1,10 +1,8 @@
 import styled from '@emotion/styled';
 import bg_line from '../../assets/images/bg_img/bg_line.png';
 
-
-
 export const TitleText = styled.h2`
- width: 335px;
+  width: 335px;
   height: 120px;
   margin-top: 65px;
   font-size: 38px;
@@ -14,11 +12,10 @@ export const TitleText = styled.h2`
   letter-spacing: 0.38px;
   color: #efede8;
 
-  background-image: url(${bg_line});
+  /* background-image: url(${bg_line});
   background-repeat: no-repeat;
   background-position: left -5px top 43px;
-  background-size: 98px 35px;
-  
+  background-size: 98px 35px; */
 
   @media screen and (min-width: 768px) {
     width: 598px;
@@ -30,9 +27,7 @@ export const TitleText = styled.h2`
     letter-spacing: 0.7px;
     margin-top: 105px;
     background-position: left -16px bottom 84px;
-     background-size: auto auto;
-   
-   
+    background-size: auto auto;
   }
 
   @media screen and (min-width: 1440px) {
@@ -48,10 +43,8 @@ export const WelcomeBtns = styled.div`
 
   @media screen and (min-width: 768px) {
     gap: 20px;
-     margin-top: 64px;
-     
+    margin-top: 64px;
   }
-   
 `;
 
 export const WelcomeTitle = styled.div`
@@ -60,4 +53,3 @@ export const WelcomeTitle = styled.div`
   background-repeat: no-repeat;
   background-position: left 0px bottom 607px; */
 `;
-

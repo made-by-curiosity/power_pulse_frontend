@@ -6,9 +6,12 @@ import { getYear, getMonth } from 'date-fns';
 import { HeadCont, Select, HeadBtn } from './Calendar.styled';
 import sprite from '../../assets/icons/svg-sprite.svg';
 
-export const Calendar = ({ input, selectedDate, setSelectedDate }) => {
-  
-
+export const Calendar = ({
+  input,
+  selectedDate,
+  setSelectedDate,
+  createdAt,
+}) => {
   const range = (start, end) => {
     return new Array(end - start).fill().map((d, i) => i + start);
   };
@@ -93,6 +96,7 @@ export const Calendar = ({ input, selectedDate, setSelectedDate }) => {
         )}
         customInput={input}
         calendarStartDay={1}
+        minDate={createdAt ? createdAt : undefined}
       />
     </DatePickerWrapper>
   );
@@ -102,4 +106,5 @@ Calendar.propTypes = {
   input: PropTypes.element.isRequired,
   selectedDate: PropTypes.instanceOf(Date).isRequired,
   setSelectedDate: PropTypes.func.isRequired,
+  createdAt: PropTypes.instanceOf(Date),
 };

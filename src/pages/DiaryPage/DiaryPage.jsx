@@ -7,13 +7,18 @@ import { DiaryDashboardContainer } from 'components/DiaryDashboardContainer/Diar
 import { DayExercises } from 'components/DayExercises/DayExercises';
 import { DayProducts } from 'components/DayProducts/DayProducts';
 import { DiaryTablesCont } from 'components/DiaryTablesCont/DiaryTablesCont';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 
 const DiaryPage = () => {
+  const { createdAt } = useSelector(selectUser);
+  const createdUser = new Date(createdAt);
+
   return (
     <Container>
       <DiaryTitleContainer>
         <Title>{'Diary'}</Title>
-        <DiaryCalendar />
+        <DiaryCalendar createdAt={createdUser} />
       </DiaryTitleContainer>
       <DiaryDashboardContainer>
         <DiaryTablesCont>
