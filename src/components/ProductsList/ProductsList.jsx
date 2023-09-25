@@ -1,13 +1,23 @@
 import { getAllProducts } from 'services/powerPulseApi';
 import { useState, useEffect } from 'react';
 import {
+  ProductsContainer,
   ProductsItem,
   RadCircle,
   GreenCircle,
   InfoContainer,
   DietTitle,
   Recommend,
+  CaloriesIcon,
+  MenuContainer,
+  MenuTitle,
+  DataInfo,
+  AddIcon,
+  AddProduct,
 } from './ProductsList.styled';
+
+import icons from '../../assets/icons/svg-sprite.svg';
+import { NavLink } from 'react-router-dom';
 
 export const ProductsList = () => {
   const [products, setProducts] = useState([]);
@@ -34,7 +44,7 @@ export const ProductsList = () => {
   }, []);
 
   return (
-    <div>
+    <ProductsContainer>
       {products.length !== 0 ? (
         <ul>
           {products.map(
@@ -66,15 +76,36 @@ export const ProductsList = () => {
                         <Recommend>Recommend</Recommend>
                       </>
                     )}
-                    <button>Add</button>
+                    <NavLink style={{ display: 'flex', alignItems: 'center' }}>
+                      <AddProduct>Add</AddProduct>
+                      <AddIcon>
+                        <svg fill="#efede8">
+                          {' '}
+                          <use href={icons + '#icon-nextarrow'}></use>
+                        </svg>
+                      </AddIcon>
+                    </NavLink>
                   </InfoContainer>
-
-                  <h2>{title}</h2>
-                  <div>
-                    <p>Calories{calories}</p>
-                    <p>Category{category}</p>
-                    <p>Weight{weight}</p>
-                  </div>
+                  <MenuContainer>
+                    <CaloriesIcon>
+                      <svg fill="#efede8">
+                        {' '}
+                        <use href={icons + '#icon-running'}></use>
+                      </svg>
+                    </CaloriesIcon>
+                    <MenuTitle>{title}</MenuTitle>
+                  </MenuContainer>
+                  <DataInfo>
+                    <li>
+                      Calories:<span>{calories}</span>
+                    </li>
+                    <li>
+                      Category: <span>{category}</span>
+                    </li>
+                    <li>
+                      Weight:<span>{weight}</span>
+                    </li>
+                  </DataInfo>
                 </ProductsItem>
               );
             }
@@ -83,6 +114,6 @@ export const ProductsList = () => {
       ) : (
         <p>Sorry, we didn't find any products matching your request.</p>
       )}
-    </div>
+    </ProductsContainer>
   );
 };
