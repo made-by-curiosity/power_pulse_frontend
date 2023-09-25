@@ -1,14 +1,35 @@
 import styled from '@emotion/styled';
 
-export const ProductsContainer = styled.div``;
+export const ProductsContainer = styled.div`
+  @media (min-width: 768px) {
+    overflow-y: scroll;
+    height: 507px;
+    gap: 32px 16px;
+  }
+  @media (min-width: 1440px) {
+    width: 850px;
+  }
+`;
+
+export const ProductList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  @media (min-width: 768px) {
+    gap: 32px 16px;
+  }
+`;
 
 export const ProductsItem = styled.li`
   width: 335px;
   height: 141px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
-  margin-bottom: 20px;
   padding: 16px 16px;
+  @media (min-width: 1440px) {
+    width: 405px;
+  }
 `;
 
 export const RadCircle = styled.div`
@@ -18,6 +39,12 @@ export const RadCircle = styled.div`
   background: #e9101d;
   margin-right: 8px;
   margin-left: 75px;
+  @media (min-width: 768px) {
+    margin-left: 71px;
+  }
+  @media (min-width: 1440px) {
+    margin-left: 141px;
+  }
 `;
 
 export const GreenCircle = styled.div`
@@ -27,12 +54,21 @@ export const GreenCircle = styled.div`
   background: #419b09;
   margin-right: 8px;
   margin-left: 94px;
+  @media (min-width: 768px) {
+    margin-left: 90px;
+  }
+  @media (min-width: 1440px) {
+    margin-left: 160px;
+  }
 `;
 
 export const InfoContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 35px;
+  @media (min-width: 768px) {
+    margin-bottom: 27px;
+  }
 `;
 
 export const DietTitle = styled.h3`
@@ -76,13 +112,21 @@ export const MenuContainer = styled.div`
 
 export const MenuTitle = styled.h2`
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   color: #efede8;
-  font-family: Roboto;
   font-size: 20px;
   font-weight: 400;
   line-height: 1.2;
-  width: 258px;
-  height: 24px;
+  width: 250px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 1.33;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 330px;
+  }
 `;
 
 export const DataInfo = styled.ul`
@@ -93,8 +137,10 @@ export const DataInfo = styled.ul`
     font-size: 12px;
     font-weight: 400;
     line-height: 1.5;
+    @media screen and (min-width: 768px) {
+      margin-right: 16px;
+    }
     & span {
-      overflow: hidden;
       color: #efede8;
       margin-left: 4px;
     }
@@ -115,6 +161,6 @@ export const AddProduct = styled.span`
   transition: color 300ms;
   @media (min-width: 768px) {
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.5;
   }
 `;

@@ -2,6 +2,7 @@ import { getAllProducts } from 'services/powerPulseApi';
 import { useState, useEffect } from 'react';
 import {
   ProductsContainer,
+  ProductList,
   ProductsItem,
   RadCircle,
   GreenCircle,
@@ -46,7 +47,7 @@ export const ProductsList = () => {
   return (
     <ProductsContainer>
       {products.length !== 0 ? (
-        <ul>
+        <ProductList>
           {products.map(
             ({
               calories,
@@ -99,7 +100,13 @@ export const ProductsList = () => {
                     <li>
                       Calories:<span>{calories}</span>
                     </li>
-                    <li>
+                    <li
+                      style={{
+                        overflow: 'hidden',
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis',
+                      }}
+                    >
                       Category: <span>{category}</span>
                     </li>
                     <li>
@@ -110,7 +117,7 @@ export const ProductsList = () => {
               );
             }
           )}
-        </ul>
+        </ProductList>
       ) : (
         <p>Sorry, we didn't find any products matching your request.</p>
       )}
