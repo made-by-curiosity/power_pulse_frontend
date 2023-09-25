@@ -6,9 +6,9 @@ import {
 } from './ExerciseCard.styled';
 
 export const ExerciseCard = ({
-  title = 'Cardio',
-  filter = 'Body Part',
-  photo,
+  title, 
+  filter,
+  photo
 }) => {
   return (
     <ExerciseCardWrapper photo={photo}>
@@ -22,4 +22,4 @@ export const ExerciseCard = ({
   );
 };
 
-export default ExerciseCard;
+

@@ -4,7 +4,6 @@ const BASE_URL = 'https://power-pulse.onrender.com';
 
 // const BASE_URL = 'http://localhost:3030';
 
-
 axios.defaults.baseURL = BASE_URL;
 
 export const setAuthHeader = token => {
@@ -48,8 +47,6 @@ export const getUserInfo = async () => {
 
   return res.data;
 };
-
-
 
 export const updateUserInfo = async userParams => {
   const res = await axios.put('/api/users/params', userParams);
@@ -96,7 +93,7 @@ export const addWorkout = async workout => {
 };
 
 export const getWorkouts = async date => {
-  const res = await axios.post(`/api/diary/workout${date && `?date=${date}`}`);
+  const res = await axios.get(`/api/diary/workout${date && `?date=${date}`}`);
 
   return res.data;
 };
@@ -130,25 +127,45 @@ export const getNotRecommendedProducts = async () => {
 // exercises
 
 export const getAllExercises = async () => {
-  const res = await axios.get();
+  const res = await axios.get('/api/exercises');
 
   return res.data;
 };
 
-export const getAllBodyParts = async () => {
-  const res = await axios.get('/api/exercises/body-parts');
+export const getExercisesCategory = async query => {
+  const res = await axios.get(`/api/exercises/${query}`);
 
   return res.data;
 };
 
-export const getAllMuscles = async () => {
-  const res = await axios.get('/api/exercises/muscles');
+// statistics
+
+export const getTotalUsers = async () => {
+  const res = await axios.get(`/api/statistics/users`);
 
   return res.data;
 };
 
-export const getAllEquipment = async () => {
-  const res = await axios.get('/api/exercises/equipment');
+export const getTotalExercises = async () => {
+  const res = await axios.get(`/api/statistics/exercises`);
+
+  return res.data;
+};
+
+export const getTotalWorkouts = async () => {
+  const res = await axios.get(`/api/statistics/workouts`);
+
+  return res.data;
+};
+
+export const getTotalWorkoutsTime = async () => {
+  const res = await axios.get(`/api/statistics/time`);
+
+  return res.data;
+};
+
+export const getTotalBurnedCalories = async () => {
+  const res = await axios.get(`/api/statistics/calories`);
 
   return res.data;
 };

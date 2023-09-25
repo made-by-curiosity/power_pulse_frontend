@@ -3,12 +3,16 @@ import styled from '@emotion/styled';
 export const ProductWrapper = styled.div`
   border: 1px solid #efede820;
   border-radius: 12px;
+  margin-bottom: 40px;
   padding: 16px;
   width: 100%;
   min-height: 335px;
-  background-color: #efede805;
+  max-height: 824px;
+  overflow: scroll;
+  background-color: #EFEDE80D;
   @media (min-width: 768px) {
     min-height: auto;
+    max-height: auto;
     height: 234px;
     width: 704px;
   }
@@ -21,6 +25,10 @@ export const TitleNav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 48px;
+  @media (min-width: 768px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const TitleP = styled.p`

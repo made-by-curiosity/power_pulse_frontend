@@ -1,338 +1,74 @@
 [
-    {
-      "Title": "Title 1",
-      "Category": "Category 1",
-      "Calories": 31,
-      "Weight": 22,
-      "Recommend": false,
-      "id": "1"
-    },
-    {
-      "Title": "Title 2",
-      "Category": "Category 2",
-      "Calories": 18,
-      "Weight": 62,
-      "Recommend": false,
-      "id": "2"
-    },
-    {
-      "Title": "Title 3",
-      "Category": "Category 3",
-      "Calories": 79,
-      "Weight": 74,
-      "Recommend": false,
-      "id": "3"
-    },
-    {
-      "Title": "Title 4",
-      "Category": "Category 4",
-      "Calories": 61,
-      "Weight": 10,
-      "Recommend": false,
-      "id": "4"
-    },
-    {
-      "Title": "Title 5",
-      "Category": "Category 5",
-      "Calories": 80,
-      "Weight": 43,
-      "Recommend": false,
-      "id": "5"
-    },
-    {
-      "Title": "Title 6",
-      "Category": "Category 6",
-      "Calories": 38,
-      "Weight": 4,
-      "Recommend": false,
-      "id": "6"
-    },
-    {
-      "Title": "Title 7",
-      "Category": "Category 7",
-      "Calories": 28,
-      "Weight": 18,
-      "Recommend": false,
-      "id": "7"
-    },
-    {
-      "Title": "Title 8",
-      "Category": "Category 8",
-      "Calories": 77,
-      "Weight": 47,
-      "Recommend": false,
-      "id": "8"
-    },
-    {
-      "Title": "Title 9",
-      "Category": "Category 9",
-      "Calories": 78,
-      "Weight": 37,
-      "Recommend": false,
-      "id": "9"
-    },
-    {
-      "Title": "Title 10",
-      "Category": "Category 10",
-      "Calories": 42,
-      "Weight": 85,
-      "Recommend": false,
-      "id": "10"
-    },
-    {
-      "Title": "Title 11",
-      "Category": "Category 11",
-      "Calories": 5,
-      "Weight": 47,
-      "Recommend": false,
-      "id": "11"
-    },
-    {
-      "Title": "Title 12",
-      "Category": "Category 12",
-      "Calories": 44,
-      "Weight": 84,
-      "Recommend": false,
-      "id": "12"
-    },
-    {
-      "Title": "Title 13",
-      "Category": "Category 13",
-      "Calories": 60,
-      "Weight": 44,
-      "Recommend": false,
-      "id": "13"
-    },
-    {
-      "Title": "Title 14",
-      "Category": "Category 14",
-      "Calories": 26,
-      "Weight": 18,
-      "Recommend": false,
-      "id": "14"
-    },
-    {
-      "Title": "Title 15",
-      "Category": "Category 15",
-      "Calories": 57,
-      "Weight": 81,
-      "Recommend": false,
-      "id": "15"
-    },
-    {
-      "Title": "Title 16",
-      "Category": "Category 16",
-      "Calories": 82,
-      "Weight": 34,
-      "Recommend": false,
-      "id": "16"
-    },
-    {
-      "Title": "Title 17",
-      "Category": "Category 17",
-      "Calories": 69,
-      "Weight": 56,
-      "Recommend": false,
-      "id": "17"
-    },
-    {
-      "Title": "Title 18",
-      "Category": "Category 18",
-      "Calories": 37,
-      "Weight": 69,
-      "Recommend": false,
-      "id": "18"
-    },
-    {
-      "Title": "Title 19",
-      "Category": "Category 19",
-      "Calories": 73,
-      "Weight": 34,
-      "Recommend": false,
-      "id": "19"
-    },
-    {
-      "Title": "Title 20",
-      "Category": "Category 20",
-      "Calories": 27,
-      "Weight": 16,
-      "Recommend": false,
-      "id": "20"
-    },
-    {
-      "Title": "Title 21",
-      "Category": "Category 21",
-      "Calories": 94,
-      "Weight": 88,
-      "Recommend": false,
-      "id": "21"
-    },
-    {
-      "Title": "Title 22",
-      "Category": "Category 22",
-      "Calories": 70,
-      "Weight": 40,
-      "Recommend": false,
-      "id": "22"
-    },
-    {
-      "Title": "Title 23",
-      "Category": "Category 23",
-      "Calories": 9,
-      "Weight": 25,
-      "Recommend": false,
-      "id": "23"
-    },
-    {
-      "Title": "Title 24",
-      "Category": "Category 24",
-      "Calories": 52,
-      "Weight": 94,
-      "Recommend": false,
-      "id": "24"
-    },
-    {
-      "Title": "Title 25",
-      "Category": "Category 25",
-      "Calories": 22,
-      "Weight": 49,
-      "Recommend": false,
-      "id": "25"
-    },
-    {
-      "Title": "Title 26",
-      "Category": "Category 26",
-      "Calories": 5,
-      "Weight": 43,
-      "Recommend": false,
-      "id": "26"
-    },
-    {
-      "Title": "Title 27",
-      "Category": "Category 27",
-      "Calories": 83,
-      "Weight": 5,
-      "Recommend": false,
-      "id": "27"
-    },
-    {
-      "Title": "Title 28",
-      "Category": "Category 28",
-      "Calories": 83,
-      "Weight": 67,
-      "Recommend": false,
-      "id": "28"
-    },
-    {
-      "Title": "Title 29",
-      "Category": "Category 29",
-      "Calories": 66,
-      "Weight": 81,
-      "Recommend": false,
-      "id": "29"
-    },
-    {
-      "Title": "Title 30",
-      "Category": "Category 30",
-      "Calories": 87,
-      "Weight": 8,
-      "Recommend": false,
-      "id": "30"
-    },
-    {
-      "Title": "Title 31",
-      "Category": "Category 31",
-      "Calories": 76,
-      "Weight": 33,
-      "Recommend": false,
-      "id": "31"
-    },
-    {
-      "Title": "Title 32",
-      "Category": "Category 32",
-      "Calories": 85,
-      "Weight": 59,
-      "Recommend": false,
-      "id": "32"
-    },
-    {
-      "Title": "Title 33",
-      "Category": "Category 33",
-      "Calories": 57,
-      "Weight": 43,
-      "Recommend": false,
-      "id": "33"
-    },
-    {
-      "Title": "Title 34",
-      "Category": "Category 34",
-      "Calories": 62,
-      "Weight": 93,
-      "Recommend": false,
-      "id": "34"
-    },
-    {
-      "Title": "Title 35",
-      "Category": "Category 35",
-      "Calories": 52,
-      "Weight": 45,
-      "Recommend": false,
-      "id": "35"
-    },
-    {
-      "Title": "Title 36",
-      "Category": "Category 36",
-      "Calories": 91,
-      "Weight": 97,
-      "Recommend": false,
-      "id": "36"
-    },
-    {
-      "Title": "Title 37",
-      "Category": "Category 37",
-      "Calories": 86,
-      "Weight": 92,
-      "Recommend": false,
-      "id": "37"
-    },
-    {
-      "Title": "Title 38",
-      "Category": "Category 38",
-      "Calories": 80,
-      "Weight": 10,
-      "Recommend": false,
-      "id": "38"
-    },
-    {
-      "Title": "Title 39",
-      "Category": "Category 39",
-      "Calories": 59,
-      "Weight": 61,
-      "Recommend": false,
-      "id": "39"
-    },
-    {
-      "Title": "Title 40",
-      "Category": "Category 40",
-      "Calories": 98,
-      "Weight": 29,
-      "Recommend": false,
-      "id": "40"
-    },
-    {
-      "Title": "Title 41",
-      "Category": "Category 41",
-      "Calories": 80,
-      "Weight": 1,
-      "Recommend": false,
-      "id": "41"
-    },
-    {
-      "Title": "Title 42",
-      "Category": "Category 42",
-      "Calories": 44,
-      "Weight": 70,
-      "Recommend": false,
-      "id": "42"
-    }
-  ]
+  {
+      "_id": "650d45ac8f9416c31e11a599",
+      "productId": {
+          "groupBloodNotAllowed": {
+              "1": true,
+              "2": true,
+              "3": false,
+              "4": false
+          },
+          "_id": "5d51694902b2373622ff5773",
+          "weight": 100,
+          "calories": 340,
+          "category": "dairy",
+          "title": "Danbo cheese"
+      },
+      "amount": 100,
+      "calories": 400
+  },
+  {
+      "_id": "650d45ae8f9416c31e11a59c",
+      "productId": {
+          "groupBloodNotAllowed": {
+              "1": true,
+              "2": true,
+              "3": false,
+              "4": false
+          },
+          "_id": "5d51694902b2373622ff5773",
+          "weight": 100,
+          "calories": 340,
+          "category": "dairy",
+          "title": "Danbo cheese"
+      },
+      "amount": 100,
+      "calories": 400
+  },
+  {
+      "_id": "650d45af8f9416c31e11a59f",
+      "productId": {
+          "groupBloodNotAllowed": {
+              "1": true,
+              "2": true,
+              "3": false,
+              "4": false
+          },
+          "_id": "5d51694902b2373622ff5773",
+          "weight": 100,
+          "calories": 340,
+          "category": "dairy",
+          "title": "Danbo cheese"
+      },
+      "amount": 100,
+      "calories": 400
+  },
+  {
+      "_id": "650d45b08f9416c31e11a5a2",
+      "productId": {
+          "groupBloodNotAllowed": {
+              "1": true,
+              "2": true,
+              "3": false,
+              "4": false
+          },
+          "_id": "5d51694902b2373622ff5773",
+          "weight": 100,
+          "calories": 340,
+          "category": "dairy",
+          "title": "Danbo cheese"
+      },
+      "amount": 100,
+      "calories": 400
+  }
+]
