@@ -5,11 +5,33 @@ import {
 } from '@tanstack/react-table';
 import mData from './users.json';
 import { useMemo } from 'react';
+import ico from '../../assets/icons/svg-sprite.svg';
 
-import { TitleColumn, TitleHead, RowTel, CellTel } from './ProductsTable.styled';
+import {
+  TitleColumn,
+  TitleHead,
+  RowTel,
+  CellTel,
+  SvgStyle,
+  SvgTd,
+  Headers,
+  HeadersTitle,
+} from './ProductsTable.styled';
 
 export default function ProductsTable() {
-  const data = useMemo(() => mData, []);
+  const groupBlood = '3'
+
+  const resData = mData.map((mDat)=> {
+    return {
+      Title: mDat.productId.title,
+      Category: mDat.productId.category,
+      Calories: mDat.productId.calories,
+      Weight: mDat.productId.weight,
+      Recommend: !mDat.productId.groupBloodNotAllowed[groupBlood],
+    }
+  })
+
+  const data = useMemo(() => resData, [resData]);
 
   const columns = [
     {
@@ -31,6 +53,52 @@ export default function ProductsTable() {
     {
       header: 'Recommend',
       accessorKey: 'Recommend',
+      cell: nfo => {
+        const nfoIn = nfo.getValue();
+        if (nfoIn) {
+          return (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <div
+                style={{
+                  width: '14px',
+                  height: '14px',
+                  backgroundColor: '#419B09',
+                  borderRadius: '50%',
+                  marginRight: '8px',
+                }}
+              ></div>
+              Yes
+            </div>
+          );
+        } else {
+          return (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <div
+                style={{
+                  width: '14px',
+                  height: '14px',
+                  backgroundColor: '#E9101D',
+                  borderRadius: '50%',
+                  marginRight: '8px',
+                }}
+              ></div>
+              No
+            </div>
+          );
+        }
+      },
     },
   ];
 
@@ -45,16 +113,16 @@ export default function ProductsTable() {
       <table>
         <TitleHead>
           {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
+            <Headers key={headerGroup.id}>
               {headerGroup.headers.map(header => (
-                <th key={header.id}>
+                <HeadersTitle key={header.id}>
                   {flexRender(
                     header.column.columnDef.header,
                     header.getContext()
                   )}
-                </th>
+                </HeadersTitle>
               ))}
-            </tr>
+            </Headers>
           ))}
         </TitleHead>
         <tbody>
@@ -62,11 +130,15 @@ export default function ProductsTable() {
             <RowTel key={row.id}>
               {row.getVisibleCells().map(cell => (
                 <CellTel key={cell.id}>
-                    <TitleColumn>{cell.column.id}</TitleColumn>
+                  <TitleColumn>{cell.column.id}</TitleColumn>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </CellTel>
               ))}
-              <td>T</td>
+              <SvgTd>
+                <SvgStyle>
+                  <use href={ico + `#icon-trashtrue`}></use>
+                </SvgStyle>
+              </SvgTd>
             </RowTel>
           ))}
         </tbody>

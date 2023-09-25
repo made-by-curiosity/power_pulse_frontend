@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
 export const NavigationBar = styled.nav`
   display: none;
@@ -14,7 +15,7 @@ export const NavigationBar = styled.nav`
   }
 `;
 
-export const HeaderLink = styled.div`
+export const HeaderLink = styled(NavLink)`
   display: flex;
   padding: 10px 27px;
   justify-content: center;
@@ -30,7 +31,8 @@ export const HeaderLink = styled.div`
   transition: background linear 200ms, border linear 200ms;
 
   &:hover,
-  &:active {
+  &:active,
+  &.active {
     background: #e6533c;
     border: 1px solid #e6533c;
   }

@@ -4,11 +4,14 @@ import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
 import { BackgroundImg } from 'components/BackgroundImg/BackgroundImg';
 import { MainButton } from 'components/MainButton/MainButton';
 import { useNavigate } from 'react-router-dom';
-
 import { WelcomeBtns, TitleText, WelcomeTitle } from './WelcomePage.styled';
+import { useState } from 'react';
+import { HighlightedWord } from 'components/HighlightedWord/HighlightedWord';
+import { WordHighlighter } from 'components/WordHighlighter/WordHighlighter';
 
-// import icons from '../../assets/icons/svg-sprite.svg';
 const WelcomePage = () => {
+  const [position, setPosition] = useState({ top: 0, left: 0 });
+
   const navigate = useNavigate();
   const goToSingUp = () => {
     navigate('/signup');
@@ -18,9 +21,14 @@ const WelcomePage = () => {
   };
   return (
     <BackgroundImg>
+      <WordHighlighter position={position} />
       <Container>
         <WelcomeTitle>
-          <TitleText>Transforming your body shape with Power Pulse</TitleText>
+          <TitleText>
+            Transforming your{' '}
+            <HighlightedWord word="body" setPosition={setPosition} /> shape with
+            Power Pulse
+          </TitleText>
         </WelcomeTitle>
         <WelcomeBtns>
           <MainButton

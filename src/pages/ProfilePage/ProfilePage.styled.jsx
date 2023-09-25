@@ -9,7 +9,7 @@ export const PageWrapper = styled.div`
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    aline-items: flex-end;
+    align-items: flex-end;
 
     margin-top: 32px;
     margin-bottom: 36px;

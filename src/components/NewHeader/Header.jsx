@@ -7,18 +7,14 @@ import {
   HeaderContainer,
 } from './Header.styled';
 import { Logo } from './Logo/Logo';
-import { BurgerMenu } from './BurgerMenu/BurgerMenu';
+// import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 import { useState } from 'react';
 import { NavBar } from './NavBar/NavBar';
 import { UserBar } from './UserBar/UserBar';
 
-export const Header = () => {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
+export const Header = ({ setMenuIsOpen }) => {
+  // eslint-disable-next-line no-unused-vars
   const [IsLogedIn, setIsLogedIn] = useState(true);
-
-  const onBurgerButton = () => {
-    setMenuIsOpen(!menuIsOpen);
-  };
 
   return (
     <AppBar>
@@ -37,7 +33,6 @@ export const Header = () => {
           </NavWrapper>
         </HeaderContainer>
       </FixedHeader>
-      {menuIsOpen && <BurgerMenu onBurgerButton={onBurgerButton} />}
     </AppBar>
   );
 };

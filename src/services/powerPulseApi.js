@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://power-pulse.onrender.com/api';
+const BASE_URL = 'https://power-pulse.onrender.com';
+
+// const BASE_URL = 'http://localhost:3030';
+
 
 axios.defaults.baseURL = BASE_URL;
 
@@ -15,25 +18,25 @@ export const clearAuthHeader = () => {
 // user auth
 
 export const signUpUser = async credentials => {
-  const res = await axios.post('/auth/register', credentials);
+  const res = await axios.post('/api/auth/register', credentials);
 
   return res.data;
 };
 
 export const logInUser = async credentials => {
-  const res = await axios.post('/auth/login', credentials);
+  const res = await axios.post('/api/auth/login', credentials);
 
   return res.data;
 };
 
 export const logOutUser = async () => {
-  const res = await axios.post('/auth/logout');
+  const res = await axios.post('/api/auth/logout');
 
   return res.data;
 };
 
 export const getCurrentUser = async () => {
-  const res = await axios.get('auth/current');
+  const res = await axios.get('/api/auth/current');
 
   return res.data;
 };
@@ -41,25 +44,27 @@ export const getCurrentUser = async () => {
 // user params
 
 export const getUserInfo = async () => {
-  const res = await axios.get('/users/params');
+  const res = await axios.get('/api/users/params');
 
   return res.data;
 };
 
+
+
 export const updateUserInfo = async userParams => {
-  const res = await axios.put('/users/params', userParams);
+  const res = await axios.put('/api/users/params', userParams);
 
   return res.data;
 };
 
 export const updateUserName = async userName => {
-  const res = await axios.patch('/users/username', userName);
+  const res = await axios.patch('/api/users/username', userName);
 
   return res.data;
 };
 
 export const updateUserAvatar = async userAvatar => {
-  const res = await axios.patch('/users/avatars', userAvatar);
+  const res = await axios.patch('/api/users/avatars', userAvatar);
 
   return res.data;
 };
@@ -67,37 +72,37 @@ export const updateUserAvatar = async userAvatar => {
 // diary
 
 export const getMeals = async date => {
-  const res = await axios.get(`/diary/meal${date && `?date=${date}`}`);
+  const res = await axios.get(`/api/diary/meal${date && `?date=${date}`}`);
 
   return res.data;
 };
 
 export const addMeal = async meal => {
-  const res = await axios.post('/diary/meal', meal);
+  const res = await axios.post('/api/diary/meal', meal);
 
   return res.data;
 };
 
 export const deleteMeal = async id => {
-  const res = await axios.delete(`/diary/meal/${id}`);
+  const res = await axios.delete(`/api/diary/meal/${id}`);
 
   return res.data;
 };
 
 export const addWorkout = async workout => {
-  const res = await axios.post('/diary/workout', workout);
+  const res = await axios.post('/api/diary/workout', workout);
 
   return res.data;
 };
 
 export const getWorkouts = async date => {
-  const res = await axios.post(`/diary/workout${date && `?date=${date}`}`);
+  const res = await axios.post(`/api/diary/workout${date && `?date=${date}`}`);
 
   return res.data;
 };
 
 export const deleteWorkout = async id => {
-  const res = await axios.delete(`/diary/workout/${id}`);
+  const res = await axios.delete(`/api/diary/workout/${id}`);
 
   return res.data;
 };
@@ -131,19 +136,19 @@ export const getAllExercises = async () => {
 };
 
 export const getAllBodyParts = async () => {
-  const res = await axios.get();
+  const res = await axios.get('/api/exercises/body-parts');
 
   return res.data;
 };
 
 export const getAllMuscles = async () => {
-  const res = await axios.get();
+  const res = await axios.get('/api/exercises/muscles');
 
   return res.data;
 };
 
 export const getAllEquipment = async () => {
-  const res = await axios.get();
+  const res = await axios.get('/api/exercises/equipment');
 
   return res.data;
 };

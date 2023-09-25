@@ -1,7 +1,18 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
+
+export const BurgerLayout = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  z-index: 0;
+`;
 
 export const UserNav = styled.nav`
-  position: absolute;
+  z-index: 200;
+  position: fixed;
   right: 0;
   top: 0;
 
@@ -25,7 +36,7 @@ export const UserNav = styled.nav`
   }
 `;
 
-export const BurgerLink = styled.div`
+export const BurgerLink = styled(NavLink)`
   display: flex;
   padding: 10px 27px;
   justify-content: center;
@@ -42,7 +53,8 @@ export const BurgerLink = styled.div`
   color: #efede8;
 
   &:hover,
-  &:active {
+  &:active,
+  &.active {
     border: 1px solid #efede8;
   }
 
