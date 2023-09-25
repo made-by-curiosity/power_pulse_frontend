@@ -21,9 +21,9 @@ import icons from '../../assets/icons/svg-sprite.svg';
 import { CustomModal } from 'components/CustomModal/CustomModal';
 import { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import axios from 'axios';
+// import axios from 'axios';
 
-const BASE_URL='https://power-pulse.onrender.com'
+// const BASE_URL='https://power-pulse.onrender.com'
 
 const example = {
   bodyPart: 'waist',
