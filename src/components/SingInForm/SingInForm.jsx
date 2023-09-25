@@ -19,6 +19,7 @@ import { Title } from 'components/Title/Title';
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { ModalTrening } from 'components/ModalTrening/ModalTrening';
 
 const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 const passwordRegex =
@@ -92,6 +93,8 @@ const SignInForm = () => {
       </ContainerSingIn>
       <CaloriesBtn />
       <TutorialBtn />
+
+      <ModalTrening/>
     </>
   );
 };

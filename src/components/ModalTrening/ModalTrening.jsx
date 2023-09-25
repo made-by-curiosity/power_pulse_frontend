@@ -21,8 +21,9 @@ import icons from '../../assets/icons/svg-sprite.svg';
 import { CustomModal } from 'components/CustomModal/CustomModal';
 import { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import axios from 'axios';
 
-
+const BASE_URL='https://power-pulse.onrender.com'
 
 const example = {
   bodyPart: 'waist',
@@ -37,7 +38,8 @@ const example = {
 
 export const ModalTrening = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isSecond, setIsSecond] = useState(0 );
+  const [isSecond, setIsSecond] = useState(0);
+  // const [data, setData] = useState(null);
 
   function formatTime(totalSeconds) {
   const minutes = Math.floor(totalSeconds / 60);
@@ -46,7 +48,14 @@ export const ModalTrening = () => {
 }
 
   const children = example.time * 60;
- 
+
+  // useEffect(() => {
+
+  //   axios.get('api/exercises')
+  //     .then((response) => setData(response))
+  //     .catch((error) => console.error('Ошибка при получении данных:', error));
+  // }, []);
+
   useEffect(() => {
     let interval;
     if (isPlaying && isSecond !== children) {
