@@ -18,7 +18,7 @@ const WelcomePage = () => {
     navigate('/signin');
   };
   return (
-    <BackgroundImg statistics="calories">
+    <BackgroundImg>
       <WordHighlighter position={position} />
       <Container>
         <WelcomeTitle>
