@@ -21,7 +21,7 @@ export const BgContainer = styled.div`
   z-index: -5;
   width: 100%;
   height: 100vh;
-  min-height: 500px;
+  min-height: 890px;
 
   display: flex;
   justify-content: ${props => (props.notFound ? 'space-between' : 'right')};
