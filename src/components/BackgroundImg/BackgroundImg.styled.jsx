@@ -7,14 +7,14 @@ import img2 from '../../assets/images/bg_img/bg_main@2x.jpg';
 import img3 from '../../assets/images/bg_img/bg_main@3x.jpg';
 
 import mo_img from '../../assets/images/mo-img/mo_main.jpg';
-// import mo_img2 from '../../assets/images/mo-img/mo_main@2x.jpg';
-// import mo_img3 from '../../assets/images/mo-img/mo_main@3x.jpg';
+import mo_img2 from '../../assets/images/mo-img/mo_main@2x.jpg';
+import mo_img3 from '../../assets/images/mo-img/mo_main@3x.jpg';
 // import ta_img from '../../assets/images/ta_img/ta_main.jpg';
 // import ta_img2 from '../../assets/images/ta_img/ta_main@2x.jpg';
 // import ta_img3 from '../../assets/images/ta_img/ta_main@3x.jpg';
-// import bg_img from '../../assets/images/bg_img/bg_main.jpg';
-// import bg_img2 from '../../assets/images/bg_img/bg_main@2x.jpg';
-// import bg_img3 from '../../assets/images/bg_img/bg_main@3x.jpg';
+import bg_img from '../../assets/images/bg_img/bg_main.jpg';
+import bg_img2 from '../../assets/images/bg_img/bg_main@2x.jpg';
+import bg_img3 from '../../assets/images/bg_img/bg_main@3x.jpg';
 
 export const Wrapper = styled.div`
   height: 100vh;
@@ -27,7 +27,7 @@ export const BgContainer = styled.div`
   z-index: -5;
   width: 100%;
   height: 100vh;
-  min-height: 1005px;
+  min-height: 500px;
 
   display: flex;
   justify-content: ${props => (props.notFound ? 'space-between' : 'right')};
@@ -36,6 +36,7 @@ export const BgContainer = styled.div`
   }
 
   @media (min-width: 1440px) {
+    min-height: 1005px;
     gap: 101px;
   }
 `;
@@ -59,15 +60,15 @@ export const NotFoundContentBackground = styled.div`
 `;
 
 export const BgImage = styled.div`
-  width: 0%;
+  width: ${props => (props.notFound ? '0%' : '80%')};
 
   background: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
     linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
     url(${mo_img});
 
+  background-size: 268px 571px;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top;
+  background-position: right bottom;
 
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
@@ -79,10 +80,10 @@ export const BgImage = styled.div`
           #040404 -2.45%,
           rgba(4, 4, 4, 0) 68.17%
         ),
-        url(${img2});
+        url(${mo_img2});
       background-repeat: no-repeat;
-      background-size: cover;
-      background-position: top;
+      background-size: 268px 571px;
+      background-position: right bottom;
     }
   }
   @media (min-device-pixel-ratio: 3),
@@ -94,15 +95,15 @@ export const BgImage = styled.div`
           #040404 -2.45%,
           rgba(4, 4, 4, 0) 68.17%
         ),
-        url(${img3});
+        url(${mo_img3});
       background-repeat: no-repeat;
-      background-size: cover;
-      background-position: top;
+      background-size: 268px 571px;
+      background-position: right bottom;
     }
   }
 
   @media (min-width: 375px) {
-    width: 36%;
+    width: ${props => (props.notFound ? '36%' : '90%')};
   }
 
   @media (min-width: 768px) {
@@ -152,7 +153,7 @@ export const BgImage = styled.div`
     width: 47%;
 
     background: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%),
-      url(${img});
+      url(${bg_img});
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -168,7 +169,7 @@ export const BgImage = styled.div`
             #040404 -2.45%,
             rgba(4, 4, 4, 0) 68.17%
           ),
-          url(${img2});
+          url(${bg_img2});
         background-repeat: no-repeat;
         background-size: cover;
         background-position: top;
@@ -183,7 +184,7 @@ export const BgImage = styled.div`
             #040404 -2.45%,
             rgba(4, 4, 4, 0) 68.17%
           ),
-          url(${img3});
+          url(${bg_img3});
         background-repeat: no-repeat;
         background-size: cover;
         background-position: top;

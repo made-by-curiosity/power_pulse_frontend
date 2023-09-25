@@ -7,10 +7,10 @@ import {
 
 export const BackgroundImg = ({ children, notFound }) => {
   return (
-    <Wrapper>
+    <Wrapper notFound={notFound}>
       <BgContainer notFound={notFound}>
-        {notFound && <NotFoundContentBackground />}
-        <BgImage />
+        {notFound && <NotFoundContentBackground notFound={notFound} />}
+        <BgImage notFound={notFound} />
       </BgContainer>
       {children}
     </Wrapper>
