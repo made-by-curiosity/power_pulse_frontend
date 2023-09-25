@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const ProductWrapper = styled.div`
   border: 1px solid #efede820;
   border-radius: 12px;
+  margin-bottom: 40px;
   padding: 16px;
   width: 100%;
   min-height: 335px;
@@ -25,6 +26,9 @@ export const TitleNav = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 48px;
+  @media (min-width: 768px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const TitleP = styled.p`

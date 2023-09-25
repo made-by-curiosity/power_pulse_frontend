@@ -12,7 +12,6 @@ import {
   updateUserAvatar,
 } from '../../services/powerPulseApi';
 
-
 // AUTH
 
 export const signUp = createAsyncThunk(
@@ -46,6 +45,9 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     await logOutUser();
     clearAuthHeader();
   } catch (error) {
+    if (error.response && error.response.status === 401) {
+      thunkAPI.dispatch(resetStore());
+    }
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -66,6 +68,23 @@ export const refreshUser = createAsyncThunk(
 
       return data.user;
     } catch (error) {
+      if (error.response && error.response.status === 401) {
+        thunkAPI.dispatch(resetStore());
+      }
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const signUpWithToken = createAsyncThunk(
+  'auth/signUpWithToken',
+  async (credentials, thunkAPI) => {
+    try {
+      setAuthHeader(credentials);
+      const data = await getCurrentUser();
+
+      return data;
+    } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -77,10 +96,13 @@ export const getUserParams = createAsyncThunk(
   'auth/getInfo',
   async (credentials, thunkAPI) => {
     try {
-      const data = await getUserInfo(credentials);
+      const { user, bmr } = await getUserInfo(credentials);
 
-      return data.user;
+      return { ...user, bmr };
     } catch (error) {
+      if (error.response && error.response.status === 401) {
+        thunkAPI.dispatch(resetStore());
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -92,8 +114,14 @@ export const updateUserParams = createAsyncThunk(
     try {
       const data = await updateUserInfo(credentials);
 
-      return data.user.userParams;
+      return {
+        userParams: data.user.userParams,
+        bmr: data.bmr,
+      };
     } catch (error) {
+      if (error.response && error.response.status === 401) {
+        thunkAPI.dispatch(resetStore());
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -107,6 +135,9 @@ export const updateName = createAsyncThunk(
 
       return data.user.name;
     } catch (error) {
+      if (error.response && error.response.status === 401) {
+        thunkAPI.dispatch(resetStore());
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -119,6 +150,20 @@ export const updateAvatar = createAsyncThunk(
       const data = await updateUserAvatar(credentials);
 
       return data.user.avatar;
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        thunkAPI.dispatch(resetStore());
+      }
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resetStore = createAsyncThunk(
+  'auth/resetStore',
+  async (_, thunkAPI) => {
+    try {
+      clearAuthHeader();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -9,7 +9,6 @@ import { UserCardWrapper } from './UserCard.styled';
 const calories = {
   icon: '#icon-cutlery',
   label: 'Daily calorie intake',
-  number: '2200',
 };
 
 const normOfSports = {
@@ -18,22 +17,25 @@ const normOfSports = {
   number: '110 min',
 };
 
-export const UserCard = ({ user }) => {
-  const { name, avatar, dailyCalorieIntake, dailyNormOfSports } = user;
+export const UserCard = ({ userInfo }) => {
+  const { name, avatarUrl, bmr } = userInfo;
 
   return (
     <UserCardWrapper>
-      <Avatar name={name} avatar={avatar}></Avatar>
+      <Avatar
+        name={name}
+        avatar={avatarUrl === '' ? undefined : avatarUrl}
+      ></Avatar>
       <InfoCardsWrapper>
         <InfoCard
           icon={calories.icon}
           label={calories.label}
-          number={dailyCalorieIntake}
+          number={bmr}
         ></InfoCard>
         <InfoCard
           icon={normOfSports.icon}
           label={normOfSports.label}
-          number={dailyNormOfSports}
+          number={normOfSports.number}
         ></InfoCard>
       </InfoCardsWrapper>
       <WarningNotice></WarningNotice>

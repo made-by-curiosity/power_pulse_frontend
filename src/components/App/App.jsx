@@ -1,11 +1,21 @@
-import { lazy } from 'react';
+/* eslint-disable no-unused-vars */
+import { lazy, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 // import { Example } from 'components/example/Example';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute/RestrictedRoute';
 import { Layout } from 'components/Layout/Layout';
+<<<<<<< HEAD
 import ExerciseNavigation from 'components/Nav/ExerciseNavigation';
+=======
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
+import { refreshUser } from 'redux/auth/operations';
+
+// import { MusculsList } from 'components/ExercisesTabs/MusculsList ';
+// import { EquipmentsList } from 'components/ExercisesTabs/EquipmentsList';
+>>>>>>> main
 
 const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage'));
 const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage'));
@@ -24,20 +34,21 @@ const NotFoundPage = lazy(() =>
 );
 
 export const App = () => {
-  // эта проверка касается только перехода на страницу "/", проверка защищенных путей находится в компонентах RestrictedRoute и PrivateRoute
-  const isLoggedIn = false;
+  const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <div>
       {/* <Example /> */}
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              isLoggedIn ? <Navigate to="/diary" /> : <Navigate to="/welcome" />
-            }
-          />
+          <Route index element={<Navigate to="/welcome" />} />
           <Route
             path="/welcome"
             element={
@@ -69,7 +80,11 @@ export const App = () => {
           <Route
             path="/params"
             element={
-              <PrivateRoute component={<ParamsPage />} restrictedTo="/signin" />
+              <PrivateRoute
+                component={<ParamsPage />}
+                restrictedTo="/signin"
+                samePage
+              />
             }
           />
           <Route
@@ -87,6 +102,7 @@ export const App = () => {
               <PrivateRoute component={<DiaryPage />} restrictedTo="/signin" />
             }
           />
+          {/* ---------------------------------------------------------- */}
           <Route
             path="/exercises"
             element={
@@ -95,7 +111,29 @@ export const App = () => {
                 restrictedTo="/signin"
               />
             }
-          />
+          >
+            <Route index element={<Navigate to="bodyparts" />} />
+            <Route path="bodyparts" element={<div>bodyparts</div>}>
+              <Route
+                path="bodyparts/:filter"
+                element={<div>Список упражнений по этому фильтру</div>}
+              />
+            </Route>
+            <Route path="muscles" element={<div>muscles</div>}>
+              <Route
+                path="muscles/:filter"
+                element={<div>Список упражнений по этому фильтру</div>}
+              />
+            </Route>
+            <Route path="equipment" element={<div>equipment</div>}>
+              <Route
+                path="equipment/:filter"
+                element={<div>Список упражнений по этому фильтру</div>}
+              />
+            </Route>
+          </Route>
+          {/* ---------------------------------------------------------- */}
+
           <Route
             path="/products"
             element={
