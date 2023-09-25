@@ -5,17 +5,21 @@ const breakpoints = [320, 768, 1440];
 const mq = breakpoints.map(bp => `@media screen and (min-width: ${bp}px)`);
 
 export const AvatarWrapper = styled.div`
+  position: relative;
+
   width: 90px;
   height: 90px;
   margin: 0px auto;
   margin-top: 40px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 
   border: 1px solid #e6533c;
   border-radius: 50%;
+
+  ${'' /* overflow: hidden; */}
 
   ${mq[1]} {
     width: 150px;
@@ -71,16 +75,20 @@ export const UserTitle = styled.h3`
   }
 `;
 
-export const AddAvatarBtn = styled.input`
+export const AddAvatarInput = styled.input`
   position: absolute;
   bottom: 0;
   translate: 0 +50%;
+  z-index: 1000;
 
-  ${
-    '' /* border: none;
-  background: none; */
-  }
-  cursor: pointer;
+  /*--- to hide input---*/
+  opacity: 0;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
 `;
 
 export const AddAvatarIcon = styled.svg`
@@ -101,4 +109,16 @@ export const AddAvatarIcon = styled.svg`
     width: 32px;
     height: 32px;
   }
+`;
+
+export const AvatarImg = styled.img``;
+
+export const AddAvatarBtn = styled.button`
+  position: absolute;
+  bottom: 0;
+  translate: 0 +50%;
+
+  border: none;
+  background: none;
+  cursor: pointer;
 `;

@@ -24,7 +24,7 @@ export const UserCard = ({ userInfo }) => {
     <UserCardWrapper>
       <Avatar
         name={name}
-        avatar={avatarUrl === '' ? undefined : avatarUrl}
+        avatarUrl={avatarUrl === '' ? undefined : avatarUrl}
       ></Avatar>
       <InfoCardsWrapper>
         <InfoCard
