@@ -3,7 +3,7 @@ import {
   getCoreRowModel,
   flexRender,
 } from '@tanstack/react-table';
-import mData from './users.json';
+import mData from './meals.json';
 import { useMemo } from 'react';
 import ico from '../../assets/icons/svg-sprite.svg';
 
@@ -19,17 +19,17 @@ import {
 } from './ProductsTable.styled';
 
 export default function ProductsTable() {
-  const groupBlood = '3'
+  const groupBlood = '3';
 
-  const resData = mData.map((mDat)=> {
+  const resData = mData.map(mDat => {
     return {
       Title: mDat.productId.title,
       Category: mDat.productId.category,
       Calories: mDat.productId.calories,
       Weight: mDat.productId.weight,
       Recommend: !mDat.productId.groupBloodNotAllowed[groupBlood],
-    }
-  })
+    };
+  });
 
   const data = useMemo(() => resData, [resData]);
 
