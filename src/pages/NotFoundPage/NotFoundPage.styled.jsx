@@ -14,10 +14,13 @@ export const Pages = styled.div`
   /* background-image: -webkit-image-set(
     url(${mo_img2}); 2x,
     url(${mo_img3}); 3x
-  );
+  ); */
   background-repeat: no-repeat;
   background-position: bottom 0 right 0;
   margin: 0;
+  display: block;
+  width: 100%;
+  height: auto;
 
   @media screen and (min-width: 375px) {
     max-width: 375px;
@@ -25,24 +28,24 @@ export const Pages = styled.div`
 
   @media screen and (min-width: 768px) {
     max-width: none;
-    width: 768px; 
+    width: 768px;
 
     background-image: url(${ta_img});
-    background-image: -webkit-image-set(
+    /* background-image: -webkit-image-set(
      url(${ta_img2}); 2x,
      url(${ta_img3}); 3x
-    );
+    ); */
   }
 
   @media screen and (min-width: 1440px) {
     width: 1440px;
 
     background-image: url(${bg_img});
-    background-image: -webkit-image-set(
+    /* background-image: -webkit-image-set(
       url(${bg_img2}); 2x,
       url(${bg_img3}); 3x
-    );
-  } */
+    ); */
+  }
 `;
 
 export const Blok = styled.div`
@@ -114,6 +117,7 @@ export const Button = styled.button`
   border: 1px solid rgba(239, 237, 232, 0.3);
   background-color: #e6533c;
   color: #efede8;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 209px;
