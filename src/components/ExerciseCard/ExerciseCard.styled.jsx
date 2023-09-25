@@ -11,14 +11,12 @@ export const ExerciseCardWrapper = styled.div`
   height: 206px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
-  background: linear-gradient(
-    0deg,
-    rgba(4, 4, 4, 0.5) 0%,
-    rgba(4, 4, 4, 0.5) 100%
-  );
-  background-repeat: no-repeat;
   
-  background-image: url(${props => props.photo || img});
+  background-repeat: no-repeat;
+  background-image: linear-gradient( 0deg,
+    rgba(4, 4, 4, 0.5) 0%,
+    rgba(4, 4, 4, 0.5) 100%),url(${props => props.photo || img});
+
   background-position: 50% 50%;
   background-size: cover;
 

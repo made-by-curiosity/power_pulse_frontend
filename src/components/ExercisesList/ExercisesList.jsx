@@ -1,23 +1,24 @@
-import { CategoriesList, CardLink } from './ExercisesCategories.styled';
+import { ExercisesList, CardLink } from './ExercisesList.styled';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-import { Outlet, useLocation, useParams } from 'react-router-dom';
-import { Suspense } from 'react';
+import {  useLocation, useParams } from 'react-router-dom';
 
-import { ExerciseCard } from 'components/ExerciseCard/ExerciseCard';
 
 import { getAllExercises } from 'services/powerPulseApi';
 
 import { BackLink } from 'components/BackLink/BackLink';
-import { Loading } from 'components/Loading/Loading';
 
 
-export const ExercisesSubCategories = () => {
+
+export const ExercisesListByCategory = () => {
   const location = useLocation();
   const backLinkRef = location.state?.from ?? '/exercises';
-
+  
   const { filter } = useParams();
+  const pathname = location.pathname.split('/')
+  const category = pathname[2];
+ 
   const [exercisesSubCategories, setExercisesSubCategories] = useState(null);
 
  
@@ -25,27 +26,35 @@ export const ExercisesSubCategories = () => {
     const exercisesList = async () => {
       try {
         const exercises = await getAllExercises();
-        setExercisesSubCategories(exercises);
+
+
+        const filtredExercises = exercises.filter( exercise =>
+          exercise[category] === filter);
+
+        
+        setExercisesSubCategories(filtredExercises);
       } catch (error) {
         console.log(error.message);
       }
     };
     exercisesList();
-  }, []);
+  }, [filter]);
 
 
-  console.log(exercisesSubCategories);
+ console.log(exercisesSubCategories);
+
+
 
   return (
     <>
     <BackLink to={backLinkRef}>Back</BackLink>
-    <CategoriesList>
+    <ExercisesList>
       {exercisesSubCategories?.map(card => (
         <CardLink key={card._id}>
           <li>{card.name}</li>
         </CardLink>
       ))}
-    </CategoriesList>
+    </ExercisesList>
     </> 
   );
 };
