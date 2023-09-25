@@ -1,15 +1,25 @@
 import { getAllProducts } from 'services/powerPulseApi';
 import { useState, useEffect } from 'react';
+import {
+  ProductsItem,
+  RadCircle,
+  GreenCircle,
+  InfoContainer,
+  DietTitle,
+  Recommend,
+} from './ProductsList.styled';
 
 export const ProductsList = () => {
   const [products, setProducts] = useState([]);
-  const [recommend, setRecommend] = useState(false);
+  // const [recommend, setRecommend] = useState(false);
 
-  function renderProducts() {
-    const bloodGroup = products.map(({ groupBloodNotAllowed }) => {
-      return groupBloodNotAllowed;
-    });
+  function getCurrentBlood() {
+    const randomNumber = [1, 2, 3, 4];
+    const number = Math.floor(Math.random() * randomNumber.length);
+    return randomNumber[number];
   }
+
+  const currentBlood = getCurrentBlood();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -21,7 +31,7 @@ export const ProductsList = () => {
       }
     }
     fetchProducts();
-  }, [products]);
+  }, []);
 
   return (
     <div>
@@ -37,21 +47,35 @@ export const ProductsList = () => {
               groupBloodNotAllowed,
             }) => {
               return (
-                <li key={_id}>
-                  <h3>DIET</h3>
-                  {groupBloodNotAllowed[1] ? (
-                    <p>RECOMMEND</p>
-                  ) : (
-                    <p>NOT RECOMMEND</p>
-                  )}
-                  <button>Add</button>
+                <ProductsItem key={_id}>
+                  <InfoContainer>
+                    <DietTitle>DIET</DietTitle>
+                    {(currentBlood === 1 && groupBloodNotAllowed[1]) ||
+                    (currentBlood === 2 && groupBloodNotAllowed[2]) ||
+                    (currentBlood === 3 && groupBloodNotAllowed[3]) ||
+                    (currentBlood === 4 && groupBloodNotAllowed[4]) ? (
+                      <>
+                        {' '}
+                        <RadCircle />
+                        <Recommend>Not Recommend</Recommend>
+                      </>
+                    ) : (
+                      <>
+                        {' '}
+                        <GreenCircle />
+                        <Recommend>Recommend</Recommend>
+                      </>
+                    )}
+                    <button>Add</button>
+                  </InfoContainer>
+
                   <h2>{title}</h2>
                   <div>
                     <p>Calories{calories}</p>
                     <p>Category{category}</p>
                     <p>Weight{weight}</p>
                   </div>
-                </li>
+                </ProductsItem>
               );
             }
           )}
