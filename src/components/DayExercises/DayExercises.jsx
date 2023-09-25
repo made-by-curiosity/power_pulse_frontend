@@ -11,9 +11,22 @@ import ico from '../../assets/icons/svg-sprite.svg';
 import ExercisesTable from 'components/ExercisesTable/ExercisesTable';
 
 import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getWorkouts } from 'services/powerPulseApi';
 
-export const DayExercises = () => {
-  const isVoid = true;
+export const DayExercises = ({date}) => {
+  const [exercises, setExercises] = useState([]);
+
+  useEffect(() => {
+    try {
+      (async () => {
+        const res = await getWorkouts(date);
+        setExercises(res);
+      })();
+    } catch (error) {}
+  }, [date]);
+
+  const isVoid = exercises.length;
 
   return (
     <ProductWrapper>
@@ -31,7 +44,7 @@ export const DayExercises = () => {
           </NavLink>
         </WrapperA>
       </TitleNav>
-      {isVoid ? <ExercisesTable /> :
+      {isVoid ? <ExercisesTable exercises={exercises} /> :
       <NotProduct>Not found exercises</NotProduct>}
     </ProductWrapper>
   );
