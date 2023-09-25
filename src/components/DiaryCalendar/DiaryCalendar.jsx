@@ -11,9 +11,7 @@ import { DateSwitchButton } from 'components/DateSwitchButton/DateSwitchButton';
 import { Calendar } from 'components/Calendar/Calendar';
 import PropTypes from 'prop-types';
 
-export const DiaryCalendar = ({ createdAt }) => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  // eslint-disable-next-line
+export const DiaryCalendar = ({ createdAt, selectedDate, setSelectedDate }) => {
   const [isDisabled, setIsDisabled] = useState(false);
 
   const clearTime = date => {
@@ -79,4 +77,6 @@ export const DiaryCalendar = ({ createdAt }) => {
 
 DiaryCalendar.propTypes = {
   createdAt: PropTypes.instanceOf(Date).isRequired,
+  selectedDate: PropTypes.instanceOf(Date).isRequired,
+  setSelectedDate: PropTypes.func.isRequired,
 };
