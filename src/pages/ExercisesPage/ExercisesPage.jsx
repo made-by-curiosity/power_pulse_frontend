@@ -1,11 +1,16 @@
 import { Container } from 'components/Container/Container';
-
-import { BodyPartsList } from 'components/ExercisesTabs/BodyPartsList';
+import { ExercisesNav } from 'components/ExercisesTabs/ExercisesNav';
+import { Loading } from 'components/Loading/Loading';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 
 const ExercisesPage = () => {
   return (
     <Container>
-      <BodyPartsList />
+      <ExercisesNav />
+      <Suspense fallback={<Loading text="Loading..." />}>
+        <Outlet />
+      </Suspense>
     </Container>
   );
 };

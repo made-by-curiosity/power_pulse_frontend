@@ -10,11 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
 
-
-import { MusculsList } from 'components/ExercisesTabs/MusculsList ';
-import { LayoutExercises } from 'components/Layout/LayoutExercises';
-import { EquipmentsList } from 'components/ExercisesTabs/EquipmentsList';
-
+// import { MusculsList } from 'components/ExercisesTabs/MusculsList ';
+// import { EquipmentsList } from 'components/ExercisesTabs/EquipmentsList';
 
 const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage'));
 const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage'));
@@ -31,10 +28,6 @@ const ProductsPage = lazy(() =>
 const NotFoundPage = lazy(() =>
   import('../../pages/NotFoundPage/NotFoundPage')
 );
-
-
-
-
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -106,37 +99,37 @@ export const App = () => {
             }
           />
           {/* ---------------------------------------------------------- */}
-          <Route  path="/exercises" element={<LayoutExercises/>}>
-            <Route
-              path="/exercises"
-              element={
-                <PrivateRoute
-                  component={<ExercisesPage />}
-                  restrictedTo="/signin"
-                />
-              }
-            />
-            <Route
-              path="/exercises/muscles"
-              element={
-                <PrivateRoute
-                  component={<MusculsList/>}
-                  restrictedTo="/signin"
-                />
-              }
-            />
-            <Route
-              path="/exercises/equipment"
-              element={
-                <PrivateRoute
-                  component={<EquipmentsList/>}
-                  restrictedTo="/signin"
-                />
-              }
-            />
+          <Route
+            path="/exercises"
+            element={
+              <PrivateRoute
+                component={<ExercisesPage />}
+                restrictedTo="/signin"
+              />
+            }
+          >
+            <Route index element={<Navigate to="bodyparts" />} />
+            <Route path="bodyparts" element={<div>bodyparts</div>}>
+              <Route
+                path="bodyparts/:filter"
+                element={<div>Список упражнений по этому фильтру</div>}
+              />
+            </Route>
+            <Route path="muscles" element={<div>muscles</div>}>
+              <Route
+                path="muscles/:filter"
+                element={<div>Список упражнений по этому фильтру</div>}
+              />
+            </Route>
+            <Route path="equipment" element={<div>equipment</div>}>
+              <Route
+                path="equipment/:filter"
+                element={<div>Список упражнений по этому фильтру</div>}
+              />
+            </Route>
           </Route>
-           {/* ---------------------------------------------------------- */}
-          
+          {/* ---------------------------------------------------------- */}
+
           <Route
             path="/products"
             element={
