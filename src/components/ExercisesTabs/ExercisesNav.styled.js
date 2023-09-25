@@ -6,7 +6,7 @@ export const NavLinkWrap = styled.div`
     display: flex;
     gap: 12px;
     justify-content: flex-end;
-    padding-top: 100px;
+    padding-top: 20px;
     max-width: 1440px;
 `;
 

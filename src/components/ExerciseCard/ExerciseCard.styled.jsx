@@ -17,6 +17,7 @@ export const ExerciseCardWrapper = styled.div`
     rgba(4, 4, 4, 0.5) 100%
   );
   background-repeat: no-repeat;
+  
   background-image: url(${props => props.photo || img});
   background-position: 50% 50%;
   background-size: cover;

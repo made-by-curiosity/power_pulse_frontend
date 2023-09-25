@@ -11,8 +11,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
 
-// import { MusculsList } from 'components/ExercisesTabs/MusculsList ';
-// import { EquipmentsList } from 'components/ExercisesTabs/EquipmentsList';
+import { ExercisesCategories } from 'components/ExercisesTabs/ExercisesCategories';
+import { ExercisesSubCategories } from 'components/ExercisesTabs/ExercisesSubCategories';
+
+
 
 const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage'));
 const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage'));
@@ -110,24 +112,24 @@ export const App = () => {
             }
           >
             <Route index element={<Navigate to="bodyparts" />} />
-            <Route path="bodyparts" element={<div>bodyparts</div>}>
-              <Route
+            <Route path="bodyparts" element={<ExercisesCategories query={'body-parts'}/>}>
+            </Route>
+            <Route
                 path="bodyparts/:filter"
-                element={<div>Список упражнений по этому фильтру</div>}
+                element={<ExercisesSubCategories/>}
               />
+            <Route path="muscles" element={<ExercisesCategories query={'muscles'}/>}>
             </Route>
-            <Route path="muscles" element={<div>muscles</div>}>
-              <Route
+            <Route
                 path="muscles/:filter"
-                element={<div>Список упражнений по этому фильтру</div>}
+                element={<ExercisesSubCategories/>}
               />
+            <Route path="equipment" element={<ExercisesCategories query={'equipment'}/>}>
             </Route>
-            <Route path="equipment" element={<div>equipment</div>}>
-              <Route
+            <Route
                 path="equipment/:filter"
-                element={<div>Список упражнений по этому фильтру</div>}
+                element={<ExercisesSubCategories/>}
               />
-            </Route>
           </Route>
           {/* ---------------------------------------------------------- */}
 
