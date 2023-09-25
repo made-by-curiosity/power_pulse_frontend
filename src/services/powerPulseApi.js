@@ -130,25 +130,13 @@ export const getNotRecommendedProducts = async () => {
 // exercises
 
 export const getAllExercises = async () => {
-  const res = await axios.get();
+  const res = await axios.get('/api/exercises');
 
   return res.data;
 };
 
-export const getAllBodyParts = async () => {
-  const res = await axios.get('/api/exercises/body-parts');
-
-  return res.data;
-};
-
-export const getAllMuscles = async () => {
-  const res = await axios.get('/api/exercises/muscles');
-
-  return res.data;
-};
-
-export const getAllEquipment = async () => {
-  const res = await axios.get('/api/exercises/equipment');
+export const getExercisesCategory = async (query) => {
+  const res = await axios.get(`/api/exercises/${query}`);
 
   return res.data;
 };
