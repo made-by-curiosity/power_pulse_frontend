@@ -1,6 +1,5 @@
 import { Formik, Form, Field } from 'formik';
 import { object, string } from 'yup';
-// import { Notify } from 'notiflix';
 
 import {
   Button,
@@ -13,8 +12,6 @@ import {
   ContainerSingIn,
 } from './SingInForm.styled';
 
-import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
-import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
 import { Title } from 'components/Title/Title';
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { useDispatch } from 'react-redux';
@@ -90,10 +87,6 @@ const SignInForm = () => {
           <LinkSingUp to={'/signup'}>Sign Up</LinkSingUp>
         </DivSingUp>
       </ContainerSingIn>
-      <CaloriesBtn />
-      <TutorialBtn />
-
-      
     </>
   );
 };

@@ -15,16 +15,11 @@ import {
   GenderWrap,
   BloodWrap,
   RadioGroupWrap,
-  CaloriesBtnWrap,
-  TutorialBtnWrap,
 } from 'components/ParamsForm/ParamsForm.styled';
 
 import icons from '../../assets/icons/svg-sprite.svg';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
-
-import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
-import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
 
 import { BirthdayInput } from 'components/BirthdayInput/BirthdayInput';
 
@@ -343,12 +338,6 @@ export const ParamsForm = () => {
           </NextBtn>
         )}
       </BtnWrap>
-      <CaloriesBtnWrap step={step}>
-        <CaloriesBtn />
-      </CaloriesBtnWrap>
-      <TutorialBtnWrap step={step}>
-        <TutorialBtn />
-      </TutorialBtnWrap>
 
       <StepWrap step={step}>
         <Step1 step={step}></Step1>

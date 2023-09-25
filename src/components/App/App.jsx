@@ -6,9 +6,15 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute/RestrictedRoute';
 import { Layout } from 'components/Layout/Layout';
+// import ExerciseNavigation from 'components/Nav/ExerciseNavigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
+
+import { ExercisesCategories } from 'components/ExercisesTabs/ExercisesCategories';
+import { ExercisesSubCategories } from 'components/ExercisesTabs/ExercisesSubCategories';
+
+
 
 const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage'));
 const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage'));
@@ -95,6 +101,7 @@ export const App = () => {
               <PrivateRoute component={<DiaryPage />} restrictedTo="/signin" />
             }
           />
+          {/* ---------------------------------------------------------- */}
           <Route
             path="/exercises"
             element={
@@ -103,7 +110,29 @@ export const App = () => {
                 restrictedTo="/signin"
               />
             }
-          />
+          >
+            <Route index element={<Navigate to="bodyparts" />} />
+            <Route path="bodyparts" element={<ExercisesCategories query={'body-parts'}/>}>
+            </Route>
+            <Route
+                path="bodyparts/:filter"
+                element={<ExercisesSubCategories/>}
+              />
+            <Route path="muscles" element={<ExercisesCategories query={'muscles'}/>}>
+            </Route>
+            <Route
+                path="muscles/:filter"
+                element={<ExercisesSubCategories/>}
+              />
+            <Route path="equipment" element={<ExercisesCategories query={'equipment'}/>}>
+            </Route>
+            <Route
+                path="equipment/:filter"
+                element={<ExercisesSubCategories/>}
+              />
+          </Route>
+          {/* ---------------------------------------------------------- */}
+
           <Route
             path="/products"
             element={

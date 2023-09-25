@@ -1,10 +1,7 @@
-import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
 import { Container } from 'components/Container/Container';
-import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
 import { BackgroundImg } from 'components/BackgroundImg/BackgroundImg';
 import { MainButton } from 'components/MainButton/MainButton';
 import { useNavigate } from 'react-router-dom';
-import { ExerciseCard } from 'components/ExerciseCard/ExerciseCard'; 
 import { WelcomeBtns, TitleText, WelcomeTitle } from './WelcomePage.styled';
 import { useState } from 'react';
 import { HighlightedWord } from 'components/HighlightedWord/HighlightedWord';
@@ -24,7 +21,6 @@ const WelcomePage = () => {
     <BackgroundImg>
       <WordHighlighter position={position} />
       <Container>
-        <ExerciseCard/>
         <WelcomeTitle>
           <TitleText>
             Transforming your{' '}
@@ -48,8 +44,6 @@ const WelcomePage = () => {
             btnStyles={{ width: 'max-content' }}
           />
         </WelcomeBtns>
-        <CaloriesBtn />
-        <TutorialBtn />
       </Container>
     </BackgroundImg>
   );

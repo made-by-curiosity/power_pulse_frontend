@@ -26,7 +26,7 @@ export const DayProducts = () => {
           >
             <NavP>Add product</NavP>
             <SvgStyle>
-              <use href={ico + `#icon-nextarrow`}></use>
+              <use href={ico + `#icon-nextarrow1`}></use>
             </SvgStyle>
           </NavLink>
         </WrapperA>
