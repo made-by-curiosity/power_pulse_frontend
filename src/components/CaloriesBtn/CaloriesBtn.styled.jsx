@@ -1,27 +1,27 @@
 import styled from '@emotion/styled';
 
-export const Calories = styled.button`
+export const Calories = styled.div`
   border-radius: 12px;
   border: none;
   padding: 0;
   position: absolute;
-  bottom: 50px;
-  right: 20px;
   width: 119px;
   height: 76px;
   background: #ef8964;
 
-  @media screen and (min-width: 768px) {
-    top: 866px;
-    bottom: 50px;
+  top: 85%;
+  right: 5%;
 
-    right: 32px;
+  @media screen and (min-width: 768px) {
     width: 180px;
     height: 110px;
+
+    top: 85%;
+    right: 5%;
   }
   @media screen and (min-width: 1440px) {
-    top: 671px;
-    right: 32px;
+    top: 66%;
+    right: 4%;
   }
 `;
 
