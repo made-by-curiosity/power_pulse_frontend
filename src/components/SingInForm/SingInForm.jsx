@@ -10,12 +10,15 @@ import {
   TextSingUp,
   DivSingUp,
   ContainerSingIn,
+
 } from './SingInForm.styled';
 
 import { Title } from 'components/Title/Title';
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { ButtonGoogle } from 'components/ButtonGoogle/ButtonGoogle';
+// import { ModalTrening } from 'components/ModalTrening/ModalTrening';
 
 const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 const passwordRegex =
@@ -80,6 +83,7 @@ const SignInForm = () => {
             <Button type="submit">
               <TextBtn>Sign In</TextBtn>
             </Button>
+            <ButtonGoogle>SING IN WITH GOOGLE</ButtonGoogle>
           </Form>
         </Formik>
         <DivSingUp>

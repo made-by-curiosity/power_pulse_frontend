@@ -1,30 +1,22 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-
-
 export const ContainerSingIn = styled.div`
-  
   width: 335px;
   margin-top: 90px;
 
-
   @media (min-width: 768px) {
-    width:364px;
-   
+    width: 364px;
   }
 
-   @media (min-width: 1440px) {
- margin-top: 151px;
-    
+  @media (min-width: 1440px) {
+    margin-top: 151px;
   }
-
 `;
 
-
 export const ContainerField = styled.div`
-margin-bottom: 30px;
-`
+  margin-bottom: 30px;
+`;
 
 export const Text = styled.p`
   font-family: Roboto;
@@ -55,58 +47,51 @@ export const Button = styled.button`
   padding-bottom: 12px;
   grid-gap: 10px;
   margin-top: 28px;
-  
-  
-  background-color: #e6533c;
-  
 
+  background-color: #e6533c;
 
   @media (min-width: 768px) {
-  font-size: 20px;
-   margin-top: 64px;
+    font-size: 20px;
+    margin-top: 64px;
   }
-
-
 `;
 
 export const TextBtn = styled.span`
-
   font-family: Roboto;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 1.12;
-  color:#EFEDE8;
+  color: #efede8;
 
   @media (min-width: 768px) {
-  font-size: 20px;
+    font-size: 20px;
   }
-`
+`;
 
 export const TextSingUp = styled.p`
-font-family: Roboto;
-font-size: 12px;
-font-style: normal;
-font-weight: 400;
-line-height: 1.5; 
-color: rgba(239, 237, 232, 0.60);
-`
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(239, 237, 232, 0.6);
+`;
 
 export const LinkSingUp = styled(Link)`
- font-family: Roboto;
+  font-family: Roboto;
   font-size: 12px;
   line-height: 150%;
   text-decoration-line: underline;
   margin-left: 5px;
-  color: #EFEDE8;
-`
-
+  color: #efede8;
+`;
 
 export const DivSingUp = styled.div`
-display: flex;
+  display: flex;
   margin-top: 12px;
 
-  @media(min-width:768px){
+  @media (min-width: 768px) {
     margin-left: 7px;
   }
-`
+`;
