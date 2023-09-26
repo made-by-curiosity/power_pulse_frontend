@@ -13,6 +13,7 @@ import {
   AddAvatarIcon,
   AddAvatarBtn,
 } from './Avatar.styled';
+
 import icons from '../../assets/icons/svg-sprite.svg';
 
 const iconUser = (
