@@ -11,12 +11,12 @@ export const Title = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
-  margin-bottom: 4px;
+  margin-bottom: 16px;
 
   ${mq[1]} {
     font-size: 14px;
     line-height: 1.28571;
-    margin-bottom: 8px;
+    margin-bottom: 18px;
   }
 `;
 

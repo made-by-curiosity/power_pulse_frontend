@@ -93,12 +93,6 @@ export const ParamsForm = () => {
     levelActivity: '2',
   };
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // const toogleModal = () => {
-  //   setIsModalOpen(prevState => !prevState);
-  // };
-
   const dispatch = useDispatch();
 
   const tablet = useMediaQuery('(min-width:768px)');

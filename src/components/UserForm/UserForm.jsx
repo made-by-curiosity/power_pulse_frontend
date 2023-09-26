@@ -5,6 +5,7 @@ import { updateName, updateUserParams } from 'redux/auth/operations';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { isDate, parse, format } from 'date-fns';
 
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { CustomGroupRadio } from 'components/CustomRadio/CustomGroupRadio';
@@ -21,6 +22,26 @@ import {
   LevelWrap,
   RadioGroupWrap,
 } from './UserForm.styled';
+import { BirthdayInput } from 'components/BirthdayInput/BirthdayInput';
+
+const today = new Date();
+const eighteenYearsAgo = new Date(
+  today.getFullYear() - 18,
+  today.getMonth(),
+  today.getDate()
+);
+
+function parseDateString(value, originalValue) {
+  if (isDate(originalValue)) {
+    return originalValue;
+  }
+
+  const [day, month, year] = originalValue.split('.');
+
+  const formattedDate = `${year}-${month}-${day}`;
+
+  return parse(formattedDate, 'yyyy-MM-dd', new Date());
+}
 
 const validationSchema = Yup.object({
   name: Yup.string().required('Name is required'),
@@ -39,8 +60,10 @@ const validationSchema = Yup.object({
     .min(35, 'Desired weight  must be at least 35 kg')
     .positive('Weight must be a positive number.')
     .required('Height is required'),
-  // birthday: Yup.date().typeError('Must be a date (dd.mm.yyyy)'),
-  // .required('Bithday is required'),
+  birthday: Yup.date()
+    .transform(parseDateString)
+    .max(eighteenYearsAgo, 'Age must be 18+')
+    .required('Age is required'),
 });
 
 export const UserForm = ({ userInfo }) => {
@@ -56,6 +79,8 @@ export const UserForm = ({ userInfo }) => {
     levelActivity,
   } = userParams;
 
+  const formattedDate = format(new Date(birthday), 'dd.MM.yyy');
+
   const tablet = useMediaQuery('(min-width:768px)');
 
   const initialValues = {
@@ -64,7 +89,7 @@ export const UserForm = ({ userInfo }) => {
     height: height,
     currentWeight: currentWeight,
     desiredWeight: desiredWeight,
-    birthday: birthday,
+    birthday: formattedDate,
     blood: blood,
     sex: sex,
     levelActivity: levelActivity,
@@ -94,11 +119,11 @@ export const UserForm = ({ userInfo }) => {
             <UserBasicInfoWrapper>
               <Field
                 name="name"
+                label="Name"
                 type="text"
                 autoComplete="off"
                 successFeedback={false}
                 component={CustomInput}
-                inputStyles={{}}
               />
               <Field
                 name="email"
@@ -116,7 +141,6 @@ export const UserForm = ({ userInfo }) => {
                 <Field
                   label="Height"
                   name="height"
-                  type="number"
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
@@ -125,7 +149,6 @@ export const UserForm = ({ userInfo }) => {
                 <Field
                   label="Current Weight"
                   name="currentWeight"
-                  type="number"
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
@@ -136,7 +159,6 @@ export const UserForm = ({ userInfo }) => {
                 <Field
                   label="Desired Weight"
                   name="desiredWeight"
-                  type="number"
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
@@ -144,10 +166,8 @@ export const UserForm = ({ userInfo }) => {
                 />
                 <Field
                   name="birthday"
-                  type="text"
-                  autoComplete="off"
                   successFeedback={false}
-                  component={CustomInput}
+                  component={BirthdayInput}
                   inputStyles={{ width: '156px' }}
                 />
               </InnerWrapper>
