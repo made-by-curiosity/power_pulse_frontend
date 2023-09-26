@@ -17,8 +17,9 @@ export const Header = ({ setMenuIsOpen }) => {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const is404 = location.pathname === '/404';
+  const isParamsPage = location.pathname === '/params';
 
-  const showHeader = !!isLoggedIn && !is404;
+  const showHeader = !!isLoggedIn && !is404 && !isParamsPage;
 
   return (
     <AppBar showHeader={showHeader}>
