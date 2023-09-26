@@ -19,7 +19,7 @@ import { ButtonGoogle } from 'components/ButtonGoogle/ButtonGoogle';
 import { MainButton } from 'components/MainButton/MainButton';
 // import { ModalTrening } from 'components/ModalTrening/ModalTrening';
 
-const emailRegex = /^\w+\.[\w.]+?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 const passwordRegex = /^\w+\.[\w.]+?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
 const initialValues = {

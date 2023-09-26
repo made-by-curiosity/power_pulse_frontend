@@ -17,7 +17,7 @@ import { signUp } from 'redux/auth/operations';
 import { ButtonGoogle } from 'components/ButtonGoogle/ButtonGoogle';
 import { BtnWrapper } from 'components/SingInForm/SingInForm.styled';
 
-const emailRegex = /^\w+\.[\w.]+?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 const passwordRegex =
   /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,32}$/;
 
