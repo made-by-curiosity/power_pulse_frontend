@@ -1,41 +1,54 @@
-import styled from '@emotion/styled'
-
+import styled from '@emotion/styled';
 
 export const Button = styled.button`
+  padding: 12px 5px;
+
   display: flex;
   align-items: center;
-  color: #FFFFFF;
- 
-  padding: 5px;
-  cursor: pointer;
-  margin-top: 15px;
+  justify-content: center;
+  gap: 2px;
 
-  @media(min-width: 768px) {
-    padding: 8px;
+  color: #ffffff;
+
+  cursor: pointer;
+
+  border: 1px solid #ffffff;
+
+  border-radius: 12px;
+
+  transition: opacity 200ms ease-out;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
+
+  @media (min-width: 768px) {
+    padding: 18px 35px;
+    gap: 5px;
   }
 `;
 
-
 export const SvgGoogle = styled.svg`
-width: 18px;
-height: 18px;
-@media(min-width: 768px) {
+  width: 18px;
+  height: 18px;
+  fill: #efede8;
+
+  @media (min-width: 768px) {
     width: 20px;
     height: 20px;
-
-`
+  }
+`;
 
 export const SpanGoogle = styled.span`
- font-family: Roboto-Medium;
-  font-size: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.13;
+
   color: #000000;
-  padding-left: 20px;
 
-  @media(min-width: 768px){
-    font-size: 14px;
-    padding-left: 24px;
+  @media (min-width: 768px) {
+    font-size: 16px;
   }
-  
-
-
-`
+`;

@@ -38,21 +38,15 @@ export const Text = styled.p`
   }
 `;
 
-export const Button = styled.button`
-  display: grid;
-  border-radius: 12px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  grid-gap: 10px;
-  margin-top: 28px;
+export const BtnWrapper = styled.div`
+  width: max-content;
 
-  background-color: #e6533c;
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
 
   @media (min-width: 768px) {
-    font-size: 20px;
-    margin-top: 64px;
   }
 `;
 
