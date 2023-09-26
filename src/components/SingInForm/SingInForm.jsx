@@ -20,7 +20,8 @@ import { MainButton } from 'components/MainButton/MainButton';
 // import { ModalTrening } from 'components/ModalTrening/ModalTrening';
 
 const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-const passwordRegex = /^\w+\.[\w.]+?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+const passwordRegex =
+  /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,32}$/;
 
 const initialValues = {
   email: '',
