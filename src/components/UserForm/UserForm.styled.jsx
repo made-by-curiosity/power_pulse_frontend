@@ -40,7 +40,7 @@ export const UserFormWrapper = styled.div`
 export const UserBasicInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   margin-bottom: 36px;
 
   ${mq[1]} {
