@@ -17,7 +17,7 @@ const initialState = {
     name: null,
     email: null,
     userParams: null,
-    avatarUrl: null,
+    avatarUrls: null,
     bmr: null,
   },
   token: null,
@@ -34,7 +34,7 @@ const authSlice = createSlice({
         name: null,
         email: null,
         userParams: null,
-        avatarUrl: null,
+        avatarUrls: null,
         bmr: null,
       };
       state.token = null;
@@ -72,7 +72,7 @@ const authSlice = createSlice({
         name: null,
         email: null,
         userParams: null,
-        avatarUrl: null,
+        avatarUrls: null,
         bmr: null,
       };
       state.token = null;
@@ -143,7 +143,7 @@ const authSlice = createSlice({
       state.isRefreshing = true;
     });
     builder.addCase(updateAvatar.fulfilled, (state, action) => {
-      state.user.avatarUrl = action.payload;
+      state.user.avatarUrls = action.payload;
       state.isRefreshing = false;
     });
     builder.addCase(updateAvatar.rejected, (state, action) => {
