@@ -109,6 +109,10 @@ export const DatePickerWrapper = styled.div`
     font-weight: 500;
     line-height: normal;
   }
+
+  .react-datepicker__day--disabled {
+    opacity: 25%;
+  }
   .react-datepicker__navigation {
     margin-top: 14px;
     color: white;

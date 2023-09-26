@@ -13,10 +13,13 @@ export const RegisterContainer = styled.div`
 `;
 
 export const RegisterForm = styled(Form)`
+  max-width: 335px;
+  margin-bottom: 12px;
+
   display: flex;
   flex-direction: column;
   gap: 36px;
-  max-width: 335px;
+
   @media screen and (min-width: 768px) {
     width: 364px;
   }

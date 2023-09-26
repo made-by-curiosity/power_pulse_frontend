@@ -9,7 +9,6 @@ export const Layout = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   const onBurgerButton = () => {
-    console.log('dfsafdasfdsfdsffdsfdsfdsfds');
     setMenuIsOpen(!menuIsOpen);
   };
 

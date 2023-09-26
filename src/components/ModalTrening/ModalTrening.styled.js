@@ -40,14 +40,22 @@ export const ImgDiv = styled.div`
 `;
 
 export const DivTimer = styled.div`
-  width: 125px;
-  height: 124px;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+@media(min-width: 768px){
+
+  margin-left: 32px;
+}
+
 `;
 
 export const Button = styled.button`
   width: 32px;
   height: 32px;
   background: #e6533c;
+  margin-top: 14px;
 
   @media(min-width: 768px){
     margin-left: 32px;
@@ -67,9 +75,10 @@ export const Text = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 14px;
+  margin-bottom: 4px;
 
   @media(min-width: 768px){
-    margin-left: 32px;
+    
   }
 `;
 
@@ -180,7 +189,6 @@ export const ButtonAdd = styled.button`
   border-radius: 12px;
   background: var(--orange, #e6533c);
   margin-right: auto;
-  margin-left: 16px;
   margin-top: 24px;
 
   @media(min-width: 768px){

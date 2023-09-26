@@ -19,7 +19,11 @@ import {
 } from './ModalTrening.styled';
 import icons from '../../assets/icons/svg-sprite.svg';
 import { CustomModal } from 'components/CustomModal/CustomModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+// import axios from 'axios';
+
+// const BASE_URL='https://power-pulse.onrender.com'
 
 const example = {
   bodyPart: 'waist',
@@ -29,17 +33,53 @@ const example = {
   name: '45° side bend',
   target: 'abs',
   burnedCalories: 323,
-  time: 3,
+  time: 1,
 };
 
 export const ModalTrening = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isSecond, setIsSecond] = useState(0);
+  // const [data, setData] = useState(null);
+
+  function formatTime(totalSeconds) {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+  const children = example.time * 60;
+
+  // useEffect(() => {
+
+  //   axios.get('api/exercises')
+  //     .then((response) => setData(response))
+  //     .catch((error) => console.error('Ошибка при получении данных:', error));
+  // }, []);
+
+  useEffect(() => {
+    let interval;
+    if (isPlaying && isSecond !== children) {
+      interval = setInterval(() => {
+        setIsSecond((isSecond) => isSecond + 1);
+      }, 1000);
+    }
+    else if (isSecond === children) { 
+      setIsPlaying(false);
+      setIsSecond(0)
+    }
+
+    return () => clearInterval(interval);
+  }, [children, setIsPlaying, setIsSecond, isPlaying, isSecond]);
 
   const togglePlaying = () => {
     setIsPlaying(prevState => !prevState);
   };
 
+
+ const timerFormat = formatTime(isSecond);
+
   return (
+    
     <CustomModal
       modalStyles={{
         width: '335px',
@@ -59,8 +99,23 @@ export const ModalTrening = () => {
         <ImgDiv>
           <ImgGif src={example.gifUrl} alt="" />
         </ImgDiv>
-          <Text>Time</Text>
-          <DivTimer></DivTimer>
+          <DivTimer>
+            <Text>Time</Text>
+            <CountdownCircleTimer
+              isPlaying={isPlaying}
+              duration={children}
+              size={125}
+              colors="#E6533C"
+              trailColor="#EFEDE81A"
+              strokeWidth={4}
+            >
+               {() => {
+                return <div>{timerFormat}</div>;
+      }}
+              
+            </CountdownCircleTimer>
+            
+          </DivTimer>
           <Button type="button" onClick={togglePlaying}>
             <Svg>
               <svg fill="#EFEDE8">
@@ -87,7 +142,7 @@ export const ModalTrening = () => {
               ([key, value]) => key !== 'gifUrl' && key !== 'burnedCalories'
             )
             .map(([key, value]) => (
-              <ItemTrening>
+              <ItemTrening > 
                 <ItemDiv>
                   <NameItem>{key}</NameItem>
                   <ValueItem>{value}</ValueItem>

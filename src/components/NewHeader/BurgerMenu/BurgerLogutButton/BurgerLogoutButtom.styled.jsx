@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const BurgerLogoutBtn = styled.a`
+  cursor: pointer;
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -10,6 +11,11 @@ export const BurgerLogoutBtn = styled.a`
   gap: 8px;
   font-size: 14px;
   line-height: 18px;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
 
   @media screen and (min-width: 768px) {
     bottom: 32px;

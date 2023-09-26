@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Tutorial = styled.button`
+export const Tutorial = styled.div`
   border: none;
   padding: 0;
   display: flex;
@@ -8,26 +8,29 @@ export const Tutorial = styled.button`
   width: 146px;
   height: 66px;
   position: absolute;
-  top: 560px;
-  right: 108px;
   padding-left: 18px;
   padding-top: 14px;
   padding-bottom: 14px;
   border-radius: 12px;
   background-color: #303030;
 
+  top: 70%;
+  right: 30%;
+
   @media screen and (min-width: 768px) {
     width: 206px;
     height: 96px;
-    top: 714px;
-    right: 231px;
+
     padding-left: 23px;
     padding-top: 20px;
     padding-bottom: 20px;
+
+    top: 70%;
+    right: 30%;
   }
   @media screen and (min-width: 1440px) {
-    top: 536px;
-    right: 464px;
+    top: 50%;
+    right: 33%;
   }
 `;
 

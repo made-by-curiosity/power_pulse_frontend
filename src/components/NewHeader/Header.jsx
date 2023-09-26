@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import {
   AppBar,
   NavWrapper,
@@ -7,24 +7,28 @@ import {
   HeaderContainer,
 } from './Header.styled';
 import { Logo } from './Logo/Logo';
-// import { BurgerMenu } from './BurgerMenu/BurgerMenu';
-import { useState } from 'react';
 import { NavBar } from './NavBar/NavBar';
 import { UserBar } from './UserBar/UserBar';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 export const Header = ({ setMenuIsOpen }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [IsLogedIn, setIsLogedIn] = useState(true);
+  const location = useLocation();
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const is404 = location.pathname === '/404';
+
+  const showHeader = !!isLoggedIn && !is404;
 
   return (
-    <AppBar>
-      <FixedHeader>
-        <HeaderContainer>
+    <AppBar showHeader={showHeader}>
+      <FixedHeader showHeader={showHeader}>
+        <HeaderContainer showHeader={showHeader}>
           <NavWrapper>
             <NavLink to="/welcome">
-              <Logo />
+              <Logo is404={is404} />
             </NavLink>
-            {IsLogedIn && (
+            {showHeader && (
               <FlexWrapper>
                 <NavBar />
                 <UserBar onBurgerButton={setMenuIsOpen} />

@@ -3,13 +3,36 @@ import {
   getCoreRowModel,
   flexRender,
 } from '@tanstack/react-table';
-import mData from './users.json';
 import { useMemo } from 'react';
+import ico from '../../assets/icons/svg-sprite.svg';
 
-import { TitleColumn, TitleHead, RowTel, CellTel } from './ProductsTable.styled';
+import {
+  TitleColumn,
+  TitleHead,
+  RowTel,
+  CellTel,
+  SvgStyle,
+  SvgTd,
+  Headers,
+  HeadersTitle,
+  RecWrapper,
+  RecYes,
+  RecNo,
+} from './ProductsTable.styled';
 
-export default function ProductsTable() {
-  const data = useMemo(() => mData, []);
+export default function ProductsTable({ meals, blood }) {
+  const resData = meals.map(mDat => {
+    return {
+      Title: mDat.productId.title,
+      Category: mDat.productId.category,
+      Calories: mDat.productId.calories,
+      Weight: mDat.productId.weight,
+      Recommend: !mDat.productId.groupBloodNotAllowed[blood],
+      id: mDat._id,
+    };
+  });
+
+  const data = useMemo(() => resData, []);
 
   const columns = [
     {
@@ -31,6 +54,23 @@ export default function ProductsTable() {
     {
       header: 'Recommend',
       accessorKey: 'Recommend',
+      cell: nfo => { 
+        if (nfo.getValue() === true) {
+          return (
+            <RecWrapper>
+              <RecYes></RecYes>
+              Yes
+            </RecWrapper>
+          )
+        } else {
+          return (
+            <RecWrapper>
+              <RecNo></RecNo>
+              No
+            </RecWrapper>
+          )
+        }
+      },
     },
   ];
 
@@ -45,28 +85,33 @@ export default function ProductsTable() {
       <table>
         <TitleHead>
           {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
+            <Headers key={headerGroup.id}>
               {headerGroup.headers.map(header => (
-                <th key={header.id}>
+                <HeadersTitle key={header.id}>
                   {flexRender(
                     header.column.columnDef.header,
                     header.getContext()
                   )}
-                </th>
+                </HeadersTitle>
               ))}
-            </tr>
+            </Headers>
           ))}
         </TitleHead>
         <tbody>
           {table.getRowModel().rows.map(row => (
             <RowTel key={row.id}>
+              {console.log(row)}
               {row.getVisibleCells().map(cell => (
                 <CellTel key={cell.id}>
-                    <TitleColumn>{cell.column.id}</TitleColumn>
+                  <TitleColumn>{cell.column.id}</TitleColumn>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </CellTel>
               ))}
-              <td>T</td>
+              <SvgTd>
+                <SvgStyle>
+                  <use href={ico + `#icon-trashtrue`}></use>
+                </SvgStyle>
+              </SvgTd>
             </RowTel>
           ))}
         </tbody>
