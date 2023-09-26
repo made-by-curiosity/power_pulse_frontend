@@ -96,7 +96,6 @@ export const CellTel = styled.td`
   font-size: 14px;
   line-height: 18px;
   position: relative;
-  overlow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   &:nth-of-type(1) {
@@ -194,6 +193,9 @@ export const CellTel = styled.td`
       width: 82px;
       margin-right: 20px;
     }
+    /* &:nth-of-type(7) {
+      width: 100px;
+    } */
   }
 `;
 

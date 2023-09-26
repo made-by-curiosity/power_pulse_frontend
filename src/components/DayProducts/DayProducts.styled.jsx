@@ -1,23 +1,26 @@
 import styled from '@emotion/styled';
 
 export const ProductWrapper = styled.div`
-  border: 1px solid #efede820;
-  border-radius: 12px;
-  margin-bottom: 40px;
-  padding: 16px;
   width: 100%;
   min-height: 335px;
-  max-height: 824px;
-  overflow: scroll;
-  background-color: #EFEDE80D;
+  padding: 16px 8px 16px 16px;
+
+  border: 1px solid #efede820;
+  border-radius: 12px;
+
+  background-color: #efede80d;
+
   @media (min-width: 768px) {
     min-height: auto;
-    max-height: auto;
     height: 234px;
     width: 704px;
   }
   @media (min-width: 1440px) {
     width: 826px;
+  }
+
+  & table {
+    width: 100%;
   }
 `;
 
@@ -71,5 +74,18 @@ export const NotProduct = styled.p`
     margin-top: 65px;
     font-size: 16px;
     line-height: 24px;
+  }
+`;
+
+export const TableBody = styled.tbody`
+  height: 768px;
+  padding-right: 14px;
+
+  display: block;
+  overflow-y: scroll;
+
+  @media (min-width: 768px) {
+    height: 136px;
+    padding-right: 14px;
   }
 `;

@@ -1,17 +1,17 @@
+import { useSelector } from 'react-redux';
+import { selectUserParams } from 'redux/auth/selectors';
 import {
   useReactTable,
   getCoreRowModel,
   flexRender,
 } from '@tanstack/react-table';
 import { useMemo } from 'react';
-import ico from '../../assets/icons/svg-sprite.svg';
 
 import {
   TitleColumn,
   TitleHead,
   RowTel,
   CellTel,
-  SvgStyle,
   SvgTd,
   Headers,
   HeadersTitle,
@@ -19,20 +19,29 @@ import {
   RecYes,
   RecNo,
 } from './ProductsTable.styled';
+import { DeleteBtn } from 'components/DeleteBtn/DeleteBtn';
+import { deleteMeal } from 'services/powerPulseApi';
+import { TableBody } from 'components/DayProducts/DayProducts.styled';
 
-export default function ProductsTable({ meals, blood }) {
-  const resData = meals.map(mDat => {
-    return {
-      Title: mDat.productId.title,
-      Category: mDat.productId.category,
-      Calories: mDat.productId.calories,
-      Weight: mDat.productId.weight,
-      Recommend: !mDat.productId.groupBloodNotAllowed[blood],
-      id: mDat._id,
-    };
-  });
+export default function ProductsTable({ meals, setMeals }) {
+  const { blood } = useSelector(selectUserParams);
 
-  const data = useMemo(() => resData, []);
+  const resData = useMemo(
+    () =>
+      meals.map(meal => {
+        return {
+          Title: meal.productId.title,
+          Category: meal.productId.category,
+          Calories: meal.productId.calories,
+          Weight: meal.productId.weight,
+          Recommend: !meal.productId.groupBloodNotAllowed[blood],
+          id: meal._id,
+        };
+      }),
+    [blood, meals]
+  );
+
+  const data = useMemo(() => resData, [resData]);
 
   const columns = [
     {
@@ -54,21 +63,21 @@ export default function ProductsTable({ meals, blood }) {
     {
       header: 'Recommend',
       accessorKey: 'Recommend',
-      cell: nfo => { 
+      cell: nfo => {
         if (nfo.getValue() === true) {
           return (
             <RecWrapper>
               <RecYes></RecYes>
               Yes
             </RecWrapper>
-          )
+          );
         } else {
           return (
             <RecWrapper>
               <RecNo></RecNo>
               No
             </RecWrapper>
-          )
+          );
         }
       },
     },
@@ -79,6 +88,13 @@ export default function ProductsTable({ meals, blood }) {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  const handleDelete = async id => {
+    await deleteMeal(id);
+
+    const filteredMeals = meals.filter(meal => meal._id !== id);
+    setMeals(filteredMeals);
+  };
 
   return (
     <div>
@@ -97,10 +113,9 @@ export default function ProductsTable({ meals, blood }) {
             </Headers>
           ))}
         </TitleHead>
-        <tbody>
+        <TableBody>
           {table.getRowModel().rows.map(row => (
             <RowTel key={row.id}>
-              {console.log(row)}
               {row.getVisibleCells().map(cell => (
                 <CellTel key={cell.id}>
                   <TitleColumn>{cell.column.id}</TitleColumn>
@@ -108,13 +123,11 @@ export default function ProductsTable({ meals, blood }) {
                 </CellTel>
               ))}
               <SvgTd>
-                <SvgStyle>
-                  <use href={ico + `#icon-trashtrue`}></use>
-                </SvgStyle>
+                <DeleteBtn id={row.original.id} handleDelete={handleDelete} />
               </SvgTd>
             </RowTel>
           ))}
-        </tbody>
+        </TableBody>
       </table>
     </div>
   );

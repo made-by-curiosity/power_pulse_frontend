@@ -4,8 +4,8 @@ import { Title } from '../../components/Title/Title';
 import { DiaryCalendar } from 'components/DiaryCalendar/DiaryCalendar';
 import { DiaryTitleContainer } from 'components/DiaryTitleContainer/DiaryTitleContainer';
 import { DiaryDashboardContainer } from 'components/DiaryDashboardContainer/DiaryDashboardContainer';
-// import { DayExercises } from 'components/DayExercises/DayExercises';
-// import { DayProducts } from 'components/DayProducts/DayProducts';
+import { DayExercises } from 'components/DayExercises/DayExercises';
+import { DayProducts } from 'components/DayProducts/DayProducts';
 import { DiaryTablesCont } from 'components/DiaryTablesCont/DiaryTablesCont';
 import { useEffect, useState } from 'react';
 import { getMeals, getWorkouts, getUserInfo } from 'services/powerPulseApi';
@@ -17,6 +17,8 @@ const DiaryPage = () => {
   const [totalCalories, setTotalCalories] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
   const [burnedCalories, setBurnedCalories] = useState(0);
+  const [meals, setMeals] = useState([]);
+  const [workouts, setWorkouts] = useState([]);
 
   const sumArrayValues = array => {
     return array.reduce((acc, currentValue) => acc + currentValue, 0);
@@ -34,6 +36,7 @@ const DiaryPage = () => {
 
     getMeals(selectedDate)
       .then(products => {
+        setMeals(products);
         const caloriesArray = products.map(product => product.calories);
 
         const totalCalories = sumArrayValues(caloriesArray);
@@ -44,6 +47,8 @@ const DiaryPage = () => {
       }); //добавить обработчик ошибки
 
     getWorkouts(selectedDate).then(workouts => {
+      setWorkouts(workouts);
+
       const timeArray = workouts.map(workout => workout.time);
       const caloriesArray = workouts.map(workout => workout.calories);
 
@@ -69,8 +74,8 @@ const DiaryPage = () => {
       </DiaryTitleContainer>
       <DiaryDashboardContainer>
         <DiaryTablesCont>
-          {/* <DayProducts />
-          <DayExercises /> */}
+          <DayProducts meals={meals} setMeals={setMeals} />
+          <DayExercises workouts={workouts} setWorkouts={setWorkouts} />
         </DiaryTablesCont>
         <DayDashboard
           dailyCalories={dailyCalories}
