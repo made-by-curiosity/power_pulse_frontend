@@ -25,7 +25,7 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 // const BASE_URL='https://power-pulse.onrender.com'
 
-const example = {
+const ex = {
   bodyPart: 'waist',
   equipment: 'body weight',
   gifUrl:
@@ -36,7 +36,7 @@ const example = {
   time: 1,
 };
 
-export const ModalTrening = () => {
+export const ModalTrening = ({onToogle, example}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSecond, setIsSecond] = useState(0);
   // const [data, setData] = useState(null);
@@ -81,6 +81,7 @@ export const ModalTrening = () => {
   return (
     
     <CustomModal
+      onClose={onToogle}
       modalStyles={{
         width: '335px',
         height: '858px',
@@ -139,10 +140,10 @@ export const ModalTrening = () => {
         <ListTrening>
           {Object.entries(example)
             .filter(
-              ([key, value]) => key !== 'gifUrl' && key !== 'burnedCalories'
+              ([key, value]) => key !== 'gifUrl' && key !== 'burnedCalories' && key !== '_id'
             )
             .map(([key, value]) => (
-              <ItemTrening > 
+              <ItemTrening key={value} > 
                 <ItemDiv>
                   <NameItem>{key}</NameItem>
                   <ValueItem>{value}</ValueItem>
