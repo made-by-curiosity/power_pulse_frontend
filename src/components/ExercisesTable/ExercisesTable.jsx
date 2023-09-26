@@ -4,32 +4,36 @@ import {
   flexRender,
 } from '@tanstack/react-table';
 import { useMemo } from 'react';
-import ico from '../../assets/icons/svg-sprite.svg';
 
 import {
   TitleColumn,
   TitleHead,
   RowTel,
   CellTel,
-  SvgStyle,
   SvgTd,
   Headers,
   HeadersTitle,
 } from './ExercisesTable.styled';
+import { DeleteBtn } from 'components/DeleteBtn/DeleteBtn';
+import { deleteWorkout } from 'services/powerPulseApi';
+import { TableBody } from 'components/DayProducts/DayProducts.styled';
 
-export default function ExercisesTable({exercises}) {
-
-  const resData = exercises.map((mDat)=> {
-    return {
-      bodyPart: mDat.exerciseId.bodyPart,
-      equipment: mDat.exerciseId.equipment,
-      name: mDat.exerciseId.name,
-      target: mDat.exerciseId.target,
-      burnedCalories: mDat.exerciseId.burnedCalories,
-      time: mDat.exerciseId.time,
-      id: mDat._id,
-    }
-  })
+export default function ExercisesTable({ workouts, setWorkouts }) {
+  const resData = useMemo(
+    () =>
+      workouts.map(workout => {
+        return {
+          bodyPart: workout.exerciseId.bodyPart,
+          equipment: workout.exerciseId.equipment,
+          name: workout.exerciseId.name,
+          target: workout.exerciseId.target,
+          burnedCalories: workout.exerciseId.burnedCalories,
+          time: workout.exerciseId.time,
+          id: workout._id,
+        };
+      }),
+    [workouts]
+  );
 
   const data = useMemo(() => resData, [resData]);
 
@@ -66,6 +70,13 @@ export default function ExercisesTable({exercises}) {
     getCoreRowModel: getCoreRowModel(),
   });
 
+  const handleDelete = async id => {
+    await deleteWorkout(id);
+
+    const filteredWorkouts = workouts.filter(workout => workout._id !== id);
+    setWorkouts(filteredWorkouts);
+  };
+
   return (
     <div>
       <table>
@@ -83,7 +94,7 @@ export default function ExercisesTable({exercises}) {
             </Headers>
           ))}
         </TitleHead>
-        <tbody>
+        <TableBody>
           {table.getRowModel().rows.map(row => (
             <RowTel key={row.id}>
               {row.getVisibleCells().map(cell => {
@@ -95,13 +106,11 @@ export default function ExercisesTable({exercises}) {
                 );
               })}
               <SvgTd>
-                <SvgStyle>  
-                  <use href={ico + `#icon-trashtrue`}></use>
-                </SvgStyle>
+                <DeleteBtn id={row.original.id} handleDelete={handleDelete} />
               </SvgTd>
             </RowTel>
           ))}
-        </tbody>
+        </TableBody>
       </table>
     </div>
   );
