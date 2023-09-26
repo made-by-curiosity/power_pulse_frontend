@@ -37,7 +37,7 @@ export const BgContainer = styled.div`
 
 export const NotFoundContentBackground = styled.div`
   width: 100%;
-  background-color: #e6533c;
+  background-color: ${props => props.theme.colors.backgroundContentColor};
 
   z-index: -4;
 

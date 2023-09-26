@@ -7,6 +7,7 @@ export const theme = createTheme({
     secondTextColor: 'rgba(232, 237, 232, 0.30)',
     textPrimaryColor: '#FFF',
     textSecondColor: 'rgba(239, 237, 232, 0.40)',
+    backgroundContentColor: '#E6533C',
     backgroundPrimaryColor: '#040404',
     backgroundSecondColor: ' rgba(4, 4, 4, 0.40)',
     svgLineColor: '#EF8964',
