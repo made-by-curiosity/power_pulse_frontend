@@ -98,9 +98,13 @@ export const UserForm = ({ userInfo }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    // console.log(values);
+    const { name, email, birthday, ...params } = values;
 
-    const { name, email, ...userParams } = values;
+    const [day, month, year] = birthday.split('.');
+
+    const formattedDate = `${year}-${month}-${day}`;
+
+    const userParams = { ...params, birthday: formattedDate };
 
     dispatch(updateName({ name: name }));
     dispatch(updateUserParams(userParams));

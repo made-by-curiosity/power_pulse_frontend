@@ -193,9 +193,6 @@ export const CellTel = styled.td`
       width: 82px;
       margin-right: 20px;
     }
-    /* &:nth-of-type(7) {
-      width: 100px;
-    } */
   }
 `;
 
