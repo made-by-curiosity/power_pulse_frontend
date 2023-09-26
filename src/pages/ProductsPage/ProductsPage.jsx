@@ -7,8 +7,8 @@ const ProductsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toogleModal = () => {
-    setIsModalOpen(prevState => !prevState);
-  }
+    setIsModalOpen((prevState) => !prevState);
+  };
 
   return (
     <Container>
