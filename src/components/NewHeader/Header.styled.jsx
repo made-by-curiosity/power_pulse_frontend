@@ -3,18 +3,25 @@ import styled from '@emotion/styled';
 export const AppBar = styled.header`
   position: fixed;
   width: 100%;
-  background-color: #040404;
+  background-color: ${props => (props.showHeader ? '#040404' : 'transparent')};
+
   overflow: hidden;
   z-index: 100;
 `;
 
 export const NavWrapper = styled.div`
+  ${props => !props.showHeader && 'height: 36px;'}
+
   display: flex;
   justify-content: space-between;
 
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
+
+  @media screen and (min-width: 768px) {
+    ${props => !props.showHeader && 'height: 40px;'}
+  }
 `;
 
 export const FlexWrapper = styled.div`
@@ -23,7 +30,8 @@ export const FlexWrapper = styled.div`
 `;
 
 export const FixedHeader = styled.div`
-  border-bottom: 1px solid rgba(239, 237, 232, 0.2);
+  ${props =>
+    props.showHeader && 'border-bottom: 1px solid rgba(239, 237, 232, 0.2);'}
 `;
 
 export const HeaderContainer = styled.div`
