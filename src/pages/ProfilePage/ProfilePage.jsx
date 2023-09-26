@@ -10,6 +10,8 @@ import { PageWrapper } from './ProfilePage.styled';
 import { ProfilePageTitle } from '../../components/ProfilePageTitle/ProfilePageTitle';
 import { getUserParams } from 'redux/auth/operations';
 
+import { FilterCategories } from 'components/FilterCategories/FilterCategories';
+
 const ProfilePage = () => {
   const dispatch = useDispatch();
 
@@ -27,6 +29,11 @@ const ProfilePage = () => {
         <UserCard userInfo={userInfo}></UserCard>
         <UserForm userInfo={userInfo}></UserForm>
       </PageWrapper>
+      <FilterCategories></FilterCategories>
+      <br />
+      <br />
+      <br />
+      <br />
     </Container>
   );
 };
