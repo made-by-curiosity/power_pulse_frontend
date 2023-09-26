@@ -107,8 +107,7 @@ export const deleteWorkout = async id => {
 // products
 
 export const getAllProducts = async () => {
-  const res = await axios.get();
-
+  const res = await axios.get('/api/products/byBloodType');
   return res.data;
 };
 
