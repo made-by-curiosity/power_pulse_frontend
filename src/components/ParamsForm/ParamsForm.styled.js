@@ -94,30 +94,39 @@ export const StepWrap = styled.div`
   }
 `
 
-export const Step1 = styled.div`
+export const Step1 = styled.button`
   width: 50px;
   height: 4px;
   background-color: #EF8964;
   border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
 
 `; 
 
 
-export const Step2 = styled.div`
+export const Step2 = styled.button`
   width: 50px;
   height: 4px;
   background-color: #303030;
   border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
 
   background-color: ${ props => 
    { if (props.step > 1) {return  "#EF8964"} }};
 `; 
 
-export const Step3 = styled.div`
+export const Step3 = styled.button`
   width: 50px;
   height: 4px;
   background-color: #303030;
   border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
 
   background-color: ${ props => 
    { if (props.step === 3) {return  "#EF8964"} }};
@@ -156,6 +165,14 @@ export const BtnWrap = styled.div`
 
 export const MainBtnWrap = styled.div`
 margin-right: 16px;`
+
+
+
+
+
+
+
+
 
 
 

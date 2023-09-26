@@ -37,9 +37,10 @@ import { updateUserParams } from 'redux/auth/operations';
 // import { useState } from 'react';
 
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-// import { CustomModal } from 'components/CustomModal/CustomModal';
+import { BackgroundImg } from 'components/BackgroundImg/BackgroundImg';
+
 
 const today = new Date();
 const eighteenYearsAgo = new Date(
@@ -61,20 +62,20 @@ function parseDateString(value, originalValue) {
 }
 
 const validationSchema = Yup.object({
-  height: Yup.number('Number')
+  height: Yup.number()
     .typeError('Height must be a number')
     .positive('Height must be a positive number.')
-    .min(150, 'Height must be at least 150 cm')
+    .min(150, 'Height must be min 150 cm')
     .required('Height is required'),
   currentWeight: Yup.number()
     .typeError('Height must be a number')
-    .min(35, 'Current weight must be at least 35 kg')
     .positive('Current weight must be a positive number.')
+    .min(150, 'Height must be min 150 cm')
     .required('Current weight is required'),
   desiredWeight: Yup.number()
     .typeError('Height must be a number')
-    .min(35, 'Desired weight  must be at least 35 kg')
     .positive('Weight must be a positive number.')
+    .min(150, 'Height must be min 150 cm')
     .required('Height is required'),
   birthday: Yup.date()
     .transform(parseDateString)
@@ -93,11 +94,11 @@ export const ParamsForm = () => {
     levelActivity: '2',
   };
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const toogleModal = () => {
-  //   setIsModalOpen(prevState => !prevState);
-  // };
+  const onStep = (value) => {
+    setStep(value);
+  }
+
 
   const dispatch = useDispatch();
 
@@ -105,9 +106,35 @@ export const ParamsForm = () => {
 
   const [step, setStep] = useLocalStorage('step', 1);
 
-  useEffect(() => {
-    setStep(1);
+  // const [statistics, setStatistics] = useState('users');
 
+  const getStatistics = () => {
+    switch (step) {
+      case 1:
+        return 'users';
+        break;
+        case 2:
+          return 'hours';
+          break;
+          case 3:
+          return 'workouts';
+          break;
+      default: 
+        break;
+    }
+  }
+
+  const statistics = getStatistics();
+
+  console.log(statistics);
+  console.log(step);
+
+  
+
+  useEffect(() => {
+    // setStep(1);
+    
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -134,6 +161,7 @@ export const ParamsForm = () => {
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
+    console.log(values);
     if (step === 3) {
       // Відправка даних на сервер лише на третьому етапі
       handleThirdStepSubmit(values, { setSubmitting });
@@ -145,8 +173,11 @@ export const ParamsForm = () => {
     }
   };
 
+  
+
   return (
-    <>
+
+    <BackgroundImg statistics={statistics}>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -203,6 +234,11 @@ export const ParamsForm = () => {
                   <use href={icons + '#icon-next'} />
                 </svg>
               </NextBtn>
+              <StepWrap step={step}>
+                <Step1 step={step} type='submit'></Step1>
+                <Step2 step={step}></Step2>
+                <Step3 step={step}></Step3>
+              </StepWrap>
             </>
           )}
           {step === 2 && (
@@ -316,6 +352,7 @@ export const ParamsForm = () => {
               </BtnWrap>
             </>
           )}
+          
         </Form>
       </Formik>
 
@@ -339,11 +376,12 @@ export const ParamsForm = () => {
         )}
       </BtnWrap>
 
-      <StepWrap step={step}>
-        <Step1 step={step}></Step1>
-        <Step2 step={step}></Step2>
-        <Step3 step={step}></Step3>
-      </StepWrap>
-    </>
+      {step > 1 && <StepWrap step={step}>
+        <Step1 step={step} onClick={()=>onStep(1)} type='submit'></Step1>
+        <Step2 step={step} onClick={()=>onStep(2)}></Step2>
+        <Step3 step={step} onClick={()=>onStep(3)}></Step3>
+      </StepWrap>}
+    </BackgroundImg>
+  
   );
 };
