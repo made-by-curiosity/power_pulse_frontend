@@ -37,7 +37,7 @@ export const ModalExercise = ({ time, calories, onClick, onClose }) => {
         <BtnWrapper>
           <MainButton
             onClick={onClick}
-            filled={'orange'}
+            filled={'#E6533C'}
             text={'Next exercise'}
             type={'button'}
             modalButton={'modalButton'}
