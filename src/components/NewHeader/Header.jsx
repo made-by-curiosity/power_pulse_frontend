@@ -13,15 +13,12 @@ import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 export const Header = ({ setMenuIsOpen }) => {
-  // eslint-disable-next-line no-unused-vars
   const location = useLocation();
-  console.log(location);
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const is404 = location.pathname === '/404';
 
   const showHeader = !!isLoggedIn && !is404;
-  console.log('showHeader:', showHeader);
 
   return (
     <AppBar showHeader={showHeader}>
