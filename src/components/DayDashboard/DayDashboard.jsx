@@ -6,15 +6,59 @@ import {
 } from './DayDashboard.styled';
 import { DayDashboardList } from 'components/DayDashboardList/DayDashboardList';
 import sprite from '../../assets/icons/svg-sprite.svg';
+import PropTypes from 'prop-types';
 
-export const DayDashboard = () => {
+export const DayDashboard = ({
+  dailyCalories,
+  totalCalories,
+  totalTime,
+  burnedCalories,
+}) => {
+  const normOfSports = 110;
+
   const dashBoardData = [
-    { icon: '#icon-cutlery', title: 'daily calorie intake' },
-    { icon: '#icon-dumbbell', title: 'daily norm of sports' },
-    { icon: '#icon-apple', title: 'calories consumed' },
-    { icon: '#icon-calories', title: 'calories burned' },
-    { icon: '#icon-bubble', title: 'the rest of the calories' },
-    { icon: '#icon-running', title: 'the rest of sports' },
+    {
+      icon: '#icon-cutlery',
+      title: 'daily calorie intake',
+      value: dailyCalories ? dailyCalories : 0,
+    },
+    {
+      icon: '#icon-dumbbell',
+      title: 'daily norm of sports',
+      value: normOfSports,
+    },
+    {
+      icon: '#icon-apple',
+      title: 'calories consumed',
+      value: totalCalories ? totalCalories : 0,
+    },
+    {
+      icon: '#icon-calories',
+      title: 'calories burned',
+      value: burnedCalories ? burnedCalories : 0,
+    },
+    {
+      icon: '#icon-bubble',
+      title: 'the rest of the calories',
+      value: dailyCalories
+        ? totalCalories
+          ? dailyCalories - totalCalories
+          : dailyCalories - 0
+        : 0,
+      borderColor:
+        dailyCalories < totalCalories ? 'red' : 'rgba(239, 237, 232, 0.2)',
+    },
+    {
+      icon: '#icon-running',
+      title: 'the rest of sports',
+      value: totalTime
+        ? normOfSports - totalTime <= 0
+          ? `+ ${Math.abs(normOfSports - totalTime)}`
+          : normOfSports - totalTime
+        : normOfSports,
+      borderColor:
+        normOfSports < totalTime ? 'green' : 'rgba(239, 237, 232, 0.2)',
+    },
   ];
 
   return (
@@ -31,4 +75,11 @@ export const DayDashboard = () => {
       </WarningCont>
     </DayDashboardCont>
   );
+};
+
+DayDashboard.propTypes = {
+  dailyCalories: PropTypes.number,
+  totalCalories: PropTypes.number,
+  totalTime: PropTypes.number,
+  burnedCalories: PropTypes.number,
 };
