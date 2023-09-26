@@ -1,9 +1,9 @@
 import icons from '../../assets/icons/svg-sprite.svg';
 import { Button, SpanGoogle, SvgGoogle } from './ButtonGoogle.styled';
 
-export const ButtonGoogle = ({ children }) => {
+export const ButtonGoogle = ({ children, handleClick }) => {
   return (
-    <Button type="button">
+    <Button type="button" onClick={handleClick}>
       <SvgGoogle>
         <use href={icons + '#icon-google'}></use>
       </SvgGoogle>

@@ -17,6 +17,7 @@ import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import { ButtonGoogle } from 'components/ButtonGoogle/ButtonGoogle';
 import { MainButton } from 'components/MainButton/MainButton';
+import { googleOAuth } from 'services/googleOAuth';
 // import { ModalTrening } from 'components/ModalTrening/ModalTrening';
 
 const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
@@ -89,7 +90,7 @@ const SignInForm = () => {
                 filled
                 btnStyles={{ width: 'max-content' }}
               />
-              <ButtonGoogle>With Google</ButtonGoogle>
+              <ButtonGoogle handleClick={googleOAuth}>With Google</ButtonGoogle>
             </BtnWrapper>
           </Form>
         </Formik>

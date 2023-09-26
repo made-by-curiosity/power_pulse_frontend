@@ -16,6 +16,7 @@ import { useDispatch } from 'react-redux';
 import { signUp } from 'redux/auth/operations';
 import { ButtonGoogle } from 'components/ButtonGoogle/ButtonGoogle';
 import { BtnWrapper } from 'components/SingInForm/SingInForm.styled';
+import { googleOAuth } from 'services/googleOAuth';
 
 const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 const passwordRegex =
@@ -90,7 +91,7 @@ export const SignUpForm = () => {
               filled
               btnStyles={{ width: 'max-content' }}
             />
-            <ButtonGoogle>With Google</ButtonGoogle>
+            <ButtonGoogle handleClick={googleOAuth}>With Google</ButtonGoogle>
           </BtnWrapper>
         </RegisterForm>
       </Formik>
