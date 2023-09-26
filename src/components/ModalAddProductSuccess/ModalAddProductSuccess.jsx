@@ -53,7 +53,7 @@ export const ModalAddProductSuccess = ({ onClose }) => {
         > 
         </MainButton>
         <NavLink 
-          to="pages/ProductsPage/ProductsPage" 
+          to="/diary" 
           style={{ 
             display: 'flex', 
             alignItems: 'center', 
