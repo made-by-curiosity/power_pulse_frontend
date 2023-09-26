@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const BurgerBtn = styled.button`
+  cursor: pointer;
   border: none;
   display: flex;
   align-items: center;
@@ -15,6 +16,13 @@ export const BurgerBtn = styled.button`
 export const BurgerBtnSvg = styled.svg`
   width: 24px;
   height: 24px;
+
+  stroke: #e6533c;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
 
   @media screen and (min-width: 768px) {
     width: 32px;
