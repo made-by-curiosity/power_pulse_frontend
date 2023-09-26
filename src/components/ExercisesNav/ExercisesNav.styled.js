@@ -1,19 +1,33 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 
-export const ExerciseNav = styled.ul`
+export const NavWrap = styled.div`
     display: flex;
-    gap: 28px;
+    justify-content: space-between;
+    padding-top: 20px;
+    max-width: 1440px;
     margin-bottom: 40px;
 
     @media screen and (min-width: 768px) {
         gap: 32px;
         margin-bottom: 70px;
     }
-
 `;
-export const ExerciseEl = styled.li`
-    color: rgba(239, 237, 232, 0.40);
+
+export const NavLinkWrap = styled.div`
+    display: flex;
+    gap: 28px;
+
+    @media screen and (min-width: 768px) {
+        gap: 32px;
+        
+    }
+`;
+
+
+export const Link = styled(NavLink)`
+color: rgba(239, 237, 232, 0.40);
     font-family: Roboto;
     font-size: 14px;
     font-style: normal;
@@ -32,7 +46,7 @@ export const ExerciseEl = styled.li`
         width: 100%;
         height: 4px;
         left: 0;
-        bottom: 0;
+        bottom: 5px;
         
         background-color: #EF8964;
         border-radius: 2px;    
@@ -42,5 +56,3 @@ export const ExerciseEl = styled.li`
     color: #efede8;
     }
 `;
-
-

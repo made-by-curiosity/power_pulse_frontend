@@ -11,8 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
 
-import { ExercisesCategories } from 'components/ExercisesTabs/ExercisesCategories';
-import { ExercisesSubCategories } from 'components/ExercisesTabs/ExercisesSubCategories';
+import { ExercisesCategories } from 'components/ExercisesCategoryList/ExercisesCategories';
+import { ExercisesListByCategory} from 'components/ExercisesList/ExercisesList';
 
 
 
@@ -111,24 +111,24 @@ export const App = () => {
               />
             }
           >
-            <Route index element={<Navigate to="bodyparts" />} />
-            <Route path="bodyparts" element={<ExercisesCategories query={'body-parts'}/>}>
+            <Route index element={<Navigate to="bodyPart" />} />
+            <Route path="bodyPart" element={<ExercisesCategories query={'body-parts'}/>}>
             </Route>
             <Route
-                path="bodyparts/:filter"
-                element={<ExercisesSubCategories/>}
+                path="bodyPart/:filter"
+                element={<ExercisesListByCategory/>}
               />
-            <Route path="muscles" element={<ExercisesCategories query={'muscles'}/>}>
+            <Route path="target" element={<ExercisesCategories query={'muscles'}/>}>
             </Route>
             <Route
-                path="muscles/:filter"
-                element={<ExercisesSubCategories/>}
+                path="target/:filter"
+                element={<ExercisesListByCategory/>}
               />
             <Route path="equipment" element={<ExercisesCategories query={'equipment'}/>}>
             </Route>
             <Route
                 path="equipment/:filter"
-                element={<ExercisesSubCategories/>}
+                element={<ExercisesListByCategory/>}
               />
           </Route>
           {/* ---------------------------------------------------------- */}
