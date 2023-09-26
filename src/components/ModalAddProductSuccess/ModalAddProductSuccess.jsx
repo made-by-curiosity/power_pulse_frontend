@@ -1,24 +1,20 @@
-import { CustomModal } from "components/CustomModal/CustomModal";
-import React, { useEffect } from 'react'; 
-import { NavLink } from "react-router-dom";
+import { 
+  Calories, 
+  SvgArrov, 
+  Img, 
+  LinkToDiary 
+} from './ModalAddProductSuccess.styled';
+import { CustomModal } from "components/CustomModal/CustomModal"; 
 import { MainButton } from "components/MainButton/MainButton";
 import { Title } from "components/Title/Title";
-import { Calories, SvgArrov, Img } from './ModalAddProductSuccess.styled';
 import ico from '../../assets/icons/svg-sprite.svg';
 import foodIcon from '../../assets/images/png/food-icon.png';
 
 export const ModalAddProductSuccess = ({ onClose }) => {
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.code === 'Escape') {
-        onClose();
-      }
-    };
 
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+  const handleNextProductClick = () => {
+    onClose();
+  };
 
   return (
     <CustomModal
@@ -27,7 +23,6 @@ export const ModalAddProductSuccess = ({ onClose }) => {
           height: '362px',
           display: 'flex',
           flexDirection: 'inherit',gap: '16px',
-          margin: '0px',
           alignItems: 'flex-start', 
       }}
       modalStyles={{
@@ -37,7 +32,6 @@ export const ModalAddProductSuccess = ({ onClose }) => {
           alignItems: 'center',
           justifyContent: 'center',
           display: 'flex',
-          padding: '0',
       }}
       onClose={onClose}
     >
@@ -50,23 +44,16 @@ export const ModalAddProductSuccess = ({ onClose }) => {
           text="Next product"
           modalButton
           filled
+          onClick={handleNextProductClick}
         > 
         </MainButton>
-        <NavLink 
-          to="/diary" 
-          style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            color: "rgba(239, 237, 232, 0.30)" 
-          }}
-        >
+        <LinkToDiary 
+          to="/diary">
           to the diary
-          <SvgArrov 
-            style={{ marginLeft: '8px' }}
-          >
+          <SvgArrov>
             <use href={ico + `#icon-nextarrow`} />
           </SvgArrov>
-        </NavLink>
+        </LinkToDiary>
     </CustomModal>
   );
 };  
