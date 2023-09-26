@@ -3,7 +3,6 @@ import {
   getCoreRowModel,
   flexRender,
 } from '@tanstack/react-table';
-import mData from './users.json';
 import { useMemo } from 'react';
 import ico from '../../assets/icons/svg-sprite.svg';
 
@@ -16,22 +15,24 @@ import {
   SvgTd,
   Headers,
   HeadersTitle,
+  RecWrapper,
+  RecYes,
+  RecNo,
 } from './ProductsTable.styled';
 
-export default function ProductsTable() {
-  const groupBlood = '3'
-
-  const resData = mData.map((mDat)=> {
+export default function ProductsTable({ meals, blood }) {
+  const resData = meals.map(mDat => {
     return {
       Title: mDat.productId.title,
       Category: mDat.productId.category,
       Calories: mDat.productId.calories,
       Weight: mDat.productId.weight,
-      Recommend: !mDat.productId.groupBloodNotAllowed[groupBlood],
-    }
-  })
+      Recommend: !mDat.productId.groupBloodNotAllowed[blood],
+      id: mDat._id,
+    };
+  });
 
-  const data = useMemo(() => resData, [resData]);
+  const data = useMemo(() => resData, []);
 
   const columns = [
     {
@@ -53,50 +54,21 @@ export default function ProductsTable() {
     {
       header: 'Recommend',
       accessorKey: 'Recommend',
-      cell: nfo => {
-        const nfoIn = nfo.getValue();
-        if (nfoIn) {
+      cell: nfo => { 
+        if (nfo.getValue() === true) {
           return (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <div
-                style={{
-                  width: '14px',
-                  height: '14px',
-                  backgroundColor: '#419B09',
-                  borderRadius: '50%',
-                  marginRight: '8px',
-                }}
-              ></div>
+            <RecWrapper>
+              <RecYes></RecYes>
               Yes
-            </div>
-          );
+            </RecWrapper>
+          )
         } else {
           return (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <div
-                style={{
-                  width: '14px',
-                  height: '14px',
-                  backgroundColor: '#E9101D',
-                  borderRadius: '50%',
-                  marginRight: '8px',
-                }}
-              ></div>
+            <RecWrapper>
+              <RecNo></RecNo>
               No
-            </div>
-          );
+            </RecWrapper>
+          )
         }
       },
     },
@@ -128,6 +100,7 @@ export default function ProductsTable() {
         <tbody>
           {table.getRowModel().rows.map(row => (
             <RowTel key={row.id}>
+              {console.log(row)}
               {row.getVisibleCells().map(cell => (
                 <CellTel key={cell.id}>
                   <TitleColumn>{cell.column.id}</TitleColumn>

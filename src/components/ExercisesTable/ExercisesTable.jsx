@@ -3,7 +3,6 @@ import {
   getCoreRowModel,
   flexRender,
 } from '@tanstack/react-table';
-import mData from './users.json';
 import { useMemo } from 'react';
 import ico from '../../assets/icons/svg-sprite.svg';
 
@@ -18,9 +17,9 @@ import {
   HeadersTitle,
 } from './ExercisesTable.styled';
 
-export default function ExercisesTable() {
+export default function ExercisesTable({exercises}) {
 
-  const resData = mData.map((mDat)=> {
+  const resData = exercises.map((mDat)=> {
     return {
       bodyPart: mDat.exerciseId.bodyPart,
       equipment: mDat.exerciseId.equipment,
@@ -28,6 +27,7 @@ export default function ExercisesTable() {
       target: mDat.exerciseId.target,
       burnedCalories: mDat.exerciseId.burnedCalories,
       time: mDat.exerciseId.time,
+      id: mDat._id,
     }
   })
 
@@ -95,7 +95,7 @@ export default function ExercisesTable() {
                 );
               })}
               <SvgTd>
-                <SvgStyle>
+                <SvgStyle>  
                   <use href={ico + `#icon-trashtrue`}></use>
                 </SvgStyle>
               </SvgTd>
