@@ -25,7 +25,9 @@ export const Item = styled.li`
   padding: 14px;
   justify-content: space-between;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: 1px solid;
+  border-color: ${({ borderColor }) =>
+    borderColor ? borderColor : 'rgba(239, 237, 232, 0.2)'};
   background: rgba(239, 237, 232, 0.05);
 
   :nth-of-type(-n + 2) {
