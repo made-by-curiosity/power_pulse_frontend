@@ -105,7 +105,7 @@ export const UserForm = ({ userInfo }) => {
                 type="text"
                 autoComplete="off"
                 successFeedback={false}
-                disabled="true"
+                readOnly
                 component={CustomInput}
                 inputStyles={{ color: 'rgba(239, 237, 232, 0.6)' }}
               />
