@@ -69,7 +69,7 @@ export const updateUserAvatar = async userAvatar => {
 // diary
 
 export const getMeals = async date => {
-  const res = await axios.get(`/api/diary/meal${date && `?date=${date}`}`);
+  const res = await axios.get(`/api/diary/meal${date ? `?date=${date}` : ''}`);
 
   return res.data;
 };
@@ -93,7 +93,9 @@ export const addWorkout = async workout => {
 };
 
 export const getWorkouts = async date => {
-  const res = await axios.get(`/api/diary/workout${date && `?date=${date}`}`);
+  const res = await axios.get(
+    `/api/diary/workout${date ? `?date=${date}` : ''}`
+  );
 
   return res.data;
 };
