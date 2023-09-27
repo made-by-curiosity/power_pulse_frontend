@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import bg_line from '../../assets/images/bg_img/bg_line.png';
 
 export const TitleText = styled.h2`
   max-width: 335px;
