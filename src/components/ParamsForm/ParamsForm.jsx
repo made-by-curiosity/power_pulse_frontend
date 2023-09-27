@@ -80,7 +80,7 @@ const validationSchema = Yup.object({
     .required('Age is required'),
 });
 
-export const ParamsForm = () => {
+export const ParamsForm = ({ setBackgroundStep }) => {
   const initialValues = {
     height: '',
     currentWeight: '',
@@ -106,6 +106,10 @@ export const ParamsForm = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    setBackgroundStep(step);
+  }, [setBackgroundStep, step]);
 
   const handleClickNext = () => {
     setStep(state => state + 1);

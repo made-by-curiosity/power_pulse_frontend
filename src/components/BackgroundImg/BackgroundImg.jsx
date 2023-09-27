@@ -6,8 +6,30 @@ import {
   NotFoundContentBackground,
 } from './BackgroundImg.styled';
 import { DynamicStatistics } from 'components/DynamicStatistics/DynamicStatistics';
+import { useEffect, useState } from 'react';
 
-export const BackgroundImg = ({ children, notFound, statistics }) => {
+const getStatistics = step => {
+  switch (step) {
+    case 1:
+      return 'users';
+    case 2:
+      return 'hours';
+    case 3:
+      return 'workouts';
+    default:
+      break;
+  }
+};
+
+export const BackgroundImg = ({ children, notFound, backgroundStep }) => {
+  const [statistics, setStatistics] = useState('users');
+
+  useEffect(() => {
+    const statisticsType = getStatistics(backgroundStep);
+
+    setStatistics(statisticsType);
+  }, [backgroundStep]);
+
   return (
     <Wrapper notFound={notFound}>
       <BgContainer notFound={notFound}>
