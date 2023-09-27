@@ -83,9 +83,11 @@ export const ContainCaloriesNumber = styled.span`
 
 export const ModalBtns = styled.div`
   display: flex;
-  gap: 14px;
+  justify-content: space-between;
 
   @media screen and (min-width: 768px) {
+    justify-content: start;
+
     gap: 16px;
   }
 `;
@@ -105,5 +107,3 @@ export const LabelGrams = styled.label`
     right: 46px;
   }
 `;
-
-

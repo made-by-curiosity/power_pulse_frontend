@@ -24,9 +24,7 @@ const NotFoundPage = () => {
             text="Go Home"
             onClick={handleClick}
             btnStyles={{ width: 'max-content' }}
-          >
-            Go Home
-          </MainButton>
+          />
         </ContentWrapper>
       </Container>
     </BackgroundImg>
