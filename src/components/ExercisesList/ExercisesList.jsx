@@ -21,6 +21,8 @@ import { getAllExercises } from 'services/powerPulseApi';
 
 import { BackLink } from 'components/BackLink/BackLink';
 
+// import { ModalTrening } from 'components/ModalTrening/ModalTrening';
+
 export const ExercisesListByCategory = () => {
   const location = useLocation();
   const backLinkRef = location.state?.from ?? '/exercises';
@@ -30,6 +32,13 @@ export const ExercisesListByCategory = () => {
   const category = pathname[2];
 
   const [exercisesSubCategories, setExercisesSubCategories] = useState(null);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [selectedExercise, setSelectedExercise] = useState(null);
+
+  // const toogleModal = exercise => {
+  //   setIsModalOpen(prevState => !prevState);
+  //   setSelectedExercise(exercise);
+  // };
 
   useEffect(() => {
     const exercisesList = async () => {
@@ -48,8 +57,6 @@ export const ExercisesListByCategory = () => {
     exercisesList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
-
-  console.log(exercisesSubCategories);
 
   return (
     <MainExercisesContainer>

@@ -3,15 +3,19 @@ import { NavLink } from 'react-router-dom';
 
 
 export const NavWrap = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding-top: 20px;
+    
+    
     max-width: 1440px;
     margin-bottom: 40px;
+    margin-top: 40px;
+
 
     @media screen and (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
         gap: 32px;
-        margin-bottom: 70px;
+        margin-top: 72px;
+        margin-bottom: 64px;
     }
 `;
 
@@ -46,13 +50,43 @@ color: rgba(239, 237, 232, 0.40);
         width: 100%;
         height: 4px;
         left: 0;
-        bottom: 5px;
+        bottom: -8px;
         
         background-color: #EF8964;
-        border-radius: 2px;    
+        border-radius: 2px;
+
+        @media screen and (min-width: 768px) {
+            bottom: 5px;
+    }
     }
 
     &.active {
     color: #efede8;
     }
 `;
+
+
+export const FilterTitle = styled.h1`
+font-size: 24px;
+ text-transform: capitalize;
+ margin-bottom: 20px;
+
+ @media screen and (min-width: 768px) {
+        font-size: 32px;
+        margin-bottom: 0px;
+    }
+
+`
+
+export const Title = styled.h1`
+font-size: 24px;
+margin-bottom: 20px;
+
+
+
+@media screen and (min-width: 768px) {
+        font-size: 32px;
+        margin-bottom: 0px;
+
+    }
+`

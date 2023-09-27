@@ -82,6 +82,7 @@ export const signUpWithToken = createAsyncThunk(
     try {
       setAuthHeader(credentials);
       const data = await getCurrentUser();
+      console.log(data);
 
       return data;
     } catch (error) {
@@ -149,7 +150,7 @@ export const updateAvatar = createAsyncThunk(
     try {
       const data = await updateUserAvatar(credentials);
 
-      return data.user.avatar;
+      return data.user.avatarUrls;
     } catch (error) {
       if (error.response && error.response.status === 401) {
         thunkAPI.dispatch(resetStore());
