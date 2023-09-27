@@ -6,7 +6,6 @@ import {
   NotFoundContentBackground,
 } from './BackgroundImg.styled';
 import { DynamicStatistics } from 'components/DynamicStatistics/DynamicStatistics';
-import { useEffect, useState } from 'react';
 
 const getStatistics = step => {
   switch (step) {
