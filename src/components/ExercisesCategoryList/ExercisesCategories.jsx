@@ -10,6 +10,7 @@ import { Suspense } from 'react';
 import { getExercisesCategory } from 'services/powerPulseApi';
 
 import { Loading } from 'components/Loading/Loading';
+import { Notify } from 'notiflix';
 
 
 export const ExercisesCategories = ({query}) => {
@@ -25,6 +26,7 @@ export const ExercisesCategories = ({query}) => {
         const categories = await getExercisesCategory(query);
         setExercisesCategories(categories);
       } catch (error) {
+        Notify.failure("Ops...Something went wrong. Please try again.")
         console.log(error.message);
       }
     };

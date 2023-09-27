@@ -17,6 +17,7 @@ import {
 import { DeleteBtn } from 'components/DeleteBtn/DeleteBtn';
 import { deleteWorkout } from 'services/powerPulseApi';
 import { TableBody } from 'components/DayProducts/DayProducts.styled';
+import { Notify } from 'notiflix';
 
 export default function ExercisesTable({ workouts, setWorkouts }) {
   const resData = useMemo(
@@ -71,10 +72,14 @@ export default function ExercisesTable({ workouts, setWorkouts }) {
   });
 
   const handleDelete = async id => {
-    await deleteWorkout(id);
+    try {
+      await deleteWorkout(id);
 
     const filteredWorkouts = workouts.filter(workout => workout._id !== id);
     setWorkouts(filteredWorkouts);
+    } catch (error) {
+       Notify.failure("Ops...Something went wrong. Please try again.")
+    }
   };
 
   return (

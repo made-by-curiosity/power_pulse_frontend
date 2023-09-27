@@ -76,8 +76,10 @@ export const refreshUser = createAsyncThunk(
       return data.user;
     } catch (error) {
       if (error.response && error.response.status === 401) {
+        Notify.failure("Ops...Something went wrong. Please try again.")
         thunkAPI.dispatch(resetStore());
       }
+      Notify.failure("Ops...Something went wrong. Please try again.")
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -93,6 +95,7 @@ export const signUpWithToken = createAsyncThunk(
 
       return data;
     } catch (error) {
+      Notify.failure("Ops...Something went wrong. Please try again.")
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -109,8 +112,10 @@ export const getUserParams = createAsyncThunk(
       return { ...user, bmr };
     } catch (error) {
       if (error.response && error.response.status === 401) {
+        Notify.failure("Ops...Something went wrong. Please try again.")
         thunkAPI.dispatch(resetStore());
       }
+      Notify.failure("Ops...Something went wrong. Please try again.")
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -128,8 +133,10 @@ export const updateUserParams = createAsyncThunk(
       };
     } catch (error) {
       if (error.response && error.response.status === 401) {
+        Notify.failure("Ops...Something went wrong. Please try again.")
         thunkAPI.dispatch(resetStore());
       }
+      Notify.failure("Ops...Something went wrong. Please try again.")
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -144,8 +151,10 @@ export const updateName = createAsyncThunk(
       return data.user.name;
     } catch (error) {
       if (error.response && error.response.status === 401) {
+        Notify.failure("Ops...Something went wrong. Please try again.")
         thunkAPI.dispatch(resetStore());
       }
+      Notify.failure("Ops...Something went wrong. Please try again.")
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -160,8 +169,10 @@ export const updateAvatar = createAsyncThunk(
       return data.user.avatarUrls;
     } catch (error) {
       if (error.response && error.response.status === 401) {
+        Notify.failure("Ops...Something went wrong. Please try again.")
         thunkAPI.dispatch(resetStore());
       }
+      Notify.failure("Ops...Something went wrong. Please try again.")
       return thunkAPI.rejectWithValue(error.message);
     }
   }

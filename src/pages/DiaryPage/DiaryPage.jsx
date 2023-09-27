@@ -9,6 +9,7 @@ import { DayProducts } from 'components/DayProducts/DayProducts';
 import { DiaryTablesCont } from 'components/DiaryTablesCont/DiaryTablesCont';
 import { useEffect, useState } from 'react';
 import { getMeals, getWorkouts, getUserInfo } from 'services/powerPulseApi';
+import { Notify } from 'notiflix';
 
 const DiaryPage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -33,6 +34,7 @@ const DiaryPage = () => {
         setDailyCalories(info.bmr);
       })
       .catch(error => {
+        Notify.failure('Ops...Something went wrong. Please try again.');
         console.log(error);
       }); //добавить обработчик ошибки
 
@@ -41,12 +43,18 @@ const DiaryPage = () => {
         setMeals(products);
       })
       .catch(error => {
+        Notify.failure('Ops...Something went wrong. Please try again.');
         console.log(error);
       }); //добавить обработчик ошибки
 
-    getWorkouts(selectedDate).then(workouts => {
-      setWorkouts(workouts);
-    });
+    getWorkouts(selectedDate)
+      .then(workouts => {
+        setWorkouts(workouts);
+      })
+      .catch(error => {
+        Notify.failure('Ops...Something went wrong. Please try again.');
+        console.log(error);
+      });
   }, [selectedDate]);
 
   useEffect(() => {

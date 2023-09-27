@@ -19,6 +19,7 @@ import {
 
 import icons from '../../assets/icons/svg-sprite.svg';
 import { NavLink } from 'react-router-dom';
+import { Notify } from 'notiflix';
 
 export const ProductsList = () => {
   const [products, setProducts] = useState([]);
@@ -38,6 +39,7 @@ export const ProductsList = () => {
         const productsList = await getAllProducts();
         setProducts(productsList);
       } catch (error) {
+        Notify.failure("Ops...Something went wrong. Please try again.")
         console.log(error.message);
       }
     }
