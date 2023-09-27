@@ -23,9 +23,11 @@ export const BurgerCloseBtnSvg = styled.svg`
   height: 24px;
   stroke: #efede8;
 
+  transition: opacity 200ms ease-out;
+
   &:hover,
   &:focus {
-    opacity: 0.7;
+    opacity: 0.6;
   }
 
   @media screen and (min-width: 768px) {
