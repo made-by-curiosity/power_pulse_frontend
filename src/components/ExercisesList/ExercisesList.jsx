@@ -1,14 +1,27 @@
-import { ExercisesList, CardLink, ExercisesListWrap } from './ExercisesList.styled';
+import {
+  ExercisesList,
+  ExercisesItem,
+  InfoContainer,
+  WorkoutTitle,
+  Start,
+  StartIcon,
+  ExercisesContainer,
+  ExercisesTitle,
+  CaloriesIcon,
+  DataInfo,
+  MainExercisesContainer,
+} from './ExercisesList.styled';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import icons from '../../assets/icons/svg-sprite.svg';
 
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, NavLink } from 'react-router-dom';
 
 import { getAllExercises } from 'services/powerPulseApi';
 
 import { BackLink } from 'components/BackLink/BackLink';
 
-import { ModalTrening } from 'components/ModalTrening/ModalTrening';
+// import { ModalTrening } from 'components/ModalTrening/ModalTrening';
 
 export const ExercisesListByCategory = () => {
   const location = useLocation();
@@ -19,14 +32,13 @@ export const ExercisesListByCategory = () => {
   const category = pathname[2];
 
   const [exercisesSubCategories, setExercisesSubCategories] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedExercise, setSelectedExercise] = useState(null);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [selectedExercise, setSelectedExercise] = useState(null);
 
-
-  const toogleModal = (exercise) => {
-    setIsModalOpen(prevState => !prevState);
-    setSelectedExercise(exercise);
-  };
+  // const toogleModal = exercise => {
+  //   setIsModalOpen(prevState => !prevState);
+  //   setSelectedExercise(exercise);
+  // };
 
   useEffect(() => {
     const exercisesList = async () => {
@@ -46,21 +58,52 @@ export const ExercisesListByCategory = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
-  console.log(exercisesSubCategories);
-
   return (
-    <>
-    <ExercisesListWrap>
+    <MainExercisesContainer>
       <BackLink to={backLinkRef}>Back</BackLink>
       <ExercisesList>
-        {exercisesSubCategories?.map(card => (
-          <CardLink key={card._id} onClick={() => toogleModal(card)} >
-            <li>{card.name}</li>
-          </CardLink>
-        ))}
+        {exercisesSubCategories?.map(
+          ({ burnedCalories, _id, bodyPart, name, target }) => (
+            <>
+              {' '}
+              <ExercisesItem key={_id}>
+                <InfoContainer>
+                  <WorkoutTitle>WORKOUT</WorkoutTitle>
+                  <NavLink style={{ display: 'flex', alignItems: 'center' }}>
+                    <Start>Start</Start>
+                    <StartIcon>
+                      <svg fill="#efede8">
+                        {' '}
+                        <use href={icons + '#icon-nextarrow'}></use>
+                      </svg>
+                    </StartIcon>
+                  </NavLink>
+                </InfoContainer>
+                <ExercisesContainer>
+                  <CaloriesIcon>
+                    <svg fill="#efede8">
+                      {' '}
+                      <use href={icons + '#icon-running'}></use>
+                    </svg>
+                  </CaloriesIcon>
+                  <ExercisesTitle>{name}</ExercisesTitle>
+                </ExercisesContainer>
+                <DataInfo>
+                  <li>
+                    Burned calories:<span>{burnedCalories}</span>
+                  </li>
+                  <li>
+                    Body part: <span>{bodyPart}</span>
+                  </li>
+                  <li>
+                    Target:<span>{target}</span>
+                  </li>
+                </DataInfo>
+              </ExercisesItem>
+            </>
+          )
+        )}
       </ExercisesList>
-    </ExercisesListWrap>
-    {isModalOpen && <ModalTrening onToogle={toogleModal} example={selectedExercise} />}
-    </>
+    </MainExercisesContainer>
   );
 };

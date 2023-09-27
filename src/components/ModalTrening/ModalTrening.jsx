@@ -25,27 +25,27 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 // const BASE_URL='https://power-pulse.onrender.com'
 
-const ex = {
-  bodyPart: 'waist',
-  equipment: 'body weight',
-  gifUrl:
-    'https://res.cloudinary.com/ditdqzoio/image/upload/v1687127066/exercises/0002.gif',
-  name: '45° side bend',
-  target: 'abs',
-  burnedCalories: 323,
-  time: 1,
-};
+// const ex = {
+//   bodyPart: 'waist',
+//   equipment: 'body weight',
+//   gifUrl:
+//     'https://res.cloudinary.com/ditdqzoio/image/upload/v1687127066/exercises/0002.gif',
+//   name: '45° side bend',
+//   target: 'abs',
+//   burnedCalories: 323,
+//   time: 1,
+// };
 
-export const ModalTrening = ({onToogle, example}) => {
+export const ModalTrening = ({ onToogle, example }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSecond, setIsSecond] = useState(0);
   // const [data, setData] = useState(null);
 
   function formatTime(totalSeconds) {
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
-  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-}
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  }
 
   const children = example.time * 60;
 
@@ -60,12 +60,11 @@ export const ModalTrening = ({onToogle, example}) => {
     let interval;
     if (isPlaying && isSecond !== children) {
       interval = setInterval(() => {
-        setIsSecond((isSecond) => isSecond + 1);
+        setIsSecond(isSecond => isSecond + 1);
       }, 1000);
-    }
-    else if (isSecond === children) { 
+    } else if (isSecond === children) {
       setIsPlaying(false);
-      setIsSecond(0)
+      setIsSecond(0);
     }
 
     return () => clearInterval(interval);
@@ -75,11 +74,9 @@ export const ModalTrening = ({onToogle, example}) => {
     setIsPlaying(prevState => !prevState);
   };
 
-
- const timerFormat = formatTime(isSecond);
+  const timerFormat = formatTime(isSecond);
 
   return (
-    
     <CustomModal
       onClose={onToogle}
       modalStyles={{
@@ -90,16 +87,21 @@ export const ModalTrening = ({onToogle, example}) => {
         display: 'flex',
         padding: '0',
       }}
-      modalTabletStyles={{ width: '694px', height: '550px',display: 'flex',
-    flexDirection: 'inherit',gap: '16px',
-    margin: '0px',
-    alignItems: 'flex-start', }} 
+      modalTabletStyles={{
+        width: '694px',
+        height: '550px',
+        display: 'flex',
+        flexDirection: 'inherit',
+        gap: '16px',
+        margin: '0px',
+        alignItems: 'flex-start',
+      }}
     >
-          <>
-              <DivColumn>
-        <ImgDiv>
-          <ImgGif src={example.gifUrl} alt="" />
-        </ImgDiv>
+      <>
+        <DivColumn>
+          <ImgDiv>
+            <ImgGif src={example.gifUrl} alt="" />
+          </ImgDiv>
           <DivTimer>
             <Text>Time</Text>
             <CountdownCircleTimer
@@ -110,12 +112,10 @@ export const ModalTrening = ({onToogle, example}) => {
               trailColor="#EFEDE81A"
               strokeWidth={4}
             >
-               {() => {
+              {() => {
                 return <div>{timerFormat}</div>;
-      }}
-              
+              }}
             </CountdownCircleTimer>
-            
           </DivTimer>
           <Button type="button" onClick={togglePlaying}>
             <Svg>
@@ -135,27 +135,28 @@ export const ModalTrening = ({onToogle, example}) => {
               {example.burnedCalories}
             </BurnedCaloriesNumber>
           </BurnedCaloriesDiv>
-              </DivColumn>
-              <DivColumn>
-        <ListTrening>
-          {Object.entries(example)
-            .filter(
-              ([key, value]) => key !== 'gifUrl' && key !== 'burnedCalories' && key !== '_id'
-            )
-            .map(([key, value]) => (
-              <ItemTrening key={value} > 
-                <ItemDiv>
-                  <NameItem>{key}</NameItem>
-                  <ValueItem>{value}</ValueItem>
-                </ItemDiv>
-              </ItemTrening>
-            ))}
-        </ListTrening>
+        </DivColumn>
+        <DivColumn>
+          <ListTrening>
+            {Object.entries(example)
+              .filter(
+                ([key, value]) =>
+                  key !== 'gifUrl' && key !== 'burnedCalories' && key !== '_id'
+              )
+              .map(([key, value]) => (
+                <ItemTrening key={value}>
+                  <ItemDiv>
+                    <NameItem>{key}</NameItem>
+                    <ValueItem>{value}</ValueItem>
+                  </ItemDiv>
+                </ItemTrening>
+              ))}
+          </ListTrening>
 
-        <ButtonAdd>
-          <SpanButton>Add to diary</SpanButton>
-                  </ButtonAdd>
-                  </DivColumn>
+          <ButtonAdd>
+            <SpanButton>Add to diary</SpanButton>
+          </ButtonAdd>
+        </DivColumn>
       </>
     </CustomModal>
   );
