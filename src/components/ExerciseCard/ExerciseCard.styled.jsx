@@ -11,11 +11,14 @@ export const ExerciseCardWrapper = styled.div`
   height: 206px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
-  
+
   background-repeat: no-repeat;
-  background-image: linear-gradient( 0deg,
-    rgba(4, 4, 4, 0.5) 0%,
-    rgba(4, 4, 4, 0.5) 100%),url(${props => props.photo || img});
+  background-image: linear-gradient(
+      0deg,
+      rgba(4, 4, 4, 0.5) 0%,
+      rgba(4, 4, 4, 0.5) 100%
+    ),
+    url(${props => props.photo || img});
 
   background-position: 50% 50%;
   background-size: cover;
@@ -25,18 +28,24 @@ export const ExerciseCardWrapper = styled.div`
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     & {
-      background-image: linear-gradient( 0deg,
-    rgba(4, 4, 4, 0.5) 0%,
-    rgba(4, 4, 4, 0.5) 100%),url(${props => props.photo || img2});
+      background-image: linear-gradient(
+          0deg,
+          rgba(4, 4, 4, 0.5) 0%,
+          rgba(4, 4, 4, 0.5) 100%
+        ),
+        url(${props => props.photo || img2});
     }
   }
   @media (min-device-pixel-ratio: 3),
     (-webkit-min-device-pixel-ratio: 3),
     (min-resolution: 3dppx) {
     & {
-      background-image: linear-gradient( 0deg,
-    rgba(4, 4, 4, 0.5) 0%,
-    rgba(4, 4, 4, 0.5) 100%),url(${props => props.photo || img3});
+      background-image: linear-gradient(
+          0deg,
+          rgba(4, 4, 4, 0.5) 0%,
+          rgba(4, 4, 4, 0.5) 100%
+        ),
+        url(${props => props.photo || img3});
     }
   }
 
@@ -59,7 +68,7 @@ export const ExerciseDescription = styled.div`
     margin-bottom: 77px;
   }
 `;
-export const ExerciseTitle = styled.p`
+export const ExerciseTitle = styled.div`
   margin: 0;
   color: #efede8;
   text-align: center;
