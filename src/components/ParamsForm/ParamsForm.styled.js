@@ -59,54 +59,106 @@ export const FieldWrap = styled.div`
   margin-bottom: 32px;
 `;
 
-export const StepWrap = styled.div`
+export const StepContainer = styled.div`
   width: 178px;
   display: flex;
   justify-content: space-around;
-  margin-top: 343px;
+`;
+
+export const StepWrap = styled.div`
+  margin-top: 10px;
   padding-bottom: 20px;
 
   margin-top: ${props => {
     if (props.step === 2) {
-      return '159px';
+      return '30px';
     }
   }};
   margin-top: ${props => {
     if (props.step === 3) {
-      return '459px';
+      return '30px';
     }
   }};
 
   @media screen and (min-width: 768px) {
-    margin-top: 439px;
+    margin-top: 40px;
 
     margin-top: ${props => {
       if (props.step === 2) {
-        return '283px';
+        return '40px';
       }
     }};
     margin-top: ${props => {
       if (props.step === 3) {
-        return '523px';
+        return '40px';
       }
     }};
   }
 
   @media screen and (min-width: 1440px) {
-    margin-top: 204px;
+    margin-top: 40px;
 
     margin-top: ${props => {
       if (props.step === 2) {
-        return '48px';
+        return '40px';
       }
     }};
     margin-top: ${props => {
       if (props.step === 3) {
-        return '288px';
+        return '40px';
       }
     }};
   }
 `;
+
+// export const StepWrap = styled.div`
+//   width: 178px;
+//   display: flex;
+//   justify-content: space-around;
+//   margin-top: 343px;
+//   padding-bottom: 20px;
+
+//   margin-top: ${props => {
+//     if (props.step === 2) {
+//       return '159px';
+//     }
+//   }};
+//   margin-top: ${props => {
+//     if (props.step === 3) {
+//       return '459px';
+//     }
+//   }};
+
+//   @media screen and (min-width: 768px) {
+//     margin-top: 439px;
+
+//     margin-top: ${props => {
+//       if (props.step === 2) {
+//         return '283px';
+//       }
+//     }};
+//     margin-top: ${props => {
+//       if (props.step === 3) {
+//         return '523px';
+//       }
+//     }};
+//   }
+
+//   @media screen and (min-width: 1440px) {
+//     margin-top: 204px;
+
+//     margin-top: ${props => {
+//       if (props.step === 2) {
+//         return '48px';
+//       }
+//     }};
+//     margin-top: ${props => {
+//       if (props.step === 3) {
+//         return '288px';
+//       }
+//     }};
+//   }
+// `;
 
 export const Step1 = styled.button`
   width: 50px;

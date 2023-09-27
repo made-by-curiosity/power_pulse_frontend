@@ -16,6 +16,7 @@ import {
   BloodWrap,
   RadioGroupWrap,
   ParamsWrapper,
+  StepContainer,
 } from 'components/ParamsForm/ParamsForm.styled';
 
 import icons from '../../assets/icons/svg-sprite.svg';
@@ -122,7 +123,6 @@ export const ParamsForm = () => {
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
     if (step === 3) {
       // Відправка даних на сервер лише на третьому етапі
       handleThirdStepSubmit(values, { setSubmitting });
@@ -193,9 +193,11 @@ export const ParamsForm = () => {
                 </svg>
               </NextBtn>
               <StepWrap step={step}>
-                <Step1 step={step} type="submit"></Step1>
-                <Step2 step={step}></Step2>
-                <Step3 step={step}></Step3>
+                <StepContainer>
+                  <Step1 step={step} type="submit"></Step1>
+                  <Step2 step={step}></Step2>
+                  <Step3 step={step}></Step3>
+                </StepContainer>
               </StepWrap>
             </>
           )}
@@ -335,9 +337,11 @@ export const ParamsForm = () => {
 
       {step > 1 && (
         <StepWrap step={step}>
-          <Step1 step={step} onClick={() => onStep(1)} type="submit"></Step1>
-          <Step2 step={step} onClick={() => onStep(2)}></Step2>
-          <Step3 step={step} onClick={() => onStep(3)}></Step3>
+          <StepContainer>
+            <Step1 step={step} onClick={() => onStep(1)} type="submit"></Step1>
+            <Step2 step={step} onClick={() => onStep(2)}></Step2>
+            <Step3 step={step} onClick={() => onStep(3)}></Step3>
+          </StepContainer>
         </StepWrap>
       )}
     </ParamsWrapper>
