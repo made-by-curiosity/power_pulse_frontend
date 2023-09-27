@@ -2,13 +2,13 @@ import styled from '@emotion/styled';
 import { Form } from 'formik';
 
 export const RegisterContainer = styled.div`
-  margin-top: 90px;
+  margin-top: 30px;
 
   @media screen and (min-width: 768px) {
-    margin-top: 140px;
+    margin-top: 60px;
   }
   @media screen and (min-width: 1440px) {
-    margin-top: 151px;
+    margin-top: 116px;
   }
 `;
 
@@ -18,7 +18,7 @@ export const RegisterForm = styled(Form)`
 
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 30px;
 
   @media screen and (min-width: 768px) {
     width: 364px;
