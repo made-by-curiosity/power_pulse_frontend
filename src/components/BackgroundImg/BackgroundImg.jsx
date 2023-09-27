@@ -22,13 +22,7 @@ const getStatistics = step => {
 };
 
 export const BackgroundImg = ({ children, notFound, backgroundStep }) => {
-  const [statistics, setStatistics] = useState('users');
-
-  useEffect(() => {
-    const statisticsType = getStatistics(backgroundStep);
-
-    setStatistics(statisticsType);
-  }, [backgroundStep]);
+  const statistics = getStatistics(backgroundStep);
 
   return (
     <Wrapper notFound={notFound}>
