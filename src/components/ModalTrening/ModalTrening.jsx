@@ -33,12 +33,16 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 //   name: '45° side bend',
 //   target: 'abs',
 //   burnedCalories: 323,
-//   time: 1,
+//   time: 3,
 // };
 
 export const ModalTrening = ({ onToogle, example }) => {
+
+  const children = example.time * 60;
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSecond, setIsSecond] = useState(0);
+  const [isCalories, setIsCalories] = useState(0);
   // const [data, setData] = useState(null);
 
   function formatTime(totalSeconds) {
@@ -47,8 +51,8 @@ export const ModalTrening = ({ onToogle, example }) => {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   }
 
-  const children = example.time * 60;
-
+  const caloriesOneSeconds = Math.round((example.burnedCalories / children) * 100) / 100;
+  
   // useEffect(() => {
 
   //   axios.get('api/exercises')
@@ -58,17 +62,22 @@ export const ModalTrening = ({ onToogle, example }) => {
 
   useEffect(() => {
     let interval;
-    if (isPlaying && isSecond !== children) {
+    if (isPlaying
+      // && isSecond !== children
+    ) {
       interval = setInterval(() => {
         setIsSecond(isSecond => isSecond + 1);
+        setIsCalories(isCalories => isCalories + caloriesOneSeconds);
       }, 1000);
-    } else if (isSecond === children) {
-      setIsPlaying(false);
-      setIsSecond(0);
     }
+    // else if (isSecond === children) {
+    //   setIsPlaying(false);
+    //   setIsSecond(0);
+    //   setIsCalories(0);
+    // }
 
     return () => clearInterval(interval);
-  }, [children, setIsPlaying, setIsSecond, isPlaying, isSecond]);
+  }, [children, setIsPlaying, setIsSecond, isPlaying, isSecond, setIsCalories, caloriesOneSeconds]);
 
   const togglePlaying = () => {
     setIsPlaying(prevState => !prevState);
@@ -111,6 +120,9 @@ export const ModalTrening = ({ onToogle, example }) => {
               colors="#E6533C"
               trailColor="#EFEDE81A"
               strokeWidth={4}
+              onComplete={() => {
+                return { shouldRepeat: true }
+              }}
             >
               {() => {
                 return <div>{timerFormat}</div>;
@@ -132,7 +144,7 @@ export const ModalTrening = ({ onToogle, example }) => {
           <BurnedCaloriesDiv>
             <BurnedCaloriesText>Burned calories:</BurnedCaloriesText>
             <BurnedCaloriesNumber>
-              {example.burnedCalories}
+              {Math.round(isCalories * 100) / 100}
             </BurnedCaloriesNumber>
           </BurnedCaloriesDiv>
         </DivColumn>
