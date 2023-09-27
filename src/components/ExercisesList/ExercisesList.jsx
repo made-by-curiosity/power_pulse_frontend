@@ -21,7 +21,7 @@ import { getAllExercises } from 'services/powerPulseApi';
 
 import { BackLink } from 'components/BackLink/BackLink';
 
-// import { ModalTrening } from 'components/ModalTrening/ModalTrening';
+import { ModalTrening } from 'components/ModalTrening/ModalTrening';
 
 export const ExercisesListByCategory = () => {
   const location = useLocation();
@@ -32,13 +32,14 @@ export const ExercisesListByCategory = () => {
   const category = pathname[2];
 
   const [exercisesSubCategories, setExercisesSubCategories] = useState(null);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [selectedExercise, setSelectedExercise] = useState(null);
 
-  // const toogleModal = exercise => {
-  //   setIsModalOpen(prevState => !prevState);
-  //   setSelectedExercise(exercise);
-  // };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedExercise, setSelectedExercise] = useState(null);
+
+  const toogleModal = exercise => {
+    setIsModalOpen(prevState => !prevState);
+    setSelectedExercise(exercise);
+  };
 
   useEffect(() => {
     const exercisesList = async () => {
@@ -59,17 +60,18 @@ export const ExercisesListByCategory = () => {
   }, [filter]);
 
   return (
-    <MainExercisesContainer>
+    <div style={{position: 'relative'}}>
       <BackLink to={backLinkRef}>Back</BackLink>
+        <MainExercisesContainer>
       <ExercisesList>
         {exercisesSubCategories?.map(
-          ({ burnedCalories, _id, bodyPart, name, target }) => (
+          (card) => (
             <>
               {' '}
-              <ExercisesItem key={_id}>
+              <ExercisesItem key={card._id}>
                 <InfoContainer>
                   <WorkoutTitle>WORKOUT</WorkoutTitle>
-                  <NavLink style={{ display: 'flex', alignItems: 'center' }}>
+                  <NavLink style={{ display: 'flex', alignItems: 'center' }} onClick={() => toogleModal(card)}>
                     <Start>Start</Start>
                     <StartIcon>
                       <svg fill="#efede8">
@@ -86,17 +88,17 @@ export const ExercisesListByCategory = () => {
                       <use href={icons + '#icon-running'}></use>
                     </svg>
                   </CaloriesIcon>
-                  <ExercisesTitle>{name}</ExercisesTitle>
+                  <ExercisesTitle>{card.name}</ExercisesTitle>
                 </ExercisesContainer>
                 <DataInfo>
                   <li>
-                    Burned calories:<span>{burnedCalories}</span>
+                    Burned calories:<span>{card.burnedCalories}</span>
                   </li>
                   <li>
-                    Body part: <span>{bodyPart}</span>
+                    Body part: <span>{card.bodyPart}</span>
                   </li>
                   <li>
-                    Target:<span>{target}</span>
+                    Target:<span>{card.target}</span>
                   </li>
                 </DataInfo>
               </ExercisesItem>
@@ -105,5 +107,8 @@ export const ExercisesListByCategory = () => {
         )}
       </ExercisesList>
     </MainExercisesContainer>
+    {isModalOpen && <ModalTrening onToogle={toogleModal} example={selectedExercise} />}
+    </div>
+    
   );
 };
