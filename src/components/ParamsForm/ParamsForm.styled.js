@@ -108,18 +108,24 @@ export const StepWrap = styled.div`
   }
 `;
 
-export const Step1 = styled.div`
+export const Step1 = styled.button`
   width: 50px;
   height: 4px;
   background-color: #ef8964;
   border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
 `;
 
-export const Step2 = styled.div`
+export const Step2 = styled.button`
   width: 50px;
   height: 4px;
   background-color: #303030;
   border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
 
   background-color: ${props => {
     if (props.step > 1) {
@@ -128,11 +134,14 @@ export const Step2 = styled.div`
   }};
 `;
 
-export const Step3 = styled.div`
+export const Step3 = styled.button`
   width: 50px;
   height: 4px;
   background-color: #303030;
   border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
 
   background-color: ${props => {
     if (props.step === 3) {

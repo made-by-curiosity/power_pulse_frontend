@@ -35,12 +35,7 @@ import { isDate, parse } from 'date-fns';
 import { useDispatch } from 'react-redux';
 import { updateUserParams } from 'redux/auth/operations';
 
-// import { useState } from 'react';
-
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import { useEffect } from 'react';
-
-// import { CustomModal } from 'components/CustomModal/CustomModal';
 
 const today = new Date();
 const eighteenYearsAgo = new Date(
@@ -94,17 +89,15 @@ export const ParamsForm = () => {
     levelActivity: '2',
   };
 
+  const onStep = value => {
+    setStep(value);
+  };
+
   const dispatch = useDispatch();
 
   const tablet = useMediaQuery('(min-width:768px)');
 
   const [step, setStep] = useLocalStorage('step', 1);
-
-  useEffect(() => {
-    setStep(1);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleClickNext = () => {
     setStep(state => state + 1);
@@ -129,6 +122,7 @@ export const ParamsForm = () => {
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
+    console.log(values);
     if (step === 3) {
       // Відправка даних на сервер лише на третьому етапі
       handleThirdStepSubmit(values, { setSubmitting });
@@ -198,6 +192,11 @@ export const ParamsForm = () => {
                   <use href={icons + '#icon-next'} />
                 </svg>
               </NextBtn>
+              <StepWrap step={step}>
+                <Step1 step={step} type="submit"></Step1>
+                <Step2 step={step}></Step2>
+                <Step3 step={step}></Step3>
+              </StepWrap>
             </>
           )}
           {step === 2 && (
@@ -334,11 +333,13 @@ export const ParamsForm = () => {
         )}
       </BtnWrap>
 
-      <StepWrap step={step}>
-        <Step1 step={step}></Step1>
-        <Step2 step={step}></Step2>
-        <Step3 step={step}></Step3>
-      </StepWrap>
+      {step > 1 && (
+        <StepWrap step={step}>
+          <Step1 step={step} onClick={() => onStep(1)} type="submit"></Step1>
+          <Step2 step={step} onClick={() => onStep(2)}></Step2>
+          <Step3 step={step} onClick={() => onStep(3)}></Step3>
+        </StepWrap>
+      )}
     </ParamsWrapper>
   );
 };
