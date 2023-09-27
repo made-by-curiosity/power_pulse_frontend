@@ -1,4 +1,4 @@
-import { ExercisesList, CardLink } from './ExercisesList.styled';
+import { ExercisesList, CardLink, ExercisesListWrap } from './ExercisesList.styled';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
@@ -7,6 +7,8 @@ import { useLocation, useParams } from 'react-router-dom';
 import { getAllExercises } from 'services/powerPulseApi';
 
 import { BackLink } from 'components/BackLink/BackLink';
+
+import { ModalTrening } from 'components/ModalTrening/ModalTrening';
 
 export const ExercisesListByCategory = () => {
   const location = useLocation();
@@ -17,6 +19,14 @@ export const ExercisesListByCategory = () => {
   const category = pathname[2];
 
   const [exercisesSubCategories, setExercisesSubCategories] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedExercise, setSelectedExercise] = useState(null);
+
+
+  const toogleModal = (exercise) => {
+    setIsModalOpen(prevState => !prevState);
+    setSelectedExercise(exercise);
+  };
 
   useEffect(() => {
     const exercisesList = async () => {
@@ -40,14 +50,17 @@ export const ExercisesListByCategory = () => {
 
   return (
     <>
+    <ExercisesListWrap>
       <BackLink to={backLinkRef}>Back</BackLink>
       <ExercisesList>
         {exercisesSubCategories?.map(card => (
-          <CardLink key={card._id}>
+          <CardLink key={card._id} onClick={() => toogleModal(card)} >
             <li>{card.name}</li>
           </CardLink>
         ))}
       </ExercisesList>
+    </ExercisesListWrap>
+    {isModalOpen && <ModalTrening onToogle={toogleModal} example={selectedExercise} />}
     </>
   );
 };

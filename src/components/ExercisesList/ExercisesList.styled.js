@@ -21,3 +21,7 @@ export const CardLink = styled(Link)`
   color: white;
 
 `;
+
+export const ExercisesListWrap = styled.div`
+position: relative;
+`
