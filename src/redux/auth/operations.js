@@ -12,6 +12,10 @@ import {
   updateUserAvatar,
 } from '../../services/powerPulseApi';
 
+import { Notify } from 'notiflix';
+
+
+
 // AUTH
 
 export const signUp = createAsyncThunk(
@@ -22,7 +26,8 @@ export const signUp = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+       Notify.failure("Ops... Something went wrong. Maybe your email is already in use. Please try again.")
+      return thunkAPI.rejectWithValue("Ops... Something went wrong. Maybe your email is already in use. Please try again.");
     }
   }
 );
@@ -35,7 +40,8 @@ export const logIn = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+     Notify.failure("Ops... Your email or password is incorrect or maybe you not sing up. Please try again.")
+      return thunkAPI.rejectWithValue("Ops... Your email or password is incorrect or maybe you not sing up. Please try again.");
     }
   }
 );
@@ -48,7 +54,8 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     if (error.response && error.response.status === 401) {
       thunkAPI.dispatch(resetStore());
     }
-    return thunkAPI.rejectWithValue(error.message);
+    Notify.failure("Ops...Something went wrong. Please try again.")
+    return thunkAPI.rejectWithValue("Ops...Something went wrong. Please try again.");
   }
 });
 

@@ -23,12 +23,8 @@ export const signUpUser = async credentials => {
 };
 
 export const logInUser = async credentials => {
-  const res = await axios.post('/api/auth/login', credentials);
-  // try {
-  //   return console.log("Karina ok")
-  // } catch (error) {
-  //   return console.log("Karina error")
-  // }
+  
+  const res = await axios.post('/api/auth/login1', credentials);
 
   return res.data;
 };

@@ -43,6 +43,11 @@ const SignInForm = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values, { resetForm }) => {
+    // try {
+    //   dispatch(logIn(values));
+    // } catch (error) {
+    //   console.log("eroooor signin")
+    // }
     dispatch(logIn(values));
     resetForm();
   };
