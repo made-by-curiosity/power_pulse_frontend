@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useRef } from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { updateAvatar } from 'redux/auth/operations';
 
@@ -12,6 +13,7 @@ import {
   AddAvatarIcon,
   AddAvatarBtn,
 } from './Avatar.styled';
+
 import icons from '../../assets/icons/svg-sprite.svg';
 
 const iconUser = (
@@ -26,7 +28,9 @@ const iconAddAvatarBtn = (
   </AddAvatarIcon>
 );
 
-export const Avatar = ({ name, avatarUrl = iconUser }) => {
+export const Avatar = ({ name, avatarUrls = iconUser }) => {
+  const tablet = useMediaQuery('(min-width:768px)');
+
   const filePicker = useRef(null);
 
   const dispatch = useDispatch();
@@ -47,11 +51,11 @@ export const Avatar = ({ name, avatarUrl = iconUser }) => {
   return (
     <>
       <AvatarWrapper>
-        {avatarUrl === iconUser ? (
+        {avatarUrls === iconUser ? (
           iconUser
         ) : (
           <img
-            src={avatarUrl}
+            src={tablet ? avatarUrls.desktop : avatarUrls.mobile}
             alt="User's avatar"
             style={{ width: '100%', height: '100%', borderRadius: '50%' }}
           ></img>
