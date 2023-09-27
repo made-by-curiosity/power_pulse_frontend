@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import icons from '../../assets/icons/svg-sprite.svg';
 
-import { useLocation, useParams, NavLink } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import { getAllExercises } from 'services/powerPulseApi';
 
@@ -69,7 +69,15 @@ export const ExercisesListByCategory = () => {
               <ExercisesItem key={_id}>
                 <InfoContainer>
                   <WorkoutTitle>WORKOUT</WorkoutTitle>
-                  <NavLink style={{ display: 'flex', alignItems: 'center' }}>
+                  <button
+                    type="button"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      background: 'none',
+                      border: 'none',
+                    }}
+                  >
                     <Start>Start</Start>
                     <StartIcon>
                       <svg fill="#efede8">
@@ -77,7 +85,7 @@ export const ExercisesListByCategory = () => {
                         <use href={icons + '#icon-nextarrow'}></use>
                       </svg>
                     </StartIcon>
-                  </NavLink>
+                  </button>
                 </InfoContainer>
                 <ExercisesContainer>
                   <CaloriesIcon>

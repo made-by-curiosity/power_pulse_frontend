@@ -15,14 +15,17 @@ import {
   DataInfo,
   AddIcon,
   AddProduct,
+  BtnAddProduct,
 } from './ProductsList.styled';
+import { ModalAddProduct } from 'components/ModalAddProduct/ModalAddProduct';
+import { ModalAddProductSuccess } from 'components/ModalAddProductSuccess/ModalAddProductSuccess';
 
 import icons from '../../assets/icons/svg-sprite.svg';
-import { NavLink } from 'react-router-dom';
 
 export const ProductsList = () => {
   const [products, setProducts] = useState([]);
-  // const [recommend, setRecommend] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isSuccessModal, setIsSuccessModal] = useState(false);
 
   function getCurrentBlood() {
     const randomNumber = [1, 2, 3, 4];
@@ -46,6 +49,17 @@ export const ProductsList = () => {
 
   return (
     <ProductsContainer>
+      {isAddModalOpen && (
+        <ModalAddProduct
+          productInfo={products}
+          toggleAddModal={() => setIsAddModalOpen(state => !state)}
+        />
+      )}
+      {isSuccessModal && (
+        <ModalAddProductSuccess
+          toggleSuccessModal={() => setIsSuccessModal(state => !state)}
+        />
+      )}
       {products.length !== 0 ? (
         <ProductList>
           {products.map(
@@ -77,7 +91,10 @@ export const ProductsList = () => {
                         <Recommend>Recommend</Recommend>
                       </>
                     )}
-                    <NavLink style={{ display: 'flex', alignItems: 'center' }}>
+                    <BtnAddProduct
+                      type="button"
+                      onClick={() => setIsAddModalOpen(true)}
+                    >
                       <AddProduct>Add</AddProduct>
                       <AddIcon>
                         <svg fill="#efede8">
@@ -85,7 +102,7 @@ export const ProductsList = () => {
                           <use href={icons + '#icon-nextarrow'}></use>
                         </svg>
                       </AddIcon>
-                    </NavLink>
+                    </BtnAddProduct>
                   </InfoContainer>
                   <MenuContainer>
                     <CaloriesIcon>
