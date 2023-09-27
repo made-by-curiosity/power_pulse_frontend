@@ -22,10 +22,7 @@ export const UserCard = ({ userInfo }) => {
 
   return (
     <UserCardWrapper>
-      <Avatar
-        name={name}
-        avatarUrls={avatarUrls === '' ? undefined : avatarUrls}
-      ></Avatar>
+      <Avatar name={name} avatarUrls={avatarUrls}></Avatar>
       <InfoCardsWrapper>
         <InfoCard
           icon={calories.icon}

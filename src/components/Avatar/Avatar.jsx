@@ -18,7 +18,7 @@ import icons from '../../assets/icons/svg-sprite.svg';
 
 const iconUser = (
   <IconUser>
-    <use href={icons + '#icon-user'}></use>
+    <use href={icons + '#user'}></use>
   </IconUser>
 );
 
@@ -30,13 +30,13 @@ const iconAddAvatarBtn = (
 
 export const Avatar = ({ name, avatarUrls = iconUser }) => {
   const tablet = useMediaQuery('(min-width:768px)');
+  const hasAvatar = Object.keys(avatarUrls).length > 0;
 
   const filePicker = useRef(null);
 
   const dispatch = useDispatch();
 
   const handleAddAvatar = e => {
-    // console.log(e.target.files[0]);
     let formData = new FormData();
     formData.set('avatar', e.target.files[0]);
     dispatch(updateAvatar(formData));
@@ -51,14 +51,14 @@ export const Avatar = ({ name, avatarUrls = iconUser }) => {
   return (
     <>
       <AvatarWrapper>
-        {avatarUrls === iconUser ? (
-          iconUser
-        ) : (
+        {hasAvatar ? (
           <img
             src={tablet ? avatarUrls.desktop : avatarUrls.mobile}
             alt="User's avatar"
             style={{ width: '100%', height: '100%', borderRadius: '50%' }}
           ></img>
+        ) : (
+          iconUser
         )}
         <AddAvatarInput
           ref={filePicker}
