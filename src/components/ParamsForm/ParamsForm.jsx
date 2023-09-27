@@ -15,6 +15,7 @@ import {
   GenderWrap,
   BloodWrap,
   RadioGroupWrap,
+  ParamsWrapper,
 } from 'components/ParamsForm/ParamsForm.styled';
 
 import icons from '../../assets/icons/svg-sprite.svg';
@@ -140,7 +141,7 @@ export const ParamsForm = () => {
   };
 
   return (
-    <>
+    <ParamsWrapper>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -338,6 +339,6 @@ export const ParamsForm = () => {
         <Step2 step={step}></Step2>
         <Step3 step={step}></Step3>
       </StepWrap>
-    </>
+    </ParamsWrapper>
   );
 };
