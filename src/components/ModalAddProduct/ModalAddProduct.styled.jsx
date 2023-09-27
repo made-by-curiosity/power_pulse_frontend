@@ -1,22 +1,18 @@
 import styled from '@emotion/styled';
 
-export const FormField = styled.div`
+export const FormField = styled.form`
   display: block;
-  margin-left: 24px;
-  margin-right: 24px;
-  margin-top: 48px;
 
   @media screen and (min-width: 768px) {
     display: flex;
     gap: 16px;
-    margin-left: 32px;
-    margin-right: 32px;
   }
 `;
 
 export const InputProductName = styled.input`
   width: 287px;
   height: 34px;
+  margin-bottom: 6px;
   padding-left: 14px;
   font-size: 14px;
   font-style: normal;
@@ -30,12 +26,14 @@ export const InputProductName = styled.input`
   @media screen and (min-width: 768px) {
     width: 244px;
     height: 40px;
+    margin-bottom: 0px;
   }
 `;
 
 export const InputProductAmount = styled.input`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0px;
   width: 287px;
   height: 34px;
   padding: 8px 14px 8px 14px;
@@ -45,30 +43,21 @@ export const InputProductAmount = styled.input`
   border: 1px solid #e6533c;
   outline: none;
 
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #efede8;
   @media screen and (min-width: 768px) {
     width: 155px;
     height: 40px;
   }
 `;
 
-export const SpanNumber = styled.span`
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.3;
-  color: #efede8;
-`;
-export const SpanGrams = styled.span`
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.3;
-  color: rgba(239, 237, 232, 0.4);
-`;
-
 export const ContainCaloriesDiv = styled.div`
-  margin-top: 16px;
+  display: flex;
   margin-bottom: 24px;
+  margin-top: 16px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 64px;
@@ -100,3 +89,21 @@ export const ModalBtns = styled.div`
     gap: 16px;
   }
 `;
+
+export const LabelGrams = styled.label`
+  position: absolute;
+  top: 98px;
+  right: 36px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3;
+  color: rgba(239, 237, 232, 0.4);
+
+  @media screen and (min-width: 768px) {
+    top: 61px;
+    right: 46px;
+  }
+`;
+
+
