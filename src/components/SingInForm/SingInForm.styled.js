@@ -2,15 +2,16 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 export const ContainerSingIn = styled.div`
-  width: 335px;
-  margin-top: 90px;
+  max-width: 335px;
+  margin-top: 30px;
 
   @media (min-width: 768px) {
     width: 364px;
+    margin-top: 60px;
   }
 
   @media (min-width: 1440px) {
-    margin-top: 151px;
+    margin-top: 116px;
   }
 `;
 
@@ -38,21 +39,15 @@ export const Text = styled.p`
   }
 `;
 
-export const Button = styled.button`
-  display: grid;
-  border-radius: 12px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  grid-gap: 10px;
-  margin-top: 28px;
+export const BtnWrapper = styled.div`
+  width: max-content;
 
-  background-color: #e6533c;
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
 
   @media (min-width: 768px) {
-    font-size: 20px;
-    margin-top: 64px;
   }
 `;
 

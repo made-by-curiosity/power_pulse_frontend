@@ -1,6 +1,5 @@
 import {
   NotProduct,
-  ProductWrapper,
   TitleNav,
   TitleP,
   SvgStyle,
@@ -11,9 +10,10 @@ import ico from '../../assets/icons/svg-sprite.svg';
 import ExercisesTable from 'components/ExercisesTable/ExercisesTable';
 
 import { NavLink } from 'react-router-dom';
+import { ProductWrapper } from 'components/DayProducts/DayProducts.styled';
 
-export const DayExercises = () => {
-  const isVoid = true;
+export const DayExercises = ({ workouts, setWorkouts }) => {
+  const isVoid = workouts.length;
 
   return (
     <ProductWrapper>
@@ -31,8 +31,11 @@ export const DayExercises = () => {
           </NavLink>
         </WrapperA>
       </TitleNav>
-      {isVoid ? <ExercisesTable /> :
-      <NotProduct>Not found exercises</NotProduct>}
+      {isVoid ? (
+        <ExercisesTable workouts={workouts} setWorkouts={setWorkouts} />
+      ) : (
+        <NotProduct>Not found exercises</NotProduct>
+      )}
     </ProductWrapper>
   );
 };

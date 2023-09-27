@@ -15,6 +15,7 @@ import {
   GenderWrap,
   BloodWrap,
   RadioGroupWrap,
+  ParamsWrapper,
 } from 'components/ParamsForm/ParamsForm.styled';
 
 import icons from '../../assets/icons/svg-sprite.svg';
@@ -34,13 +35,7 @@ import { isDate, parse } from 'date-fns';
 import { useDispatch } from 'react-redux';
 import { updateUserParams } from 'redux/auth/operations';
 
-// import { useState } from 'react';
-
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import { useEffect, useState } from 'react';
-
-import { BackgroundImg } from 'components/BackgroundImg/BackgroundImg';
-
 
 const today = new Date();
 const eighteenYearsAgo = new Date(
@@ -62,21 +57,21 @@ function parseDateString(value, originalValue) {
 }
 
 const validationSchema = Yup.object({
-  height: Yup.number()
-    .typeError('Height must be a number')
-    .positive('Height must be a positive number.')
-    .min(150, 'Height must be min 150 cm')
+  height: Yup.number('Number')
+    .typeError('Must be a number')
+    .positive('Must be positive.')
+    .min(150, 'Must be at least 150cm')
     .required('Height is required'),
   currentWeight: Yup.number()
-    .typeError('Height must be a number')
-    .positive('Current weight must be a positive number.')
-    .min(150, 'Height must be min 150 cm')
+    .typeError('Must be a number')
+    .positive('Must be positive.')
+    .min(35, 'Must be at least 35kg')
     .required('Current weight is required'),
   desiredWeight: Yup.number()
-    .typeError('Height must be a number')
-    .positive('Weight must be a positive number.')
-    .min(150, 'Height must be min 150 cm')
-    .required('Height is required'),
+    .typeError('Must be a number')
+    .positive('Must be positive.')
+    .min(35, 'Must be at least 35kg')
+    .required('Desired weight is required'),
   birthday: Yup.date()
     .transform(parseDateString)
     .max(eighteenYearsAgo, 'Age must be 18+')
@@ -94,49 +89,15 @@ export const ParamsForm = () => {
     levelActivity: '2',
   };
 
-
-  const onStep = (value) => {
+  const onStep = value => {
     setStep(value);
-  }
-
+  };
 
   const dispatch = useDispatch();
 
   const tablet = useMediaQuery('(min-width:768px)');
 
   const [step, setStep] = useLocalStorage('step', 1);
-
-  // const [statistics, setStatistics] = useState('users');
-
-  const getStatistics = () => {
-    switch (step) {
-      case 1:
-        return 'users';
-        break;
-        case 2:
-          return 'hours';
-          break;
-          case 3:
-          return 'workouts';
-          break;
-      default: 
-        break;
-    }
-  }
-
-  const statistics = getStatistics();
-
-  console.log(statistics);
-  console.log(step);
-
-  
-
-  useEffect(() => {
-    // setStep(1);
-    
-    
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleClickNext = () => {
     setStep(state => state + 1);
@@ -173,11 +134,8 @@ export const ParamsForm = () => {
     }
   };
 
-  
-
   return (
-
-    <BackgroundImg statistics={statistics}>
+    <ParamsWrapper>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -235,7 +193,7 @@ export const ParamsForm = () => {
                 </svg>
               </NextBtn>
               <StepWrap step={step}>
-                <Step1 step={step} type='submit'></Step1>
+                <Step1 step={step} type="submit"></Step1>
                 <Step2 step={step}></Step2>
                 <Step3 step={step}></Step3>
               </StepWrap>
@@ -352,7 +310,6 @@ export const ParamsForm = () => {
               </BtnWrap>
             </>
           )}
-          
         </Form>
       </Formik>
 
@@ -376,12 +333,13 @@ export const ParamsForm = () => {
         )}
       </BtnWrap>
 
-      {step > 1 && <StepWrap step={step}>
-        <Step1 step={step} onClick={()=>onStep(1)} type='submit'></Step1>
-        <Step2 step={step} onClick={()=>onStep(2)}></Step2>
-        <Step3 step={step} onClick={()=>onStep(3)}></Step3>
-      </StepWrap>}
-    </BackgroundImg>
-  
+      {step > 1 && (
+        <StepWrap step={step}>
+          <Step1 step={step} onClick={() => onStep(1)} type="submit"></Step1>
+          <Step2 step={step} onClick={() => onStep(2)}></Step2>
+          <Step3 step={step} onClick={() => onStep(3)}></Step3>
+        </StepWrap>
+      )}
+    </ParamsWrapper>
   );
 };

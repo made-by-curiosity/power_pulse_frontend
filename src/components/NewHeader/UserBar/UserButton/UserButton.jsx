@@ -5,12 +5,15 @@ import { selectUser } from 'redux/auth/selectors';
 
 export const UserButton = () => {
   const userInfo = useSelector(selectUser);
-  const { avatarUrl = null } = userInfo;
+  const { avatarUrls } = userInfo;
+
+  const hasAvatar = Object.keys(avatarUrls).length > 0;
+
   return (
     <AvatarContainer>
-      {avatarUrl ? (
+      {hasAvatar ? (
         <img
-          src={avatarUrl}
+          src={avatarUrls.mobile}
           alt="User's avatar"
           style={{ width: '100%', height: '100%', borderRadius: '50%' }}
         ></img>

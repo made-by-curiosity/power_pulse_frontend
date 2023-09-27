@@ -20,7 +20,7 @@ const getInitialBirthday = birthday => {
   return new Date(formattedDate);
 };
 
-export const BirthdayInput = ({ field, form, ...props }) => {
+export const BirthdayInput = ({ field, form, successFeedback, ...props }) => {
   const [selectedDate, setSelectedDate] = useState(() =>
     getInitialBirthday(field.value)
   );
@@ -49,7 +49,8 @@ export const BirthdayInput = ({ field, form, ...props }) => {
         valueDate={value}
         onClick={onClick}
         autoComplete="off"
-        inputStyles={{ width: '160px' }}
+        successFeedback={successFeedback}
+        inputStyles={{ width: '160px', cursor: 'pointer' }}
         readOnly
         calendar
       />

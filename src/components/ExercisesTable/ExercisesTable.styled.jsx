@@ -96,6 +96,8 @@ export const CellTel = styled.td`
   font-size: 14px;
   line-height: 18px;
   position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   &:nth-of-type(1) {
     width: 297px;
     height: 38px;

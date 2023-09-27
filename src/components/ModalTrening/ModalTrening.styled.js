@@ -9,7 +9,6 @@ background: #10100F;
 display: flex;
     flex-direction: column;
     align-items: center;
-}
 `;
 
 export const ImgGif = styled.img`
@@ -52,10 +51,16 @@ align-items: center;
 `;
 
 export const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 32px;
   height: 32px;
   background: #e6533c;
   margin-top: 14px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
 
   @media(min-width: 768px){
     margin-left: 32px;
@@ -142,6 +147,8 @@ export const ItemTrening = styled.li`
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: rgba(239, 237, 232, 0.05);
+
+  padding: 10px;
 
   @media(min-width: 768px) {
     width: 168px;

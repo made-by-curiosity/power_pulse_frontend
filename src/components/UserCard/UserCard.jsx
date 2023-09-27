@@ -18,14 +18,11 @@ const normOfSports = {
 };
 
 export const UserCard = ({ userInfo }) => {
-  const { name, avatarUrl, bmr } = userInfo;
+  const { name, avatarUrls, bmr } = userInfo;
 
   return (
     <UserCardWrapper>
-      <Avatar
-        name={name}
-        avatarUrl={avatarUrl === '' ? undefined : avatarUrl}
-      ></Avatar>
+      <Avatar name={name} avatarUrls={avatarUrls}></Avatar>
       <InfoCardsWrapper>
         <InfoCard
           icon={calories.icon}

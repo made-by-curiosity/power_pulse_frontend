@@ -25,14 +25,18 @@ export const ExerciseCardWrapper = styled.div`
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     & {
-      background-image: url(${props => props.photo || img2});
+      background-image: linear-gradient( 0deg,
+    rgba(4, 4, 4, 0.5) 0%,
+    rgba(4, 4, 4, 0.5) 100%),url(${props => props.photo || img2});
     }
   }
   @media (min-device-pixel-ratio: 3),
     (-webkit-min-device-pixel-ratio: 3),
     (min-resolution: 3dppx) {
     & {
-      background-image: url(${props => props.photo || img3});
+      background-image: linear-gradient( 0deg,
+    rgba(4, 4, 4, 0.5) 0%,
+    rgba(4, 4, 4, 0.5) 100%),url(${props => props.photo || img3});
     }
   }
 

@@ -8,8 +8,9 @@ export const ProductWrapper = styled.div`
   width: 100%;
   min-height: 335px;
   max-height: 824px;
-  overflow: scroll;
-  background-color: #EFEDE80D;
+  overflow: auto;
+
+  background-color: #efede80d;
   @media (min-width: 768px) {
     min-height: auto;
     max-height: auto;

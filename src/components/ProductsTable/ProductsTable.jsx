@@ -1,35 +1,45 @@
+import { useSelector } from 'react-redux';
+import { selectUserParams } from 'redux/auth/selectors';
 import {
   useReactTable,
   getCoreRowModel,
   flexRender,
 } from '@tanstack/react-table';
-import mData from './users.json';
 import { useMemo } from 'react';
-import ico from '../../assets/icons/svg-sprite.svg';
 
 import {
   TitleColumn,
   TitleHead,
   RowTel,
   CellTel,
-  SvgStyle,
   SvgTd,
   Headers,
   HeadersTitle,
+  RecWrapper,
+  RecYes,
+  RecNo,
 } from './ProductsTable.styled';
+import { DeleteBtn } from 'components/DeleteBtn/DeleteBtn';
+import { deleteMeal } from 'services/powerPulseApi';
+import { TableBody } from 'components/DayProducts/DayProducts.styled';
 
-export default function ProductsTable() {
-  const groupBlood = '3'
+export default function ProductsTable({ meals, setMeals }) {
+  const { blood } = useSelector(selectUserParams);
 
-  const resData = mData.map((mDat)=> {
-    return {
-      Title: mDat.productId.title,
-      Category: mDat.productId.category,
-      Calories: mDat.productId.calories,
-      Weight: mDat.productId.weight,
-      Recommend: !mDat.productId.groupBloodNotAllowed[groupBlood],
-    }
-  })
+  const resData = useMemo(
+    () =>
+      meals.map(meal => {
+        return {
+          Title: meal.productId.title,
+          Category: meal.productId.category,
+          Calories: meal.productId.calories,
+          Weight: meal.productId.weight,
+          Recommend: !meal.productId.groupBloodNotAllowed[blood],
+          id: meal._id,
+        };
+      }),
+    [blood, meals]
+  );
 
   const data = useMemo(() => resData, [resData]);
 
@@ -54,48 +64,19 @@ export default function ProductsTable() {
       header: 'Recommend',
       accessorKey: 'Recommend',
       cell: nfo => {
-        const nfoIn = nfo.getValue();
-        if (nfoIn) {
+        if (nfo.getValue() === true) {
           return (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <div
-                style={{
-                  width: '14px',
-                  height: '14px',
-                  backgroundColor: '#419B09',
-                  borderRadius: '50%',
-                  marginRight: '8px',
-                }}
-              ></div>
+            <RecWrapper>
+              <RecYes></RecYes>
               Yes
-            </div>
+            </RecWrapper>
           );
         } else {
           return (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <div
-                style={{
-                  width: '14px',
-                  height: '14px',
-                  backgroundColor: '#E9101D',
-                  borderRadius: '50%',
-                  marginRight: '8px',
-                }}
-              ></div>
+            <RecWrapper>
+              <RecNo></RecNo>
               No
-            </div>
+            </RecWrapper>
           );
         }
       },
@@ -107,6 +88,13 @@ export default function ProductsTable() {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  const handleDelete = async id => {
+    await deleteMeal(id);
+
+    const filteredMeals = meals.filter(meal => meal._id !== id);
+    setMeals(filteredMeals);
+  };
 
   return (
     <div>
@@ -125,7 +113,7 @@ export default function ProductsTable() {
             </Headers>
           ))}
         </TitleHead>
-        <tbody>
+        <TableBody>
           {table.getRowModel().rows.map(row => (
             <RowTel key={row.id}>
               {row.getVisibleCells().map(cell => (
@@ -135,13 +123,11 @@ export default function ProductsTable() {
                 </CellTel>
               ))}
               <SvgTd>
-                <SvgStyle>
-                  <use href={ico + `#icon-trashtrue`}></use>
-                </SvgStyle>
+                <DeleteBtn id={row.original.id} handleDelete={handleDelete} />
               </SvgTd>
             </RowTel>
           ))}
-        </tbody>
+        </TableBody>
       </table>
     </div>
   );

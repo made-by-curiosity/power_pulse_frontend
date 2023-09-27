@@ -46,7 +46,7 @@ export const DayDashboard = ({
           : dailyCalories - 0
         : 0,
       borderColor:
-        dailyCalories < totalCalories ? 'red' : 'rgba(239, 237, 232, 0.2)',
+        dailyCalories < totalCalories ? '#E9101D' : 'rgba(239, 237, 232, 0.2)',
     },
     {
       icon: '#icon-running',
@@ -57,7 +57,7 @@ export const DayDashboard = ({
           : normOfSports - totalTime
         : normOfSports,
       borderColor:
-        normOfSports < totalTime ? 'green' : 'rgba(239, 237, 232, 0.2)',
+        normOfSports < totalTime ? '#3CBF61' : 'rgba(239, 237, 232, 0.2)',
     },
   ];
 

@@ -1,10 +1,16 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Title, Text, ContentWrapper } from './NotFoundPage.styled';
 import { BackgroundImg } from 'components/BackgroundImg/BackgroundImg';
 import { Container } from 'components/Container/Container';
 import { MainButton } from 'components/MainButton/MainButton';
+import { LogoWrapper } from 'components/LogoWrapper/LogoWrapper';
+import { Logo } from 'components/NewHeader/Logo/Logo';
 
 const NotFoundPage = () => {
+  const location = useLocation();
+
+  const is404 = location.pathname === '/404';
+
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/');
@@ -12,6 +18,9 @@ const NotFoundPage = () => {
   return (
     <BackgroundImg notFound>
       <Container>
+        <LogoWrapper>
+          <Logo is404={is404} />
+        </LogoWrapper>
         <ContentWrapper>
           <Title>404</Title>
           <Text>
@@ -24,9 +33,7 @@ const NotFoundPage = () => {
             text="Go Home"
             onClick={handleClick}
             btnStyles={{ width: 'max-content' }}
-          >
-            Go Home
-          </MainButton>
+          />
         </ContentWrapper>
       </Container>
     </BackgroundImg>

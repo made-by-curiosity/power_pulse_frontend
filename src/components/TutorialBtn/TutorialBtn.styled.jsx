@@ -15,7 +15,12 @@ export const Tutorial = styled.div`
   background-color: #303030;
 
   top: 70%;
-  right: 30%;
+  right: 2%;
+
+  @media screen and (min-width: 375px) {
+    top: 70%;
+    right: 10%;
+  }
 
   @media screen and (min-width: 768px) {
     width: 206px;

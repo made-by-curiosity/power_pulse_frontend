@@ -76,6 +76,8 @@ export const CellTel = styled.td`
   font-size: 14px;
   line-height: 18px;
   position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   &:nth-of-type(1) {
     width: 297px;
     height: 38px;
@@ -169,4 +171,26 @@ export const SvgTd = styled.td`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const RecWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const RecYes = styled.div`
+  width: 14px;
+  height: 14px;
+  background-color: #419b09;
+  border-radius: 50%;
+  margin-right: 8px;
+`;
+
+export const RecNo = styled.div`
+  width: 14px;
+  height: 14px;
+  background-color: #e9101d;
+  border-radius: 50%;
+  margin-right: 8px;
 `;
