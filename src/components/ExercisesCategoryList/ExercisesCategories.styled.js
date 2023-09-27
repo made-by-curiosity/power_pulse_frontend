@@ -12,6 +12,10 @@ export const CategoriesList = styled.ul`
   list-style: none;
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+  }
 `;
 
 export const CardLink = styled(Link)`
@@ -19,5 +23,6 @@ export const CardLink = styled(Link)`
   margin-bottom: 10px;
   text-decoration: none;
   color: white;
+  margin: 0px;
 
 `;

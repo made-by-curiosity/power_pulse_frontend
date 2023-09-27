@@ -17,7 +17,7 @@ const initialState = {
     name: null,
     email: null,
     userParams: null,
-    avatarUrl: null,
+    avatarUrls: null,
     bmr: null,
   },
   token: null,
@@ -34,7 +34,7 @@ const authSlice = createSlice({
         name: null,
         email: null,
         userParams: null,
-        avatarUrl: null,
+        avatarUrls: null,
         bmr: null,
       };
       state.token = null;
@@ -42,6 +42,7 @@ const authSlice = createSlice({
     });
     builder.addCase(signUp.pending, (state, action) => {
       state.isRefreshing = true;
+      state.error = null;
     });
     builder.addCase(signUp.fulfilled, (state, action) => {
       state.user = action.payload.user;
@@ -54,6 +55,7 @@ const authSlice = createSlice({
     });
     builder.addCase(logIn.pending, (state, action) => {
       state.isRefreshing = true;
+      state.error = null;
     });
     builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
@@ -66,13 +68,14 @@ const authSlice = createSlice({
     });
     builder.addCase(logOut.pending, (state, action) => {
       state.isRefreshing = true;
+      state.error = null;
     });
     builder.addCase(logOut.fulfilled, state => {
       state.user = {
         name: null,
         email: null,
         userParams: null,
-        avatarUrl: null,
+        avatarUrls: null,
         bmr: null,
       };
       state.token = null;
@@ -84,6 +87,7 @@ const authSlice = createSlice({
     });
     builder.addCase(refreshUser.pending, state => {
       state.isRefreshing = true;
+      state.error = null;
     });
     builder.addCase(refreshUser.fulfilled, (state, action) => {
       state.user = action.payload;
@@ -94,6 +98,7 @@ const authSlice = createSlice({
       state.isRefreshing = false;
     });
     builder.addCase(signUpWithToken.pending, (state, action) => {
+      state.error = null;
       state.isRefreshing = true;
     });
     builder.addCase(signUpWithToken.fulfilled, (state, action) => {
@@ -107,6 +112,7 @@ const authSlice = createSlice({
     });
     builder.addCase(getUserParams.pending, (state, action) => {
       state.isRefreshing = true;
+      state.error = null;
     });
     builder.addCase(getUserParams.fulfilled, (state, action) => {
       state.user = action.payload;
@@ -118,6 +124,7 @@ const authSlice = createSlice({
     });
     builder.addCase(updateUserParams.pending, (state, action) => {
       state.isRefreshing = true;
+      state.error = null;
     });
     builder.addCase(updateUserParams.fulfilled, (state, action) => {
       state.user.userParams = action.payload.userParams;
@@ -130,6 +137,7 @@ const authSlice = createSlice({
     });
     builder.addCase(updateName.pending, (state, action) => {
       state.isRefreshing = true;
+      state.error = null;
     });
     builder.addCase(updateName.fulfilled, (state, action) => {
       state.user.name = action.payload;
@@ -141,9 +149,10 @@ const authSlice = createSlice({
     });
     builder.addCase(updateAvatar.pending, (state, action) => {
       state.isRefreshing = true;
+      state.error = null;
     });
     builder.addCase(updateAvatar.fulfilled, (state, action) => {
-      state.user.avatarUrl = action.payload;
+      state.user.avatarUrls = action.payload;
       state.isRefreshing = false;
     });
     builder.addCase(updateAvatar.rejected, (state, action) => {

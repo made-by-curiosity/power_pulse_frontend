@@ -50,7 +50,7 @@ export const BirthdayInput = ({ field, form, successFeedback, ...props }) => {
         onClick={onClick}
         autoComplete="off"
         successFeedback={successFeedback}
-        inputStyles={{ width: '160px' }}
+        inputStyles={{ width: '160px', cursor: 'pointer' }}
         readOnly
         calendar
       />

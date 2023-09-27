@@ -12,7 +12,7 @@ export const Title = styled.h2`
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.66px;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
 
   @media screen and (min-width: 768px) {
     margin-bottom: 28px;
@@ -26,7 +26,7 @@ export const Text = styled.p`
   width: 200px;
   margin: 0;
   margin-bottom: 28px;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;

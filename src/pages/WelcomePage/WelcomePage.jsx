@@ -8,6 +8,8 @@ import { HighlightedWord } from 'components/HighlightedWord/HighlightedWord';
 import { WordHighlighter } from 'components/WordHighlighter/WordHighlighter';
 import { useDispatch } from 'react-redux';
 import { signUpWithToken } from 'redux/auth/operations';
+import { Logo } from 'components/NewHeader/Logo/Logo';
+import { LogoWrapper } from 'components/LogoWrapper/LogoWrapper';
 
 const WelcomePage = () => {
   const [position, setPosition] = useState({ top: 0, left: 0 });
@@ -27,10 +29,17 @@ const WelcomePage = () => {
   const goToSingIn = () => {
     navigate('/signin');
   };
+
+  const is404 = location.pathname === '/404';
+
   return (
     <BackgroundImg>
       <WordHighlighter position={position} />
       <Container>
+        <LogoWrapper>
+          <Logo is404={is404} />
+        </LogoWrapper>
+
         <WelcomeTitle>
           <TitleText>
             Transforming your{' '}

@@ -21,23 +21,24 @@ export const BgContainer = styled.div`
   z-index: -5;
   width: 100%;
   height: 100vh;
-  min-height: 950px;
+  min-height: 640px;
 
   display: flex;
   justify-content: ${props => (props.notFound ? 'space-between' : 'right')};
 
   @media (min-width: 768px) {
+    min-height: 810px;
   }
 
   @media (min-width: 1440px) {
-    min-height: 1005px;
+    min-height: 800px;
     gap: 101px;
   }
 `;
 
 export const NotFoundContentBackground = styled.div`
   width: 100%;
-  background-color: #e6533c;
+  background-color: ${props => props.theme.colors.backgroundContentColor};
 
   z-index: -4;
 

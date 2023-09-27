@@ -15,6 +15,8 @@ import {
   GenderWrap,
   BloodWrap,
   RadioGroupWrap,
+  ParamsWrapper,
+  StepContainer,
 } from 'components/ParamsForm/ParamsForm.styled';
 
 import icons from '../../assets/icons/svg-sprite.svg';
@@ -34,12 +36,7 @@ import { isDate, parse } from 'date-fns';
 import { useDispatch } from 'react-redux';
 import { updateUserParams } from 'redux/auth/operations';
 
-// import { useState } from 'react';
-
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import { useEffect } from 'react';
-
-// import { CustomModal } from 'components/CustomModal/CustomModal';
 
 const today = new Date();
 const eighteenYearsAgo = new Date(
@@ -93,17 +90,15 @@ export const ParamsForm = () => {
     levelActivity: '2',
   };
 
+  const onStep = value => {
+    setStep(value);
+  };
+
   const dispatch = useDispatch();
 
   const tablet = useMediaQuery('(min-width:768px)');
 
   const [step, setStep] = useLocalStorage('step', 1);
-
-  useEffect(() => {
-    setStep(1);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleClickNext = () => {
     setStep(state => state + 1);
@@ -140,7 +135,7 @@ export const ParamsForm = () => {
   };
 
   return (
-    <>
+    <ParamsWrapper>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -197,6 +192,13 @@ export const ParamsForm = () => {
                   <use href={icons + '#icon-next'} />
                 </svg>
               </NextBtn>
+              <StepWrap step={step}>
+                <StepContainer>
+                  <Step1 step={step} type="submit"></Step1>
+                  <Step2 step={step}></Step2>
+                  <Step3 step={step}></Step3>
+                </StepContainer>
+              </StepWrap>
             </>
           )}
           {step === 2 && (
@@ -333,11 +335,15 @@ export const ParamsForm = () => {
         )}
       </BtnWrap>
 
-      <StepWrap step={step}>
-        <Step1 step={step}></Step1>
-        <Step2 step={step}></Step2>
-        <Step3 step={step}></Step3>
-      </StepWrap>
-    </>
+      {step > 1 && (
+        <StepWrap step={step}>
+          <StepContainer>
+            <Step1 step={step} onClick={() => onStep(1)} type="submit"></Step1>
+            <Step2 step={step} onClick={() => onStep(2)}></Step2>
+            <Step3 step={step} onClick={() => onStep(3)}></Step3>
+          </StepContainer>
+        </StepWrap>
+      )}
+    </ParamsWrapper>
   );
 };

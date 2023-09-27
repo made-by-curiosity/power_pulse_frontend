@@ -2,15 +2,16 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 export const ContainerSingIn = styled.div`
-  width: 335px;
-  margin-top: 90px;
+  max-width: 335px;
+  margin-top: 30px;
 
   @media (min-width: 768px) {
     width: 364px;
+    margin-top: 60px;
   }
 
   @media (min-width: 1440px) {
-    margin-top: 151px;
+    margin-top: 116px;
   }
 `;
 

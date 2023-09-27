@@ -89,7 +89,7 @@ export const CustomInput = ({
           </ShowPasswordBtn>
         )}
         {calendar && (
-          <CalendarIcon>
+          <CalendarIcon fill="transparent">
             <use href={`${icons}#icon-calendar`} />
           </CalendarIcon>
         )}

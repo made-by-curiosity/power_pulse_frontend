@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {
   AppBar,
   NavWrapper,
@@ -17,26 +17,25 @@ export const Header = ({ setMenuIsOpen }) => {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const is404 = location.pathname === '/404';
+  const isParamsPage = location.pathname === '/params';
 
-  const showHeader = !!isLoggedIn && !is404;
+  const showHeader = !!isLoggedIn && !is404 && !isParamsPage;
 
   return (
     <AppBar showHeader={showHeader}>
-      <FixedHeader showHeader={showHeader}>
-        <HeaderContainer showHeader={showHeader}>
-          <NavWrapper>
-            <NavLink to="/welcome">
+      {showHeader && (
+        <FixedHeader showHeader={showHeader}>
+          <HeaderContainer showHeader={showHeader}>
+            <NavWrapper>
               <Logo is404={is404} />
-            </NavLink>
-            {showHeader && (
               <FlexWrapper>
                 <NavBar />
                 <UserBar onBurgerButton={setMenuIsOpen} />
               </FlexWrapper>
-            )}
-          </NavWrapper>
-        </HeaderContainer>
-      </FixedHeader>
+            </NavWrapper>
+          </HeaderContainer>
+        </FixedHeader>
+      )}
     </AppBar>
   );
 };
