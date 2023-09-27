@@ -6,27 +6,32 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute/RestrictedRoute';
 import { Layout } from 'components/Layout/Layout';
-<<<<<<< HEAD
-<<<<<<< HEAD
+// <<<<<<< HEAD
+// <<<<<<< HEAD
 import ExerciseNavigation from 'components/Nav/ExerciseNavigation';
-=======
-=======
+// =======
+// =======
 // import ExerciseNavigation from 'components/Nav/ExerciseNavigation';
->>>>>>> main
+// >>>>>>> main
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
+// <<<<<<< HEAD
 // import { MusculsList } from 'components/ExercisesTabs/MusculsList ';
 // import { EquipmentsList } from 'components/ExercisesTabs/EquipmentsList';
->>>>>>> main
-=======
+// >>>>>>> main
+// =======
 import { ExercisesCategories } from 'components/ExercisesTabs/ExercisesCategories';
 import { ExercisesSubCategories } from 'components/ExercisesTabs/ExercisesSubCategories';
 
 
->>>>>>> main
+// >>>>>>> main
+// =======
+import { ExercisesCategories } from 'components/ExercisesCategoryList/ExercisesCategories';
+import { ExercisesListByCategory } from 'components/ExercisesList/ExercisesList';
+// >>>>>>> main
 
 const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage'));
 const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage'));
@@ -52,11 +57,11 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div>
-      {/* <Example /> */}
+    <>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/welcome" />} />
@@ -123,25 +128,31 @@ export const App = () => {
               />
             }
           >
-            <Route index element={<Navigate to="bodyparts" />} />
-            <Route path="bodyparts" element={<ExercisesCategories query={'body-parts'}/>}>
-            </Route>
+            <Route index element={<Navigate to="bodyPart" />} />
             <Route
-                path="bodyparts/:filter"
-                element={<ExercisesSubCategories/>}
-              />
-            <Route path="muscles" element={<ExercisesCategories query={'muscles'}/>}>
-            </Route>
+              path="bodyPart"
+              element={<ExercisesCategories query={'body-parts'} />}
+            ></Route>
             <Route
-                path="muscles/:filter"
-                element={<ExercisesSubCategories/>}
-              />
-            <Route path="equipment" element={<ExercisesCategories query={'equipment'}/>}>
-            </Route>
+              path="bodyPart/:filter"
+              element={<ExercisesListByCategory />}
+            />
             <Route
-                path="equipment/:filter"
-                element={<ExercisesSubCategories/>}
-              />
+              path="target"
+              element={<ExercisesCategories query={'muscles'} />}
+            ></Route>
+            <Route
+              path="target/:filter"
+              element={<ExercisesListByCategory />}
+            />
+            <Route
+              path="equipment"
+              element={<ExercisesCategories query={'equipment'} />}
+            ></Route>
+            <Route
+              path="equipment/:filter"
+              element={<ExercisesListByCategory />}
+            />
           </Route>
           {/* ---------------------------------------------------------- */}
 
@@ -154,9 +165,10 @@ export const App = () => {
               />
             }
           />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/404" element={<NotFoundPage />} />
+          <Route path="*" element={<Navigate to="/404" />} />
         </Route>
       </Routes>
-    </div>
+    </>
   );
 };

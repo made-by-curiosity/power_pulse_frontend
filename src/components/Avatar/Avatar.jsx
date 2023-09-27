@@ -1,10 +1,16 @@
+import { useDispatch } from 'react-redux';
+import { useRef } from 'react';
+
+import { updateAvatar } from 'redux/auth/operations';
+
 import {
   AvatarWrapper,
   IconUser,
   UserName,
   UserTitle,
-  AddAvatarBtn,
+  AddAvatarInput,
   AddAvatarIcon,
+  AddAvatarBtn,
 } from './Avatar.styled';
 import icons from '../../assets/icons/svg-sprite.svg';
 
@@ -20,13 +26,47 @@ const iconAddAvatarBtn = (
   </AddAvatarIcon>
 );
 
-export const Avatar = ({ name, email, avatar = iconUser }) => {
+export const Avatar = ({ name, avatarUrl = iconUser }) => {
+  const filePicker = useRef(null);
+
+  const dispatch = useDispatch();
+
+  const handleAddAvatar = e => {
+    // console.log(e.target.files[0]);
+    let formData = new FormData();
+    formData.set('avatar', e.target.files[0]);
+    dispatch(updateAvatar(formData));
+
+    e.target.value = '';
+  };
+
+  const handlePick = () => {
+    filePicker.current.click();
+  };
+
   return (
     <>
       <AvatarWrapper>
-        {avatar}
-        <AddAvatarBtn type="button">{iconAddAvatarBtn}</AddAvatarBtn>
+        {avatarUrl === iconUser ? (
+          iconUser
+        ) : (
+          <img
+            src={avatarUrl}
+            alt="User's avatar"
+            style={{ width: '100%', height: '100%', borderRadius: '50%' }}
+          ></img>
+        )}
+        <AddAvatarInput
+          ref={filePicker}
+          type="file"
+          accept="image/*,.png,.jpg,.gif,.web"
+          onChange={handleAddAvatar}
+        ></AddAvatarInput>
+        <AddAvatarBtn type="button" onClick={handlePick}>
+          {iconAddAvatarBtn}
+        </AddAvatarBtn>
       </AvatarWrapper>
+
       <UserName>{name}</UserName>
       <UserTitle>User</UserTitle>
     </>

@@ -20,8 +20,6 @@ const ProfilePage = () => {
 
   const userInfo = useSelector(selectUser);
 
-  // console.log(userInfo);
-
   return (
     <Container>
       <ProfilePageTitle />

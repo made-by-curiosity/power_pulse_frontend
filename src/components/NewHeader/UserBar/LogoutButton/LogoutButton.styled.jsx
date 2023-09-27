@@ -11,12 +11,15 @@ export const LogoutBtn = styled.a`
   padding: 10px 0;
 
   stroke: #e6533c;
-  transition: color linear 200ms, stroke linear 200ms;
+  /* transition: color linear 200ms, stroke linear 200ms; */
+  transition: transform linear 200ms;
 
   &:hover,
   &:active {
-    stroke: #efede8;
-    color: #e6533c;
+    transform: scale(1.05);
+
+    /* stroke: #efede8; */
+    /* color: #e6533c; */
   }
 
   @media screen and (min-width: 1440px) {

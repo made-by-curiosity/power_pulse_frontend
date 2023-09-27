@@ -2,20 +2,23 @@ import { Formik, Form, Field } from 'formik';
 import { object, string } from 'yup';
 
 import {
-  Button,
   Text,
-  TextBtn,
   ContainerField,
   LinkSingUp,
   TextSingUp,
   DivSingUp,
   ContainerSingIn,
+  BtnWrapper,
 } from './SingInForm.styled';
 
 import { Title } from 'components/Title/Title';
 import { CustomInput } from 'components/CustomInput/CustomInput';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { ButtonGoogle } from 'components/ButtonGoogle/ButtonGoogle';
+import { MainButton } from 'components/MainButton/MainButton';
+import { googleOAuth } from 'services/googleOAuth';
+// import { ModalTrening } from 'components/ModalTrening/ModalTrening';
 
 const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 const passwordRegex =
@@ -67,19 +70,28 @@ const SignInForm = () => {
                 component={CustomInput}
               />
             </ContainerField>
-            <Field
-              type="password"
-              name="password"
-              placeholder="Password"
-              label="Password"
-              passwordBtn
-              autoComplete="off"
-              component={CustomInput}
-              inputStyles={{ gap: '20px' }}
-            />
-            <Button type="submit">
-              <TextBtn>Sign In</TextBtn>
-            </Button>
+            <ContainerField>
+              <Field
+                type="password"
+                name="password"
+                placeholder="Password"
+                label="Password"
+                passwordBtn
+                autoComplete="off"
+                component={CustomInput}
+                inputStyles={{ gap: '20px' }}
+              />
+            </ContainerField>
+
+            <BtnWrapper>
+              <MainButton
+                text="Sign In"
+                type="submit"
+                filled
+                btnStyles={{ width: 'max-content' }}
+              />
+              <ButtonGoogle handleClick={googleOAuth}>With Google</ButtonGoogle>
+            </BtnWrapper>
           </Form>
         </Formik>
         <DivSingUp>

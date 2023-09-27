@@ -1,6 +1,27 @@
 @import-normalize;
 /* bring in normalize.css styles */
 
+* {
+	&::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	/* &::-webkit-scrollbar-track {
+		background: var(--secondary-light-text-color);
+	} */
+
+	&::-webkit-scrollbar-thumb {
+		background: linear-gradient(90deg,
+				rgba(239, 237, 232, 0.10) 0%,
+				rgba(239, 237, 232, 0.10) 30%,
+				rgba(239, 237, 232, 0.10) 50%,
+				rgba(239, 237, 232, 0.10) 70%,
+				rgba(239, 237, 232, 0.10) 100%);
+		border-radius: 12px;
+	}
+
+}
+
 body {
 	font-family: 'Roboto', sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -9,6 +30,8 @@ body {
 	color: #EFEDE8;
 
 	background-color: #040404;
+
+
 }
 
 code {

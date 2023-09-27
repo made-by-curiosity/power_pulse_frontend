@@ -12,8 +12,8 @@ import ProductsTable from 'components/ProductsTable/ProductsTable';
 
 import { NavLink } from 'react-router-dom';
 
-export const DayProducts = () => {
-  const isVoid = true;
+export const DayProducts = ({ meals, setMeals }) => {
+  const isVoid = meals.length;
 
   return (
     <ProductWrapper>
@@ -31,8 +31,11 @@ export const DayProducts = () => {
           </NavLink>
         </WrapperA>
       </TitleNav>
-      {isVoid ? <ProductsTable /> :
-      <NotProduct>Not found products</NotProduct>}
+      {isVoid ? (
+        <ProductsTable meals={meals} setMeals={setMeals} />
+      ) : (
+        <NotProduct>Not found products</NotProduct>
+      )}
     </ProductWrapper>
   );
 };

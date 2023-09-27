@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Calories = styled.div`
+export const StatWrapper = styled.div`
   border-radius: 12px;
   border: none;
   padding: 0;
@@ -25,7 +25,7 @@ export const Calories = styled.div`
   }
 `;
 
-export const CaloriesInfo = styled.div`
+export const TotalInfo = styled.div`
   display: flex;
   align-items: baseline;
   margin-left: 18px;
@@ -35,7 +35,7 @@ export const CaloriesInfo = styled.div`
   }
 `;
 
-export const SpanNumb = styled.span`
+export const TotalNumber = styled.span`
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -50,7 +50,7 @@ export const SpanNumb = styled.span`
   }
 `;
 
-export const SpanCal = styled.span`
+export const TotalName = styled.span`
   color: rgba(239, 237, 232, 0.65);
   font-size: 12px;
   font-style: normal;
@@ -65,7 +65,7 @@ export const SpanCal = styled.span`
   }
 `;
 
-export const CaloriesIcon = styled.svg`
+export const TotalIcon = styled.svg`
   display: block;
   margin-left: 18px;
   margin-top: 14px;

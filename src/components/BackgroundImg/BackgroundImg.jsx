@@ -5,7 +5,7 @@ import {
   BgImage,
   NotFoundContentBackground,
 } from './BackgroundImg.styled';
-import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
+import { DynamicStatistics } from 'components/DynamicStatistics/DynamicStatistics';
 
 export const BackgroundImg = ({ children, notFound, statistics }) => {
   return (
@@ -16,7 +16,7 @@ export const BackgroundImg = ({ children, notFound, statistics }) => {
         {!notFound && (
           <>
             <TutorialBtn />
-            <CaloriesBtn statistics={statistics} />
+            <DynamicStatistics statistics={statistics} />
           </>
         )}
       </BgContainer>

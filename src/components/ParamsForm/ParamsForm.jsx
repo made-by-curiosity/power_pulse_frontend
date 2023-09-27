@@ -15,16 +15,11 @@ import {
   GenderWrap,
   BloodWrap,
   RadioGroupWrap,
-  CaloriesBtnWrap,
-  TutorialBtnWrap,
 } from 'components/ParamsForm/ParamsForm.styled';
 
 import icons from '../../assets/icons/svg-sprite.svg';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
-
-import { CaloriesBtn } from 'components/CaloriesBtn/CaloriesBtn';
-import { TutorialBtn } from 'components/TutorialBtn/TutorialBtn';
 
 import { BirthdayInput } from 'components/BirthdayInput/BirthdayInput';
 
@@ -67,20 +62,20 @@ function parseDateString(value, originalValue) {
 
 const validationSchema = Yup.object({
   height: Yup.number('Number')
-    .typeError('Height must be a number')
-    .positive('Height must be a positive number.')
-    .min(150, 'Height must be at least 150 cm')
+    .typeError('Must be a number')
+    .positive('Must be positive.')
+    .min(150, 'Must be at least 150cm')
     .required('Height is required'),
   currentWeight: Yup.number()
-    .typeError('Height must be a number')
-    .min(35, 'Current weight must be at least 35 kg')
-    .positive('Current weight must be a positive number.')
+    .typeError('Must be a number')
+    .positive('Must be positive.')
+    .min(35, 'Must be at least 35kg')
     .required('Current weight is required'),
   desiredWeight: Yup.number()
-    .typeError('Height must be a number')
-    .min(35, 'Desired weight  must be at least 35 kg')
-    .positive('Weight must be a positive number.')
-    .required('Height is required'),
+    .typeError('Must be a number')
+    .positive('Must be positive.')
+    .min(35, 'Must be at least 35kg')
+    .required('Desired weight is required'),
   birthday: Yup.date()
     .transform(parseDateString)
     .max(eighteenYearsAgo, 'Age must be 18+')
@@ -97,12 +92,6 @@ export const ParamsForm = () => {
     sex: 'male',
     levelActivity: '2',
   };
-
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // const toogleModal = () => {
-  //   setIsModalOpen(prevState => !prevState);
-  // };
 
   const dispatch = useDispatch();
 
@@ -343,12 +332,6 @@ export const ParamsForm = () => {
           </NextBtn>
         )}
       </BtnWrap>
-      <CaloriesBtnWrap step={step}>
-        <CaloriesBtn />
-      </CaloriesBtnWrap>
-      <TutorialBtnWrap step={step}>
-        <TutorialBtn />
-      </TutorialBtnWrap>
 
       <StepWrap step={step}>
         <Step1 step={step}></Step1>
