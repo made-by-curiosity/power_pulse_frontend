@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/power_pulse_frontend/static/css/main.65164e74.css",
-    "main.js": "/power_pulse_frontend/static/js/main.1f4cf085.js",
+    "main.js": "/power_pulse_frontend/static/js/main.96d608f4.js",
     "static/js/470.db9618a9.chunk.js": "/power_pulse_frontend/static/js/470.db9618a9.chunk.js",
     "static/js/31.57dc2460.chunk.js": "/power_pulse_frontend/static/js/31.57dc2460.chunk.js",
     "static/js/515.fd8e1dba.chunk.js": "/power_pulse_frontend/static/js/515.fd8e1dba.chunk.js",
-    "static/js/351.5aa384df.chunk.js": "/power_pulse_frontend/static/js/351.5aa384df.chunk.js",
+    "static/js/351.560666dd.chunk.js": "/power_pulse_frontend/static/js/351.560666dd.chunk.js",
     "static/js/915.34c7f970.chunk.js": "/power_pulse_frontend/static/js/915.34c7f970.chunk.js",
     "static/js/342.bf46ab0c.chunk.js": "/power_pulse_frontend/static/js/342.bf46ab0c.chunk.js",
     "static/js/379.0205912a.chunk.js": "/power_pulse_frontend/static/js/379.0205912a.chunk.js",
@@ -88,11 +88,11 @@
     "static/media/roboto-greek-ext-400-normal.woff": "/power_pulse_frontend/static/media/roboto-greek-ext-400-normal.f708607d2a7290fb8bfa.woff",
     "static/media/roboto-greek-ext-700-normal.woff": "/power_pulse_frontend/static/media/roboto-greek-ext-700-normal.249853776d22a271b2b5.woff",
     "main.65164e74.css.map": "/power_pulse_frontend/static/css/main.65164e74.css.map",
-    "main.1f4cf085.js.map": "/power_pulse_frontend/static/js/main.1f4cf085.js.map",
+    "main.96d608f4.js.map": "/power_pulse_frontend/static/js/main.96d608f4.js.map",
     "470.db9618a9.chunk.js.map": "/power_pulse_frontend/static/js/470.db9618a9.chunk.js.map",
     "31.57dc2460.chunk.js.map": "/power_pulse_frontend/static/js/31.57dc2460.chunk.js.map",
     "515.fd8e1dba.chunk.js.map": "/power_pulse_frontend/static/js/515.fd8e1dba.chunk.js.map",
-    "351.5aa384df.chunk.js.map": "/power_pulse_frontend/static/js/351.5aa384df.chunk.js.map",
+    "351.560666dd.chunk.js.map": "/power_pulse_frontend/static/js/351.560666dd.chunk.js.map",
     "915.34c7f970.chunk.js.map": "/power_pulse_frontend/static/js/915.34c7f970.chunk.js.map",
     "342.bf46ab0c.chunk.js.map": "/power_pulse_frontend/static/js/342.bf46ab0c.chunk.js.map",
     "379.0205912a.chunk.js.map": "/power_pulse_frontend/static/js/379.0205912a.chunk.js.map",
@@ -108,6 +108,6 @@
   },
   "entrypoints": [
     "static/css/main.65164e74.css",
-    "static/js/main.1f4cf085.js"
+    "static/js/main.96d608f4.js"
   ]
 }
