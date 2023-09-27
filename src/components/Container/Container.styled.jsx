@@ -5,6 +5,8 @@ export const MainContainer = styled.div`
   margin: 0 auto;
   padding: 62px 20px 0 20px;
 
+  position: relative;
+
   @media screen and (min-width: 768px) {
     max-width: 768px;
     padding: 84px 32px 0 32px;
