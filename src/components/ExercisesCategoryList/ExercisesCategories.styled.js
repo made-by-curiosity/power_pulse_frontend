@@ -26,3 +26,33 @@ export const CardLink = styled(Link)`
   margin: 0px;
 
 `;
+
+
+
+
+export const PaginationBtn = styled.button`
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+   cursor: pointer;
+   background-color: rgba(239, 237, 232, 0.10) ;
+   border: none;
+   outline: none;
+    
+   ${(props) =>
+    props.active &&
+    {backgroundColor: '#e6533c'}
+    }
+
+`;
+
+export const PaginationList = styled.ul`
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+`
+
+
+export const PaginationItem = styled.li`
+  margin-right: 5px;
+`
