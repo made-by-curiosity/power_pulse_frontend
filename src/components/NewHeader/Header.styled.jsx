@@ -4,7 +4,7 @@ export const AppBar = styled.header`
   position: fixed;
   width: 100%;
   background-color: ${props => (props.showHeader ? props.theme.colors.backgroundPrimaryColor : 'transparent')};
-
+  top: 0;
   overflow: hidden;
   z-index: 100;
 `;
