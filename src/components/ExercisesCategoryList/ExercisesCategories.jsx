@@ -78,13 +78,12 @@ export const ExercisesCategories = ({ query }) => {
           </li>
         ))}
       </CategoriesList>
-      {/* <CustomPagination  numbers={numbers}/> */}
+  
       {npage > 1 &&  <PaginationList>
         {numbers.map((n, i) => (
           <PaginationItem key={i}>
             <PaginationBtn
               onClick={() => changeCurrentPage(n)}
-              active={n === currentPage}
             >{n === currentPage ? <svg width="14" height="14">
             <use href={icons + '#icon-pagination'} />
     </svg> : <svg width="14" height="14">
