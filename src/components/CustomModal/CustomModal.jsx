@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+
+
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -63,3 +66,12 @@ export const CustomModal = ({
     modalRoot
   );
 };
+
+
+CustomModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  modalStyles: PropTypes.object,
+  modalTabletStyles: PropTypes.object,
+  modalDesktopStyles: PropTypes.object,
+  modal320Styles:  PropTypes.object,
+}

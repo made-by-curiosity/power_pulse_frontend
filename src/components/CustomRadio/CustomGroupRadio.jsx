@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -85,3 +87,15 @@ export const CustomGroupRadio = ({
     </>
   );
 };
+
+
+CustomGroupRadio.propTypes = {
+  label: PropTypes.string,
+  formControlStyling: PropTypes.object,
+  formLabelStyling: PropTypes.object,
+  radioStyling: PropTypes.object,
+  typographyStyling: PropTypes.object,
+  formControlLabelStyling: PropTypes.object,
+  radioGroupDirection: PropTypes.bool,
+}
+

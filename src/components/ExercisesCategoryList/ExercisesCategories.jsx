@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
+
 import {
   CategoriesList,
   CardLink,
   PaginationBtn,
-  // LinkWrap,
   PaginationList,
   PaginationItem,
 } from './ExercisesCategories.styled';
@@ -99,3 +100,9 @@ export const ExercisesCategories = ({ query }) => {
     </>
   );
 };
+
+
+
+ExercisesCategories.propTypes = {
+  query: PropTypes.string.isRequired,
+}
