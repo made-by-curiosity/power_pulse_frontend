@@ -4,15 +4,19 @@ import { Loading } from 'components/Loading/Loading';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import { ExercisesPageWrap } from './ExercisesPage.styled';
+
 
 const ExercisesPage = () => {
   return (
-    <Container>
+    <Container style={{paddingBottom: "20px"}}>
+      <ExercisesPageWrap>
+        <ExercisesNav />
+        <Suspense fallback={<Loading text="Loading..." />}>
+          <Outlet />
+        </Suspense>
+      </ExercisesPageWrap>
       
-      <ExercisesNav />
-      <Suspense fallback={<Loading text="Loading..." />}>
-        <Outlet />
-      </Suspense>
     </Container>
   );
 };
