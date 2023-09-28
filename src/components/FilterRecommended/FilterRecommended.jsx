@@ -3,7 +3,7 @@ import {
   StyledSelect,
   IconChevron,
   ButtonShevron,
-} from './FilterCategories.styled';
+} from './FilterRecommended.styled';
 
 import iconsPath from '../../assets/icons/svg-sprite.svg';
 
@@ -14,20 +14,15 @@ const iconCancel = (
 );
 
 const items = [
-  { value: 1, text: 'Alcoholic drinks' },
-  { value: 2, text: 'Berries' },
-  { value: 3, text: 'Cereales' },
-  { value: 4, text: 'Dairy' },
-  { value: 5, text: 'Dried fruits' },
+  { value: 1, text: 'All' },
+  { value: 2, text: 'Recommended' },
+  { value: 3, text: 'Not recommended' },
 ];
 
-export const FilterCategories = () => {
+export const FilterRecommended = () => {
   return (
     <InputWrapper>
-      <StyledSelect defaultValue="0">
-        <option value="0" key="0" disabled>
-          Categories
-        </option>
+      <StyledSelect>
         {items.map(({ value, text }) => {
           return (
             <option value={value} key={value}>
