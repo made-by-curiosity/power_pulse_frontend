@@ -148,7 +148,7 @@ export const UserForm = ({ userInfo }) => {
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
-                  inputStyles={{ width: '165px' }}
+                  inputStyles={{ maxWidth: '165px' }}
                 />
                 <Field
                   label="Current Weight"
@@ -156,7 +156,7 @@ export const UserForm = ({ userInfo }) => {
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
-                  inputStyles={{ width: '156px' }}
+                  inputStyles={{ maxWidth: '156px' }}
                 />
               </InnerWrapper>
               <InnerWrapper>
@@ -166,13 +166,13 @@ export const UserForm = ({ userInfo }) => {
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
-                  inputStyles={{ width: '165px' }}
+                  inputStyles={{ maxWidth: '165px' }}
                 />
                 <Field
                   name="birthday"
                   successFeedback={false}
                   component={BirthdayInput}
-                  inputStyles={{ width: '156px' }}
+                  inputStyles={{ maxWidth: '156px' }}
                 />
               </InnerWrapper>
             </UserOtherInfoWrapper>
