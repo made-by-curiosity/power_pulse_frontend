@@ -22,12 +22,10 @@ import { ModalAddProductSuccess } from 'components/ModalAddProductSuccess/ModalA
 
 import icons from '../../assets/icons/svg-sprite.svg';
 
-import { NavLink } from 'react-router-dom';
 import { Notify } from 'notiflix';
 
 import { useSelector } from 'react-redux';
 import { selectUserParams } from 'redux/auth/selectors';
-
 
 export const ProductsList = () => {
   const [products, setProducts] = useState([]);
@@ -43,7 +41,7 @@ export const ProductsList = () => {
         const productsList = await getAllProducts();
         setProducts(productsList);
       } catch (error) {
-        Notify.failure("Ops...Something went wrong. Please try again.")
+        Notify.failure('Ops...Something went wrong. Please try again.');
         console.log(error.message);
       }
     }

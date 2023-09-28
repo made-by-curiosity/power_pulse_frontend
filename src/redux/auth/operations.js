@@ -14,8 +14,6 @@ import {
 
 import { Notify } from 'notiflix';
 
-
-
 // AUTH
 
 export const signUp = createAsyncThunk(
@@ -26,8 +24,12 @@ export const signUp = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
-       Notify.failure("Ops... Something went wrong. Maybe your email is already in use. Please try again.")
-      return thunkAPI.rejectWithValue("Ops... Something went wrong. Maybe your email is already in use. Please try again.");
+      Notify.failure(
+        'Ops... Something went wrong. Maybe your email is already in use. Please try again.'
+      );
+      return thunkAPI.rejectWithValue(
+        'Ops... Something went wrong. Maybe your email is already in use. Please try again.'
+      );
     }
   }
 );
@@ -40,8 +42,12 @@ export const logIn = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
-     Notify.failure("Ops... Your email or password is incorrect or maybe you not sing up. Please try again.")
-      return thunkAPI.rejectWithValue("Ops... Your email or password is incorrect or maybe you not sing up. Please try again.");
+      Notify.failure(
+        'Ops... Your email or password is incorrect. Please try again.'
+      );
+      return thunkAPI.rejectWithValue(
+        'Ops... Your email or password is incorrect. Please try again.'
+      );
     }
   }
 );
@@ -54,8 +60,10 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     if (error.response && error.response.status === 401) {
       thunkAPI.dispatch(resetStore());
     }
-    Notify.failure("Ops...Something went wrong. Please try again.")
-    return thunkAPI.rejectWithValue("Ops...Something went wrong. Please try again.");
+    Notify.failure('Ops...Something went wrong. Please try again.');
+    return thunkAPI.rejectWithValue(
+      'Ops...Something went wrong. Please try again.'
+    );
   }
 });
 
@@ -76,10 +84,10 @@ export const refreshUser = createAsyncThunk(
       return data.user;
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        Notify.failure("Ops...Something went wrong. Please try again.")
+        Notify.failure('Ops...Something went wrong. Please try again.');
         thunkAPI.dispatch(resetStore());
       }
-      Notify.failure("Ops...Something went wrong. Please try again.")
+      Notify.failure('Ops...Something went wrong. Please try again.');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -95,7 +103,7 @@ export const signUpWithToken = createAsyncThunk(
 
       return data;
     } catch (error) {
-      Notify.failure("Ops...Something went wrong. Please try again.")
+      Notify.failure('Ops...Something went wrong. Please try again.');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -112,10 +120,10 @@ export const getUserParams = createAsyncThunk(
       return { ...user, bmr };
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        Notify.failure("Ops...Something went wrong. Please try again.")
+        Notify.failure('Ops...Something went wrong. Please try again.');
         thunkAPI.dispatch(resetStore());
       }
-      Notify.failure("Ops...Something went wrong. Please try again.")
+      Notify.failure('Ops...Something went wrong. Please try again.');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -133,10 +141,10 @@ export const updateUserParams = createAsyncThunk(
       };
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        Notify.failure("Ops...Something went wrong. Please try again.")
+        Notify.failure('Ops...Something went wrong. Please try again.');
         thunkAPI.dispatch(resetStore());
       }
-      Notify.failure("Ops...Something went wrong. Please try again.")
+      Notify.failure('Ops...Something went wrong. Please try again.');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -151,10 +159,10 @@ export const updateName = createAsyncThunk(
       return data.user.name;
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        Notify.failure("Ops...Something went wrong. Please try again.")
+        Notify.failure('Ops...Something went wrong. Please try again.');
         thunkAPI.dispatch(resetStore());
       }
-      Notify.failure("Ops...Something went wrong. Please try again.")
+      Notify.failure('Ops...Something went wrong. Please try again.');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -169,10 +177,10 @@ export const updateAvatar = createAsyncThunk(
       return data.user.avatarUrls;
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        Notify.failure("Ops...Something went wrong. Please try again.")
+        Notify.failure('Ops...Something went wrong. Please try again.');
         thunkAPI.dispatch(resetStore());
       }
-      Notify.failure("Ops...Something went wrong. Please try again.")
+      Notify.failure('Ops...Something went wrong. Please try again.');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
