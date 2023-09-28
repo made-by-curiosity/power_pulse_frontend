@@ -6,24 +6,36 @@ const mq = breakpoints.map(bp => `@media screen and (min-width: ${bp}px)`);
 
 export const ProductsFilterWrapper = styled.div`
   ${mq[1]} {
+    max-width: 664px;
     display: flex;
     gap: 16px;
+  }
+
+  ${mq[2]} {
+    width: 664px;
+
+    position: absolute;
+    top: 68px;
+    right: 0;
   }
 `;
 
 export const FilterInnerWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   margin-top: 16px;
 
   ${mq[1]} {
     margin-top: 0px;
+    flex-grow: 1;
   }
 `;
 
 export const SelectContainer = styled.div`
   position: relative;
-  width: 100%;
+  max-width: 100%;
+  flex-grow: 1;
 `;
 
 export const IconChevron = styled.svg`
@@ -39,9 +51,26 @@ export const IconChevron = styled.svg`
   stroke: #efede8;
 `;
 
+export const FiltersSpan = styled.span`
+  display: none;
+
+  ${mq[2]} {
+    display: inline;
+    position: absolute;
+    top: -26px;
+    right: 0;
+
+    color: rgba(239, 237, 232, 0.5);
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+  }
+`;
+
 export const SelectWrapper = styled(FormControl)(
   () => `
-
 
 `
 );
@@ -75,13 +104,15 @@ export const Picker = styled(Select)(
 
 	& #custom-input {
 		padding: 14px;
-		min-height: 0px
+		padding-right: 36px;
+		min-height: 0px;
 	}
 `
 );
 
 export const Option = styled(MenuItem)(
   () => `
+	
 		
 	padding:0;
 	min-height: 0;

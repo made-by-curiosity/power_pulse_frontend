@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
   FilterInnerWrapper,
+  FiltersSpan,
   IconChevron,
   Option,
   Picker,
@@ -15,7 +16,7 @@ import { SearchProductField } from 'components/SearchProductField/SearchProductF
 export const MUIProductsFilters = ({ x }) => {
   const [productsFilters, setProductsFilters] = useState([]);
   const [recommended, setRecommended] = useState('');
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -34,6 +35,7 @@ export const MUIProductsFilters = ({ x }) => {
 
   return (
     <ProductsFilterWrapper>
+      <FiltersSpan>Filters</FiltersSpan>
       <SearchProductField />
       <FilterInnerWrapper>
         <SelectContainer>
@@ -63,7 +65,7 @@ export const MUIProductsFilters = ({ x }) => {
               onChange={handleCategoryChange}
               displayEmpty
             >
-              <Option value={null} disabled>
+              <Option value={''} disabled>
                 Categories
               </Option>
               {productsFilters.map(filter => (
