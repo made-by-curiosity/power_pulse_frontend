@@ -43,6 +43,7 @@ export const ModalTrening = ({ onToogle, example }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSecond, setIsSecond] = useState(0);
   const [isCalories, setIsCalories] = useState(0);
+  const [isRound, setIsRound] = useState(0);
   // const [data, setData] = useState(null);
 
   function formatTime(totalSeconds) {

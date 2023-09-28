@@ -143,6 +143,9 @@ export const ItemTrening = styled.li`
   justify-content: flex-start;
   padding-left: 18px;
   align-items: center;
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   gap: 32px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
