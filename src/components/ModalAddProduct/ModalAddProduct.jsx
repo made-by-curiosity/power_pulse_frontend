@@ -22,7 +22,7 @@ const calculateCalories = (calories, amount, weight) => {
 export const ModalAddProduct = ({
   productInfo,
   toggleAddModal,
-  toggleSuccessModal,
+  toggleSuccessModal = () => null,
 }) => {
   const {
     title = 'Mango',
@@ -41,11 +41,16 @@ export const ModalAddProduct = ({
       calories: totalCalories,
     };
 
+    if (!amount) {
+      Notify.failure(`Please choose consumed amount. It can't be 0 gram`);
+      return;
+    }
+
     try {
       await addMeal(mealToSend);
       toggleSuccessModal();
     } catch (error) {
-      Notify.failure("Ops...Something went wrong. Please try again.")
+      Notify.failure('Ops...Something went wrong. Please try again.');
       console.log(error);
     } finally {
       toggleAddModal();
