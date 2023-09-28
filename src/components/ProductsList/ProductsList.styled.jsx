@@ -164,3 +164,11 @@ export const AddProduct = styled.span`
     line-height: 1.5;
   }
 `;
+
+export const BtnAddProduct = styled.button`
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+`;
