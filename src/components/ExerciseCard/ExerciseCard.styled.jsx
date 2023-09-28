@@ -7,7 +7,7 @@ import img2 from '../../assets/images/exercises_img/body_cardio@2x.jpg';
 import img3 from '../../assets/images/exercises_img/body_cardio@3x.jpg';
 
 export const ExerciseCardWrapper = styled.div`
-  width: 335px;
+  max-width: 335px;
   height: 206px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
