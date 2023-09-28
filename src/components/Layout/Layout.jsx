@@ -8,14 +8,14 @@ import { BurgerMenu } from 'components/NewHeader/BurgerMenu/BurgerMenu';
 export const Layout = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
-  const onBurgerButton = () => {
+  const closeMenu = () => {
     setMenuIsOpen(!menuIsOpen);
   };
 
   return (
     <>
       <Header setMenuIsOpen={setMenuIsOpen} />
-      {menuIsOpen && <BurgerMenu onBurgerButton={onBurgerButton} />}
+      {menuIsOpen && <BurgerMenu closeMenu={closeMenu} />}
       <Suspense fallback={<Loading text="Loading..." />}>
         <main>
           <Outlet />
