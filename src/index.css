@@ -83,3 +83,23 @@ ul {
 a {
 	text-decoration: none;
 }
+
+.MuiList-root.MuiList-padding.MuiMenu-list[aria-labelledby="custom-input"] {
+	padding: 14px;
+	background-color: #1C1C1C;
+
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	border-radius: 12px;
+
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiMenu-paper {
+	background-color: #1C1C1C;
+	border-radius: 12px;
+}
+
+.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiSelect-iconOutlined {
+	z-index: -10;
+}
