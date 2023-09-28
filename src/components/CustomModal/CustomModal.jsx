@@ -15,6 +15,8 @@ export const CustomModal = ({
   modalDesktopStyles,
   modal320Styles,
 }) => {
+  const scrollY = window.scrollY;
+
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
       onClose();
@@ -27,16 +29,20 @@ export const CustomModal = ({
         onClose();
       }
     };
+
     document.body.style.position = 'fixed';
-    document.body.style.top = `-${window.scrollY}px`;
+    document.body.style.width = '100%';
+    document.body.style.top = `-${scrollY}px`;
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.position = '';
+      window.scrollTo(0, scrollY);
       document.body.style.top = '';
+      document.body.style.width = '';
     };
-  }, [onClose]);
+  }, [onClose, scrollY]);
 
   return createPortal(
     <BackDrop onClick={handleBackdropClick}>
