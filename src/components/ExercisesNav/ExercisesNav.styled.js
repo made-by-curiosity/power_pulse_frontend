@@ -7,17 +7,16 @@ export const NavWrap = styled.div`
     
     max-width: 1440px;
     margin-bottom: 40px;
-    margin-top: 40px;
+   
 
 
     @media screen and (min-width: 768px) {
         display: flex;
         justify-content: space-between;
         gap: 32px;
-        margin-top: 72px;
         margin-bottom: 64px;
     }
-`;
+`
 
 export const NavLinkWrap = styled.div`
     display: flex;
