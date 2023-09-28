@@ -37,6 +37,7 @@ import { useDispatch } from 'react-redux';
 import { updateUserParams } from 'redux/auth/operations';
 
 import { useLocalStorage } from 'hooks/useLocalStorage';
+import { useEffect } from 'react';
 
 const today = new Date();
 const eighteenYearsAgo = new Date(
@@ -79,7 +80,7 @@ const validationSchema = Yup.object({
     .required('Age is required'),
 });
 
-export const ParamsForm = () => {
+export const ParamsForm = ({ setBackgroundStep }) => {
   const initialValues = {
     height: '',
     currentWeight: '',
@@ -99,6 +100,16 @@ export const ParamsForm = () => {
   const tablet = useMediaQuery('(min-width:768px)');
 
   const [step, setStep] = useLocalStorage('step', 1);
+
+  useEffect(() => {
+    setStep(1);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setBackgroundStep(step);
+  }, [setBackgroundStep, step]);
 
   const handleClickNext = () => {
     setStep(state => state + 1);

@@ -5,11 +5,7 @@ import {
   ExerciseText,
 } from './ExerciseCard.styled';
 
-export const ExerciseCard = ({
-  title, 
-  filter,
-  photo
-}) => {
+export const ExerciseCard = ({ title, filter, photo }) => {
   return (
     <ExerciseCardWrapper photo={photo}>
       <ExerciseDescription>
@@ -21,5 +17,3 @@ export const ExerciseCard = ({
     </ExerciseCardWrapper>
   );
 };
-
-

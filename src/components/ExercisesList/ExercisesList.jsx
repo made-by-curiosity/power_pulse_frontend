@@ -62,55 +62,54 @@ export const ExercisesListByCategory = () => {
   }, [filter]);
 
   return (
-    <div style={{position: 'relative'}}>
+    <div style={{ position: 'relative' }}>
       <BackLink to={backLinkRef}>Back</BackLink>
-        <MainExercisesContainer>
-      <ExercisesList>
-        {exercisesSubCategories?.map(
-          (card) => (
-            <>
-              {' '}
-              <ExercisesItem key={card._id}>
-                <InfoContainer>
-                  <WorkoutTitle>WORKOUT</WorkoutTitle>
-                  <NavLink style={{ display: 'flex', alignItems: 'center' }} onClick={() => toogleModal(card)}>
-                    <Start>Start</Start>
-                    <StartIcon>
-                      <svg fill="#efede8">
-                        {' '}
-                        <use href={icons + '#icon-nextarrow'}></use>
-                      </svg>
-                    </StartIcon>
-                  </NavLink>
-                </InfoContainer>
-                <ExercisesContainer>
-                  <CaloriesIcon>
+      <MainExercisesContainer>
+        <ExercisesList>
+          {exercisesSubCategories?.map(card => (
+            <ExercisesItem key={card._id}>
+              <InfoContainer>
+                <WorkoutTitle>WORKOUT</WorkoutTitle>
+                <NavLink
+                  style={{ display: 'flex', alignItems: 'center' }}
+                  onClick={() => toogleModal(card)}
+                >
+                  <Start>Start</Start>
+                  <StartIcon>
                     <svg fill="#efede8">
                       {' '}
-                      <use href={icons + '#icon-running'}></use>
+                      <use href={icons + '#icon-nextarrow'}></use>
                     </svg>
-                  </CaloriesIcon>
-                  <ExercisesTitle>{card.name}</ExercisesTitle>
-                </ExercisesContainer>
-                <DataInfo>
-                  <li>
-                    Burned calories:<span>{card.burnedCalories}</span>
-                  </li>
-                  <li>
-                    Body part: <span>{card.bodyPart}</span>
-                  </li>
-                  <li>
-                    Target:<span>{card.target}</span>
-                  </li>
-                </DataInfo>
-              </ExercisesItem>
-            </>
-          )
-        )}
-      </ExercisesList>
-    </MainExercisesContainer>
-    {isModalOpen && <ModalTrening onToogle={toogleModal} example={selectedExercise} />}
+                  </StartIcon>
+                </NavLink>
+              </InfoContainer>
+              <ExercisesContainer>
+                <CaloriesIcon>
+                  <svg fill="#efede8">
+                    {' '}
+                    <use href={icons + '#icon-running'}></use>
+                  </svg>
+                </CaloriesIcon>
+                <ExercisesTitle>{card.name}</ExercisesTitle>
+              </ExercisesContainer>
+              <DataInfo>
+                <li>
+                  Burned calories:<span>{card.burnedCalories}</span>
+                </li>
+                <li>
+                  Body part: <span>{card.bodyPart}</span>
+                </li>
+                <li>
+                  Target:<span>{card.target}</span>
+                </li>
+              </DataInfo>
+            </ExercisesItem>
+          ))}
+        </ExercisesList>
+      </MainExercisesContainer>
+      {isModalOpen && (
+        <ModalTrening onToogle={toogleModal} example={selectedExercise} />
+      )}
     </div>
-    
   );
 };

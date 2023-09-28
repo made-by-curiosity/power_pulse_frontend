@@ -15,23 +15,27 @@ import {
   DataInfo,
   AddIcon,
   AddProduct,
+  BtnAddProduct,
 } from './ProductsList.styled';
+import { ModalAddProduct } from 'components/ModalAddProduct/ModalAddProduct';
+import { ModalAddProductSuccess } from 'components/ModalAddProductSuccess/ModalAddProductSuccess';
 
 import icons from '../../assets/icons/svg-sprite.svg';
+
 import { NavLink } from 'react-router-dom';
 import { Notify } from 'notiflix';
 
+import { useSelector } from 'react-redux';
+import { selectUserParams } from 'redux/auth/selectors';
+
+
 export const ProductsList = () => {
   const [products, setProducts] = useState([]);
-  // const [recommend, setRecommend] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isSuccessModal, setSuccessModal] = useState(false);
+  const [currentProduct, setCurrentProduct] = useState({});
 
-  function getCurrentBlood() {
-    const randomNumber = [1, 2, 3, 4];
-    const number = Math.floor(Math.random() * randomNumber.length);
-    return randomNumber[number];
-  }
-
-  const currentBlood = getCurrentBlood();
+  const { blood } = useSelector(selectUserParams);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -46,11 +50,29 @@ export const ProductsList = () => {
     fetchProducts();
   }, []);
 
+  const handleModalBtn = products => {
+    setIsAddModalOpen(state => !state);
+    setCurrentProduct(products);
+  };
+
+  const productsToShow = products.slice(0, 20);
+
   return (
     <ProductsContainer>
+      {isAddModalOpen && (
+        <ModalAddProduct
+          productInfo={currentProduct}
+          toggleAddModal={() => setIsAddModalOpen(state => !state)}
+        />
+      )}
+      {isSuccessModal && (
+        <ModalAddProductSuccess
+          toggleSuccessModal={() => setSuccessModal(state => !state)}
+        />
+      )}
       {products.length !== 0 ? (
         <ProductList>
-          {products.map(
+          {productsToShow.map(
             ({
               calories,
               category,
@@ -63,10 +85,10 @@ export const ProductsList = () => {
                 <ProductsItem key={_id}>
                   <InfoContainer>
                     <DietTitle>DIET</DietTitle>
-                    {(currentBlood === 1 && groupBloodNotAllowed[1]) ||
-                    (currentBlood === 2 && groupBloodNotAllowed[2]) ||
-                    (currentBlood === 3 && groupBloodNotAllowed[3]) ||
-                    (currentBlood === 4 && groupBloodNotAllowed[4]) ? (
+                    {(blood === 1 && groupBloodNotAllowed[1]) ||
+                    (blood === 2 && groupBloodNotAllowed[2]) ||
+                    (blood === 3 && groupBloodNotAllowed[3]) ||
+                    (blood === 4 && groupBloodNotAllowed[4]) ? (
                       <>
                         {' '}
                         <RadCircle />
@@ -79,7 +101,18 @@ export const ProductsList = () => {
                         <Recommend>Recommend</Recommend>
                       </>
                     )}
-                    <NavLink style={{ display: 'flex', alignItems: 'center' }}>
+                    <BtnAddProduct
+                      onClick={() =>
+                        handleModalBtn({
+                          calories,
+                          category,
+                          title,
+                          weight,
+                          _id,
+                          groupBloodNotAllowed,
+                        })
+                      }
+                    >
                       <AddProduct>Add</AddProduct>
                       <AddIcon>
                         <svg fill="#efede8">
@@ -87,7 +120,7 @@ export const ProductsList = () => {
                           <use href={icons + '#icon-nextarrow'}></use>
                         </svg>
                       </AddIcon>
-                    </NavLink>
+                    </BtnAddProduct>
                   </InfoContainer>
                   <MenuContainer>
                     <CaloriesIcon>

@@ -17,16 +17,21 @@ export const CustomModal = ({ onClose, children, modalStyles, modalTabletStyles,
       };
 
     useEffect(() => {
-    const handleKeyDown = e => {
-      if (e.code === 'Escape') {
-        onClose();
-      }
-    };
+      const handleKeyDown = e => {
+        if (e.code === 'Escape') {
+          onClose();
+        }
+      };
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${window.scrollY}px`;
+      window.addEventListener('keydown', handleKeyDown);
 
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+        document.body.style.position = '';
+        document.body.style.top = '';
+      };
+    }, [onClose]);
 
   return createPortal(
     <BackDrop onClick={handleBackdropClick}>

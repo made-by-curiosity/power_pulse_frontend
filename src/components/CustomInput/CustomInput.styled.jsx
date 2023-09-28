@@ -15,6 +15,7 @@ export const InputWrapper = styled.div`
 
 export const Label = styled.label`
   position: absolute;
+  z-index: -1;
   top: ${props => (props.isFocused || props.hasValue ? '-16px' : '16px')};
   left: ${props => (props.isFocused || props.hasValue ? '0' : '14px')};
 
