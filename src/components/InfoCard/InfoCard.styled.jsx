@@ -25,8 +25,8 @@ export const InfoCardBox = styled.div`
   justify-content: space-between;
 
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
-  background: #e6533c;
+  border: ${props => props.theme.colors.todoBorder};
+    background: ${props => props.theme.colors.btnBgColor};
 
   ${mq[1]} {
     width: 214px;
@@ -47,12 +47,12 @@ export const InfoCardLabelWrapper = styled.div`
 `;
 
 export const InfoCardLabel = styled.p`
-  color: rgba(239, 237, 232, 0.8);
+  color: ${props => props.theme.colors.infoCardColor};
   font-family: Roboto;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.33333;
+  line-height: 1.3;
 
   ${mq[1]} {
     line-height: 1.5;
@@ -60,15 +60,15 @@ export const InfoCardLabel = styled.p`
 `;
 
 export const InfoCardNumber = styled.p`
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-family: Roboto;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
-  line-height: 1.11111;
+  line-height: 1.1;
 
   ${mq[1]} {
     font-size: 24px;
-    line-height: 1.33333;
+    line-height: 1.3;
   }
 `;

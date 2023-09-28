@@ -12,7 +12,7 @@ export const Tutorial = styled.div`
   padding-top: 14px;
   padding-bottom: 14px;
   border-radius: 12px;
-  background-color: #303030;
+  background-color: ${props => props.theme.colors.BgPlayColor};
 
   top: 70%;
   right: 2%;
@@ -49,7 +49,7 @@ export const TutorialInfo = styled.div`
 `;
 export const SpanNumber = styled.span`
   display: flex;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -64,7 +64,7 @@ export const SpanNumber = styled.span`
 
 export const SpanVideo = styled.span`
   display: block;
-  color: rgba(239, 237, 232, 0.65);
+  color: ${props => props.theme.colors.textPlayColor};
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -82,7 +82,7 @@ export const TutorialIcon = styled.svg`
   padding-right: 6px;
   padding-bottom: 9px;
   padding-top: 9px;
-  background-color: #ef8964;
+  background-color: ${props => props.theme.colors.svgBgPlayColor};
 
   @media screen and (min-width: 768px) {
     width: 40px;

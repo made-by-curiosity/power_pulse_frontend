@@ -11,7 +11,7 @@ export const LogoutButton = styled.button`
 
   display: flex;
   justify-content: center;
-  alight-items: center;
+  align-items: center;
   gap: 8px;
 
   background: none;
@@ -37,7 +37,7 @@ export const LogoutButton = styled.button`
 `;
 
 export const LogoutBtnText = styled.span`
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;

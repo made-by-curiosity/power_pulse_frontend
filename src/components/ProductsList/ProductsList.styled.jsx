@@ -25,7 +25,7 @@ export const ProductsItem = styled.li`
   width: 335px;
   height: 141px;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: ${props => props.theme.colors.todoBorder};
   padding: 16px 16px;
   @media (min-width: 1440px) {
     width: 405px;
@@ -36,7 +36,7 @@ export const RadCircle = styled.div`
   width: 14px;
   height: 14px;
   border-radius: 10px;
-  background: #e9101d;
+  background: ${props => props.theme.colors.redCircleBg};
   margin-right: 8px;
   margin-left: 75px;
   @media (min-width: 768px) {
@@ -51,7 +51,7 @@ export const GreenCircle = styled.div`
   width: 14px;
   height: 14px;
   border-radius: 10px;
-  background: #419b09;
+  background: ${props => props.theme.colors.greenCircleBg};
   margin-right: 8px;
   margin-left: 94px;
   @media (min-width: 768px) {
@@ -76,7 +76,7 @@ export const DietTitle = styled.h3`
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  background: rgba(239, 237, 232, 0.05);
+  background: ${props => props.theme.colors.dietTitleColor};
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
@@ -87,11 +87,11 @@ export const Recommend = styled.p`
   margin-right: 16px;
   font-size: 12px;
   line-height: 1.5;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
 `;
 
 export const CaloriesIcon = styled.svg`
-  background-color: #efa082;
+  background-color: ${props => props.theme.colors.iconBgColor};
   padding: 4px;
   border-radius: 50px;
   width: 20px;
@@ -114,7 +114,7 @@ export const MenuTitle = styled.h2`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-size: 20px;
   font-weight: 400;
   line-height: 1.2;
@@ -133,7 +133,7 @@ export const DataInfo = styled.ul`
   display: flex;
   & li {
     margin-right: 8px;
-    color: rgba(239, 237, 232, 0.4);
+    color: ${props => props.theme.colors.textSecondColor};
     font-size: 12px;
     font-weight: 400;
     line-height: 1.5;
@@ -141,7 +141,7 @@ export const DataInfo = styled.ul`
       margin-right: 16px;
     }
     & span {
-      color: #efede8;
+      color: ${props => props.theme.colors.primaryTitleColor};
       margin-left: 4px;
     }
   }
@@ -154,7 +154,7 @@ export const AddIcon = styled.svg`
 `;
 
 export const AddProduct = styled.span`
-  color: #e6533c;
+  color: ${props => props.theme.colors.backgroundContentColor};
   font-size: 14px;
   line-height: 1.3;
   font-weight: 400;

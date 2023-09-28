@@ -10,7 +10,7 @@ export const LogoutBtn = styled.a`
   line-height: 24px;
   padding: 10px 0;
 
-  stroke: #e6533c;
+  stroke: ${props => props.theme.colors.backgroundContentColor};
   /* transition: color linear 200ms, stroke linear 200ms; */
   transition: transform linear 200ms;
 

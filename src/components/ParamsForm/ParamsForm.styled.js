@@ -7,7 +7,7 @@ export const ParamsWrapper = styled.div`
 `;
 
 export const ParamsFormTitle = styled.h2`
-  color: #efede8;
+  color: '#EFEDE8';
   margin-bottom: 14px;
 
   @media screen and (min-width: 768px) {
@@ -18,7 +18,7 @@ export const ParamsFormTitle = styled.h2`
 export const ParamsFormSubTitle = styled.p`
   font-size: 14px;
   font-weight: 400;
-  color: rgb(239, 237, 232, 0.3);
+  color: 'rgb(239, 237, 232, 0.3)';
   margin-bottom: 32px;
   line-height: 1.4;
 
@@ -163,7 +163,7 @@ export const StepWrap = styled.div`
 export const Step1 = styled.button`
   width: 50px;
   height: 4px;
-  background-color: #ef8964;
+  background-color: '#ef8964';
   border-radius: 10px;
   outline: none;
   border: none;
@@ -173,7 +173,7 @@ export const Step1 = styled.button`
 export const Step2 = styled.button`
   width: 50px;
   height: 4px;
-  background-color: #303030;
+  background-color: '#303030';
   border-radius: 10px;
   outline: none;
   border: none;
@@ -181,7 +181,7 @@ export const Step2 = styled.button`
 
   background-color: ${props => {
     if (props.step > 1) {
-      return '#EF8964';
+      return props.theme.colors.paramsBgColor;
     }
   }};
 `;
@@ -189,7 +189,7 @@ export const Step2 = styled.button`
 export const Step3 = styled.button`
   width: 50px;
   height: 4px;
-  background-color: #303030;
+  background-color: '#303030';
   border-radius: 10px;
   outline: none;
   border: none;
@@ -197,7 +197,7 @@ export const Step3 = styled.button`
 
   background-color: ${props => {
     if (props.step === 3) {
-      return '#EF8964';
+      return props.theme.colors.paramsBgColor;
     }
   }};
 `;
@@ -221,7 +221,7 @@ export const BackBtn = styled.button`
   outline: none;
   border: none;
   background-color: transparent;
-  color: rgb(239, 237, 232, 0.6);
+  color: 'rgb(239, 237, 232, 0.6)';
 `;
 
 export const BtnWrap = styled.div`

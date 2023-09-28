@@ -10,7 +10,7 @@ export const BurgerCloseBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #00000000;
+  background-color:  ${props => props.theme.colors.burgerBgColor};
 
   @media screen and (min-width: 768px) {
     top: 26px;
@@ -21,7 +21,7 @@ export const BurgerCloseBtn = styled.button`
 export const BurgerCloseBtnSvg = styled.svg`
   width: 24px;
   height: 24px;
-  stroke: #efede8;
+  stroke: ${props => props.theme.colors.primaryTitleColor};
 
   transition: opacity 200ms ease-out;
 

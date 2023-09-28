@@ -4,7 +4,7 @@ export const Modal = styled.div`
 width: 335px;
 height: 858px;
 border-radius: 12px;
-border: 1px solid rgba(239, 237, 232, 0.20);
+border: ${props => props.theme.colors.todoBorder};
 background: #10100F;
 display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@ export const ImgGif = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: ${props => props.theme.colors.todoBorder};
 `;
 
 export const ImgDiv = styled.div`
@@ -23,12 +23,8 @@ export const ImgDiv = styled.div`
   width: 270px;
   height: 226px;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
-  background: linear-gradient(
-    0deg,
-    rgba(4, 4, 4, 0.2) 0%,
-    rgba(4, 4, 4, 0.2) 100%
-  );
+  border: ${props => props.theme.colors.todoBorder};
+  background: ${props => props.theme.colors.modalTreningBgGradient};
   margin-top: 48px;
   margin-bottom: 14px;
 
@@ -56,7 +52,7 @@ export const Button = styled.button`
   align-items: center;
   width: 32px;
   height: 32px;
-  background: #e6533c;
+  background: ${props => props.theme.colors.btnBgColor};
   margin-top: 14px;
   outline: none;
   border: none;
@@ -73,7 +69,7 @@ export const Svg = styled.svg`
 `;
 
 export const Text = styled.p`
-  color: rgba(239, 237, 232, 0.4);
+  color: ${props => props.theme.colors.textSecondColor};
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Roboto;
   font-size: 10px;
@@ -96,7 +92,7 @@ export const List = styled.ul`
 `;
 
 export const NameItem = styled.p`
-  color: rgba(239, 237, 232, 0.4);
+  color: ${props => props.theme.colors.textSecondColor};
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Roboto;
   font-size: 12px;
@@ -106,7 +102,7 @@ export const NameItem = styled.p`
 `;
 
 export const ValueItem = styled.p`
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Roboto;
   font-size: 14px;
@@ -145,8 +141,8 @@ export const ItemTrening = styled.li`
   align-items: center;
   gap: 32px;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
-  background: rgba(239, 237, 232, 0.05);
+  border: ${props => props.theme.colors.todoBorder};
+  background: ${props => props.theme.colors.todoBgColor};
 
   padding: 10px;
 
@@ -170,7 +166,7 @@ export const BurnedCaloriesDiv = styled.div`
 `;
 
 export const BurnedCaloriesText = styled.p`
-color: rgba(239, 237, 232, 0.30);
+color: ${props => props.theme.colors.warningTextColor};
 font-family: Roboto;
 font-size: 14px;
 font-style: normal;
@@ -179,7 +175,7 @@ line-height: 1.28;
 `;
 
 export const BurnedCaloriesNumber = styled.p`
-  color: #e6533c;
+  color: ${props => props.theme.colors.logoColors};
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
@@ -194,7 +190,7 @@ export const ButtonAdd = styled.button`
   align-items: center;
   gap: 10px;
   border-radius: 12px;
-  background: var(--orange, #e6533c);
+  background: ${props => props.theme.colors.btnBgColor};
   margin-right: auto;
   margin-top: 24px;
 
@@ -207,7 +203,7 @@ export const ButtonAdd = styled.button`
 `;
 
 export const SpanButton = styled.span`
-  color: #efede8;
+  color:  ${props => props.theme.colors.primaryTitleColor};
   font-family: Roboto;
   font-size: 16px;
   font-style: normal;

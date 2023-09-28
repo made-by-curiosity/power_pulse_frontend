@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 
 export const Calories = styled.p`
-    color: rgba(239, 237, 232, 0.30);
+    color:  ${props => props.theme.colors.warningTextColor};
     margin-bottom: 32px;
     margin-top: 16px;
 `;
@@ -11,7 +11,7 @@ export const SvgArrov = styled.svg`
     width: 16px;
     height: 16px;
     margin-left: 8px;
-    stroke: rgba(239, 237, 232, 0.30);
+    stroke:  ${props => props.theme.colors.warningTextColor};
 `;
 
 export const Img = styled.img`
@@ -23,8 +23,8 @@ export const Img = styled.img`
 
 export const LinkToDiary = styled(NavLink)`
     display: flex;
-    alignItems: center;
-    color: rgba(239, 237, 232, 0.30); 
+    align-items: center;
+    color:  ${props => props.theme.colors.warningTextColor};
     margin-right: auto;
     margin-left: auto;
 `;

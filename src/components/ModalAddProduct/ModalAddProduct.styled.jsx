@@ -18,10 +18,10 @@ export const InputProductName = styled.input`
   font-style: normal;
   font-weight: 400;
   line-height: 1.3;
-  color: rgba(239, 237, 232, 0.3);
+  color:  ${props => props.theme.colors.warningTextColor};
   background-color: inherit;
   border-radius: 12px;
-  border: 1px solid #e6533c;
+  border:  ${props => props.theme.colors.inputBorderHover};
   outline: none;
 
   @media screen and (max-width: 374px) {
@@ -45,14 +45,14 @@ export const InputProductAmount = styled.input`
 
   background-color: inherit;
   border-radius: 12px;
-  border: 1px solid #e6533c;
+  border:  ${props => props.theme.colors.inputBorderHover};
   outline: none;
 
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.3;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
 
   @media screen and (max-width: 374px) {
     width: 100%;
@@ -76,7 +76,7 @@ export const ContainCaloriesDiv = styled.div`
 
 export const ContainCaloriesText = styled.span`
   margin-right: 4px;
-  color: rgba(239, 237, 232, 0.4);
+  color: ${props => props.theme.colors.textSecondColor};
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -84,7 +84,7 @@ export const ContainCaloriesText = styled.span`
 `;
 
 export const ContainCaloriesNumber = styled.span`
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -114,7 +114,7 @@ export const LabelGrams = styled.label`
   font-style: normal;
   font-weight: 400;
   line-height: 1.3;
-  color: rgba(239, 237, 232, 0.4);
+  color:  ${props => props.theme.colors.textSecondColor};
 
   @media screen and (max-width: 374px) {
   }

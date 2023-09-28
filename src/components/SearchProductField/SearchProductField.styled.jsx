@@ -19,11 +19,11 @@ export const StyledInput = styled.input`
   padding-right: 58px;
 
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  border: ${props => props.theme.colors.searchProductBorder};
   background: none;
   outline: none;
 
-  color: #efede8;
+  color: ${props => props.theme.colors.inputTexdtColor};
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
@@ -32,7 +32,7 @@ export const StyledInput = styled.input`
 
   &:hover,
   &:focus {
-    border-color: #e6533c;
+    border-color: ${props => props.theme.colors.inputBorderHover};
   }
 
   ${mq[1]} {
@@ -46,7 +46,7 @@ export const IconSearch = styled.svg`
   height: 18px;
 
   stroke-width: 1.5px;
-  stroke: #efede8;
+  stroke: ${props => props.theme.colors.svgPlayColor};
 `;
 
 export const IconCancel = styled.svg`
@@ -54,8 +54,9 @@ export const IconCancel = styled.svg`
   height: 18px;
 
   stroke-width: 2px;
-  stroke: #e6533c;
-`;
+  stroke: ${props => props.theme.colors.iconCancelColor} 
+`
+ ;
 
 export const ButtonCancel = styled.button`
   position: absolute;
@@ -73,7 +74,7 @@ export const ButtonCancel = styled.button`
   ${mq[1]} {
     transform: translateY(100%);
   }
-`;
+`; 
 
 export const ButtonSearch = styled.button`
   position: absolute;

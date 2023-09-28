@@ -6,7 +6,7 @@ export const BurgerBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #00000000;
+  background-color: ${props => props.theme.colors.burgerBgColor};
 
   @media screen and (min-width: 1440px) {
     display: none;
@@ -17,7 +17,7 @@ export const BurgerBtnSvg = styled.svg`
   width: 24px;
   height: 24px;
 
-  stroke: #e6533c;
+  stroke: ${props => props.theme.colors.burgerSvgColor};
 
   &:hover,
   &:focus {

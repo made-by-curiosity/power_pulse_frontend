@@ -24,7 +24,7 @@ export const UserNav = styled.nav`
   width: 200px;
   height: 100%;
 
-  background: #e6533c;
+  background: ${props => props.theme.colors.backgroundContentColor};
   font-size: 14px;
 
   @media screen and (min-width: 768px) {
@@ -47,15 +47,15 @@ export const BurgerLink = styled(NavLink)`
   line-height: 18px;
 
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: ${props => props.theme.colors.todoBorder};
   transition: border linear 200ms;
 
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
 
   &:hover,
   &:active,
   &.active {
-    border: 1px solid #efede8;
+    border: ${props => props.theme.colors.burgerMenuHover};
   }
 
   @media screen and (min-width: 768px) {
