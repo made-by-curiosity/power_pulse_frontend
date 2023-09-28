@@ -73,4 +73,7 @@ export const NotProduct = styled.p`
     font-size: 16px;
     line-height: 24px;
   }
+  @media (max-width: 767.33px) {
+    margin-bottom: 158px;
+  }
 `;

@@ -1,14 +1,20 @@
 import styled from '@emotion/styled';
 
 export const ProductWrapper = styled.div`
-  width: 100%;
-  min-height: 335px;
+  max-height: 335px;
   padding: 16px 8px 16px 16px;
 
   border: 1px solid #efede820;
   border-radius: 12px;
 
   background-color: #efede80d;
+
+  @media (max-width: 374.33px) {
+    width: 88vw;
+  }
+  @media (min-width: 375px) {
+    width: 335px;
+  }
 
   @media (min-width: 768px) {
     min-height: auto;
@@ -28,7 +34,6 @@ export const TitleNav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 48px;
   @media (min-width: 768px) {
     margin-bottom: 16px;
   }
@@ -70,6 +75,9 @@ export const NotProduct = styled.p`
   line-height: 18px;
   text-align: center;
   margin-top: 125px;
+  @media (max-width: 767.33px) {
+    margin-bottom: 158px;
+  }
   @media (min-width: 768px) {
     margin-top: 65px;
     font-size: 16px;
@@ -79,7 +87,6 @@ export const NotProduct = styled.p`
 
 export const TableBody = styled.tbody`
   height: 768px;
-  padding-right: 14px;
 
   display: block;
   overflow-y: scroll;

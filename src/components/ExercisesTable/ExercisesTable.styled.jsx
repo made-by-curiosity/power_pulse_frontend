@@ -96,40 +96,79 @@ export const CellTel = styled.td`
   font-size: 14px;
   line-height: 18px;
   position: relative;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  &:nth-of-type(1) {
-    width: 297px;
-    height: 38px;
-    margin-bottom: 42px;
+
+  @media (max-width: 374.22px) {
+    &:nth-of-type(1) {
+      &:nth-of-type(1) {
+        min-width: 100%;
+        height: 38px;
+        margin-bottom: 42px;
+      }
+      &:nth-of-type(2) {
+        min-width: 100%;
+        height: 38px;
+        margin-bottom: 42px;
+      }
+      &:nth-of-type(3) {
+        min-width: 100%;
+        height: 38px;
+        margin-bottom: 42px;
+      }
+      &:nth-of-type(4) {
+        width: 81px;
+        height: 38px;
+        margin-right: 16px;
+      }
+      &:nth-of-type(5) {
+        width: 80px;
+        height: 38px;
+        margin-right: 16px;
+      }
+      &:nth-of-type(6) {
+        width: 76px;
+        height: 38px;
+        margin-right: 6px;
+      }
   }
-  &:nth-of-type(2) {
-    width: 297px;
-    height: 38px;
-    margin-bottom: 42px;
-  }
-  &:nth-of-type(3) {
-    width: 297px;
-    height: 38px;
-    margin-bottom: 42px;
-  }
-  &:nth-of-type(4) {
-    width: 81px;
-    height: 38px;
-    margin-right: 16px;
-  }
-  &:nth-of-type(5) {
-    width: 80px;
-    height: 38px;
-    margin-right: 16px;
-  }
-  &:nth-of-type(6) {
-    width: 76px;
-    height: 38px;
-    margin-right: 6px;
+
+  @media (min-width: 375px) {
+    &:nth-of-type(1) {
+      &:nth-of-type(1) {
+        width: 297px;
+        height: 38px;
+        margin-bottom: 42px;
+      }
+      &:nth-of-type(2) {
+        width: 297px;
+        height: 38px;
+        margin-bottom: 42px;
+      }
+      &:nth-of-type(3) {
+        width: 297px;
+        height: 38px;
+        margin-bottom: 42px;
+      }
+      &:nth-of-type(4) {
+        width: 81px;
+        height: 38px;
+        margin-right: 16px;
+      }
+      &:nth-of-type(5) {
+        width: 80px;
+        height: 38px;
+        margin-right: 16px;
+      }
+      &:nth-of-type(6) {
+        width: 76px;
+        height: 38px;
+        margin-right: 6px;
+      }
   }
 
   @media (min-width: 768px) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     padding: 8px 14px 8px 14px;
     font-size: 16px;
     line-height: 24px;

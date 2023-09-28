@@ -9,4 +9,8 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     gap: 32px;
   }
+  @media (max-width: 767.22px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;
