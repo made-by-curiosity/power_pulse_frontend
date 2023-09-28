@@ -23,6 +23,7 @@ export const signUpUser = async credentials => {
 };
 
 export const logInUser = async credentials => {
+  
   const res = await axios.post('/api/auth/login', credentials);
 
   return res.data;

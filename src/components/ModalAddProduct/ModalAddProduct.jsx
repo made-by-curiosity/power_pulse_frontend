@@ -13,6 +13,7 @@ import { MainButton } from 'components/MainButton/MainButton';
 import { CustomModal } from 'components/CustomModal/CustomModal';
 import { useState } from 'react';
 import { addMeal } from 'services/powerPulseApi';
+import { Notify } from 'notiflix';
 
 const calculateCalories = (calories, amount, weight) => {
   return Math.ceil((calories / weight) * amount);
@@ -44,6 +45,7 @@ export const ModalAddProduct = ({
       await addMeal(mealToSend);
       toggleSuccessModal();
     } catch (error) {
+      Notify.failure("Ops...Something went wrong. Please try again.")
       console.log(error);
     } finally {
       toggleAddModal();

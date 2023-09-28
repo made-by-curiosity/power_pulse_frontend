@@ -22,6 +22,7 @@ import {
 import { DeleteBtn } from 'components/DeleteBtn/DeleteBtn';
 import { deleteMeal } from 'services/powerPulseApi';
 import { TableBody } from 'components/DayProducts/DayProducts.styled';
+import { Notify } from 'notiflix';
 
 export default function ProductsTable({ meals, setMeals }) {
   const { blood } = useSelector(selectUserParams);
@@ -90,10 +91,14 @@ export default function ProductsTable({ meals, setMeals }) {
   });
 
   const handleDelete = async id => {
-    await deleteMeal(id);
+    try {
+      await deleteMeal(id);
 
     const filteredMeals = meals.filter(meal => meal._id !== id);
     setMeals(filteredMeals);
+    } catch (error) {
+      Notify.failure("Ops...Something went wrong. Please try again.")
+    }
   };
 
   return (

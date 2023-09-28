@@ -18,7 +18,7 @@ import { logIn } from 'redux/auth/operations';
 import { ButtonGoogle } from 'components/ButtonGoogle/ButtonGoogle';
 import { MainButton } from 'components/MainButton/MainButton';
 import { googleOAuth } from 'services/googleOAuth';
-// import { ModalTrening } from 'components/ModalTrening/ModalTrening';
+
 
 const emailRegex = /^\w+(\.?\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 const passwordRegex =
@@ -43,6 +43,11 @@ const SignInForm = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values, { resetForm }) => {
+    // try {
+    //   dispatch(logIn(values));
+    // } catch (error) {
+    //   console.log("eroooor signin")
+    // }
     dispatch(logIn(values));
     resetForm();
   };
