@@ -5,6 +5,10 @@ const breakpoints = [320, 768, 1440];
 const mq = breakpoints.map(bp => `@media screen and (min-width: ${bp}px)`);
 
 export const Btn = styled.button`
+  @media screen and (max-width: 374px) {
+    ${props => props.btn320Styles}
+  }
+
   cursor: pointer;
 
   padding: ${({ modalButton, filled }) =>

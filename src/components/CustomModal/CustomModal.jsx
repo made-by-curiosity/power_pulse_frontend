@@ -7,39 +7,49 @@ import icons from '../../assets/icons/svg-sprite.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const CustomModal = ({ onClose, children, modalStyles, modalTabletStyles, modalDesktopStyles }) => {
-   
+export const CustomModal = ({
+  onClose,
+  children,
+  modalStyles,
+  modalTabletStyles,
+  modalDesktopStyles,
+  modal320Styles,
+}) => {
+  const handleBackdropClick = e => {
+    if (e.currentTarget === e.target) {
+      onClose();
+    }
+  };
 
-    const handleBackdropClick = e => {
-        if (e.currentTarget === e.target) {
-            onClose();
-        }
-      };
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    };
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${window.scrollY}px`;
+    window.addEventListener('keydown', handleKeyDown);
 
-    useEffect(() => {
-      const handleKeyDown = e => {
-        if (e.code === 'Escape') {
-          onClose();
-        }
-      };
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${window.scrollY}px`;
-      window.addEventListener('keydown', handleKeyDown);
-
-      return () => {
-        window.removeEventListener('keydown', handleKeyDown);
-        document.body.style.position = '';
-        document.body.style.top = '';
-      };
-    }, [onClose]);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.position = '';
+      document.body.style.top = '';
+    };
+  }, [onClose]);
 
   return createPortal(
     <BackDrop onClick={handleBackdropClick}>
-      <Modal modalStyles={modalStyles} modalTabletStyles={modalTabletStyles} modalDesktopStyles={modalDesktopStyles}>
+      <Modal
+        modal320Styles={modal320Styles}
+        modalStyles={modalStyles}
+        modalTabletStyles={modalTabletStyles}
+        modalDesktopStyles={modalDesktopStyles}
+      >
         <CloseModalBtn type="button" onClick={onClose}>
-            <svg width="20" height="20" stroke="white">
-              <use href={icons + '#icon-closemodal'} />
-            </svg>
+          <svg width="20" height="20" stroke="white">
+            <use href={icons + '#icon-closemodal'} />
+          </svg>
         </CloseModalBtn>
         {children}
       </Modal>

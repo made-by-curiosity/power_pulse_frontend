@@ -7,6 +7,7 @@ import {
   ContainCaloriesNumber,
   ModalBtns,
   LabelGrams,
+  AmountWrapper,
 } from './ModalAddProduct.styled';
 
 import { MainButton } from 'components/MainButton/MainButton';
@@ -60,8 +61,11 @@ export const ModalAddProduct = ({
   return (
     <CustomModal
       onClose={toggleAddModal}
+      modal320Styles={{
+        width: '87vw',
+      }}
       modalStyles={{
-        width: '335px',
+        maxWidth: '335px',
         height: '280px',
         padding: '48px  24px',
         borderRadius: '12px',
@@ -69,28 +73,30 @@ export const ModalAddProduct = ({
         background: '#10100F',
       }}
       modalTabletStyles={{
-        width: '479px',
+        maxWidth: '479px',
         height: '286px',
         padding: '48px  32px',
       }}
       modalDesktopStyles={{
-        width: '479px',
+        maxWidth: '479px',
         height: '286px',
         padding: '48px  32px',
       }}
     >
       <FormField>
         <InputProductName name="product" type="text" value={title} readOnly />
-        <LabelGrams>grams</LabelGrams>
-        <InputProductAmount
-          name="amount"
-          type="text"
-          value={amount}
-          onChange={e => {
-            setAmount(e.target.value);
-          }}
-          autoComplete="off"
-        />
+        <AmountWrapper>
+          <LabelGrams>grams</LabelGrams>
+          <InputProductAmount
+            name="amount"
+            type="text"
+            value={amount}
+            onChange={e => {
+              setAmount(e.target.value);
+            }}
+            autoComplete="off"
+          />
+        </AmountWrapper>
       </FormField>
 
       <ContainCaloriesDiv>
@@ -104,7 +110,15 @@ export const ModalAddProduct = ({
           text="Add to diary"
           filled
           modalButton
-          btnStyles={{ width: 'max-content', letterSpacing: -0.1 }}
+          btnStyles={{
+            width: 'max-content',
+            letterSpacing: -0.1,
+            padding: '12px 20px',
+          }}
+          btn320Styles={{
+            padding: '12px 16px',
+            fontSize: '14px',
+          }}
           onClick={handleAddToDiary}
         />
         <MainButton
@@ -112,6 +126,10 @@ export const ModalAddProduct = ({
           text="Cancel"
           modalButton
           onClick={toggleAddModal}
+          btn320Styles={{
+            padding: '12px 28px',
+            fontSize: '14px',
+          }}
         />
       </ModalBtns>
     </CustomModal>
