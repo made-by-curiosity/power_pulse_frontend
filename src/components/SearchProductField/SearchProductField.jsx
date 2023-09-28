@@ -28,7 +28,7 @@ export const SearchProductField = () => {
 
   const handleChange = event => {
     console.log(event.target.value);
-    setValue(event.target.value);
+    setValue(event.target.value.toLowerCase());
   };
 
   const handleSubmit = event => {

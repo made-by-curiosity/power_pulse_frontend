@@ -1,4 +1,8 @@
-import { getAllProducts } from 'services/powerPulseApi';
+import {
+  getAllProducts,
+  getRecommendedProducts,
+  getNotRecommendedProducts,
+} from 'services/powerPulseApi';
 import { useState, useEffect } from 'react';
 import {
   ProductsContainer,
@@ -32,6 +36,9 @@ export const ProductsList = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isSuccessModal, setSuccessModal] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
+  const [query, setQuery] = useState('');
+  const [recommend, setRecommend] = useState([]);
+  const [notRecommend, setNotRecommend] = useState([]);
 
   const { blood } = useSelector(selectUserParams);
 
@@ -39,7 +46,12 @@ export const ProductsList = () => {
     async function fetchProducts() {
       try {
         const productsList = await getAllProducts();
+        const recommendedProducts = await getRecommendedProducts();
+        const notRecommendedProducts = await getNotRecommendedProducts();
         setProducts(productsList);
+        // setRecommend(recommendedProducts);
+        // setNotRecommend(notRecommendedProducts);
+        // console.log(recommend);
       } catch (error) {
         Notify.failure('Ops...Something went wrong. Please try again.');
         console.log(error.message);
@@ -48,12 +60,16 @@ export const ProductsList = () => {
     fetchProducts();
   }, []);
 
+  const filterProducts = value => {};
+
+  useEffect(() => {}, [query]);
+
   const handleModalBtn = products => {
     setIsAddModalOpen(state => !state);
     setCurrentProduct(products);
   };
 
-  const productsToShow = products.slice(0, 20);
+  const productsToShow = products.slice(0, 50);
 
   return (
     <ProductsContainer>

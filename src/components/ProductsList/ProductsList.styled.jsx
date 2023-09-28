@@ -171,4 +171,5 @@ export const BtnAddProduct = styled.button`
   border: none;
   background: none;
   cursor: pointer;
+  padding: 0;
 `;
