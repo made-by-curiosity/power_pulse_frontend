@@ -1,5 +1,3 @@
-import { ProductsFilters } from 'components/ProductsFilters/ProductsFilters';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -29,10 +27,6 @@ const ProfilePage = () => {
         <UserCard userInfo={userInfo}></UserCard>
         <UserForm userInfo={userInfo}></UserForm>
       </PageWrapper>
-
-      <ProductsFilters></ProductsFilters>
-      <br />
-      <br />
     </Container>
   );
 };
