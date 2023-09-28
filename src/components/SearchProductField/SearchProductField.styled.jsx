@@ -6,7 +6,7 @@ const mq = breakpoints.map(bp => `@media screen and (min-width: ${bp}px)`);
 
 export const InputWrapper = styled.div`
   position: relative;
-  width: 335px;
+  max-width: 335px;
 
   ${mq[1]} {
     width: 236px;
@@ -16,6 +16,7 @@ export const InputWrapper = styled.div`
 export const StyledInput = styled.input`
   width: 100%;
   padding: 14px;
+  padding-right: 58px;
 
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);

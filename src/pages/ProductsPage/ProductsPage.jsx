@@ -1,13 +1,15 @@
 import { Container } from 'components/Container/Container';
-import { ProductsFilters } from 'components/ProductsFilters/ProductsFilters';
 import { ProductsList } from 'components/ProductsList/ProductsList';
 import { ContentWrapper } from './ProductsPage.styled';
+import { MUIProductsFilters } from 'components/MUIProductsFilters/MUIProductsFilters';
+import { Title } from 'components/Title/Title';
 
 const ProductsPage = () => {
   return (
     <Container>
       <ContentWrapper>
-        <ProductsFilters />
+        <Title>Products</Title>
+        <MUIProductsFilters />
         <ProductsList />
       </ContentWrapper>
     </Container>

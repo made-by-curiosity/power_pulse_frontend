@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 
 
+export const ExercisesPageWrap = styled.div`
+padding-top: 40px;
+padding-bottom: 80px;
 
-export const TabsWrap = styled.div`
-display: flex;
-justify-content: space-between;
+@media screen and (min-width: 768px) {
+    padding-top: 72px;
+    }
 `

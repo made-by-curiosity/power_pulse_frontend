@@ -21,6 +21,7 @@ import icons from '../../assets/icons/svg-sprite.svg';
 import { CustomModal } from 'components/CustomModal/CustomModal';
 import { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import { addWorkout } from 'services/powerPulseApi';
 // import axios from 'axios';
 
 // const BASE_URL='https://power-pulse.onrender.com'
@@ -37,7 +38,6 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 // };
 
 export const ModalTrening = ({ onToogle, example }) => {
-
   const children = example.time * 60;
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -51,8 +51,9 @@ export const ModalTrening = ({ onToogle, example }) => {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   }
 
-  const caloriesOneSeconds = Math.round((example.burnedCalories / children) * 100) / 100;
-  
+  const caloriesOneSeconds =
+    Math.round((example.burnedCalories / children) * 100) / 100;
+
   // useEffect(() => {
 
   //   axios.get('api/exercises')
@@ -62,7 +63,8 @@ export const ModalTrening = ({ onToogle, example }) => {
 
   useEffect(() => {
     let interval;
-    if (isPlaying
+    if (
+      isPlaying
       // && isSecond !== children
     ) {
       interval = setInterval(() => {
@@ -77,13 +79,42 @@ export const ModalTrening = ({ onToogle, example }) => {
     // }
 
     return () => clearInterval(interval);
-  }, [children, setIsPlaying, setIsSecond, isPlaying, isSecond, setIsCalories, caloriesOneSeconds]);
+  }, [
+    children,
+    setIsPlaying,
+    setIsSecond,
+    isPlaying,
+    isSecond,
+    setIsCalories,
+    caloriesOneSeconds,
+  ]);
 
   const togglePlaying = () => {
     setIsPlaying(prevState => !prevState);
   };
 
   const timerFormat = formatTime(isSecond);
+
+  const handleSendWorkout = async () => {
+    if (isPlaying || isSecond < 1) {
+      return;
+    }
+
+    const workout = {
+      exerciseId: example._id,
+      time: Math.ceil(isSecond / 60),
+      calories: Math.ceil(isCalories),
+    };
+
+    console.log(workout);
+    try {
+      const res = await addWorkout(workout);
+      console.log(res);
+      onToogle();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <CustomModal
@@ -121,7 +152,7 @@ export const ModalTrening = ({ onToogle, example }) => {
               trailColor="#EFEDE81A"
               strokeWidth={4}
               onComplete={() => {
-                return { shouldRepeat: true }
+                return { shouldRepeat: true };
               }}
             >
               {() => {
@@ -165,7 +196,7 @@ export const ModalTrening = ({ onToogle, example }) => {
               ))}
           </ListTrening>
 
-          <ButtonAdd>
+          <ButtonAdd onClick={handleSendWorkout}>
             <SpanButton>Add to diary</SpanButton>
           </ButtonAdd>
         </DivColumn>
