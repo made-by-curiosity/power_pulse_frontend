@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
-import bg_img_page_1 from '../../assets/images/bg_img/bg_main.jpg';
-import bg_img2_page_1 from '../../assets/images/bg_img/bg_main@2x.jpg';
-import bg_img3_page_1 from '../../assets/images/bg_img/bg_main@3x.jpg';
+import bg_img_page_1 from '../../assets/images/ta_img/ta_main.jpg';
+import bg_img2_page_1 from '../../assets/images/ta_img/ta_main@2x.jpg';
+import bg_img3_page_1 from '../../assets/images/ta_img/ta_main@3x.jpg';
 
 import bg_img_page_2 from '../../assets/images/bg_img/bg_eating.jpg';
 import bg_img2_page_2 from '../../assets/images/bg_img/bg_eating@2x.jpg';
@@ -38,6 +38,7 @@ export const BgContainer = styled.div`
     width: 100%;
     height: 100vh;
     min-height: 780px;
+    ${props => (!props.isFilter ? 'min-height: 850px;' : '')}
 
     position: absolute;
     z-index: -5;
@@ -49,8 +50,10 @@ export const BgContainer = styled.div`
 `;
 
 export const BgImage = styled.div`
+  ${props => (props.isFilter ? 'display: none;' : '')}
   @media (min-width: 1440px) {
     width: 30%;
+    ${props => (!props.isFilter ? 'width: 35%;' : '')}
 
     background: linear-gradient(89deg, #040404 1.1%, rgba(4, 4, 4, 0) 70.79%),
       url(${props => getBgPhotos(props.page).bg_img});
@@ -71,7 +74,7 @@ export const BgImage = styled.div`
           ),
           url(${props => getBgPhotos(props.page).bg_img2});
 
-        background-size: 268px 571px;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: right bottom;
       }
@@ -87,7 +90,7 @@ export const BgImage = styled.div`
           ),
           url(${props => getBgPhotos(props.page).bg_img3});
 
-        background-size: 268px 571px;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: right bottom;
       }
