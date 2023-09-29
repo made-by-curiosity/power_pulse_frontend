@@ -194,20 +194,35 @@ export const BurnedCaloriesNumber = styled.p`
 `;
 
 export const ButtonAdd = styled.button`
+  cursor: pointer;
+
   display: inline-flex;
   padding: 12px 32px;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  border: none;
   border-radius: 12px;
   background: var(--orange, #e6533c);
   margin-right: auto;
   margin-top: 24px;
 
+  transition: background-color 200ms ease-out;
+
   @media (min-width: 768px) {
     margin-top: 176px;
     margin-left: 200px;
     padding: 14px 32px;
+  }
+
+  &:hover:not([disabled]),
+  &:focus:not([disabled]) {
+    background-color: #ef8964;
+    border-color: #ef8964;
+  }
+
+  &:disabled {
+    color: rgba(239, 237, 232, 0.6);
   }
 `;
 
