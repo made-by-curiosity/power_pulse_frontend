@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import {
   InputWrapper,
   StyledInput,
@@ -23,21 +21,18 @@ const iconSearch = (
   </IconSearch>
 );
 
-export const SearchProductField = () => {
-  const [value, setValue] = useState('');
-
+export const SearchProductField = ({ searchQuery, setSearchQuery }) => {
   const handleChange = event => {
-    console.log(event.target.value);
-    setValue(event.target.value);
+    setSearchQuery(event.target.value);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(event);
+    const searchInputValue = event.target.elements[0].value;
   };
 
   const resetValue = () => {
-    setValue('');
+    setSearchQuery('');
   };
 
   return (
@@ -46,10 +41,10 @@ export const SearchProductField = () => {
         <StyledInput
           type="text"
           placeholder="Search"
-          value={value}
+          value={searchQuery}
           onChange={handleChange}
         ></StyledInput>
-        {value && (
+        {searchQuery && (
           <ButtonCancel type="button" onClick={resetValue}>
             {iconCancel}
           </ButtonCancel>

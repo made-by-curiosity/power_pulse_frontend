@@ -13,16 +13,26 @@ import icon from '../../assets/icons/svg-sprite.svg';
 import { getProductFilters } from 'services/powerPulseApi';
 import { SearchProductField } from 'components/SearchProductField/SearchProductField';
 
-export const MUIProductsFilters = ({ x }) => {
+const capitalizeString = string => {
+  return `${string[0].toUpperCase()}${string.slice(1)}`;
+};
+
+export const MUIProductsFilters = ({
+  recommended,
+  setRecommended,
+  category,
+  setCategory,
+  searchQuery,
+  setSearchQuery,
+}) => {
   const [productsFilters, setProductsFilters] = useState([]);
-  const [recommended, setRecommended] = useState('');
-  const [category, setCategory] = useState('');
 
   useEffect(() => {
     (async () => {
       const filters = await getProductFilters();
       setProductsFilters(filters[0].productsCategories);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleRecommendedChange = e => {
@@ -36,26 +46,11 @@ export const MUIProductsFilters = ({ x }) => {
   return (
     <ProductsFilterWrapper>
       <FiltersSpan>Filters</FiltersSpan>
-      <SearchProductField />
+      <SearchProductField
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
       <FilterInnerWrapper>
-        <SelectContainer>
-          <SelectWrapper fullWidth>
-            <Picker
-              labelId="custom-input"
-              id="custom-input"
-              value={recommended}
-              onChange={handleRecommendedChange}
-              displayEmpty
-            >
-              <Option value={''}>All</Option>
-              <Option value={true}>Recommended</Option>
-              <Option value={false}>Not recommended</Option>
-            </Picker>
-          </SelectWrapper>
-          <IconChevron>
-            <use href={`${icon}#icon-chevrondown`} />
-          </IconChevron>
-        </SelectContainer>
         <SelectContainer>
           <SelectWrapper fullWidth>
             <Picker
@@ -70,9 +65,27 @@ export const MUIProductsFilters = ({ x }) => {
               </Option>
               {productsFilters.map(filter => (
                 <Option key={filter} value={filter}>
-                  {filter}
+                  {capitalizeString(filter)}
                 </Option>
               ))}
+            </Picker>
+          </SelectWrapper>
+          <IconChevron>
+            <use href={`${icon}#icon-chevrondown`} />
+          </IconChevron>
+        </SelectContainer>
+        <SelectContainer>
+          <SelectWrapper fullWidth>
+            <Picker
+              labelId="custom-input"
+              id="custom-input"
+              value={recommended}
+              onChange={handleRecommendedChange}
+              displayEmpty
+            >
+              <Option value={''}>All</Option>
+              <Option value={true}>Recommended</Option>
+              <Option value={false}>Not recommended</Option>
             </Picker>
           </SelectWrapper>
           <IconChevron>

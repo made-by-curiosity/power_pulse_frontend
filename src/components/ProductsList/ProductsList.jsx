@@ -27,7 +27,36 @@ import { Notify } from 'notiflix';
 import { useSelector } from 'react-redux';
 import { selectUserParams } from 'redux/auth/selectors';
 
-export const ProductsList = () => {
+const getBloodFilter = recommended => {
+  switch (recommended) {
+    case true:
+      return 'recommended=true';
+    case false:
+      return 'recommended=false';
+    default:
+      return '';
+  }
+};
+
+const filterProducts = (allProducts, category, searchQuery) => {
+  const products = [];
+
+  for (let i = 0; i < allProducts.length; i += 1) {
+    const productCategory = allProducts[i].category;
+    const productName = allProducts[i].title.toLowerCase();
+
+    if (
+      (!category || category === productCategory) &&
+      productName.includes(searchQuery.toLowerCase())
+    ) {
+      products.push(allProducts[i]);
+    }
+  }
+
+  return products;
+};
+
+export const ProductsList = ({ recommended, category, searchQuery }) => {
   const [products, setProducts] = useState([]);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isSuccessModal, setSuccessModal] = useState(false);
@@ -35,10 +64,12 @@ export const ProductsList = () => {
 
   const { blood } = useSelector(selectUserParams);
 
+  const bloodFilter = getBloodFilter(recommended);
+
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const productsList = await getAllProducts();
+        const productsList = await getAllProducts(bloodFilter);
         setProducts(productsList);
       } catch (error) {
         Notify.failure('Ops...Something went wrong. Please try again.');
@@ -46,14 +77,16 @@ export const ProductsList = () => {
       }
     }
     fetchProducts();
-  }, []);
+  }, [bloodFilter]);
 
   const handleModalBtn = products => {
     setIsAddModalOpen(state => !state);
     setCurrentProduct(products);
   };
 
-  const productsToShow = products.slice(0, 20);
+  const filteredProducts = filterProducts(products, category, searchQuery);
+
+  const productsToShow = filteredProducts.slice(0, 20);
 
   return (
     <ProductsContainer>
