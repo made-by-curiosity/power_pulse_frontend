@@ -7,11 +7,13 @@ export const BackDrop = styled.div`
   top: 0;
   left: 0;
   background-color: rgba(10, 10, 10, 0.495);
+
+  z-index: 10000;
 `;
 
 export const Modal = styled.div`
   position: absolute;
-  top: 57%;
+  top: 50%;
   left: 50%;
 
   transform: translate(-50%, -50%);
@@ -19,7 +21,7 @@ export const Modal = styled.div`
   width: 600px;
   height: 300px;
   padding: 40px;
-  max-height: 80%;
+  max-height: 95%;
   overflow-y: auto;
 
   background-color: #10100f;
