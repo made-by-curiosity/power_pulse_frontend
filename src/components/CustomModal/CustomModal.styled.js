@@ -11,7 +11,7 @@ export const BackDrop = styled.div`
 
 export const Modal = styled.div`
   position: absolute;
-  top: 50%;
+  top: 57%;
   left: 50%;
 
   transform: translate(-50%, -50%);
@@ -19,6 +19,8 @@ export const Modal = styled.div`
   width: 600px;
   height: 300px;
   padding: 40px;
+  max-height: 80%;
+  overflow-y: auto;
 
   background-color: #10100f;
   border-radius: 12px;
