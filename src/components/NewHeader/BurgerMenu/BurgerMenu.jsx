@@ -5,13 +5,13 @@ import { BurgerCloseButton } from './BurgerCloseButton/BurgerCloseButton';
 import { BurgerLogoutButton } from './BurgerLogutButton/BurgerLogoutButton';
 import { useEffect } from 'react';
 
-export const BurgerMenu = ({ onBurgerButton }) => {
+export const BurgerMenu = ({ closeMenu }) => {
   const scrollY = window.scrollY;
 
   useEffect(() => {
     const close = e => {
       if (e.keyCode === 27) {
-        onBurgerButton();
+        closeMenu();
       }
     };
     document.body.style.position = 'fixed';
@@ -25,16 +25,22 @@ export const BurgerMenu = ({ onBurgerButton }) => {
       document.body.style.width = '';
       window.scrollTo(0, scrollY);
     };
-  }, [onBurgerButton, scrollY]);
+  }, [closeMenu, scrollY]);
 
   return PortalReactDOM.createPortal(
     <>
-      <BurgerLayout onClick={onBurgerButton} />
+      <BurgerLayout onClick={closeMenu} />
       <UserNav>
-        <BurgerCloseButton onClick={onBurgerButton} />
-        <BurgerLink to="/diary">Diary</BurgerLink>
-        <BurgerLink to="/products">Products</BurgerLink>
-        <BurgerLink to="/exercises">Exercises</BurgerLink>
+        <BurgerCloseButton onClick={closeMenu} />
+        <BurgerLink onClick={closeMenu} to="/diary">
+          Diary
+        </BurgerLink>
+        <BurgerLink onClick={closeMenu} to="/products">
+          Products
+        </BurgerLink>
+        <BurgerLink onClick={closeMenu} to="/exercises">
+          Exercises
+        </BurgerLink>
         <BurgerLogoutButton />
       </UserNav>
     </>,
