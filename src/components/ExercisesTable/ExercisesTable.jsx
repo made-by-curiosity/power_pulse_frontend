@@ -75,10 +75,10 @@ export default function ExercisesTable({ workouts, setWorkouts }) {
     try {
       await deleteWorkout(id);
 
-    const filteredWorkouts = workouts.filter(workout => workout._id !== id);
-    setWorkouts(filteredWorkouts);
+      const filteredWorkouts = workouts.filter(workout => workout._id !== id);
+      setWorkouts(filteredWorkouts);
     } catch (error) {
-       Notify.failure("Ops...Something went wrong. Please try again.")
+      Notify.failure('Ops...Something went wrong. Please try again.');
     }
   };
 
@@ -106,7 +106,12 @@ export default function ExercisesTable({ workouts, setWorkouts }) {
                 return (
                   <CellTel key={cell.id}>
                     <TitleColumn>{cell.column.columnDef.header}</TitleColumn>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    <span data-crop="crop">
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </span>
                   </CellTel>
                 );
               })}

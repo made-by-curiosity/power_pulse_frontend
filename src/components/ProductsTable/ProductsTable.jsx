@@ -94,10 +94,10 @@ export default function ProductsTable({ meals, setMeals }) {
     try {
       await deleteMeal(id);
 
-    const filteredMeals = meals.filter(meal => meal._id !== id);
-    setMeals(filteredMeals);
+      const filteredMeals = meals.filter(meal => meal._id !== id);
+      setMeals(filteredMeals);
     } catch (error) {
-      Notify.failure("Ops...Something went wrong. Please try again.")
+      Notify.failure('Ops...Something went wrong. Please try again.');
     }
   };
 
@@ -124,7 +124,9 @@ export default function ProductsTable({ meals, setMeals }) {
               {row.getVisibleCells().map(cell => (
                 <CellTel key={cell.id}>
                   <TitleColumn>{cell.column.id}</TitleColumn>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  <span data-crop="crop">
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </span>
                 </CellTel>
               ))}
               <SvgTd>
