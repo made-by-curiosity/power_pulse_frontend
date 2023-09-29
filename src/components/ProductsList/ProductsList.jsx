@@ -57,7 +57,12 @@ const filterProducts = (allProducts, category, searchQuery) => {
   return products;
 };
 
-export const ProductsList = ({ recommended, category, searchQuery }) => {
+export const ProductsList = ({
+  recommended,
+  category,
+  searchQuery,
+  setIsLoaderShown,
+}) => {
   const [products, setProducts] = useState([]);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isSuccessModal, setSuccessModal] = useState(false);
@@ -70,14 +75,18 @@ export const ProductsList = ({ recommended, category, searchQuery }) => {
   useEffect(() => {
     async function fetchProducts() {
       try {
+        setIsLoaderShown(state => !state);
         const productsList = await getAllProducts(bloodFilter);
         setProducts(productsList);
       } catch (error) {
         Notify.failure('Ops...Something went wrong. Please try again.');
         console.log(error.message);
+      } finally {
+        setIsLoaderShown(state => !state);
       }
     }
     fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bloodFilter]);
 
   const handleModalBtn = products => {
