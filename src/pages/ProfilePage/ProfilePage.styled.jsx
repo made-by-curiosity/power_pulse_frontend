@@ -13,5 +13,6 @@ export const PageWrapper = styled.div`
 
     margin-top: 32px;
     margin-bottom: 36px;
+    padding-bottom: 44px;
   }
 `;
