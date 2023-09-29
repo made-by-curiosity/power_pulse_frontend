@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { updateName, updateUserParams } from 'redux/auth/operations';
 
@@ -279,4 +280,25 @@ export const UserForm = ({ userInfo }) => {
       </Formik>
     </>
   );
+};
+
+UserForm.propTypes = {
+  userInfo: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    userParams: PropTypes.shape({
+      height: PropTypes.number.isRequired,
+      currentWeight: PropTypes.number.isRequired,
+      desiredWeight: PropTypes.number.isRequired,
+      birthday: PropTypes.string.isRequired,
+      blood: PropTypes.number.isRequired,
+      sex: PropTypes.string.isRequired,
+      levelActivity: PropTypes.number.isRequired,
+    }).isRequired,
+    avatarUrls: PropTypes.shape({
+      mobile: PropTypes.string.isRequired,
+      desktop: PropTypes.string.isRequired,
+    }).isRequired,
+    bmr: PropTypes.number,
+  }).isRequired,
 };
