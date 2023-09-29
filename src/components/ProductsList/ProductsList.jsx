@@ -104,11 +104,12 @@ export const ProductsList = ({
         <ModalAddProduct
           productInfo={currentProduct}
           toggleAddModal={() => setIsAddModalOpen(state => !state)}
+          toggleSuccessModal={() => setSuccessModal(state => !state)}
         />
       )}
       {isSuccessModal && (
         <ModalAddProductSuccess
-          toggleSuccessModal={() => setSuccessModal(state => !state)}
+          onClose={() => setSuccessModal(state => !state)}
         />
       )}
       {productsToShow.length !== 0 ? (
