@@ -142,7 +142,7 @@ export const ParamsForm = ({ setBackgroundStep }) => {
 
       resetForm();
     } else {
-      // Перехід на наступний етап 
+      // Перехід на наступний етап
       setStep(state => state + 1);
     }
   };
@@ -361,7 +361,6 @@ export const ParamsForm = ({ setBackgroundStep }) => {
   );
 };
 
-
 ParamsForm.propTypes = {
-  setBackgroundStep: PropTypes.string.isRequired,
-}
+  setBackgroundStep: PropTypes.func.isRequired,
+};
