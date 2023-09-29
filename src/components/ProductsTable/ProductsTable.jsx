@@ -23,6 +23,7 @@ import { DeleteBtn } from 'components/DeleteBtn/DeleteBtn';
 import { deleteMeal } from 'services/powerPulseApi';
 import { TableBody } from 'components/DayProducts/DayProducts.styled';
 import { Notify } from 'notiflix';
+import { capitalizeString } from 'utils/capitalize';
 
 export default function ProductsTable({ meals, setMeals }) {
   const { blood } = useSelector(selectUserParams);
@@ -31,8 +32,8 @@ export default function ProductsTable({ meals, setMeals }) {
     () =>
       meals.map(meal => {
         return {
-          Title: meal.productId.title,
-          Category: meal.productId.category,
+          Title: capitalizeString(meal.productId.title),
+          Category: capitalizeString(meal.productId.category),
           Calories: meal.calories,
           Weight: meal.amount,
           Recommend: !meal.productId.groupBloodNotAllowed[blood],

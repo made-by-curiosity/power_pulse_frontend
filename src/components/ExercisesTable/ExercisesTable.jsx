@@ -18,16 +18,17 @@ import { DeleteBtn } from 'components/DeleteBtn/DeleteBtn';
 import { deleteWorkout } from 'services/powerPulseApi';
 import { TableBody } from 'components/DayProducts/DayProducts.styled';
 import { Notify } from 'notiflix';
+import { capitalizeString } from 'utils/capitalize';
 
 export default function ExercisesTable({ workouts, setWorkouts }) {
   const resData = useMemo(
     () =>
       workouts.map(workout => {
         return {
-          bodyPart: workout.exerciseId.bodyPart,
-          equipment: workout.exerciseId.equipment,
-          name: workout.exerciseId.name,
-          target: workout.exerciseId.target,
+          bodyPart: capitalizeString(workout.exerciseId.bodyPart),
+          equipment: capitalizeString(workout.exerciseId.equipment),
+          name: capitalizeString(workout.exerciseId.name),
+          target: capitalizeString(workout.exerciseId.target),
           burnedCalories: workout.calories,
           time: workout.time,
           id: workout._id,
