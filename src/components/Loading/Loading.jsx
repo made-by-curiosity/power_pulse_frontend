@@ -6,7 +6,7 @@ import {
 } from './Loading.styled';
 import { LoadingSpinner } from 'components/LoadingSpinner/LoadingSpinner';
 
-export const Loading = () => {
+export const Loading = ({ noBackdrop }) => {
   const [isShown, setIsShown] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const Loading = () => {
   }, []);
 
   return (
-    <LoadingWrapper>
+    <LoadingWrapper noBackdrop={noBackdrop}>
       <LoadingCont>
         <LoadingSpinner />
         {isShown && (

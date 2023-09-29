@@ -14,7 +14,7 @@ const ProductsPage = () => {
 
   return (
     <Container>
-      {isLoaderShown && <Loading />}
+      {isLoaderShown && <Loading noBackdrop />}
       <ContentWrapper>
         <Title>Products</Title>
         <MUIProductsFilters
