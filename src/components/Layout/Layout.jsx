@@ -16,7 +16,7 @@ export const Layout = () => {
     <>
       <Header setMenuIsOpen={setMenuIsOpen} />
       {menuIsOpen && <BurgerMenu closeMenu={closeMenu} />}
-      <Suspense fallback={<Loading text="Loading..." />}>
+      <Suspense fallback={<Loading />}>
         <main>
           <Outlet />
         </main>

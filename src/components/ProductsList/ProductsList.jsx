@@ -26,34 +26,79 @@ import { Notify } from 'notiflix';
 
 import { useSelector } from 'react-redux';
 import { selectUserParams } from 'redux/auth/selectors';
+import { NoResultsMessage } from 'components/NoResultsMessage/NoResultsMessage';
+import { capitalizeString } from 'utils/capitalize';
 
-export const ProductsList = () => {
+const getBloodFilter = recommended => {
+  switch (recommended) {
+    case true:
+      return 'recommended=true';
+    case false:
+      return 'recommended=false';
+    default:
+      return '';
+  }
+};
+
+const filterProducts = (allProducts, category, searchQuery) => {
+  const products = [];
+
+  for (let i = 0; i < allProducts.length; i += 1) {
+    const productCategory = allProducts[i].category;
+    const productName = allProducts[i].title.toLowerCase();
+
+    if (
+      (!category || category === productCategory) &&
+      productName.includes(searchQuery.toLowerCase())
+    ) {
+      products.push(allProducts[i]);
+    }
+  }
+
+  return products;
+};
+
+export const ProductsList = ({
+  recommended,
+  category,
+  searchQuery,
+  setIsLoaderShown,
+}) => {
   const [products, setProducts] = useState([]);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isSuccessModal, setSuccessModal] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
+  const [totalCalories, setTotalCalories] = useState(0);
 
   const { blood } = useSelector(selectUserParams);
+
+  const bloodFilter = getBloodFilter(recommended);
 
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const productsList = await getAllProducts();
+        setIsLoaderShown(state => !state);
+        const productsList = await getAllProducts(bloodFilter);
         setProducts(productsList);
       } catch (error) {
         Notify.failure('Ops...Something went wrong. Please try again.');
         console.log(error.message);
+      } finally {
+        setIsLoaderShown(state => !state);
       }
     }
     fetchProducts();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bloodFilter]);
 
   const handleModalBtn = products => {
     setIsAddModalOpen(state => !state);
     setCurrentProduct(products);
   };
 
-  const productsToShow = products.slice(0, 20);
+  const filteredProducts = filterProducts(products, category, searchQuery);
+
+  const productsToShow = filteredProducts.slice(0, 20);
 
   return (
     <ProductsContainer>
@@ -61,14 +106,17 @@ export const ProductsList = () => {
         <ModalAddProduct
           productInfo={currentProduct}
           toggleAddModal={() => setIsAddModalOpen(state => !state)}
+          toggleSuccessModal={() => setSuccessModal(state => !state)}
+          setTotalCalories={setTotalCalories}
         />
       )}
       {isSuccessModal && (
         <ModalAddProductSuccess
-          toggleSuccessModal={() => setSuccessModal(state => !state)}
+          onClose={() => setSuccessModal(state => !state)}
+          totalCalories={totalCalories}
         />
       )}
-      {products.length !== 0 ? (
+      {productsToShow.length !== 0 ? (
         <ProductList>
           {productsToShow.map(
             ({
@@ -127,7 +175,7 @@ export const ProductsList = () => {
                         <use href={icons + '#icon-running'}></use>
                       </svg>
                     </CaloriesIcon>
-                    <MenuTitle>{title}</MenuTitle>
+                    <MenuTitle>{capitalizeString(title)}</MenuTitle>
                   </MenuContainer>
                   <DataInfo>
                     <li>
@@ -140,7 +188,7 @@ export const ProductsList = () => {
                         textOverflow: 'ellipsis',
                       }}
                     >
-                      Category: <span>{category}</span>
+                      Category: <span>{capitalizeString(category)}</span>
                     </li>
                     <li>
                       Weight:<span>{weight}</span>
@@ -152,7 +200,7 @@ export const ProductsList = () => {
           )}
         </ProductList>
       ) : (
-        <p>Sorry, we didn't find any products matching your request.</p>
+        <NoResultsMessage />
       )}
     </ProductsContainer>
   );

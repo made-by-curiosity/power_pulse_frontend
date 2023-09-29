@@ -6,10 +6,6 @@
 		width: 6px;
 	}
 
-	/* &::-webkit-scrollbar-track {
-		background: var(--secondary-light-text-color);
-	} */
-
 	&::-webkit-scrollbar-thumb {
 		background: linear-gradient(90deg,
 				rgba(239, 237, 232, 0.10) 0%,
