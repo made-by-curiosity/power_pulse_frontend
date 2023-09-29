@@ -25,10 +25,10 @@ export const signUp = createAsyncThunk(
       return data;
     } catch (error) {
       Notify.failure(
-        'Ops... Something went wrong. Maybe your email is already in use. Please try again.'
+        'Ops... Something went wrong. Maybe your email is already used. Please try again.'
       );
       return thunkAPI.rejectWithValue(
-        'Ops... Something went wrong. Maybe your email is already in use. Please try again.'
+        'Ops... Something went wrong. Maybe your email is already used. Please try again.'
       );
     }
   }
