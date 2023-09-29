@@ -24,8 +24,14 @@ import { BackLink } from 'components/BackLink/BackLink';
 import { ModalTrening } from 'components/ModalTrening/ModalTrening';
 import { Notify } from 'notiflix';
 import { capitalizeString } from 'utils/capitalize';
+import { ModalExercise } from 'components/ModalExercise/ModalExercise';
 
 export const ExercisesListByCategory = () => {
+  const [workoutDoneInfo, setWorkoutDoneInfo] = useState({
+    time: 0,
+    calories: 0,
+  });
+
   const location = useLocation();
   const backLinkRef = location.state?.from ?? '/exercises';
 
@@ -35,6 +41,7 @@ export const ExercisesListByCategory = () => {
 
   const [exercisesSubCategories, setExercisesSubCategories] = useState(null);
 
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState(null);
 
@@ -110,7 +117,19 @@ export const ExercisesListByCategory = () => {
         </ExercisesList>
       </MainExercisesContainer>
       {isModalOpen && (
-        <ModalTrening onToogle={toogleModal} example={selectedExercise} />
+        <ModalTrening
+          onToogle={toogleModal}
+          exerciseInfo={selectedExercise}
+          setIsSuccessOpen={() => setIsSuccessOpen(prevState => !prevState)}
+          setWorkoutDoneInfo={setWorkoutDoneInfo}
+        />
+      )}
+      {isSuccessOpen && (
+        <ModalExercise
+          onClose={() => setIsSuccessOpen(prevState => !prevState)}
+          time={workoutDoneInfo.time}
+          calories={workoutDoneInfo.calories}
+        />
       )}
     </div>
   );

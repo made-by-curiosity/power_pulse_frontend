@@ -23,9 +23,15 @@ import { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { addWorkout } from 'services/powerPulseApi';
 import { capitalizeString } from 'utils/capitalize';
+import { Notify } from 'notiflix';
 
-export const ModalTrening = ({ onToogle, example }) => {
-  const children = example.time * 60;
+export const ModalTrening = ({
+  onToogle,
+  exerciseInfo,
+  setIsSuccessOpen,
+  setWorkoutDoneInfo,
+}) => {
+  const children = exerciseInfo.time * 60;
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSecond, setIsSecond] = useState(0);
@@ -40,7 +46,7 @@ export const ModalTrening = ({ onToogle, example }) => {
   }
 
   const caloriesOneSeconds =
-    Math.round((example.burnedCalories / children) * 100) / 100;
+    Math.round((exerciseInfo.burnedCalories / children) * 100) / 100;
 
   useEffect(() => {
     let interval;
@@ -75,20 +81,28 @@ export const ModalTrening = ({ onToogle, example }) => {
 
   const handleSendWorkout = async () => {
     if (isPlaying || isSecond < 1) {
+      Notify.failure(
+        `Impossible to add workout. Finish working out before adding!`
+      );
       return;
     }
 
     const workout = {
-      exerciseId: example._id,
+      exerciseId: exerciseInfo._id,
       time: Math.ceil(isSecond / 60),
       calories: Math.ceil(isCalories),
     };
 
     try {
       const res = await addWorkout(workout);
-      console.log(res);
+      setWorkoutDoneInfo({
+        time: res.time,
+        calories: res.calories,
+      });
+      setIsSuccessOpen();
       onToogle();
     } catch (error) {
+      Notify.failure('Ops...Something went wrong. Please try again.');
       console.log(error.message);
     }
   };
@@ -117,7 +131,7 @@ export const ModalTrening = ({ onToogle, example }) => {
       <>
         <DivColumn>
           <ImgDiv>
-            <ImgGif src={example.gifUrl} alt="" />
+            <ImgGif src={exerciseInfo.gifUrl} alt="" />
           </ImgDiv>
           <DivTimer>
             <Text>Time</Text>
@@ -165,7 +179,7 @@ export const ModalTrening = ({ onToogle, example }) => {
         </DivColumn>
         <DivColumn>
           <ListTrening>
-            {Object.entries(example)
+            {Object.entries(exerciseInfo)
               .filter(
                 ([key, value]) =>
                   key !== 'gifUrl' && key !== 'burnedCalories' && key !== '_id'
