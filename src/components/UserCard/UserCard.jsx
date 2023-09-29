@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Avatar } from 'components/Avatar/Avatar';
 import { InfoCard } from 'components/InfoCard/InfoCard';
 import { InfoCardsWrapper } from 'components/InfoCard/InfoCard.styled';
@@ -39,4 +41,25 @@ export const UserCard = ({ userInfo }) => {
       <LogoutBtn></LogoutBtn>
     </UserCardWrapper>
   );
+};
+
+UserCard.propTypes = {
+  userInfo: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    userParams: PropTypes.shape({
+      height: PropTypes.number.isRequired,
+      currentWeight: PropTypes.number.isRequired,
+      desiredWeight: PropTypes.number.isRequired,
+      birthday: PropTypes.string.isRequired,
+      blood: PropTypes.number.isRequired,
+      sex: PropTypes.string.isRequired,
+      levelActivity: PropTypes.number.isRequired,
+    }).isRequired,
+    avatarUrls: PropTypes.shape({
+      mobile: PropTypes.string.isRequired,
+      desktop: PropTypes.string.isRequired,
+    }).isRequired,
+    bmr: PropTypes.number,
+  }).isRequired,
 };
