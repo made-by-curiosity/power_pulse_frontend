@@ -33,7 +33,6 @@ const NotFoundPage = lazy(() =>
 export const App = () => {
   const dispatch = useDispatch();
 
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
