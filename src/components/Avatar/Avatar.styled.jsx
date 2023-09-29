@@ -16,7 +16,7 @@ export const AvatarWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  border: 1px solid #e6533c;
+  border: ${props => props.theme.colors.avatarBorder};
   border-radius: 50%;
 
   ${'' /* overflow: hidden; */}
@@ -46,16 +46,16 @@ export const UserName = styled.h2`
   margin-top: 32px;
   text-align: center;
 
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-family: Roboto;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.11111;
+  line-height: 1.1;
 
   ${mq[1]} {
     font-size: 24px;
-    line-height: 1.16667;
+    line-height: 1.2;
   }
 `;
 
@@ -63,7 +63,7 @@ export const UserTitle = styled.h3`
   margin-top: 4px;
   text-align: center;
 
-  color: rgba(239, 237, 232, 0.5);
+  color: ${props => props.theme.colors.formTitleColor};
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
@@ -92,8 +92,8 @@ export const AddAvatarInput = styled.input`
 `;
 
 export const AddAvatarIcon = styled.svg`
-  fill: #e6533c;
-  stroke: #efede8;
+  fill: ${props => props.theme.colors.burgerSvgColor};
+  stroke: ${props => props.theme.colors.primaryTitleColor};
   stroke-width: 0;
 
   width: 24px;

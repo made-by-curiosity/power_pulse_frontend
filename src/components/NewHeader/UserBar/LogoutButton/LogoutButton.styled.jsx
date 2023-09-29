@@ -4,6 +4,7 @@ export const LogoutBtn = styled.a`
   display: none;
   align-items: center;
   gap: 8px;
+  
 
   cursor: pointer;
   font-size: 16px;
@@ -17,6 +18,7 @@ export const LogoutBtn = styled.a`
   &:hover,
   &:active {
     transform: scale(1.05);
+    
 
     /* stroke: #efede8; */
     /* color: #e6533c; */

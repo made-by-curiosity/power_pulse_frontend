@@ -28,22 +28,19 @@ export const ImgDiv = styled.div`
   margin-top: 48px;
   margin-bottom: 14px;
 
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     margin-left: 32px;
-
   }
 `;
 
 export const DivTimer = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-@media(min-width: 768px){
-
-  margin-left: 32px;
-}
-
+  @media (min-width: 768px) {
+    margin-left: 32px;
+  }
 `;
 
 export const Button = styled.button`
@@ -58,7 +55,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 5px;
 
-  @media(min-width: 768px){
+  @media (min-width: 768px) {
     margin-left: 32px;
   }
 `;
@@ -78,8 +75,7 @@ export const Text = styled.p`
   line-height: 14px;
   margin-bottom: 4px;
 
-  @media(min-width: 768px){
-    
+  @media (min-width: 768px) {
   }
 `;
 
@@ -109,6 +105,11 @@ export const ValueItem = styled.p`
   font-style: normal;
   font-weight: 700;
   line-height: 1.28;
+  align-items: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 `;
 
 export const ListTrening = styled.ul`
@@ -119,17 +120,20 @@ export const ListTrening = styled.ul`
   flex-wrap: wrap;
   margin-top: 40px;
 
- @media(min-width: 768px){
+  @media (min-width: 768px) {
     width: 345px;
- }
+  }
 `;
 
 export const ItemDiv = styled.div`
-display: flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
-
+  align-items: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const ItemTrening = styled.li`
@@ -138,7 +142,10 @@ export const ItemTrening = styled.li`
   height: 62px;
   justify-content: flex-start;
   padding-left: 18px;
-  align-items: center;
+  align-items: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   gap: 32px;
   border-radius: 12px;
   border: ${props => props.theme.colors.todoBorder};
@@ -146,10 +153,9 @@ export const ItemTrening = styled.li`
 
   padding: 10px;
 
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     width: 168px;
     height: 70px;
-
   }
 `;
 
@@ -160,7 +166,7 @@ export const BurnedCaloriesDiv = styled.div`
   gap: 8px;
   margin-top: 8px;
 
-  @media(min-width: 768px){
+  @media (min-width: 768px) {
     margin-left: 32px;
   }
 `;
@@ -194,12 +200,11 @@ export const ButtonAdd = styled.button`
   margin-right: auto;
   margin-top: 24px;
 
-  @media(min-width: 768px){
+  @media (min-width: 768px) {
     margin-top: 176px;
     margin-left: 200px;
     padding: 14px 32px;
   }
-
 `;
 
 export const SpanButton = styled.span`
@@ -212,8 +217,8 @@ export const SpanButton = styled.span`
 `;
 
 export const DivColumn = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-    align-items: center;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

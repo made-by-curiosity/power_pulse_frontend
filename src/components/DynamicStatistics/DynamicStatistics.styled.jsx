@@ -7,7 +7,7 @@ export const StatWrapper = styled.div`
   position: absolute;
   width: 119px;
   height: 76px;
-  background: #ef8964;
+  background: ${props => props.theme.colors.paramsBgColor};
 
   top: 85%;
   right: 5%;
@@ -42,7 +42,7 @@ export const TotalNumber = styled.span`
   letter-spacing: -1px;
   line-height: 24px;
   text-transform: uppercase;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
 
   @media screen and (min-width: 768px) {
     font-size: 48px;
@@ -51,7 +51,7 @@ export const TotalNumber = styled.span`
 `;
 
 export const TotalName = styled.span`
-  color: rgba(239, 237, 232, 0.65);
+  color: ${props => props.theme.colors.statisticTextColor};
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
@@ -70,7 +70,7 @@ export const TotalIcon = styled.svg`
   margin-left: 18px;
   margin-top: 14px;
   margin-bottom: 8px;
-  background-color: #efa082;
+  background-color: ${props => props.theme.colors.iconBgColor};
   padding: 4px;
   border-radius: 50px;
   width: 20px;

@@ -43,7 +43,10 @@ export const ModalTrening = ({ onToogle, example }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSecond, setIsSecond] = useState(0);
   const [isCalories, setIsCalories] = useState(0);
-  // const [data, setData] = useState(null);
+  const [isRound, setIsRound] = useState(0);
+  const [roundCounter, setRoundCounter] = useState(children);
+  
+
 
   function formatTime(totalSeconds) {
     const minutes = Math.floor(totalSeconds / 60);
@@ -51,43 +54,26 @@ export const ModalTrening = ({ onToogle, example }) => {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   }
 
-  const caloriesOneSeconds =
-    Math.round((example.burnedCalories / children) * 100) / 100;
 
-  // useEffect(() => {
-
-  //   axios.get('api/exercises')
-  //     .then((response) => setData(response))
-  //     .catch((error) => console.error('Ошибка при получении данных:', error));
-  // }, []);
+  const caloriesOneSeconds = Math.round((example.burnedCalories / children) * 100) / 100;
+ 
 
   useEffect(() => {
     let interval;
-    if (
-      isPlaying
-      // && isSecond !== children
-    ) {
+    if (isPlaying && roundCounter !== isSecond) {
       interval = setInterval(() => {
         setIsSecond(isSecond => isSecond + 1);
         setIsCalories(isCalories => isCalories + caloriesOneSeconds);
       }, 1000);
     }
-    // else if (isSecond === children) {
-    //   setIsPlaying(false);
-    //   setIsSecond(0);
-    //   setIsCalories(0);
-    // }
+    else if (isSecond === roundCounter) {
+      setIsPlaying(false)
+      setRoundCounter(roundCounter => roundCounter + children);
+      setIsRound(isRound => isRound + 1);
+    }
 
     return () => clearInterval(interval);
-  }, [
-    children,
-    setIsPlaying,
-    setIsSecond,
-    isPlaying,
-    isSecond,
-    setIsCalories,
-    caloriesOneSeconds,
-  ]);
+  }, [children, setIsPlaying, setIsSecond, isPlaying, isSecond, setIsCalories, caloriesOneSeconds, roundCounter]);
 
   const togglePlaying = () => {
     setIsPlaying(prevState => !prevState);
@@ -152,11 +138,16 @@ export const ModalTrening = ({ onToogle, example }) => {
               trailColor="#EFEDE81A"
               strokeWidth={4}
               onComplete={() => {
-                return { shouldRepeat: true };
+
+                if (isPlaying) {
+                  return { shouldRepeat: true }
+                }
+                
               }}
             >
               {() => {
-                return <div>{timerFormat}</div>;
+                return <div style={{display: "flex", flexDirection: "column"}}><div>{timerFormat}</div>
+                  <div>Round: {isRound}</div></div>;
               }}
             </CountdownCircleTimer>
           </DivTimer>

@@ -26,8 +26,8 @@ export const WarningCont = styled.div`
 `;
 
 export const WarningIMG = styled.svg`
-  stroke: #efede8;
-  fill: #ef8964;
+  stroke: ${props => props.theme.colors.primaryTitleColor};
+  fill: ${props => props.theme.colors.svgLineColor};
   stroke-width: 0;
   position: absolute;
   top: 0;
@@ -39,7 +39,7 @@ export const WarningIMG = styled.svg`
 `;
 
 export const WarningText = styled.p`
-  color: rgba(239, 237, 232, 0.3);
+  color: ${props => props.theme.colors.warningTextColor};
   font-size: 14px;
   line-height: 18px;
   max-width: 303px;

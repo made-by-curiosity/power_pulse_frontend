@@ -25,7 +25,7 @@ export const Text = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 1.28;
-  color: #efede84d;
+  color: ${props => props.theme.colors.formTextColor};
   margin-bottom: 28px;
   margin-top: 14px;
 
@@ -57,7 +57,7 @@ export const TextBtn = styled.span`
   font-style: normal;
   font-weight: 500;
   line-height: 1.12;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
 
   @media (min-width: 768px) {
     font-size: 20px;
@@ -70,7 +70,7 @@ export const TextSingUp = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
-  color: rgba(239, 237, 232, 0.6);
+  color: ${props => props.theme.colors.btnTextColor};
 `;
 
 export const LinkSingUp = styled(Link)`
@@ -79,7 +79,7 @@ export const LinkSingUp = styled(Link)`
   line-height: 150%;
   text-decoration-line: underline;
   margin-left: 5px;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
 `;
 
 export const DivSingUp = styled.div`

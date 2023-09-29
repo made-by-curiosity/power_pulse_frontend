@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const ParamsWrapper = styled.div`
   margin-top: 30px;
@@ -7,7 +8,7 @@ export const ParamsWrapper = styled.div`
 `;
 
 export const ParamsFormTitle = styled.h2`
-  color: '#EFEDE8';
+  color: ${props => props.theme.colors.primaryTitleColor};
   margin-bottom: 14px;
 
   @media screen and (min-width: 768px) {
@@ -18,7 +19,7 @@ export const ParamsFormTitle = styled.h2`
 export const ParamsFormSubTitle = styled.p`
   font-size: 14px;
   font-weight: 400;
-  color: 'rgb(239, 237, 232, 0.3)';
+  color: ${props => props.theme.colors.formSubTitleColor};
   margin-bottom: 32px;
   line-height: 1.4;
 
@@ -163,7 +164,7 @@ export const StepWrap = styled.div`
 export const Step1 = styled.button`
   width: 50px;
   height: 4px;
-  background-color: '#ef8964';
+  background-color: ${props => props.theme.colors.paramsBgColor};
   border-radius: 10px;
   outline: none;
   border: none;
@@ -173,7 +174,7 @@ export const Step1 = styled.button`
 export const Step2 = styled.button`
   width: 50px;
   height: 4px;
-  background-color: '#303030';
+  background-color: ${props => props.theme.colors.paramsSecondBgColor};
   border-radius: 10px;
   outline: none;
   border: none;
@@ -189,7 +190,7 @@ export const Step2 = styled.button`
 export const Step3 = styled.button`
   width: 50px;
   height: 4px;
-  background-color: '#303030';
+  background-color: ${props => props.theme.colors.paramsSecondBgColor};
   border-radius: 10px;
   outline: none;
   border: none;
@@ -221,7 +222,7 @@ export const BackBtn = styled.button`
   outline: none;
   border: none;
   background-color: transparent;
-  color: 'rgb(239, 237, 232, 0.6)';
+  color: ${props => props.theme.colors.btnTextColor};
 `;
 
 export const BtnWrap = styled.div`

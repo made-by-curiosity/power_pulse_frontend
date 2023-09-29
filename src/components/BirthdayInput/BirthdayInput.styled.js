@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const TitleWrapper = styled.button`
   display: flex;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
@@ -24,7 +24,7 @@ export const TitleWrapper = styled.button`
 `;
 
 export const CalendarIMG = styled.svg`
-  stroke: #ef8964;
+  stroke: ${props => props.theme.colors.svgLineColor};
   width: 20px;
   height: 20px;
 

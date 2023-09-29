@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import {
   Step1,
   Step2,
@@ -126,7 +128,7 @@ export const ParamsForm = ({ setBackgroundStep }) => {
 
     const userInfo = { ...values, birthday: formattedDate };
 
-    // Ваша логіка для обробки даних третього етапу, наприклад, відправлення їх на сервер
+    //  логіка для обробки даних третього етапу, відправлення їх на сервер
     dispatch(updateUserParams(userInfo));
 
     // Прибираємо флаг "завантаження" після успішної відправки
@@ -140,7 +142,7 @@ export const ParamsForm = ({ setBackgroundStep }) => {
 
       resetForm();
     } else {
-      // Перехід на наступний етап (якщо необхідно)
+      // Перехід на наступний етап
       setStep(state => state + 1);
     }
   };
@@ -357,4 +359,8 @@ export const ParamsForm = ({ setBackgroundStep }) => {
       )}
     </ParamsWrapper>
   );
+};
+
+ParamsForm.propTypes = {
+  setBackgroundStep: PropTypes.func.isRequired,
 };

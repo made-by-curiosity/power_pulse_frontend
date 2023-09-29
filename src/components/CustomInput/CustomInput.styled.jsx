@@ -22,7 +22,7 @@ export const Label = styled.label`
   font-family: 'Roboto', sans-serif;
   font-size: ${props => (props.isFocused || props.hasValue ? '10px' : '14px')};
   line-height: ${props => (props.isFocused || props.hasValue ? '1.5' : '1.29')};
-  color: rgba(239, 237, 232, 0.6);
+  color: ${props => props.theme.colors.titleInputColor};
 
   transition: top 0.2s ease-out, left 0.2s ease-out;
 
@@ -43,38 +43,38 @@ export const StyledInput = styled.input`
   font-size: 14px;
   line-height: 1.29;
 
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
 
   background-color: inherit;
 
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  border: ${props => props.theme.colors.searchProductBorder};
 
   outline: none;
 
   &:hover,
   &:focus {
-    border-color: #e6533c;
+    border-color: ${props => props.theme.colors.btnBgColor};
     & ~ svg {
-      stroke: #e6533c;
+      stroke: ${props => props.theme.colors.btnBgColor};
     }
   }
 
   ${props =>
     props.className.includes('valid') &&
     `
-    border-color: #3CBF61;
+    border-color: ${props => props.theme.colors.inputValidColor};
 		& ~ svg {
-      stroke: #3CBF61;
+      stroke: ${props => props.theme.colors.inputValidColor};
     }
   `}
 
   ${props =>
     props.className.includes('invalid') &&
     `
-    border-color: #D80027;
+    border-color: ${props => props.theme.colors.inputInvalidColor};
 		& ~ svg {
-      stroke: #D80027;
+      stroke: ${props => props.theme.colors.inputInvalidColor};
     }
   `}
 
@@ -104,15 +104,15 @@ export const InputMessage = styled.div`
   ${props =>
     props.className.includes('valid') &&
     `
-    color: #3CBF61; 
-    fill: #3CBF61; 
+    color:  ${props => props.theme.colors.inputValidColor};
+    fill:  ${props => props.theme.colors.inputValidColor};
   `}
 
   ${props =>
     props.className.includes('invalid') &&
     `
-    color: #D80027; 
-    fill: #D80027; 
+    color: ${props => props.theme.colors.inputInvalidColor};
+    fill: ${props => props.theme.colors.inputInvalidColor};
   `}
 `;
 
@@ -130,7 +130,7 @@ export const ShowPasswordBtn = styled.button`
   padding: 0;
 
   & svg {
-    stroke: #efede8;
+    stroke: ${props => props.theme.colors.primaryTitleColor};
   }
 `;
 
@@ -142,7 +142,7 @@ export const CalendarIcon = styled.svg`
   right: 14px;
   top: 17px;
 
-  stroke: #efede8;
+  stroke: ${props => props.theme.colors.primaryTitleColor};
 
   z-index: -1;
 `;

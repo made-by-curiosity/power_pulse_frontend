@@ -5,10 +5,10 @@ export const ProductWrapper = styled.div`
   min-height: 335px;
   padding: 16px 8px 16px 16px;
 
-  border: 1px solid #efede820;
+  border: ${props => props.theme.colors.productBorder};
   border-radius: 12px;
 
-  background-color: #efede80d;
+  background-color: ${props => props.theme.colors.productBgColor};
 
   @media (min-width: 768px) {
     min-height: auto;
@@ -35,19 +35,19 @@ export const TitleNav = styled.div`
 `;
 
 export const TitleP = styled.p`
-  color: #efede880;
+  color: ${props => props.theme.colors.productTitleColor};
   font-size: 14px;
   line-height: 18px;
 `;
 
 export const WrapperA = styled.div`
   &:hover span {
-    color: #efede8;
+    color: ${props => props.theme.colors.primaryTitleColor};
   }
 `;
 
 export const NavP = styled.span`
-  color: #e6533c;
+  color: ${props => props.theme.colors.backgroundContentColor};
   font-size: 14px;
   line-height: 18px;
   font-weight: 500;
@@ -65,7 +65,7 @@ export const SvgStyle = styled.svg`
 `;
 
 export const NotProduct = styled.p`
-  color: #efede84d;
+  color: ${props => props.theme.colors.formTextColor};
   font-size: 14px;
   line-height: 18px;
   text-align: center;

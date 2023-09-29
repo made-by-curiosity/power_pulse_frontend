@@ -10,14 +10,10 @@ export const ExerciseCardWrapper = styled.div`
   max-width: 335px;
   height: 206px;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: ${props => props.theme.colors.todoBorder};
 
   background-repeat: no-repeat;
-  background-image: linear-gradient(
-      0deg,
-      rgba(4, 4, 4, 0.5) 0%,
-      rgba(4, 4, 4, 0.5) 100%
-    ),
+  background-image: ${props => props.theme.colors.cardGradient},
     url(${props => props.photo || img});
 
   background-position: 50% 50%;
@@ -28,11 +24,7 @@ export const ExerciseCardWrapper = styled.div`
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     & {
-      background-image: linear-gradient(
-          0deg,
-          rgba(4, 4, 4, 0.5) 0%,
-          rgba(4, 4, 4, 0.5) 100%
-        ),
+      background-image: ${props => props.theme.colors.cardGradient},
         url(${props => props.photo || img2});
     }
   }
@@ -40,11 +32,7 @@ export const ExerciseCardWrapper = styled.div`
     (-webkit-min-device-pixel-ratio: 3),
     (min-resolution: 3dppx) {
     & {
-      background-image: linear-gradient(
-          0deg,
-          rgba(4, 4, 4, 0.5) 0%,
-          rgba(4, 4, 4, 0.5) 100%
-        ),
+      background-image: ${props => props.theme.colors.cardGradient},
         url(${props => props.photo || img3});
     }
   }
@@ -70,7 +58,7 @@ export const ExerciseDescription = styled.div`
 `;
 export const ExerciseTitle = styled.div`
   margin: 0;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   text-align: center;
   font-family: Roboto;
   font-size: 20px;
@@ -86,7 +74,7 @@ export const ExerciseTitle = styled.div`
 export const ExerciseText = styled.p`
   margin-top: 2px;
   margin-bottom: 0;
-  color: rgba(239, 237, 232, 0.4);
+  color: ${props => props.theme.colors.textSecondColor};
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

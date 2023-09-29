@@ -17,9 +17,9 @@ export const StyledSelect = styled.select`
   appearance: none;
 
   & option {
-    background: #1c1c1c;
+    background: ${props => props.theme.colors.filterBgColor};
 
-    color: #efede8;
+    color: ${props => props.theme.colors.primaryTitleColor};
     font-family: Roboto;
     font-size: 14px;
     font-style: normal;
@@ -31,11 +31,11 @@ export const StyledSelect = styled.select`
   padding: 14px;
 
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  border: ${props => props.theme.colors.searchProductBorder};
   background: none;
   outline: none;
 
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
@@ -44,7 +44,7 @@ export const StyledSelect = styled.select`
 
   &:hover,
   &:focus {
-    border-color: #e6533c;
+    border-color: ${props => props.theme.colors.backgroundContentColor};
   }
 
   ${mq[1]} {
@@ -58,7 +58,7 @@ export const IconChevron = styled.svg`
   height: 18px;
 
   stroke-width: 2px;
-  stroke: #efede8;
+  stroke: ${props => props.theme.colors.primaryTitleColor};
 `;
 
 export const ButtonShevron = styled.button`
