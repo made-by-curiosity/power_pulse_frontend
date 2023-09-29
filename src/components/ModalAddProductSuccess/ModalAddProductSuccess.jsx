@@ -10,7 +10,7 @@ import { Title } from 'components/Title/Title';
 import ico from '../../assets/icons/svg-sprite.svg';
 import foodIcon from '../../assets/images/png/food-icon.png';
 
-export const ModalAddProductSuccess = ({ onClose }) => {
+export const ModalAddProductSuccess = ({ onClose, totalCalories = 325 }) => {
   const handleNextProductClick = () => {
     onClose();
   };
@@ -38,7 +38,9 @@ export const ModalAddProductSuccess = ({ onClose }) => {
     >
       <Img src={foodIcon} alt="Food Icon" />
       <Title>{'Well done'}</Title>
-      <Calories>Calories: {}</Calories>
+      <Calories>
+        Calories: <span style={{ color: '#E6533C' }}>{totalCalories}</span>
+      </Calories>
       <MainButton
         btnStyles={{ marginBottom: '16px' }}
         type="button"

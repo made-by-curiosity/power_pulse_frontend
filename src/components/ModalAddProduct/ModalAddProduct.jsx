@@ -15,6 +15,7 @@ import { CustomModal } from 'components/CustomModal/CustomModal';
 import { useState } from 'react';
 import { addMeal } from 'services/powerPulseApi';
 import { Notify } from 'notiflix';
+import { capitalizeString } from 'utils/capitalize';
 
 const calculateCalories = (calories, amount, weight) => {
   return Math.ceil((calories / weight) * amount);
@@ -24,6 +25,7 @@ export const ModalAddProduct = ({
   productInfo,
   toggleAddModal,
   toggleSuccessModal = () => null,
+  setTotalCalories,
 }) => {
   const {
     title = 'Mango',
@@ -49,6 +51,7 @@ export const ModalAddProduct = ({
 
     try {
       await addMeal(mealToSend);
+      setTotalCalories(totalCalories);
       toggleSuccessModal();
     } catch (error) {
       Notify.failure('Ops...Something went wrong. Please try again.');
@@ -84,7 +87,12 @@ export const ModalAddProduct = ({
       }}
     >
       <FormField>
-        <InputProductName name="product" type="text" value={title} readOnly />
+        <InputProductName
+          name="product"
+          type="text"
+          value={capitalizeString(title)}
+          readOnly
+        />
         <AmountWrapper>
           <LabelGrams>grams</LabelGrams>
           <InputProductAmount

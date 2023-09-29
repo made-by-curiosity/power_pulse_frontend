@@ -23,6 +23,7 @@ import { BackLink } from 'components/BackLink/BackLink';
 
 import { ModalTrening } from 'components/ModalTrening/ModalTrening';
 import { Notify } from 'notiflix';
+import { capitalizeString } from 'utils/capitalize';
 
 export const ExercisesListByCategory = () => {
   const location = useLocation();
@@ -90,17 +91,18 @@ export const ExercisesListByCategory = () => {
                     <use href={icons + '#icon-running'}></use>
                   </svg>
                 </CaloriesIcon>
-                <ExercisesTitle>{card.name}</ExercisesTitle>
+                <ExercisesTitle>{capitalizeString(card.name)}</ExercisesTitle>
               </ExercisesContainer>
               <DataInfo>
                 <li>
-                  Burned calories:<span>{card.burnedCalories}</span>
+                  Burned calories:
+                  <span>{card.burnedCalories}</span>
                 </li>
                 <li>
-                  Body part: <span>{card.bodyPart}</span>
+                  Body part: <span>{capitalizeString(card.bodyPart)}</span>
                 </li>
                 <li>
-                  Target:<span>{card.target}</span>
+                  Target:<span>{capitalizeString(card.target)}</span>
                 </li>
               </DataInfo>
             </ExercisesItem>

@@ -27,6 +27,7 @@ import { Notify } from 'notiflix';
 import { useSelector } from 'react-redux';
 import { selectUserParams } from 'redux/auth/selectors';
 import { NoResultsMessage } from 'components/NoResultsMessage/NoResultsMessage';
+import { capitalizeString } from 'utils/capitalize';
 
 const getBloodFilter = recommended => {
   switch (recommended) {
@@ -67,6 +68,7 @@ export const ProductsList = ({
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isSuccessModal, setSuccessModal] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
+  const [totalCalories, setTotalCalories] = useState(0);
 
   const { blood } = useSelector(selectUserParams);
 
@@ -105,11 +107,13 @@ export const ProductsList = ({
           productInfo={currentProduct}
           toggleAddModal={() => setIsAddModalOpen(state => !state)}
           toggleSuccessModal={() => setSuccessModal(state => !state)}
+          setTotalCalories={setTotalCalories}
         />
       )}
       {isSuccessModal && (
         <ModalAddProductSuccess
           onClose={() => setSuccessModal(state => !state)}
+          totalCalories={totalCalories}
         />
       )}
       {productsToShow.length !== 0 ? (
@@ -171,7 +175,7 @@ export const ProductsList = ({
                         <use href={icons + '#icon-running'}></use>
                       </svg>
                     </CaloriesIcon>
-                    <MenuTitle>{title}</MenuTitle>
+                    <MenuTitle>{capitalizeString(title)}</MenuTitle>
                   </MenuContainer>
                   <DataInfo>
                     <li>
@@ -184,7 +188,7 @@ export const ProductsList = ({
                         textOverflow: 'ellipsis',
                       }}
                     >
-                      Category: <span>{category}</span>
+                      Category: <span>{capitalizeString(category)}</span>
                     </li>
                     <li>
                       Weight:<span>{weight}</span>
