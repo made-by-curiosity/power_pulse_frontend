@@ -29,6 +29,7 @@ export const SearchProductField = ({ searchQuery, setSearchQuery }) => {
   const handleSubmit = event => {
     event.preventDefault();
     const searchInputValue = event.target.elements[0].value;
+    setSearchQuery(searchInputValue);
   };
 
   const resetValue = () => {

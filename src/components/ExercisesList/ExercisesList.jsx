@@ -53,7 +53,7 @@ export const ExercisesListByCategory = () => {
 
         setExercisesSubCategories(filtredExercises);
       } catch (error) {
-        Notify.failure("Ops...Something went wrong. Please try again.")
+        Notify.failure('Ops...Something went wrong. Please try again.');
         console.log(error.message);
       }
     };
