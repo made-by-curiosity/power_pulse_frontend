@@ -5,6 +5,7 @@ import { MUIProductsFilters } from 'components/MUIProductsFilters/MUIProductsFil
 import { Title } from 'components/Title/Title';
 import { useState } from 'react';
 import { Loading } from 'components/Loading/Loading';
+import { SecondaryPageBg } from 'components/SecondaryPageBg/SecondaryPageBg';
 
 const ProductsPage = () => {
   const [recommended, setRecommended] = useState('');
@@ -13,27 +14,29 @@ const ProductsPage = () => {
   const [isLoaderShown, setIsLoaderShown] = useState(false);
 
   return (
-    <Container>
-      {isLoaderShown && <Loading noBackdrop />}
-      <ContentWrapper>
-        <Title>Products</Title>
-        <MUIProductsFilters
-          recommended={recommended}
-          setRecommended={setRecommended}
-          category={category}
-          setCategory={setCategory}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
-        <ProductsList
-          recommended={recommended}
-          category={category}
-          searchQuery={searchQuery}
-          isLoaderShown={isLoaderShown}
-          setIsLoaderShown={setIsLoaderShown}
-        />
-      </ContentWrapper>
-    </Container>
+    <SecondaryPageBg page="products">
+      <Container>
+        {isLoaderShown && <Loading noBackdrop />}
+        <ContentWrapper>
+          <Title>Products</Title>
+          <MUIProductsFilters
+            recommended={recommended}
+            setRecommended={setRecommended}
+            category={category}
+            setCategory={setCategory}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+          <ProductsList
+            recommended={recommended}
+            category={category}
+            searchQuery={searchQuery}
+            isLoaderShown={isLoaderShown}
+            setIsLoaderShown={setIsLoaderShown}
+          />
+        </ContentWrapper>
+      </Container>
+    </SecondaryPageBg>
   );
 };
 
