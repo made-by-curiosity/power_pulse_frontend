@@ -28,8 +28,8 @@ export default function ExercisesTable({ workouts, setWorkouts }) {
           equipment: workout.exerciseId.equipment,
           name: workout.exerciseId.name,
           target: workout.exerciseId.target,
-          burnedCalories: workout.exerciseId.burnedCalories,
-          time: workout.exerciseId.time,
+          burnedCalories: workout.calories,
+          time: workout.time,
           id: workout._id,
         };
       }),
