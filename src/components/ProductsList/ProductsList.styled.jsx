@@ -23,7 +23,7 @@ export const ProductsContainer = styled.div`
   }
 
   @media (min-width: 768px) {
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 507px;
     gap: 32px 16px;
   }

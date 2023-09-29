@@ -23,7 +23,7 @@ export const MainExercisesContainer = styled.div`
   }
 
   @media (min-width: 768px) {
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 507px;
     gap: 32px 16px;
   }
@@ -33,16 +33,6 @@ export const MainExercisesContainer = styled.div`
 `;
 
 export const ExercisesList = styled.ul`
-  // display: grid;
-  // max-width: calc(100vw - 48px);
-  // grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  // grid-gap: 16px;
-  // margin-top: 0;
-  // margin-bottom: 0;
-  // padding: 0;
-  // list-style: none;
-  // margin-left: auto;
-  // margin-right: auto;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
