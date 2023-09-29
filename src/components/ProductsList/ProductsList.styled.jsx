@@ -1,6 +1,27 @@
 import styled from '@emotion/styled';
 
 export const ProductsContainer = styled.div`
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 12px;
+    background: rgba(239, 237, 232, 0.1);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      90deg,
+      #ef8964 0%,
+      #ef8964 30%,
+      #ef8964 50%,
+      #ef8964 70%,
+      #ef8964 100%
+    );
+    border-radius: 12px;
+  }
+
   @media (min-width: 768px) {
     overflow-y: scroll;
     height: 507px;
@@ -38,13 +59,7 @@ export const RadCircle = styled.div`
   border-radius: 10px;
   background: #e9101d;
   margin-right: 8px;
-  margin-left: 75px;
-  @media (min-width: 768px) {
-    margin-left: 71px;
-  }
-  @media (min-width: 1440px) {
-    margin-left: 141px;
-  }
+  margin-left: auto;
 `;
 
 export const GreenCircle = styled.div`
@@ -53,13 +68,7 @@ export const GreenCircle = styled.div`
   border-radius: 10px;
   background: #419b09;
   margin-right: 8px;
-  margin-left: 94px;
-  @media (min-width: 768px) {
-    margin-left: 90px;
-  }
-  @media (min-width: 1440px) {
-    margin-left: 160px;
-  }
+  margin-left: auto;
 `;
 
 export const InfoContainer = styled.div`
