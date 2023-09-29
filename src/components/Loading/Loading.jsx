@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
-import { LoadingWrapper } from './Loading.styled';
+import { LoadingCont, LoadingWrapper } from './Loading.styled';
+import { LoadingSpinner } from 'components/LoadingSpinner/LoadingSpinner';
 
 export const Loading = ({ text }) => {
   return (
     <LoadingWrapper>
-      <p>{text}</p>
+      <LoadingCont>
+        <LoadingSpinner />
+      </LoadingCont>
     </LoadingWrapper>
   );
 };

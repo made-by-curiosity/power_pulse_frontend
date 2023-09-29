@@ -12,6 +12,7 @@ import { refreshUser } from 'redux/auth/operations';
 
 import { ExercisesCategories } from 'components/ExercisesCategoryList/ExercisesCategories';
 import { ExercisesListByCategory } from 'components/ExercisesList/ExercisesList';
+import { Loading } from 'components/Loading/Loading';
 
 const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage'));
 const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage'));
@@ -42,6 +43,7 @@ export const App = () => {
 
   return (
     <>
+      {isRefreshing && <Loading />}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/welcome" />} />
