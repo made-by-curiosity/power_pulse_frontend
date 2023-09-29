@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { updateName, updateUserParams } from 'redux/auth/operations';
 
@@ -148,7 +149,7 @@ export const UserForm = ({ userInfo }) => {
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
-                  inputStyles={{ width: '165px' }}
+                  inputStyles={{ maxWidth: '165px' }}
                 />
                 <Field
                   label="Current Weight"
@@ -156,7 +157,7 @@ export const UserForm = ({ userInfo }) => {
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
-                  inputStyles={{ width: '156px' }}
+                  inputStyles={{ maxWidth: '156px' }}
                 />
               </InnerWrapper>
               <InnerWrapper>
@@ -166,13 +167,13 @@ export const UserForm = ({ userInfo }) => {
                   autoComplete="off"
                   successFeedback={false}
                   component={CustomInput}
-                  inputStyles={{ width: '165px' }}
+                  inputStyles={{ maxWidth: '165px' }}
                 />
                 <Field
                   name="birthday"
                   successFeedback={false}
                   component={BirthdayInput}
-                  inputStyles={{ width: '156px' }}
+                  inputStyles={{ maxWidth: '156px' }}
                 />
               </InnerWrapper>
             </UserOtherInfoWrapper>
@@ -279,4 +280,25 @@ export const UserForm = ({ userInfo }) => {
       </Formik>
     </>
   );
+};
+
+UserForm.propTypes = {
+  userInfo: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    userParams: PropTypes.shape({
+      height: PropTypes.number.isRequired,
+      currentWeight: PropTypes.number.isRequired,
+      desiredWeight: PropTypes.number.isRequired,
+      birthday: PropTypes.string.isRequired,
+      blood: PropTypes.number.isRequired,
+      sex: PropTypes.string.isRequired,
+      levelActivity: PropTypes.number.isRequired,
+    }).isRequired,
+    avatarUrls: PropTypes.shape({
+      mobile: PropTypes.string,
+      desktop: PropTypes.string,
+    }),
+    bmr: PropTypes.number,
+  }).isRequired,
 };

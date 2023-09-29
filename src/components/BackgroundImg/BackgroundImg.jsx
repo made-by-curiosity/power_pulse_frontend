@@ -27,7 +27,7 @@ export const BackgroundImg = ({ children, notFound, backgroundStep }) => {
     <Wrapper notFound={notFound}>
       <BgContainer notFound={notFound}>
         {notFound && <NotFoundContentBackground notFound={notFound} />}
-        <BgImage notFound={notFound} />
+        <BgImage notFound={notFound} step={backgroundStep} />
         {!notFound && (
           <>
             <TutorialBtn />

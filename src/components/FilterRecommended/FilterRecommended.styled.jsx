@@ -6,10 +6,10 @@ const mq = breakpoints.map(bp => `@media screen and (min-width: ${bp}px)`);
 
 export const InputWrapper = styled.div`
   position: relative;
-  width: 146px;
+  width: 173px;
 
   ${mq[1]} {
-    width: 192px;
+    width: 204px;
   }
 `;
 

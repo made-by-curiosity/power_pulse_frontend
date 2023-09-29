@@ -6,15 +6,26 @@ import { BurgerLogoutButton } from './BurgerLogutButton/BurgerLogoutButton';
 import { useEffect } from 'react';
 
 export const BurgerMenu = ({ closeMenu }) => {
+  const scrollY = window.scrollY;
+
   useEffect(() => {
     const close = e => {
       if (e.keyCode === 27) {
         closeMenu();
       }
     };
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${scrollY}px`;
     window.addEventListener('keydown', close);
-    return () => window.removeEventListener('keydown', close);
-  }, [closeMenu]);
+    return () => {
+      window.removeEventListener('keydown', close);
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
+    };
+  }, [closeMenu, scrollY]);
 
   return PortalReactDOM.createPortal(
     <>

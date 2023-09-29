@@ -16,7 +16,7 @@ import sprite from '../../assets/icons/svg-sprite.svg';
 export const ModalExercise = ({ time, calories, onClick, onClose }) => {
   return (
     <CustomModal
-      modalStyles={{ width: '335px', height: '384px' }}
+      modalStyles={{ maxWidth: '335px', width: '100%', height: '384px' }}
       modalTabletStyles={{ width: '430px', height: '439px' }}
       modalDesktopStyles={{ width: '430px', height: '439px' }}
       onClose={onClose}

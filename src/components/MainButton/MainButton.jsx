@@ -8,6 +8,7 @@ export const MainButton = ({
   btnStyles,
   modalButton,
   onClick,
+  btn320Styles,
 }) => {
   return (
     <Btn
@@ -15,6 +16,7 @@ export const MainButton = ({
       filled={filled}
       disabled={disabled}
       btnStyles={btnStyles}
+      btn320Styles={btn320Styles}
       modalButton={modalButton}
       onClick={onClick}
     >

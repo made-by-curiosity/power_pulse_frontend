@@ -113,14 +113,8 @@ export const getAllProducts = async () => {
   return res.data;
 };
 
-export const getRecommendedProducts = async () => {
-  const res = await axios.get();
-
-  return res.data;
-};
-
-export const getNotRecommendedProducts = async () => {
-  const res = await axios.get();
+export const getProductFilters = async () => {
+  const res = await axios.get('/api/products/categories');
 
   return res.data;
 };

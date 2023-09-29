@@ -22,6 +22,7 @@ import { getAllExercises } from 'services/powerPulseApi';
 import { BackLink } from 'components/BackLink/BackLink';
 
 import { ModalTrening } from 'components/ModalTrening/ModalTrening';
+import { Notify } from 'notiflix';
 
 export const ExercisesListByCategory = () => {
   const location = useLocation();
@@ -52,6 +53,7 @@ export const ExercisesListByCategory = () => {
 
         setExercisesSubCategories(filtredExercises);
       } catch (error) {
+        Notify.failure("Ops...Something went wrong. Please try again.")
         console.log(error.message);
       }
     };

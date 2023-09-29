@@ -35,10 +35,10 @@ export const theme = createTheme({
     skrolFiltBgColor: 'rgba(239, 237, 232, 0.10)',
     skrolBgColor: '#EF8964',
   },
-  shadows: {
-    navActiveLineshadows: ' 0px 1px 10px 0px rgba(230, 83, 60, 0.80)',
+  // shadows: {
+  //   navActiveLineshadows: ' 0px 1px 10px 0px rgba(230, 83, 60, 0.80)',
 
-  },
+  // },
   borders: {
     signInBorder: '1px solid rgba(239, 273, 232, 0.30)',
     activeSignInBorder: '1px solid #F6533C',
@@ -48,6 +48,5 @@ export const theme = createTheme({
     inputBorderError: '1px solid #D80027',
     radioBorder: '2px solid #636366',
     todoBorder: '1px solid rgba(239, 237, 232, 0.20)',
-
   },
 });

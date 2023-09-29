@@ -31,28 +31,29 @@ export const CardLink = styled(Link)`
 
 
 export const PaginationBtn = styled.button`
+
   width: 14px;
   height: 14px;
   border-radius: 50%;
    cursor: pointer;
-   background-color: rgba(239, 237, 232, 0.10) ;
+   background-color: transparent ;
    border: none;
    outline: none;
     
-   ${(props) =>
+   /* ${(props) =>
     props.active &&
-    {backgroundColor: '#e6533c'}
-    }
+    {backgroundColor: 'transparent'}
+    } */
 
 `;
 
 export const PaginationList = styled.ul`
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 40px;
 `
 
 
 export const PaginationItem = styled.li`
-  margin-right: 5px;
+  margin-right: 8px;
 `

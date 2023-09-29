@@ -6,29 +6,17 @@ const mq = breakpoints.map(bp => `@media screen and (min-width: ${bp}px)`);
 
 export const InputWrapper = styled.div`
   position: relative;
-  width: 146px;
+  max-width: 335px;
 
   ${mq[1]} {
-    width: 192px;
+    width: 236px;
   }
 `;
 
-export const StyledSelect = styled.select`
-  appearance: none;
-
-  & option {
-    background: #1c1c1c;
-
-    color: #efede8;
-    font-family: Roboto;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.28571;
-  }
-
+export const StyledInput = styled.input`
   width: 100%;
   padding: 14px;
+  padding-right: 58px;
 
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
@@ -53,15 +41,41 @@ export const StyledSelect = styled.select`
   }
 `;
 
-export const IconChevron = styled.svg`
+export const IconSearch = styled.svg`
+  width: 18px;
+  height: 18px;
+
+  stroke-width: 1.5px;
+  stroke: #efede8;
+`;
+
+export const IconCancel = styled.svg`
   width: 18px;
   height: 18px;
 
   stroke-width: 2px;
-  stroke: #efede8;
+  stroke: #e6533c;
 `;
 
-export const ButtonShevron = styled.button`
+export const ButtonCancel = styled.button`
+  position: absolute;
+
+  right: 40px;
+  transform: translateY(75%);
+
+  margin: 0;
+  padding: 0;
+  border: none;
+  line-height: 0;
+  background: none;
+  cursor: pointer;
+
+  ${mq[1]} {
+    transform: translateY(100%);
+  }
+`;
+
+export const ButtonSearch = styled.button`
   position: absolute;
 
   right: 14px;

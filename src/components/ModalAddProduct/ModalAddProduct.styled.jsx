@@ -23,6 +23,11 @@ export const InputProductName = styled.input`
   border-radius: 12px;
   border: 1px solid #e6533c;
   outline: none;
+
+  @media screen and (max-width: 374px) {
+    width: 100%;
+  }
+
   @media screen and (min-width: 768px) {
     width: 244px;
     height: 40px;
@@ -48,6 +53,11 @@ export const InputProductAmount = styled.input`
   font-weight: 400;
   line-height: 1.3;
   color: #efede8;
+
+  @media screen and (max-width: 374px) {
+    width: 100%;
+  }
+
   @media screen and (min-width: 768px) {
     width: 155px;
     height: 40px;
@@ -81,6 +91,10 @@ export const ContainCaloriesNumber = styled.span`
   line-height: 1.3;
 `;
 
+export const AmountWrapper = styled.div`
+  position: relative;
+`;
+
 export const ModalBtns = styled.div`
   display: flex;
   justify-content: space-between;
@@ -94,16 +108,19 @@ export const ModalBtns = styled.div`
 
 export const LabelGrams = styled.label`
   position: absolute;
-  top: 98px;
-  right: 36px;
+  top: 10px;
+  right: 14px;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.3;
   color: rgba(239, 237, 232, 0.4);
 
+  @media screen and (max-width: 374px) {
+  }
+
   @media screen and (min-width: 768px) {
-    top: 61px;
-    right: 46px;
+    top: 13px;
+    right: 14px;
   }
 `;
