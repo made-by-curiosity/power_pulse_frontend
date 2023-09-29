@@ -26,6 +26,7 @@ import { Notify } from 'notiflix';
 
 import { useSelector } from 'react-redux';
 import { selectUserParams } from 'redux/auth/selectors';
+import { NoResultsMessage } from 'components/NoResultsMessage/NoResultsMessage';
 
 const getBloodFilter = recommended => {
   switch (recommended) {
@@ -101,7 +102,7 @@ export const ProductsList = ({ recommended, category, searchQuery }) => {
           toggleSuccessModal={() => setSuccessModal(state => !state)}
         />
       )}
-      {products.length !== 0 ? (
+      {productsToShow.length !== 0 ? (
         <ProductList>
           {productsToShow.map(
             ({
@@ -185,7 +186,7 @@ export const ProductsList = ({ recommended, category, searchQuery }) => {
           )}
         </ProductList>
       ) : (
-        <p>Sorry, we didn't find any products matching your request.</p>
+        <NoResultsMessage />
       )}
     </ProductsContainer>
   );
