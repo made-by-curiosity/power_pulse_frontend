@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
+
+
 import {
   CategoriesList,
   CardLink,
   PaginationBtn,
-  // LinkWrap,
   PaginationList,
   PaginationItem,
 } from './ExercisesCategories.styled';
@@ -21,6 +23,8 @@ import { getExercisesCategory } from 'services/powerPulseApi';
 import { Loading } from 'components/Loading/Loading';
 import { Notify } from 'notiflix';
 
+const throttle = require('lodash.throttle');
+
 export const ExercisesCategories = ({ query }) => {
   const location = useLocation();
 
@@ -30,7 +34,6 @@ export const ExercisesCategories = ({ query }) => {
   const [recordsPerPage, setRecordsPage] = useState(10);
 
   
-  // const recordsPerPage = 10;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const exercises = exercisesCategories?.slice(firstIndex, lastIndex);
@@ -42,12 +45,25 @@ export const ExercisesCategories = ({ query }) => {
     setCurrentPage(n);
   };
 
-  useEffect(() => {
-    let widthScreen = window.innerWidth;
-      if (widthScreen >= 768 && widthScreen < 1440 ) {
-    setRecordsPage(9);
+ 
+  const getRecordsPerPage = () => {
+    const widthScreen = window.innerWidth;
+
+    if (widthScreen >= 768 && widthScreen < 1440 ) {
+      setRecordsPage(9);
+    } else {
+      setRecordsPage(10);
     }
-    console.log(widthScreen);
+
+  }
+
+  const getRecordsPerPageThrottled = throttle(getRecordsPerPage, 500);
+
+  useEffect(() => {
+    getRecordsPerPage();
+
+    window.addEventListener('resize',getRecordsPerPageThrottled);
+
 
     const CategoriesList = async () => {
       try {
@@ -59,7 +75,11 @@ export const ExercisesCategories = ({ query }) => {
       }
     };
     CategoriesList();
-  }, [query]);
+
+    return () => {
+      window.removeEventListener('resize', getRecordsPerPageThrottled);
+    };
+  }, [ query]);
 
 
   return (
@@ -77,13 +97,12 @@ export const ExercisesCategories = ({ query }) => {
           </li>
         ))}
       </CategoriesList>
-      {/* <CustomPagination  numbers={numbers}/> */}
+  
       {npage > 1 &&  <PaginationList>
         {numbers.map((n, i) => (
           <PaginationItem key={i}>
             <PaginationBtn
               onClick={() => changeCurrentPage(n)}
-              active={n === currentPage}
             >{n === currentPage ? <svg width="14" height="14">
             <use href={icons + '#icon-pagination'} />
     </svg> : <svg width="14" height="14">
@@ -99,3 +118,9 @@ export const ExercisesCategories = ({ query }) => {
     </>
   );
 };
+
+
+
+ExercisesCategories.propTypes = {
+  query: PropTypes.string.isRequired,
+}
