@@ -21,9 +21,15 @@ export const RowTel = styled.tr`
   display: flex;
   margin-bottom: 66px;
   flex-wrap: wrap;
+  &:nth-of-type(1) {
+    margin-top: 48px;
+  }
   @media (min-width: 768px) {
     flex-wrap: nowrap;
     margin-bottom: 8px;
+    &:nth-of-type(1) {
+      margin-top: 0px;
+    }
   }
 `;
 
@@ -76,8 +82,34 @@ export const CellTel = styled.td`
   font-size: 14px;
   line-height: 18px;
   position: relative;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  @media (max-width: 374.22px) {
+    &:nth-of-type(1) {
+      min-width: 100%;
+      height: 38px;
+      margin-bottom: 42px;
+    }
+    &:nth-of-type(2) {
+      min-width: 100%;
+      height: 38px;
+      margin-bottom: 42px;
+    }
+    &:nth-of-type(3) {
+      max-width: 81px;
+      height: 38px;
+      margin-right: 16px;
+    }
+    &:nth-of-type(4) {
+      max-width: 80px;
+      height: 38px;
+      margin-right: 16px;
+    }
+    &:nth-of-type(5) {
+      max-width: 76px;
+      height: 38px;
+      margin-right: 6px;
+    }
+  }
+@media (min-width: 375px) {
   &:nth-of-type(1) {
     width: 297px;
     height: 38px;
@@ -103,13 +135,16 @@ export const CellTel = styled.td`
     height: 38px;
     margin-right: 6px;
   }
+}
 
   @media (min-width: 768px) {
-    padding: 8px 14px 8px 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 6px 14px 8px 14px;
     font-size: 16px;
     line-height: 24px;
     height: 40px;
-    display: flex;
     align-items: center;
     &:nth-of-type(1) {
       width: 204px;
