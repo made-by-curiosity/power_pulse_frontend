@@ -57,9 +57,9 @@ UserCard.propTypes = {
       levelActivity: PropTypes.number.isRequired,
     }).isRequired,
     avatarUrls: PropTypes.shape({
-      mobile: PropTypes.string.isRequired,
-      desktop: PropTypes.string.isRequired,
-    }).isRequired,
+      mobile: PropTypes.string,
+      desktop: PropTypes.string,
+    }),
     bmr: PropTypes.number,
   }).isRequired,
 };
