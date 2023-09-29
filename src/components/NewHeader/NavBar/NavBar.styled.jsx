@@ -25,15 +25,15 @@ export const HeaderLink = styled(NavLink)`
   line-height: 22px;
 
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: ${props => props.theme.colors.todoBorder};
 
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   transition: background linear 200ms, border linear 200ms;
 
   &:hover,
   &:active,
   &.active {
-    background: #e6533c;
-    border: 1px solid #e6533c;
+    background: ${props => props.theme.colors.navBarBgHover};
+    border: ${props => props.theme.colors.navBarHoverBorder};
   }
 `;

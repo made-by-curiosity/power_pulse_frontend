@@ -8,7 +8,7 @@ export const TitleText = styled.h2`
   font-weight: 500;
   line-height: 40px;
   letter-spacing: 0.38px;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
 
   @media screen and (min-width: 768px) {
     max-width: 598px;

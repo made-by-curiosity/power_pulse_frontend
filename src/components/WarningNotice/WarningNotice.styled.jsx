@@ -19,7 +19,7 @@ export const WarningNoticeWrapper = styled.div`
 export const WarningText = styled.div`
   width: 303px;
 
-  color: rgba(239, 237, 232, 0.3);
+  color: ${props => props.theme.colors.warningTextColor};
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;

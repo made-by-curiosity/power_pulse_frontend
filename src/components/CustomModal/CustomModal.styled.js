@@ -6,9 +6,8 @@ export const BackDrop = styled.div`
   width: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(10, 10, 10, 0.495);
-
-  z-index: 10000;
+  background-color: ${props => props.theme.colors.modalBackdropColor};
+ z-index: 10000;
 `;
 
 export const Modal = styled.div`
@@ -24,9 +23,9 @@ export const Modal = styled.div`
   max-height: 95%;
   overflow-y: auto;
 
-  background-color: #10100f;
+  background-color: ${props => props.theme.colors.modalBgColor};
   border-radius: 12px;
-  border: 1px solid #efede820;
+  border: ${props => props.theme.colors.modalBorder};
   text-align: center;
 
   @media screen and (max-width: 374px) {
@@ -47,7 +46,7 @@ export const CloseModalBtn = styled.button`
   position: absolute;
   top: 5px;
   right: 5px;
-  background-color: #10100f;
+  background-color: ${props => props.theme.colors.modalBgColor};
   border: none;
   outline: none;
   cursor: pointer;

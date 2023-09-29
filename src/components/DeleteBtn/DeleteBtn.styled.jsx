@@ -11,13 +11,13 @@ export const TrashBtn = styled.button`
 export const TrashSvg = styled.svg`
   width: 20px;
   height: 20px;
-  stroke: #ef8964;
+  stroke: ${props => props.theme.colors.svgLineColor};
 
   transition: stroke 200ms ease-out;
 
   &:hover,
   &:focus {
     opacity: 0.7;
-    stroke: #e6533c;
+    stroke: ${props => props.theme.colors.burgerSvgColor};
   }
 `;

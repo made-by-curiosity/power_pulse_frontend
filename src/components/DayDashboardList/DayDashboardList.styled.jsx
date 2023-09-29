@@ -28,10 +28,10 @@ export const Item = styled.li`
   border: 1px solid;
   border-color: ${({ borderColor }) =>
     borderColor ? borderColor : 'rgba(239, 237, 232, 0.2)'};
-  background: rgba(239, 237, 232, 0.05);
+  background: ${props => props.theme.colors.todoBgColor};
 
   :nth-of-type(-n + 2) {
-    background: #e6533c;
+    background: ${props => props.theme.colors.btnBgColor};
   }
 
   @media (min-width: 768px) {
@@ -64,7 +64,7 @@ export const Title = styled.p`
 `;
 
 export const Value = styled.p`
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-size: 18px;
   font-weight: 700;
   line-height: 20px;
@@ -75,5 +75,5 @@ export const Value = styled.p`
 `;
 
 export const Imagen = styled.svg`
-  fill: #ef8964;
+  fill: ${props => props.theme.colors.svgLineColor};
 `;

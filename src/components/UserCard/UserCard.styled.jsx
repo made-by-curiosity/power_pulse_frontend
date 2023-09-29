@@ -17,6 +17,6 @@ export const UserCardWrapper = styled.div`
 
     border-left-style: solid;
     border-width: 1px;
-    border-color: #efede833;
+    border-color: ${props => props.theme.colors.userCardBorder};
   }
 `;

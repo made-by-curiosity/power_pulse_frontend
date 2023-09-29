@@ -22,25 +22,25 @@ export const Btn = styled.button`
   font-size: 16px;
   font-weight: 500;
   line-height: 1.13;
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
 
-  background-color: ${props => (props.filled ? '#e6533c' : 'transparent')};
+  background-color: ${props => (props.filled ? props.theme.colors.backgroundContentColor : 'transparent')};
 
   border: 1px solid;
   border-color: ${props =>
-    props.filled ? '#e6533c' : 'rgba(239, 237, 232, 0.30)'};
+    props.filled ? props.theme.colors.activeSignInBorder : props.theme.colors.searchProductBorder};
   border-radius: 12px;
 
   transition: background-color 0.2s ease-out, border-color 0.2s ease-out;
 
   &:hover:not([disabled]),
   &:focus:not([disabled]) {
-    background-color: ${props => (props.filled ? '#ef8964' : 'transparent')};
-    border-color: ${props => (props.filled ? '#ef8964' : '#e6533c')};
+    background-color: ${props => (props.filled ? props.theme.colors.activeSignUpBgColor : 'transparent')};
+    border-color: ${props => (props.filled ? props.theme.colors.activeSignUpBgColor : props.theme.colors.inputBorderHover)};
   }
 
   &:disabled {
-    color: rgba(239, 237, 232, 0.6);
+    color: ${props => props.theme.colors.textPlaceholderColor};
   }
 
   ${props => props.btnStyles}

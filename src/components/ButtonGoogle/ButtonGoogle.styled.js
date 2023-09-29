@@ -8,11 +8,11 @@ export const Button = styled.button`
   justify-content: center;
   gap: 2px;
 
-  color: #ffffff;
+  color: ${props => props.theme.colors.whiteColor};
 
   cursor: pointer;
 
-  border: 1px solid #ffffff;
+  border: ${props => props.theme.colors.whiteBorder};
 
   border-radius: 12px;
 
@@ -32,7 +32,7 @@ export const Button = styled.button`
 export const SvgGoogle = styled.svg`
   width: 18px;
   height: 18px;
-  fill: #efede8;
+  fill: ${props => props.theme.colors.primaryTitleColor};
 
   @media (min-width: 768px) {
     width: 20px;
@@ -46,7 +46,7 @@ export const SpanGoogle = styled.span`
   font-weight: 500;
   line-height: 1.13;
 
-  color: #000000;
+  color: ${props => props.theme.colors.blackColor};
 
   @media (min-width: 768px) {
     font-size: 16px;

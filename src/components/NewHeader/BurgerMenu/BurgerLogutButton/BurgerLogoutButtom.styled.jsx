@@ -11,7 +11,7 @@ export const BurgerLogoutBtn = styled.button`
   padding-left: 0;
   padding-right: 0;
 
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-family: Roboto;
 
   display: flex;

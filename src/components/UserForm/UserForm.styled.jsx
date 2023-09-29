@@ -5,7 +5,7 @@ const breakpoints = [320, 768, 1440];
 const mq = breakpoints.map(bp => `@media screen and (min-width: ${bp}px)`);
 
 export const Title = styled.p`
-  color: rgba(239, 237, 232, 0.5);
+  color: ${props => props.theme.colors.formTitleColor};
   font-family: Roboto;
   font-size: 12px;
   font-style: normal;

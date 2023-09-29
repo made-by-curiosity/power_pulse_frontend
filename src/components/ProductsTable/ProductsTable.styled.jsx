@@ -169,7 +169,7 @@ export const CellTel = styled.td`
 export const SvgStyle = styled.svg`
   width: 20px;
   height: 20px;
-  fill: red;
+  fill: ${props => props.theme.colors.redColor};
 `;
 
 export const SvgTd = styled.td`
@@ -187,7 +187,7 @@ export const RecWrapper = styled.div`
 export const RecYes = styled.div`
   width: 14px;
   height: 14px;
-  background-color: #419b09;
+  background-color: ${props => props.theme.colors.recommendedColors};
   border-radius: 50%;
   margin-right: 8px;
 `;
@@ -195,7 +195,7 @@ export const RecYes = styled.div`
 export const RecNo = styled.div`
   width: 14px;
   height: 14px;
-  background-color: #e9101d;
+  background-color: ${props => props.theme.colors.notRecommendedColors};
   border-radius: 50%;
   margin-right: 8px;
 `;

@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h2`
-  color: #efede8;
+  color:  ${props => props.theme.colors.primaryTitleColor};
   font-size: 24px;
   font-weight: 700;
   line-height: 32px;
@@ -40,7 +40,7 @@ export const Text = styled.li`
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: rgba(239, 237, 232, 0.3);
+  color:  ${props => props.theme.colors.warningTextColor};
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
@@ -51,7 +51,7 @@ export const Text = styled.li`
 `;
 
 export const Value = styled.span`
-  color: #e6533c;
+  color: ${props => props.theme.colors.backgroundContentColor};
 `;
 
 export const BtnWrapper = styled.div`
@@ -63,7 +63,7 @@ export const CustomLink = styled(Link)`
   justify-content: center;
   align-self: center;
   gap: 8px;
-  color: rgba(239, 237, 232, 0.3);
+  color: ${props => props.theme.colors.warningTextColor};
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;

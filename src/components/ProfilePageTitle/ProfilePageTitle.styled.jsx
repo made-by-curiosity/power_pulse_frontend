@@ -7,7 +7,7 @@ const mq = breakpoints.map(bp => `@media screen and (min-width: ${bp}px)`);
 export const TitleText = styled.h1`
   margin-top: 40px;
 
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-family: Roboto;
   font-size: 24px;
   font-style: normal;

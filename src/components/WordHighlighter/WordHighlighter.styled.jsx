@@ -8,8 +8,8 @@ export const Highlighter = styled.svg`
   top: ${props => props.position.top + 6}px;
   left: ${props => props.position.left - 6}px;
 
-  fill: #040404;
-  stroke: #ef8964;
+  fill: ${props => props.theme.colors.backgroundPrimaryColor};
+  stroke: ${props => props.theme.colors.svgLineColor};
 
   @media screen and (min-width: 768px) {
     width: 185px;

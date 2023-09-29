@@ -40,7 +40,7 @@ export const Text = styled.p`
 `;
 
 export const SecondText = styled.p`
-  color: #efede899;
+  color:  ${props => props.theme.colors.textSecondColor};
   font-size: 12px;
   line-height: 1.5;
 `;

@@ -48,7 +48,7 @@ export const IconChevron = styled.svg`
   z-index: -1;
 
   stroke-width: 2px;
-  stroke: #efede8;
+  stroke: ${props => props.theme.colors.primaryTitleColor};
 `;
 
 export const FiltersSpan = styled.span`
@@ -80,11 +80,11 @@ export const Picker = styled(Select)(
 	
 
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  border: ${props => props.theme.colors.searchProductBorder};
   background: none;
   outline: none;
 
-  color: #efede8;
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-size: 14px;
   line-height: 1.29;
 
@@ -98,7 +98,7 @@ export const Picker = styled(Select)(
   &:hover .MuiOutlinedInput-notchedOutline,
   &:focus .MuiOutlinedInput-notchedOutline,
 	&.Mui-focused .MuiOutlinedInput-notchedOutline{
-		border: 1px solid #e6533c;
+		border: ${props => props.theme.colors.filterHoverBorder};
 
   }
 
@@ -117,24 +117,24 @@ export const Option = styled(MenuItem)(
 	padding:0;
 	min-height: 0;
 
-	color: #EFEDE8;
-	background-color: #1C1C1C;
+	color: ${props => props.theme.colors.primaryTitleColor};
+	background-color: ${props => props.theme.colors.filterBgColor};
 	
 	&.MuiMenuItem-gutters.Mui-selected,
 	&.Mui-selected,
 	&.Mui-selected:hover{
-		background-color: #1C1C1C;
+		background-color: ${props => props.theme.colors.filterBgColor};
 	}
 	&:hover{
-		background-color: #1C1C1C;
+		background-color: ${props => props.theme.colors.filterBgColor};
 	}
 
 	&:hover,
 		&:focus{
-		color: #e6533c;
+		color: ${props => props.theme.colors.filterHoverBorder};
 		}
 
-		color: #efede8;
+		color: ${props => props.theme.colors.primaryTitleColor};
   font-size: 14px;
   line-height: 1.29;
 

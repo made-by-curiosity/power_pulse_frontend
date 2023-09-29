@@ -76,7 +76,7 @@ export const WorkoutTitle = styled.h3`
 `;
 
 export const CaloriesIcon = styled.svg`
-  background-color: #efa082;
+  background-color: ${props => props.theme.colors.iconBgColor};
   padding: 4px;
   border-radius: 50px;
   width: 20px;
@@ -119,14 +119,14 @@ export const DataInfo = styled.ul`
   flex-wrap: wrap;
   gap: 4px 16px;
   & li {
-    color: rgba(239, 237, 232, 0.4);
+    color: ${props => props.theme.colors.textSecondColor};
     font-size: 12px;
     font-weight: 400;
     line-height: 1.5;
     @media screen and (min-width: 768px) {
     }
     & span {
-      color: #efede8;
+      color: ${props => props.theme.colors.primaryTitleColor};
       margin-left: 4px;
     }
   }
@@ -139,7 +139,7 @@ export const StartIcon = styled.svg`
 `;
 
 export const Start = styled.span`
-  color: #e6533c;
+  color: ${props => props.theme.colors.svgNextBackColor};
   font-size: 14px;
   line-height: 1.3;
   font-weight: 400;

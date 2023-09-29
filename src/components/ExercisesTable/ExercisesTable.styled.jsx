@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const TitleColumn = styled.span`
-  color: #ef8964;
+  color:  ${props => props.theme.colors.exerciseTextColor};
   font-size: 12px;
   line-height: 18px;
   position: absolute;
@@ -37,7 +37,7 @@ export const RowTel = styled.tr`
 export const Headers = styled.tr`
   @media (min-width: 768px) {
     display: flex;
-    color: #ef8964;
+    color: ${props => props.theme.colors.exerciseTextColor};
     font-size: 12px;
     line-height: 18px;
     margin-bottom: 8px;
@@ -91,8 +91,8 @@ export const HeadersTitle = styled.th`
 export const CellTel = styled.td`
   padding: 10px 14px 10px 14px;
   border-radius: 12px;
-  border: 1px solid #efede84d;
-  color: #efede8;
+  border: ${props => props.theme.colors.exerciseBorderColor};
+  color: ${props => props.theme.colors.primaryTitleColor};
   font-size: 14px;
   line-height: 18px;
   position: relative;
@@ -204,7 +204,7 @@ export const CellTel = styled.td`
 export const SvgStyle = styled.svg`
   width: 20px;
   height: 20px;
-  fill: red;
+  fill: ${props => props.theme.colors.redColor};
 `;
 
 export const SvgTd = styled.td`

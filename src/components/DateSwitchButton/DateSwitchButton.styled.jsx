@@ -18,7 +18,7 @@ export const DateSwitcherBtn = styled.button`
     transform: rotate(90deg);
 
     svg {
-      stroke: #efede8;
+      stroke: ${props => props.theme.colors.primaryTitleColor};
     }
   }
 `;
