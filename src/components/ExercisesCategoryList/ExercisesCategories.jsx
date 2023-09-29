@@ -112,7 +112,7 @@ export const ExercisesCategories = ({ query }) => {
         </PaginationList>
       )}
 
-      <Suspense fallback={<Loading text="Loading..." />}>
+      <Suspense fallback={<Loading />}>
         <Outlet />
       </Suspense>
     </>

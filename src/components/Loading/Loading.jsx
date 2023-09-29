@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 import { LoadingCont, LoadingWrapper } from './Loading.styled';
 import { LoadingSpinner } from 'components/LoadingSpinner/LoadingSpinner';
 
-export const Loading = ({ text }) => {
+export const Loading = () => {
   return (
     <LoadingWrapper>
       <LoadingCont>
@@ -10,8 +9,4 @@ export const Loading = ({ text }) => {
       </LoadingCont>
     </LoadingWrapper>
   );
-};
-
-Loading.propTypes = {
-  text: PropTypes.string.isRequired,
 };

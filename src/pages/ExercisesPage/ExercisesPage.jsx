@@ -6,17 +6,15 @@ import { Outlet } from 'react-router-dom';
 
 import { ExercisesPageWrap } from './ExercisesPage.styled';
 
-
 const ExercisesPage = () => {
   return (
-    <Container style={{paddingBottom: "20px"}}>
+    <Container style={{ paddingBottom: '20px' }}>
       <ExercisesPageWrap>
         <ExercisesNav />
-        <Suspense fallback={<Loading text="Loading..." />}>
+        <Suspense fallback={<Loading />}>
           <Outlet />
         </Suspense>
       </ExercisesPageWrap>
-      
     </Container>
   );
 };
