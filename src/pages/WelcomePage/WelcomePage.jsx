@@ -3,7 +3,7 @@ import { BackgroundImg } from 'components/BackgroundImg/BackgroundImg';
 import { MainButton } from 'components/MainButton/MainButton';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { WelcomeBtns, TitleText, WelcomeTitle } from './WelcomePage.styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HighlightedWord } from 'components/HighlightedWord/HighlightedWord';
 import { WordHighlighter } from 'components/WordHighlighter/WordHighlighter';
 import { useDispatch } from 'react-redux';
@@ -16,11 +16,14 @@ const WelcomePage = () => {
 
   const dispatch = useDispatch();
   const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const token = searchParams.get('token');
-  if (token) {
-    dispatch(signUpWithToken(token));
-  }
+
+  useEffect(()=>{
+    const searchParams = new URLSearchParams(location.search);
+    const token = searchParams.get('token');
+    if (token) {
+      dispatch(signUpWithToken(token));
+    }
+  },[dispatch, location.search])
 
   const navigate = useNavigate();
   const goToSingUp = () => {
