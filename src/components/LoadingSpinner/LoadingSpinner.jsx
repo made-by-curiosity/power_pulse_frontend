@@ -1,19 +1,13 @@
-import { Circles } from 'react-loader-spinner';
-
-
+import { Hourglass } from 'react-loader-spinner';
 
 export const LoadingSpinner = () => {
   return (
-
-    <Circles
-        height="80"
-        width="80"
-        color="#e6533c"
-        ariaLabel="circles-loading"
-        visible={true}
-        />
-    
-    
+    <Hourglass
+      height="80"
+      width="80"
+      colors={['#e6533c', '#FFDAB9']}
+      ariaLabel="hourglass-loading"
+      visible={true}
+    />
   );
 };
-

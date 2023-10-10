@@ -23,8 +23,15 @@ import { BackLink } from 'components/BackLink/BackLink';
 
 import { ModalTrening } from 'components/ModalTrening/ModalTrening';
 import { Notify } from 'notiflix';
+import { capitalizeString } from 'utils/capitalize';
+import { ModalExercise } from 'components/ModalExercise/ModalExercise';
 
 export const ExercisesListByCategory = () => {
+  const [workoutDoneInfo, setWorkoutDoneInfo] = useState({
+    time: 0,
+    calories: 0,
+  });
+
   const location = useLocation();
   const backLinkRef = location.state?.from ?? '/exercises';
 
@@ -34,6 +41,7 @@ export const ExercisesListByCategory = () => {
 
   const [exercisesSubCategories, setExercisesSubCategories] = useState(null);
 
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState(null);
 
@@ -53,7 +61,7 @@ export const ExercisesListByCategory = () => {
 
         setExercisesSubCategories(filtredExercises);
       } catch (error) {
-        Notify.failure("Ops...Something went wrong. Please try again.")
+        Notify.failure('Ops...Something went wrong. Please try again.');
         console.log(error.message);
       }
     };
@@ -90,17 +98,18 @@ export const ExercisesListByCategory = () => {
                     <use href={icons + '#icon-running'}></use>
                   </svg>
                 </CaloriesIcon>
-                <ExercisesTitle>{card.name}</ExercisesTitle>
+                <ExercisesTitle>{capitalizeString(card.name)}</ExercisesTitle>
               </ExercisesContainer>
               <DataInfo>
                 <li>
-                  Burned calories:<span>{card.burnedCalories}</span>
+                  Burned calories:
+                  <span>{card.burnedCalories}</span>
                 </li>
                 <li>
-                  Body part: <span>{card.bodyPart}</span>
+                  Body part: <span>{capitalizeString(card.bodyPart)}</span>
                 </li>
                 <li>
-                  Target:<span>{card.target}</span>
+                  Target:<span>{capitalizeString(card.target)}</span>
                 </li>
               </DataInfo>
             </ExercisesItem>
@@ -108,7 +117,19 @@ export const ExercisesListByCategory = () => {
         </ExercisesList>
       </MainExercisesContainer>
       {isModalOpen && (
-        <ModalTrening onToogle={toogleModal} example={selectedExercise} />
+        <ModalTrening
+          onToogle={toogleModal}
+          exerciseInfo={selectedExercise}
+          setIsSuccessOpen={() => setIsSuccessOpen(prevState => !prevState)}
+          setWorkoutDoneInfo={setWorkoutDoneInfo}
+        />
+      )}
+      {isSuccessOpen && (
+        <ModalExercise
+          onClose={() => setIsSuccessOpen(prevState => !prevState)}
+          time={workoutDoneInfo.time}
+          calories={workoutDoneInfo.calories}
+        />
       )}
     </div>
   );

@@ -1,3 +1,4 @@
+import { capitalizeString } from 'utils/capitalize';
 import {
   ExerciseCardWrapper,
   ExerciseDescription,
@@ -10,7 +11,7 @@ export const ExerciseCard = ({ title, filter, photo }) => {
     <ExerciseCardWrapper photo={photo}>
       <ExerciseDescription>
         <ExerciseTitle>
-          {title}
+          {capitalizeString(title)}
           <ExerciseText>{filter}</ExerciseText>
         </ExerciseTitle>
       </ExerciseDescription>

@@ -7,6 +7,7 @@ export const BackDrop = styled.div`
   top: 0;
   left: 0;
   background-color: ${props => props.theme.colors.modalBackdropColor};
+ z-index: 10000;
 `;
 
 export const Modal = styled.div`
@@ -19,6 +20,8 @@ export const Modal = styled.div`
   width: 600px;
   height: 300px;
   padding: 40px;
+  max-height: 95%;
+  overflow-y: auto;
 
   background-color: ${props => props.theme.colors.modalBgColor};
   border-radius: 12px;

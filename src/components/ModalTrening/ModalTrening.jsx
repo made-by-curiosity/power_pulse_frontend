@@ -22,31 +22,22 @@ import { CustomModal } from 'components/CustomModal/CustomModal';
 import { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { addWorkout } from 'services/powerPulseApi';
-// import axios from 'axios';
+import { capitalizeString } from 'utils/capitalize';
+import { Notify } from 'notiflix';
 
-// const BASE_URL='https://power-pulse.onrender.com'
-
-// const ex = {
-//   bodyPart: 'waist',
-//   equipment: 'body weight',
-//   gifUrl:
-//     'https://res.cloudinary.com/ditdqzoio/image/upload/v1687127066/exercises/0002.gif',
-//   name: '45° side bend',
-//   target: 'abs',
-//   burnedCalories: 323,
-//   time: 3,
-// };
-
-export const ModalTrening = ({ onToogle, example }) => {
-  const children = example.time * 60;
+export const ModalTrening = ({
+  onToogle,
+  exerciseInfo,
+  setIsSuccessOpen,
+  setWorkoutDoneInfo,
+}) => {
+  const children = exerciseInfo.time * 60;
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSecond, setIsSecond] = useState(0);
   const [isCalories, setIsCalories] = useState(0);
   const [isRound, setIsRound] = useState(0);
   const [roundCounter, setRoundCounter] = useState(children);
-  
-
 
   function formatTime(totalSeconds) {
     const minutes = Math.floor(totalSeconds / 60);
@@ -54,9 +45,8 @@ export const ModalTrening = ({ onToogle, example }) => {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   }
 
-
-  const caloriesOneSeconds = Math.round((example.burnedCalories / children) * 100) / 100;
- 
+  const caloriesOneSeconds =
+    Math.round((exerciseInfo.burnedCalories / children) * 100) / 100;
 
   useEffect(() => {
     let interval;
@@ -65,15 +55,23 @@ export const ModalTrening = ({ onToogle, example }) => {
         setIsSecond(isSecond => isSecond + 1);
         setIsCalories(isCalories => isCalories + caloriesOneSeconds);
       }, 1000);
-    }
-    else if (isSecond === roundCounter) {
-      setIsPlaying(false)
+    } else if (isSecond === roundCounter) {
+      setIsPlaying(false);
       setRoundCounter(roundCounter => roundCounter + children);
       setIsRound(isRound => isRound + 1);
     }
 
     return () => clearInterval(interval);
-  }, [children, setIsPlaying, setIsSecond, isPlaying, isSecond, setIsCalories, caloriesOneSeconds, roundCounter]);
+  }, [
+    children,
+    setIsPlaying,
+    setIsSecond,
+    isPlaying,
+    isSecond,
+    setIsCalories,
+    caloriesOneSeconds,
+    roundCounter,
+  ]);
 
   const togglePlaying = () => {
     setIsPlaying(prevState => !prevState);
@@ -83,21 +81,28 @@ export const ModalTrening = ({ onToogle, example }) => {
 
   const handleSendWorkout = async () => {
     if (isPlaying || isSecond < 1) {
+      Notify.failure(
+        `Impossible to add workout. Finish working out before adding!`
+      );
       return;
     }
 
     const workout = {
-      exerciseId: example._id,
+      exerciseId: exerciseInfo._id,
       time: Math.ceil(isSecond / 60),
       calories: Math.ceil(isCalories),
     };
 
-    console.log(workout);
     try {
       const res = await addWorkout(workout);
-      console.log(res);
+      setWorkoutDoneInfo({
+        time: res.time,
+        calories: res.calories,
+      });
+      setIsSuccessOpen();
       onToogle();
     } catch (error) {
+      Notify.failure('Ops...Something went wrong. Please try again.');
       console.log(error.message);
     }
   };
@@ -126,7 +131,7 @@ export const ModalTrening = ({ onToogle, example }) => {
       <>
         <DivColumn>
           <ImgDiv>
-            <ImgGif src={example.gifUrl} alt="" />
+            <ImgGif src={exerciseInfo.gifUrl} alt="" />
           </ImgDiv>
           <DivTimer>
             <Text>Time</Text>
@@ -138,16 +143,18 @@ export const ModalTrening = ({ onToogle, example }) => {
               trailColor="#EFEDE81A"
               strokeWidth={4}
               onComplete={() => {
-
                 if (isPlaying) {
-                  return { shouldRepeat: true }
+                  return { shouldRepeat: true };
                 }
-                
               }}
             >
               {() => {
-                return <div style={{display: "flex", flexDirection: "column"}}><div>{timerFormat}</div>
-                  <div>Round: {isRound}</div></div>;
+                return (
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div>{timerFormat}</div>
+                    <div>Round: {isRound}</div>
+                  </div>
+                );
               }}
             </CountdownCircleTimer>
           </DivTimer>
@@ -172,7 +179,7 @@ export const ModalTrening = ({ onToogle, example }) => {
         </DivColumn>
         <DivColumn>
           <ListTrening>
-            {Object.entries(example)
+            {Object.entries(exerciseInfo)
               .filter(
                 ([key, value]) =>
                   key !== 'gifUrl' && key !== 'burnedCalories' && key !== '_id'
@@ -180,8 +187,8 @@ export const ModalTrening = ({ onToogle, example }) => {
               .map(([key, value]) => (
                 <ItemTrening key={value}>
                   <ItemDiv>
-                    <NameItem>{key}</NameItem>
-                    <ValueItem>{value}</ValueItem>
+                    <NameItem>{capitalizeString(key)}</NameItem>
+                    <ValueItem>{capitalizeString(value)}</ValueItem>
                   </ItemDiv>
                 </ItemTrening>
               ))}
